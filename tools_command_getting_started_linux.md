@@ -1,35 +1,35 @@
-## Terminals on Linux en Mac (Bash)
+## Terminal op Linux en macOS (Bash)
 
-Linux en Mac gebruiken beide bash als terminal.   
-Ondanks het feit dat sommige commando's bekend voorkomen uit de DOS-prompt, zijn er grote verschillen te bemerken tussen beide terminal-omgevingen.
+Linux en macOS gebruiken beide Bash als shell.
 
-We gaan nu een overzicht maken van de meest gebruikte commando en principes.  
-We doen dit aan de hand van hetzelfde voorbeeld, dat we achteraf terug gebruiken voor onze eerste oefening met een compiler.  
+We geven hier een overzicht van de meest gebruikte opdrachten en principes. We doen dit aan de hand van een concreet voorbeeld.
+
+Voor meer informatie verwijzen we naar de cursus **Basis Linux**.
 
 ### Bash-shell openen
 
-Linux en Max hebben verschillende programma's waarmee je toegang kan hebben tot de shell.
+Linux en macOS hebben verschillende programma's waarmee je toegang tot de shell krijgt. Op de meeste systemen heet dat programma Terminal.
 
 ![](bash_terminal.png)
 
-Eenmaal gestart krijg je een scherm zoals hieronder:  
+Hierin krijg je een scherm zoals hieronder:  
 
 ~~~bash
 bart@bvpers4 ~ $
 ~~~
 
-Deze **prompt** :
+Deze **opdrachtprompt** :
 
-* geeft mee welke **user** ingelogd is
-* geeft aan welk **path** momenteel is gereferenceerd  
-  (in dit geval komt ~ overeen met de home-directory van de user)
-* geeft je mogelijkheid om een **commando** in te typen
+* toont welke **gebruiker** ingelogd is (hier bart op de computer bvpers4)
+* geeft aan in welk **pad** je je momenteel bevindt 
+  (in dit geval komt ~ overeen met de home-directory van de gebruiker)
+* geeft je de mogelijkheid om een **opdracht** in te typen na het dollarteken ($)
 
-### File en directories
+### Bestanden en directory's
 
 #### Een directory aanmaken
 
-We starten met het aanmaken van een **directory** waarin we onze C-code gaan plaatsen.
+We starten met het aanmaken van een **directory** waarin we onze Python-code gaan plaatsen.
 
 ~~~bash
 bart@bvpers4 ~ $ mkdir een_eerste_programma
@@ -37,18 +37,17 @@ bart@bvpers4 ~ $ ls
 ... een_eerste_programma Documents Games ...
 ~~~
 
-Hier zien we in 1 klap 2 commando's:
+Hier zien we twee opdrachten:
 
-* **mkdir** gevolg door het path **een_eerste_programma**  
-  Dit maakt een nieuwe folder of directory deze naam.  
-* Het commando **ls**  
-  Laat ons toe de **inhoud** na te kijken van de huidige **directory**
+* **mkdir** gevolg door het pad **een_eerste_programma**  
+  Dit maakt een nieuwe map of directory met deze naam aan.  
+* De opdracht **ls**  
+  Hiermee krijgen we de **inhoud** van de huidige **directory** te zien.
 
+#### Navigeren door directory's
 
-#### Navigeren door directories
-
-Als je deze directory hebt aangemaakt kan je hiernaartoe navigeren via het commando **cd**  
-(hetgeen staat voor change directory)
+Als je deze directory hebt aangemaakt, kan je hiernaartoe navigeren met de opdracht **cd**  
+(wat staat voor *change directory*):
 
 ~~~bash
 bart@bvpers4 ~ $ cd een_eerste_programma
@@ -57,17 +56,17 @@ bart@bvpers4 ~/een_eerste_programma $ pwd
 bart@bvpers4 ~/een_eerste_programma $
 ~~~
 
-Het gebruik is éénvoudig, je navigeert door cd te typen gevolgd door het path naar deze directory.  
-Het commando **pwd** print in dit geval de gehele huidige directory af.  
+Je navigeert door **cd** te typen gevolgd door het pad naar de directory.  
+De opracht **pwd** (*print working directory*) toont je de huidige directory. 
 
-#### Relatieve vs absolute path
+#### Relatieve versus absolute paden
 
-*mkdir* en *cd* nemen - net zoals de meeste commando's op de DOS-prompt - als input een **path**.    
-Zo'n path is de verwijzing naar een (target-)directory waarop je dit commando wil op uitvoeren.  
+**mkdir** en **cd** roep je aan met een **pad**.    
+Zo'n pad is de verwijzing naar een (doel)directory waarop je deze opdracht wil uitvoeren.  
 
-Er zijn een aantal manieren waarop je een path kan construeren, het grootste onderscheid dat we hier maken is  absoluut of relatief:
+Er zijn een aantal manieren waarop je een pad kan construeren. Het belangrijkste onderscheid is absoluut versus relatief:
 
-* **absoluut** is een path dat start vanaf de root-directory, dit path start namelijk vanaf de schijf waar je wil naar verwijzen
+* **absoluut** is een pad dat start vanaf de root-directory, wat onder Linux en macOS **/** is.
 
 ~~~bash
 bart@bvpers4 ~ $ cd /home/bart/een_eerste_programma
@@ -76,9 +75,9 @@ bart@bvpers4 ~/een_eerste_programma $ pwd
 bart@bvpers4 ~/een_eerste_programma $
 ~~~
 
-Dit start altijd me een verwijzing naar de root-directory
+Een absoluut pad begint dus altijd met **/**.
 
-* **relatief** verwijst naar een locatie relatief naar je huidige directory
+* **relatief** verwijst naar een locatie relatief ten opzichte van je huidige directory
 
 ~~~bash
 bart@bvpers4 ~ $ cd een_eerste_programma
@@ -88,13 +87,13 @@ bart@bvpers4 ~/een_eerste_programma $ cd ../een_andere_directory
 bart@bvpers4 ~/een_andere_directory $
 ~~~
 
-Dit verwijst van je huidige directory naar een path relatief tov je huidige directory.  
-Het symbool **..** (2 dots na elkaar) kan je altijd gebruiken om naar de super-directory te verwijzen
+Dit verwijst van je huidige directory naar een pad relatief ten opzichte van je huidige directory.  
+Met het symbool **..** (twee punten na elkaar) verwijs je naar de bovenliggende directory. 
 
 #### Home-directory
 
-Elke user op unix-systemen heeft een home-directory, in bash kan je daarna verwijzen met het teken ~  
-Ook cd typen zonder iets zorgt dat je in de home-directory geraakt
+Elke gebruiker op Unix-achtige systemen, zoals GNU/Linux, macOS en de BSD's, heeft een home-directory. In Bash kan je daarna verwijzen met het teken **~**.  
+Ook **cd** typen zonder een directorynaam erachter zorgt dat je in de home-directory terechtkomt.
 
 ~~~bash
 bart@bvpers4 ~ $ cd ..
@@ -108,10 +107,10 @@ bart@bvpers4 ~ $ pwd
 bart@bvpers4 ~ $
 ~~~
 
-#### Directories verwijderen
+#### Directory's verwijderen
 
-Een directory kan verwijderd worden door het commando rmdir.  
-Deze directory mag wel geen files bevatten anders zal deze een fout-code opleveren
+Een directory verwijder je met de opdracht **rmdir**.
+Als je een directory probeert te verwijderen terwijl die nog bestanden bevat, zal dit een foutmelding opleveren.
 
 ~~~bash
 bart@bvpers4 ~ $ rmdir een_eerste_programma
@@ -119,45 +118,45 @@ bart@bvpers4 ~ $ cd een_eerste_programma
 bash: cd: een_eerste_programma: No such file or directory
 ~~~
 
-Als je nadien naar deze directory probeert te gaan krijg je een boodschap dat deze directory niet bestaat.
+Als je na het verwijderen van een directory ernaartoe probeert te navigeren, krijg je een foutmelding dat deze directory niet bestaat.
 
-#### Files in een directory
+#### Bestanden in een directory
 
-We maken opnieuw een directory aan, deze keer navigeren we ook naar deze directory.
+We maken de directory opnieuw aan, navigeren erheen en bekijken de inhoud:
 
 ~~~bash
+bart@bvpers4 ~ $ mkdir een_eerste_programma
 bart@bvpers4 ~ $ cd mijn_eerste_programma/
 bart@bvpers4 ~/mijn_eerste_programma $ ls
 bart@bvpers4 ~/mijn_eerste_programma $
 ~~~
 
-Vervolgens maken we via een **texteditor** (bijvoorbeeld gedit zoals eerder besproken) aan, en copieren we volgende inhoud  naar een file:
+Vervolgens openen we een **teksteditor** (bijvoorbeeld gedit) en typen hierin de volgende Python-code:
 
-~~~c
-print("Hello World")
+~~~python
+print("Hello")
 ~~~
 
-Deze file bewaren we onder de eerder aangemaakte directory onder de naam hello.py.  
-Nadien kijken we na met het ls-commando of deze file correct is aangemaakt.  
+Bewaar het bestand onder de eerder aangemaakte directory met de bestandsnaam **hello.py**.  
+Bekijk nadien met de opdracht **ls** of het bestand correct is aangemaakt:
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ ls
 hello.py
 ~~~
 
-#### Inhoud van een file tonen op command-line
+#### Inhoud van een bestand tonen
 
-Stel dat je deze file alleen wil lezen bestaat er ook de mogelijkheid vanuit de command-line deze file te lezen.  
-Dit kan door de inhoud van deze file naar de command-line af te drukken via het commmando **cat**
+Stel dat je alleen de inhoud van het bestand wil zien, dan kan dat vanaf de opdrachtregel met de opdracht **cat**.
 
 ~~~bash
-bart@bvpers4 ~/mijn_eerste_programma $ cat hello.c
-print("Hello World")
+bart@bvpers4 ~/mijn_eerste_programma $ cat hello.py
+print("Hello")
 ~~~
 
-#### Copieren van een file
+#### Een bestand kopiëren
 
-Je kan ook een file via de terminal copieren via het commando COPY
+Je kan ook een bestand via de terminal kopiëren met de opdracht **cp** (afkorting van *copy*):
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ cp hello.py hello.txt
@@ -165,10 +164,9 @@ bart@bvpers4 ~/mijn_eerste_programma $ ls
 hello.py hello.txt
 ~~~
 
-#### Verwijderen van een file
+#### Een bestand verwijderen
 
-Gezien we deze file niet nodig hebben (voor het vervolg van onze cursus) gaan we deze verwijderen.  
-We gebruiken hiervoor het **rm**-commando op nieuw gevolgd door het path naar deze file.
+Aangezien we het bestand niet nodig hebben voor het vervolg van onze cursus, verwijderen we het. Dat doen we met de opdracht **rm**, gevolgd door het pad naar het bestand:
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ ls
@@ -177,30 +175,30 @@ bart@bvpers4 ~/mijn_eerste_programma $ rm hello.txt
 bart@bvpers4 ~/mijn_eerste_programma $ ls
 hello.py
 ~~~
+
 > **Nota:**  
-> Net zoals bij andere commando's kan je een file aanduiden met zowel een relatief als een absoluut path
+> Net zoals bij andere opdrachten kan je naar een bestand verwijzen met zowel een relatief als een absoluut pad.
 
-### Uitvoeren van programma's
+### Programma's uitvoeren
 
-Naast het bekijken en manipuleren van je file-systeem kan je ook programma's uit voeren.  
-Bijvoorbeeld onderstaand voorbeeld voert de python-interpreter uit met als argument de python-file
+Je kan ook programma's uitvoeren op de opdrachtregel. Zo voert onderstaand voorbeeld de Python-interpreter uit met als argument het Python-bestand **hello.py**:
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ ls
 hello.py
 bart@bvpers4 ~/mijn_eerste_programma $ python hello.py
-Hello World
+Hello
 ~~~
 
-### Environment-variabelen
+### Omgevingsvariabelen
 
-Een shell laat toe om - zoals in een programmmeer-taal - variabelen aan te maken en te gebruiken.
+Een shell laat toe om - zoals in een programmmeertaal - variabelen aan te maken en te gebruiken.
 
-### Een environment-variabele definieren
+### Een omgevingsvariabele definiëren
 
-Een environment-variabele is een variabele (eigenlijk een stuk tekst) die door de shell wordt bijgehouden gedurende de terminal-sessie.  
+Een omgevingsvariabele (*environment variable*) is een variabele (eigenlijk een stuk tekst) die door de shell wordt bijgehouden gedurende de terminalsessie.  
 
-Het volgende voorbeeld gebruikt bijvoorbeeld dit mechanisme om een het path naar je project bij te houden
+Het volgende voorbeeld gebruikt dit mechanisme om het pad naar je project bij te houden:
 
 ~~~
 bart@bvpers4 ~ $ MIJN_PROJECT=/home/bart/mijn_eerste_programma
@@ -211,18 +209,15 @@ bart@bvpers4 ~/mijn_eerste_programma $
 
 ~~~
 
-* Zo'n variabele kan je initialiseren via door de **naam** van deze variabele
-* Te verbinden via een **=**-teken aan een tekst
-* Je kan de inhoud van zo'n **variabele** afdrukken naar de console met het commando **echo**  
-  (gevolgd door de naam voorafgegaan door een $-teken)
-* Je kan de inhoud hergebruiken bij andere commando's door deze naam te laten voorgaan door een **$**-terugkomen   
-  (de shell zal dan de tekst achter deze variabele vervangen)
+* Een omgevingsvariabele geef je een waarde door de **naam** van deze variabele te verbinden via een **=**-teken met een tekst. Let op: er mogen geen spaties rond het isgelijkaanteken komen!
+* Je kan de inhoud van de variabele tonen met de opdracht **echo**, gevolgd door een **$**-teken en de naam van de variabele.
+* Je kan de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals **cd**. De shell vervangt de omgevingsvariabele door zijn inhoud voor deze aan de opdracht doorgegeven wordt.
 
-> **Let op**, als deze variabele al bestaat dan wordt deze overschreven
+> **Let op**: als een variabele al bestaat wanneer je ze een waarde geeft, overschrijft dit de waarde die ze al had.
 
-#### Systeem-variabelen
+#### Systeemvariabelen
 
-Naast je eigen variabelen houdt je operating systeem ook een aantal variabelen bij.  
+Naast je eigen omgevingsvariabelen die je zelf definieert, houdt je besturingssysteem ook een aantal variabelen bij. Een voorbeeld:
 
 ~~~bash
 bart@bvpers4 ~ $ cd een_directory_die_niet_bestaat
@@ -233,11 +228,11 @@ bart@bvpers4 ~/mijn_eerste_programma $ echo $?
 0
 ~~~
 
-Deze variabele $? zal de error-code bijhouden die door het laatste programma was teruggegeven aan de shell.  
+Deze variabele **$?** houdt de exitcode bij die door het laatste programma aan de shell wordt teruggegeven. De exitcode is 0 als er geen problemen waren en is een foutcode in andere gevallen.  
 
-### Alle environment-variabelen zien
+### Alle omgevingsvariabelen zien
 
-Als je alle variabelen willen zien moet je gewoon het commando printenv typen
+Als je alle omgevingsvariabelen wil zien, typ dan de opdracht **printenv** in:
 
 ~~~
 bart@bvpers4 ~/mijn_eerste_programma $ printenv

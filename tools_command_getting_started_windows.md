@@ -1,18 +1,18 @@
-## Terminal op Windows (DOS-prompt)
+## Terminal op Windows (CMD of Opdrachtprompt)
 
-Elk operating system bevat een CLI, Windows bevat hiervoor het programma CMD, dat je kan vinden in het windows-menu onder "administrative tools".  
+Elk besturingssysteem bevat een CLI (command line interface). Windows heeft hiervoor het programma CMD (Opdrachtprompt), dat je kan vinden in het Windows-menu.
 
-> De CMD-tool heeft zijn beperkingen, voor een meer geavanceerde omgeving op Windows is het interessant Powershell te bekijken...  
-> Daarnaast bestaan er ook alternatieven bestaan zoals **Cygwin** en  **MingW/MSYS** die je een Bash-compatibele omgeving meebrengen (zodat je gelijkaardige commando's als Linux kan uitvoeren)
+> De CMD-tool heeft zijn beperkingen. Voor een geavanceerdere omgeving op Windows is het interessant om Powershell te bekijken.
+> Daarnaast bestaan er ook alternatieven zoals **Cygwin**, **MingW/MSYS** en **WSL (Windows Subsystem for Linux)**. Deze geven je een Bash-compatibele omgeving, zodat je dezelfde opdrachten als in Linux kan uitvoeren.
 
-### Windows commando's voorbeelden
+### Voorbeelden van Windows-opdrachten
 
-We gaan nu een overzicht maken van de meest gebruikte commando en principes.  
-We doen dit aan de hand van een concreet voorbeeld, dat we achteraf terug gebruiken voor onze eerste oefening met een compiler.  
+We gaan nu een overzicht maken van de meest gebruikte opdrachten en principes in Windows. We doen dit aan de hand van een concreet voorbeeld.
 
-### Windows shell openen
+### Windows-shell openen
 
-Afhankelijk van de windows-versie open je via het menu (onder "accessoires" of "administrative tools") het programma CMD.  
+Afhankelijk van de Windows-versie open je via het startmenu het programma CMD (Opdrachtprompt).  
+
 Eenmaal gestart krijg je een scherm zoals hieronder:  
 
 ~~~
@@ -22,16 +22,16 @@ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
 C:\Users\bart>
 ~~~
 
-Deze **promp** *C:\Users\bart>*:
+Deze **prompt** *C:\Users\bart>*:
 
-* geeft aan welk **path** momenteel is gereferenceerd
-* geeft je mogelijkheid om een **commando** in te typen
+* geeft aan in welk **pad** je je momenteel bevindt
+* geeft je de mogelijkheid om een **opdracht** in te typen
 
-### File en directories
+### Bestanden en directory's
 
 #### Een directory aanmaken
 
-We starten met het aanmaken van een **directory** waarin we onze C-code gaan plaatsen.
+We starten met het aanmaken van een **directory** waarin we onze Python-code gaan plaatsen.
 
 ~~~
 C:\Users\bart>mkdir een_eerste_programma
@@ -47,18 +47,17 @@ C:\Users\bart>dir
 ...
 ~~~
 
-Hier zien we in 1 klap 2 commando's:
+Hier zien we twee opdrachten:
 
-* **mkdir** gevolg door het path **een_eerste_programma**  
-  Dit maakt een nieuwe folder of directory deze naam.  
-* Het commando **dir**  
-  Laat ons toe de **inhoud** na te kijken van de huidige **directory**
+* **mkdir** gevolg door het pad **een_eerste_programma**  
+  Dit maakt een nieuwe map of directory aan met de opgegeven naam.  
+* De opdracht **dir**  
+  Dit toont de **inhoud** van de huidige **directory**.
 
 
-#### Navigeren door directories
+#### Navigeren door directory's
 
-Als je deze directory hebt aangemaakt kan je hiernaartoe navigeren via het commando **cd**  
-(hetgeen staat voor change directory)
+Als je deze directory hebt aangemaakt, kan je hiernaartoe navigeren met de opdracht **cd** (wat staat voor *change directory*):
 
 ~~~
 C:\Users\bart>cd een_eerste_programma
@@ -66,16 +65,17 @@ C:\Users\bart>cd een_eerste_programma
 C:\Users\bart\een_eerste_programma>
 ~~~
 
-Het gebruik is éénvoudig, je navigeert door cd te typen gevolgd door het path naar deze directory.
+Je navigeert dus naar de directory door **cd** in te typen gevolgd door het pad naar deze directory.
 
-#### Relatieve vs absolute path
+Merk op: de opdrachtprompt toont nu dat je je in de directory bevindt waarnaar je zojuist genavigeerd bent.
 
-*mkdir* en *cd* nemen - net zoals de meeste commando's op de DOS-prompt - als input een **path**.    
-Zo'n path is de verwijzing naar een (target-)directory waarop je dit commando wil op uitvoeren.  
+#### Relatieve versus absolute paden
 
-Er zijn een aantal manieren waarop je een path kan construeren, het grootste onderscheid dat we hier maken is  absoluut of relatief:
+Achter **mkdir** en **cd** geef je een **pad** op. Zo'n pad is de verwijzing naar een (doel)directory waarop je de opdracht wil uitvoeren.  
 
-* **absoluut** is een path dat start vanaf de root-directory, dit path start namelijk vanaf de schijf waar je wil naar verwijzen
+Er zijn een aantal manieren waarop je een pad kan construeren. Het belangrijkste onderscheid is dat tussen een absoluut of relatief pad:
+
+* **absoluut** is een pad dat start vanaf de root-directory. In Windows start dit altijd vanaf een schijfletter (zoals C:).
 
 ~~~
 C:\Users\>cd C:\Users\bart\een_eerste_programma>
@@ -83,9 +83,7 @@ C:\Users\>cd C:\Users\bart\een_eerste_programma>
 C:\Users\bart\een_eerste_programma>49>
 ~~~
 
-Dit start altijd me een verwijzing naar de root-directory (in het geval van Windows is dit een schijf)
-
-* **relatief** verwijst naar een locatie relatief naar je huidige directory
+* **relatief** verwijst naar een locatie ten opzichte van je huidige directory.
 
 ~~~
 C:\Users\bart>cd een_eerste_programma
@@ -97,12 +95,11 @@ C:\Users\bart>cd ..\een_andere_directory
 C:\Users\een_andere_directory>
 ~~~
 
-Dit verwijst van je huidige directory naar een path relatief tov je huidige directory.  
-Het symbool **..** (2 dots na elkaar) kan je altijd gebruiken om naar de super-directory te verwijzen
+Met het symbool **..** (twee puntjes na elkaar) verwijs je naar de bovenliggende directory.
 
 #### Home-directory
 
-Elke user in Windows heeft een home-directory, Windows voorzien een environment-variabele waarmee je terug kan gaan naar deze directory.
+Elke gebruiker in Windows heeft een home-directory (persoonlijke map). Windows voorziet een omgevingsvariabele (environment variabele) waarmee je naar deze directory kan navigeren:
 
 ~~~
 C:\Users\bart>cd C:\
@@ -112,11 +109,10 @@ C:\Users> cd %HOMEPATH%
 C:\Users\bart>
 ~~~
 
+#### Directory's verwijderen
 
-#### Directories verwijderen
-
-Een directory kan verwijderd worden door het commando rmdir.  
-Deze directory mag wel geen files bevatten anders zal deze een fout-code opleveren
+Een directory verwijderen doe je met de opdracht **rmdir**.
+Als de directory nog bestanden bevat, zal de poging om ze te verwijderen een foutmelding opleveren.
 
 ~~~
 C:\Users\bart>rmdir een_eerste_programma
@@ -125,11 +121,11 @@ C:\Users\bart>cd een_eerste_programma
 The system cannot find the path specified.
 ~~~
 
-Als je nadien naar deze directory probeert te gaan krijg je een boodschap dat deze directory niet bestaat.
+Als je na het verwijderen naar deze directory probeert te navigeren, krijg je de foutmelding dat de directory niet bestaat.
 
-#### Files in een directory
+#### Bestanden in een directory
 
-We maken opnieuw een directory aan, deze keer navigeren we ook naar deze directory.
+We maken opnieuw een directory aan en navigeren naar deze directory.
 
 ~~~
 C:\Users\bart>mkdir mijn_eerste_programma
@@ -148,14 +144,14 @@ C:\Users\bart\mijn_eerste_programma>dir
                2 Dir(s)  123.086.462.976 bytes free
 ~~~
 
-Vervolgens maken we via een **texteditor** (bijvoorbeeld notepad++ zoals eerder besproken) aan, en copieren we volgende inhoud (ons eerste C-programma) naar een file:
+Vervolgens starten we een **teksteditor** (bijvoorbeeld Notepad++) en typen we daar de volgende Python-opdracht in:
 
 ~~~python
-print("Hello World")
+print("Hello")
 ~~~
 
-Deze file bewaren we onder de eerder aangemaakte directory onder de naam hello.c.  
-Nadien kijken we na met het DIR-commando of deze file correct is aangemaakt.  
+Bewaar dit bestand onder de eerder aangemaakte directory met als bestandsnaam **hello.py**.
+Bekijk nadien met de opdracht **DIR** of het bestand correct aangemaakt is.
 
 ~~~
 C:\Users\bart\mijn_eerste_programma>dir
@@ -171,20 +167,19 @@ C:\Users\bart\mijn_eerste_programma>dir
                2 Dir(s)  123.097.833.472 bytes free
 ~~~
 
-#### Inhoud van een file tonen op command-line
+#### Inhoud van een bestand tonen op de opdrachtregel
 
-Stel dat je deze file alleen wil lezen bestaat er ook de mogelijkheid vanuit de command-line deze file te lezen.  
-Dit kan door de inhoud van deze file naar de command-line af te drukken via het commmando **type**
+Als je de inhoud van dit bestand alleen wil bekijken, kan dat eenvoudig op de opdrachtregel via de opdracht **type**:
 
 ~~~
-C:\Users\bart\mijn_eerste_programma>type hello.c
-print("hello")
+C:\Users\bart\mijn_eerste_programma>type hello.py
+print("Hello")
 C:\Users\bart\mijn_eerste_programma>t
 ~~~
 
-#### Copieren van een file
+#### Een bestand kopiëren
 
-Je kan ook een file via de terminal copieren via het commando COPY
+Je kan ook een bestand kopiëren met de opdacht **copy**:
 
 ~~~
 C:\Users\bart\mijn_eerste_programma>copy hello.py hello.txt
@@ -204,10 +199,10 @@ C:\Users\bart\mijn_eerste_programma>dir
                2 Dir(s)  123.095.646.208 bytes free
 ~~~
 
-#### Verwijderen van een file
+#### Een bestand verwijderen
 
-Gezien we deze file niet nodig hebben (voor het vervolg van onze cursus) gaan we deze verwijderen.  
-We gebruiken hiervoor het **DEL**-commando op nieuw gevolgd door het path naar deze file.
+Omdat we dit bestand voor het vervolg van deze cursus niet meer nodig hebben, verwijderen we het.
+We gebruiken hiervoor de opdracht **del**, opnieuw gevolgd door het paad naar dit bestand.
 
 ~~~bat
 C:\Users\bart\mijn_eerste_programma>del hello.txt
@@ -228,12 +223,12 @@ C:\Users\bart\mijn_eerste_programma>
 ~~~
 
 > **Nota:**  
-> Net zoals bij andere commando's kan je een file aanduiden met zowel een relatief als een absoluut path
+> Net zoals bij andere opdrachten kan je naar een bestand verwijzen met een relatief of een absoluut pad.
 
-### Uitvoeren van programma's
+### Programma's uitvoeren
 
-Naast het bekijken en manipuleren van je file-systeem kan je ook programma's uit voeren.  
-In onderstaand voorbeeld voeren we via de python-interpreter hello.py uit
+Je kunt ook programma's uitvoeren op de opdrachtregel.
+In onderstaand voorbeeld voeren we via de Python-interpreter het bestand hello.py uit:
 
 ~~~bat
 C:\Users\bart>cd mijn_eerste_programma
@@ -247,27 +242,30 @@ C:\Users\bart\mijn_eerste_programma>dir
 02/02/2017  14:35    <DIR>          .
 02/02/2017  14:35    <DIR>          ..
 02/02/2017  14:24                77 hello.py
-02/02/2017  14:24                77 hello               1 File(s)            77 bytes
+               1 File(s)            77 bytes
                2 Dir(s)  123.094.589.440 bytes free
 
 C:\Users\bart\mijn_eerste_programma>python hello.py
-Hello World
+Hello
 ~~~
 
-### Environment-variabelen
+Je ziet nu op de opdrachtregel de uitvoer "Hello", omdat de Python-interpreter het Python-script hello.py met de opdracht print("Hello") heeft uitgevoerd.
 
-Een shell laat toe om - zoals in een programmmeer-taal - variabelen aan te maken en te gebruiken.
+### Omgevingsvariabelen
 
-### Een environment-variabele definieren
+Een shell laat toe om - zoals in een programmmeertaal - variabelen aan te maken en te gebruiken.
 
-Een environment-variabele is een variabele (eigenlijk een stuk tekst) die door de shell wordt bijgehouden gedurende de terminal-sessie.  
+### Een omgevingsvariabele definiëren
 
-Het volgende voorbeeld gebruikt bijvoorbeeld dit mechanisme om een het path naar je project bij te houden
+Een omgevingsvariabele is een variabele (eigenlijk een stuk tekst) die door de shell wordt bijgehouden gedurende de terminalsessie.  
+
+Het volgende voorbeeld gebruikt dit mechanisme om het pad naar je project bij te houden:
 
 ~~~bat
 C:\Users\bart\mijn_eerste_programma>set MIJN_PROJECT=C:\Users\bart\mijn_eerste_programma
 
-C:\Users\bart\mijn_eerste_programma>echo MIJN_PROJECT
+C:\Users\bart\mijn_eerste_programma>echo %MIJN_PROJECT%
+C:\Users\bart\mijn_eerste_programma
 
 C:\Users\bart\mijn_eerste_programma>cd C:\
 
@@ -276,17 +274,15 @@ C:\> cd %MIJN_PROJECT%
 C:\Users\bart\mijn_eerste_programma>
 ~~~
 
-* Zo'n variabele kan je initialiseren via het keyword **set**
-* Gevolgd door de **naam** van deze variabele
-* Je kan de inhoud van zo'n **variabele** afdrukken naar de console met het commando **echo** (gevolgd door de naam)
-* Je kan de inhoud hergebruiken bij andere commando's door deze naam te omringen door een **%**-terugkomen   
-  (de shell zal dan de tekst achter deze variabele vervangen)
+* Zo'n variabele geef je een waarde met de opdracht **set**, gevolgd door de **naam** van deze variabele, een isgelijkaanteken (**=**) en de waarde. Let op: er mag geen spatie tussen de naam van de variabele en het isgelijkaanteken komen!
+* Je kan de inhoud van een omgevingsvariabele tonen met de opdracht **echo**, gevolgd door de naam omringd met **%**.
+* Je kan de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals **cd**. De shell vervangt de omgevingsvariabele door zijn inhoud voor deze aan de opdracht doorgegeven wordt.
 
-> **Let op**, als deze variabele al bestaat dan wordt deze overschreven
+> **Let op**: als een variabele al bestaat, overschrijft de set-opdracht de waarde die ze al had.
 
-#### Systeem-variabelen
+#### Systeemvariabelen
 
-Naast je eigen variabelen houdt je operating systeem ook een aantal variabelen bij.  
+Naast je eigen omgevingsvariabelen die je zelf definieert, houdt Windows ook al een aantal omgevingsvariabelen bij. Een voorbeeld:
 
 ~~~bat
 C:\Users\bart\mijn_eerste_programma>cd een_directory_die_niet_bestaat
@@ -295,14 +291,14 @@ C:\Users\bart\mijn_eerste_programma>echo %ERROR_LEVEL%
 11
 ~~~
 
-De variabele **ERROR_LEVEL** bijvoorbeeld houdt de error-code van de laatst uitgevoerde applicatie bij.
+De variabele **ERROR_LEVEL** houdt de foutcode van de laatst uitgevoerde opdracht bij.
 
-### Alle environment-variabelen zien
+### Alle omgevingsvariabelen zien
 
-Als je alle variabelen willen zien moet je gewoon SET typen
+Als je alle omgevingsvariabelen wil zien, typ dan gewoon **set** in:
 
 ~~~
-C:\Users\bart\mijn_eerste_programma>SET
+C:\Users\bart\mijn_eerste_programma>set
 ALLUSERSPROFILE=C:\Documents and Settings\All Users
 APPDATA=C:\Documents and Settings\bart\Application Data
 CLIENTNAME=Console
