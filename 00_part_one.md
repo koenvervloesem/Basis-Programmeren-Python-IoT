@@ -3,13 +3,13 @@
 ## Inhoud
 
 Welkom bij de **cursus "Basis Programmeren"**, **deel 1**.  
-In dit eerste deel gaan we:
+In dit eerste deel hebben we het over:
 
-* **Afspraken** en andere ...
+* **Afspraken** en verloop van de lessen
 * **Installeren** en **gebruiken** van **tools**
-  * Python interpreter
-  * Text-editor
-  * Command line-skills
+  * Python-interpreter
+  * Teksteditor
+  * Opdrachtregel (command line)
 * **Sequentiële uitvoering** en de basiselementen van het programmeren 
     * Een eerste **programma schrijven** (en uitvoeren)
     * **Statements** vs **expressies**
@@ -17,22 +17,22 @@ In dit eerste deel gaan we:
     * **Gebruik** van **functies**
     * **Types** van variabelen
         * **Strings**
-        * **Numbers**: **integers** en **floats**
+        * **Getallen**: **integers** en **floats**
         * Herkennen van deze types via **type()**
     * Input en output van een programma
-        * print()
-* **Conditionele** uitvoering
-    * Enkelvoudige tov **complexe statements**
+        * **print()**
+* **Conditionele uitvoering**
+    * Enkelvoudige versus **complexe statements**
     * if
     * if-else
     * if-elif-else
-* **Repetitieve** uitvoering
-    * while-loop
-    * for-loop
+* **Repetitieve** uitvoering (lussen of loops)
+    * while-lus
+    * for-lus
 * Opdelen van je code met **functies**
-* **Oefeningen** en **labo's** maken..
+* **Oefeningen** en **labo's** maken.
 
 ## Uitbreidingen in annex
 
-In de cursus wordt er verwacht basis **command-line-skills** the hebben.  
-Mocht je hier geen (beperkte) ervaring met hebben kan je altijd terecht bij de **annex**.
+In de cursus wordt er verwacht dat je basisvaardigheden op de opdrachtregel hebt.
+Mocht je hiermee geen (of beperkte) ervaring hebben, dan kan je altijd terecht in de **annex**.

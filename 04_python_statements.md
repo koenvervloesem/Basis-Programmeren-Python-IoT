@@ -2,38 +2,37 @@
 
 ### Eerste programma onder de loep
 
-Ons (eerste) programma had dus als **functionaliteit** het **afdrukken** van **een stuk tekst** naar de console.
+Ons (eerste) programma had dus als **functionaliteit** het **tonen** (*print* of afdrukken) van **een stuk tekst** naar de console.
 
-Dit is min of meer het meest éénvoudige programma dat we kunnen schrijven, namelijk het printen van een stuk tekst.
+Dit is min of meer het eenvoudigste programma dat we kunnen schrijven.
 
 ~~~python
-print("hello world")
+print("Hello world")
 ~~~
 
 ### Enkelvoudige of simpele statements
 
-Zo 1 lijn code is wat we noemen een **statement**, simpel gezegd is een statement een stuk code dat min of meer op zich zelf staande iets kan uitvoeren.
+Bovenstaande regel code is wat we noemen een **statement**. Eenvoudig gezegd: een statement is een stuk code dat min of meer op zichzelf staand iets kan uitvoeren.
 
-Je kan het bekijken als een soort van **opdracht** of **commando** die je aan je computer meegeeft (in dit geval de Python-interpreter).
+Je kan het bekijken als een soort van **opdracht** die je aan je computer meegeeft, in dit geval aan de Python-interpreter.
 
-Dit commando zal dan effectief **een actie uitvoeren** zoals **bijvoorbeeld** 
+Deze opdracht zal dan effectief **een actie uitvoeren**, zoals:
         
-* **printen** van een boodschap naar de **console**
-* **input** opvragen van een gebruiker op de **console**
-* ...
+* een boodschap op de console tonen
+* invoer van een gebruiker op de console opvragen
 
-Een statement dat uit **1 lijn code** bestaat noemen we ook wel enkelvoudige statements:
+Een statement dat uit **één regel code** bestaat noemen we ook wel een enkelvoudig statement:
 
-* De **kleinste éénheid** van **uitvoering** (of **unit of execution**)
-* Dat **op zich zelf** staat
-* Is altijd **1 lijn code**
+* De **kleinste eenheid van uitvoering** (of *unit of execution*)
+* Staat **op zichzelf**
+* Is altijd **één regel code**
 
 > Nota:  
-> Later zien we ook nog **complexe of meervoudige statements** (of block-statements) maar dat is voor zo direct
+> Later zien we ook nog **complexe of meervoudige statements** (*block statements*).
 
 ### Sequentiële programmatie
 
-Je kan ook meerdere statements achter elkaar schrijven, dit noemt een **sequentie** of opéénvolging van statements.
+Je kan ook meerdere statements achter elkaar schrijven. Dit noemen we een **sequentie** of opeenvolging van statements.
 
 ~~~python
 print("Hello world")
@@ -41,41 +40,39 @@ print("Welcome to Python")
 print("Make sure to keep track")
 ~~~
 
-De Python-interpreter zal deze commando's dan 1 voor 1 uitlezen en uitvoeren in volgorde die jij ze hebt ingegeven.
+De Python-interpreter zal deze opdrachten dan één voor één uitlezen en uitvoeren in de volgorde waarin jij ze hebt ingegeven.
 
-### Function-call
+### Functies aanroepen
 
-De **statement** dat we hier uitvoeren, is de **aanroep** naar een **functie** ofwel een **function-call**.  
+Het **statement** dat we hier uitvoeren, is de **aanroep** van een **functie** (ofwel een *function call*).  
 
-> Naast function-call's zijn er nog meerdere types van statements
+> Later zien we nog andere types van statements.
 
-
-**Functies** zijn **herbruikbare** stukken **code** die je kan **aanroepen** vanuit je **programma** onder de volgende vorm.  
+**Functies** zijn **herbruikbare** stukken **code** die je kan **aanroepen** vanuit je **programma** onder de volgende vorm: 
 
 ~~~
 <functie-naam>(<argument>)
 ~~~
 
-Je schrijft eerst de naam van de functie gevolgd - tussen haakjes - door het argument.  
+Je schrijft eerst de naam van de functie, gevolgd - tussen haakjes - door het argument.  
 
-Je kan ook meerdere argumenten meegeven aan sommige functies maar dan moeten deze gescheiden zijn door komma's.  
-Daar komen we zo dadelijk nog op terug...
+Je kan ook meerdere argumenten meegeven aan sommige functies. Dan moet je deze scheiden door komma's.  
+Daar komen we zo dadelijk nog op terug.
 
-### Print-functie
+### De functie print
 
-In dit geval voorziet Python **standaard** in een hele hoop **functies** vrij voor gebruik.  
-De functie die we hier gebruiken heeft als naar **print**.  
+Python voorziet **standaard** in een hele hoop **functies** die je onmiddellijk kan gebruiken.
+De functie die we hier gebruiken heeft als naam **print**.  
 
 Bij deze functie geef je als argument een **stuk tekst**.  
 
-### String-literal als argument
+### String literal
 
-Een stuk tekst dat je "letterlijk" wil gebruiken in Python-code dient altijd omsloten te worden door quotes.  
-Dit mogen zowel **enkele** (**'**) als **dubbele** (**"**) zijn.  
+Een stuk tekst dat je "letterlijk" wil gebruiken in Python-code dient altijd omsloten te worden door aanhalingstekens.  
+Dit mogen zowel **enkele** (**'**) als **dubbele** (**"**) aanhalingstekens zijn.  
 
-Dit is wat noemen een **String-literal** want:
+Dit is een **string literal**:
 
-* Het **data-type** voor stukken tekst noemt **String**
-* **Literal** omdat de waarde **letterlijk **in de code wordt vermeld  
-  (in tegenstelling tot een String die door je programma wordt ingelezen
-
+* Het **datatype** voor stukken tekst heet **string**.
+* We noemen dit een **literal** omdat de waarde **letterlijk **in de code wordt vermeld
+  (in tegenstelling tot een string die door je programma wordt ingelezen).

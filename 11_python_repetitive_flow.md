@@ -1,4 +1,4 @@
-## Repitieve uitvoering (loops)
+## Repetitieve uitvoering (loops)
 
 ~~~
                              +------------------------------+
@@ -7,7 +7,7 @@
             _                |                              |
              \           +---+------------------------------+---+
         _____ \          |                                      |         * while-loops
-              /          |        Repetitieve uitvoering        |         * loop-state
+              /          |        Repetitieve uitvoering        |         * loop state
             _/           |                                      |         * for-loops
                      +---+--------------------------------------+---+
                      |                                              |     * if+elif+else
@@ -15,7 +15,7 @@
                      |                                              |     * blocks
                  +---+----------------------------------------------+---+
                  |                                                      | * Statements
-                 |                Sequentiële uitvoering                |    * Function+calls
+                 |                Sequentiële uitvoering                |    * Function calls
                  |                                                      |    * Assignments
                  |   +------------+   +------------+   +------------+   | * Expressions
                  |   | Statements |   | Variabelen |   | Expressies |   | * Variables
@@ -24,9 +24,9 @@
 ~~~
 
 
-### Naar contionele uitvoering
+### Terugblik: conditionele uitvoering
 
-Via **condities** hebben we met de **if-else-structuur** **beslissingen** kunnen maken in onze code.  
+Via **voorwaarden** hebben we met de **if-else-structuur** **beslissingen** kunnen maken in onze code.
 
 ~~~
                                           +----------------+
@@ -34,26 +34,26 @@ Via **condities** hebben we met de **if-else-structuur** **beslissingen** kunnen
                                           +-------+--------+
                                                   |
                                                   V
-                                                 **
-                                               **  **
-                                    True     **      **     False
-                                  +-------+** CONDITIE **+----------+
-                                  |          **      **             |
-                                  |            **  **               |
-                                  |              **                 |
-                  +---    +-------V--------+                +-------V--------+   ---+
-                  |       |   Statement    |                |   Statement    |      |
-                  |       +-------+--------+                +-------+--------+      |
-                  |               |                                 |               |
-           BLOCK  |       +-------V--------+                +-------V--------+      |   BLOCK
-           TRUE --+       |   Statement    |                |   Statement    |      +-- FALSE
-                  |       +-------+--------+                +-------+--------+      |
-                  |               |                                 |               |
-                  |       +-------V--------+                +-------V--------+      |
-                  |       |      ...       |                |      ...       |      |
-                  +---    +-------+--------+                +-------+--------+   ---+
-                                  |                                 |
-                                  +---------------+-----------------+
+                                                 ****
+                                               **    **
+                                    True     **        **     False
+                                  +-------+** VOORWAARDE **+----------+
+                                  |          **        **             |
+                                  |            **    **               |
+                                  |              ****                 |
+                  +---    +-------V--------+                  +-------V--------+   ---+
+                  |       |   Statement    |                  |   Statement    |      |
+                  |       +-------+--------+                  +-------+--------+      |
+                  |               |                                   |               |
+           BLOCK  |       +-------V--------+                  +-------V--------+      |   BLOCK
+           TRUE --+       |   Statement    |                  |   Statement    |      +-- FALSE
+                  |       +-------+--------+                  +-------+--------+      |
+                  |               |                                   |               |
+                  |       +-------V--------+                  +-------V--------+      |
+                  |       |      ...       |                  |      ...       |      |
+                  +---    +-------+--------+                  +-------+--------+   ---+
+                                  |                                   |
+                                  +---------------+-------------------+
                                                   |
                                           +-------V--------+
                                           |      ...       |
@@ -63,43 +63,42 @@ Via **condities** hebben we met de **if-else-structuur** **beslissingen** kunnen
                                                  ...
 ~~~
 
-Je kiest al dan niet een een **stuk code** of **block** uit te voeren.  
-Optioneel kan je dan ook een **ander stuk code** uitvoeren als de conditie onwaar (False) is (else- en elif clausules)
+Als de expressie van de voorwaarde True als waarde heeft, voer je een **stuk code** of **block** uit. 
+Optioneel voer je een **ander stuk code** uit als de expressie van de voorwaarde False is (else- en elif-clausules).
 
-### Naar repititieve uitvoering
+### Repetitieve uitvoering
 
-Waar je echter bij conditionele uitvoering kiest om een block code 1 maal uit te voeren  
-kan je bij repititieve code kiezen om deze te blijven uitveroen zolang een conditie waar is.
+Waar je bij conditionele uitvoering een blok code eenmaal uitvoert, blijft je bij repetitieve uitvoering een blok code uitvoeren zolang een voorwaarde waar is.
 
 ~~~
                                           +----------------+
                                           |      ...       |
                                           +-------+--------+
                                                   |
-                                                  V         "Zolang de conditie
-                                                 *+          waar (True) is blijven de
-                                               **  **        block-statement uitvoeren"
-                                     False   **      **
-                        +------------------+* CONDITIE +<-------------+
-                        |                    **      **               |
-                        |                      **  **                 |
-                        |                        *+                   |
-                        |                         | True              |
-                        |                         |                   |
-                        |         +--+    +-------v--------+          |
-                        |         |       |   Statement    |          |
-                        |         |       +-------+--------+          |
-                        |         |               |                   |
-                        |  BLOCK  |       +-------V--------+          |
-                        |  TRUE +-+       |   Statement    |          |
-                        |         |       +-------+--------+          |
-                        |         |               |                   |
-                        |         |       +-------V--------+          |
-                        |         |       |      ...       +----------+
+                                                  V           "Zolang de voorwaarde
+                                                 *+**          waar (True) is blijven de
+                                               **    **        block-statement uitvoeren"
+                                     False   **        **
+                        +------------------+* VOORWAARDE +<-------------+
+                        |                    **        **               |
+                        |                      **    **                 |
+                        |                        *+**                   |
+                        |                         | True                |
+                        |                         |                     |
+                        |         +--+    +-------v--------+            |
+                        |         |       |   Statement    |            |
+                        |         |       +-------+--------+            |
+                        |         |               |                     |
+                        |  BLOCK  |       +-------V--------+            |
+                        |  TRUE +-+       |   Statement    |            |
+                        |         |       +-------+--------+            |
+                        |         |               |                     |
+                        |         |       +-------V--------+            |
+                        |         |       |      ...       +------------+
                         |         +--+    +----------------+
                         |                                    "Bij de laatste statement
-                        |                                     van de block keren we terug
-                        +-------------------------+           naar de conditie"
+                        |                                     van het block keren we terug
+                        +-------------------------+           naar de voorwaarde"
                                                   |
                                                   |
                                           +-------v--------+
@@ -110,17 +109,18 @@ kan je bij repititieve code kiezen om deze te blijven uitveroen zolang een condi
                                                  ...
 ~~~
 
-Waar bij een **if-statement** (direct) wordt **verder gegaan** naar de **volgende statement** wordt er bij een **loop terug**
-naar de **conditie** gegaan op het **einde** van de **block**.
+Een repetitieve uitvoering wordt een lus of **loop** genoemd, omdat je elke keer de voorwaarde True is het blok uitvoert en weer terugkeert naar de voorwaarde, als het ware in een lus.
 
-In **Python** doen we dit aan de hand van **loop-constructies**, we bekijken er er 2 soorten; while en for-loops.
+Waar bij een **if-statement** na het uitvoeren van het erbij horende blok het **volgende statement** wordt uitgevoerd, keer je bij een **loop** op het einde van het blok **terug naar de voorwaarde**.
 
-### while-loop met teller
+Python kent twee soorten lussen: **while** en **for**.
 
-Om de while loop te illustreren starten we met een éénvoudig voorbeeld:
+### while-lus met teller
 
-* Afdrukken van een aantal sterren op de console
-* Je geeft het aantal in dat je wil afdrukken
+Om de while-lus te illustreren, starten we met een eenvoudig voorbeeld:
+
+* We tonen een aantal sterren op de console.
+* Je geeft het aantal in dat je wil tonen.
 
 ~~~python
 number_of_stars = int(input("Number of stars to print? "))
@@ -131,18 +131,17 @@ while counter < number_of_stars:
     counter = counter + 1
 ~~~
 
-Een while-loop is **net** zoals de **if-statements** een **block-statement**
+Een while-lus is net zoals de if-statements een **block statement**. Dat betekent dus dat:
 
-* zal de loop de **inhoud van de block uitvoeren**
-* **eindigt** de while-clausule op een **:**
-* is deze block **geindenteerd**
+* de lus de **inhoud van het blok uitvoert**
+* de while-clausule **eindigt met een :**
+* het blok **geïndenteerd** is
 
-Het verschil ligt in het feit dat deze constructie de block zal blijven uitvoeren zolang de conditie True geeft 
-(zoals in het bovenbeschreven schema).
+Het verschil met een if-statement ligt in het feit dat deze constructie het blok zal blijven uitvoeren zolang de voorwaarde True geeft.
 
 ### Tellers
 
-Als je dit uitvoert zal de code **5 maal** de block **print- en assignment-statement** uitvoeren.
+Als je dit Python-script uitvoert en op de vraag om het aantal sterren 5 intypt, zal de code 5 keer het blok dat ten opzichte van de while-regel is geïndenteerd uitvoeren.
 
 ~~~
 $ python print_stars.py
@@ -154,26 +153,29 @@ Number of stars to print? 5
 *
 ~~~
 
-Om dit te bereiken zijn **2 elementen** voor nodig:
+Om dit gedrag te bereiken, hebben we twee elementen nodig:
 
 * Het **aantal keer** dat je **telt** => number_of_stars
 * De **teller** zelf => counter
 
-### State van een loop (loop-state)
+Merk op: we initialiseren de teller op 0 en vergelijken in de while-lus of die kleiner is dan het aantal keren dat we de lus willen uitvoeren. Als je de teller op 1 zou initialiseren, zou de lus één keer te weinig uitgevoerd worden.
 
-Het gebruik van een variabele om een loop te besturen is een **patroon** dat bijna altijd terugkomt wanneer je met **loops** werkt:
+### Toestand van een lus (loop state)
 
-* Je houdt een **variabele** bij, een zogenaamde **state**  
+Het gebruik van een variabele om een lus te besturen is een **patroon** dat bijna altijd terugkomt:
+
+* Je houdt een **variabele** bij, een zogenoemde toestand of **state**  
   (in vele gevallen een teller)
-* Deze state wordt geinitialiseerd (stap **0**)  
-  (bijvoorbeeld de teller wordt op 0 gezet bij start)
-* Deze state wordt **geëvalueerd** (stap **1**)  
-  (bijvoorbeeld teller kleiner dan een maximum)
-* Op basis van deze evaluatie wordt de **loop-block uitgevoerd** (stap **3**)  
-  (bijvoorbeeld teller is niet meer kleiner dan maximum)
-* Deze **state** wordt bijgewerkt in de **block**
-  (bijvoorbeeld optellen van de teller...)  
-* We gaan terug naar stap 1 (en stoppen ermee als de evaluatie False is
+* Deze toestand wordt geïnitialiseerd op een **beginwaarde** (stap **0**)  
+  (bijvoorbeeld de teller wordt op 0 gezet bij de start)
+* Deze toestand wordt **geëvalueerd** (stap **1**)  
+  (bijvoorbeeld test of de teller kleiner is dan een maximum)
+* Op basis van deze evaluatie wordt het **loop-blok uitgevoerd** (stap **3**)  
+  (bijvoorbeeld teller is nog altijd kleiner dan maximum)
+* Deze **state** wordt **bijgewerkt** in het blok
+  (bijvoorbeeld 1 optellen bij de teller)
+* We gaan terug naar stap 1
+  (en stoppen ermee als de evaluatie False is)
 
 ~~~
 
@@ -181,12 +183,12 @@ Het gebruik van een variabele om een loop te besturen is een **patroon** dat bij
             | CODE       |
             | BEFORE     +----(0) INITIALIZE STATE----------------------+
             +-+----------+                                              |
-              |               "while+clause voert een                   |
-              |                een vergelijking uit op de state         |
-              |                (bv. een teller) en beslist              |
-            +-+----------+     of de block wordt uitgevoerd"      +-----------+
-            | WHILE+     |                                        |-----------|
-            | CLAUSULE   +---+(1)EVALUATES STATE and DECIDES +-----|  STATE  ||
+              |               "while-clause voert een                   |
+              |                vergelijking uit op de toestand          |
+              |                (bijvoorbeeld een teller) en beslist     |
+            +-+----------+     of het blok wordt uitgevoerd"      +-----------+
+            | WHILE-     |                                        |-----------|
+            | CLAUSULE   +---+(1)EVALUATES STATE and DECIDES +----||  STATE  ||
             +-+----------+                                        |-----------|
               |                                                   +-----------+
               +                                                         |
@@ -204,16 +206,16 @@ Het gebruik van een variabele om een loop te besturen is een **patroon** dat bij
 
 ~~~
 
-### while-loop met teller en state
+### while-lus met teller en toestand
 
-state-variabelen wordt niet alleen gebruikt om te evalueren.  
-In het volgende voorbeeld berekenen we de macht van een getal (basis en exponent)
+Toestandsvariabelen wordt niet alleen gebruikt om te evalueren in de voorwaarde van een while-lus.
+In het volgende voorbeeld berekenen we de macht van een getal (met basis en exponent).
 
 > Nota:  
-> Vanzelfsprekend is deze code nutteloos gezien er al een operator bestaat in python ~~~**~~~
-> die een macht berekent, de bedoeling is het gebruik van een loop te demonstreren.
+> Vanzelfsprekend is deze code niet zo nuttig, aangezien er al een operator bestaat in Python
+> die een macht berekent. De bedoeling is om het gebruik van een lus te demonstreren.
 
-De state die wordt geëvalueerd is de exponent-counter die wordt uitgevoerd zolang deze kleiner is dan de de exponent.
+De toestand die wordt geëvalueerd, is exponent_counter. De lus wordt uitgevoerd zolang deze kleiner is dan de ingevoerde exponent.
 
 ~~~python
 base = int(input("Give base: "))
@@ -228,10 +230,23 @@ while exponent_counter < exponent:
 print(result)
 ~~~
 
-### while-loop met teller en input
+We hebben hier twee toestandsvariabelen:
 
-Een voorbeeld dat niet met tellers werkt is bijvoorbeeld is het herhalen van een stuk code
-zolang de input een bepaalde waarde is.
+* exponent_counter die als teller dient voor de voorwaarde van de while-lus
+* result die dient om bij elke uitvoering van het blok van de while-lus het resultaat van de berekening aan te passen
+
+Voer dit programma uit:
+
+~~~
+$ python exponent.py
+Give base: 2
+Give exponent: 5
+32
+~~~
+
+### while-lus met invoer
+
+Een while-lus hoeft niet altijd een teller te gebruiken in zijn voorwaarde. Je kunt ook een stuk code herhalen zolang de invoer van de gebruiker aan een specifieke voorwaarde voldoet.
 
 In onderstaand voorbeeld hernemen we de code die nakijkt of een getal c tussen a en b ligt:
 
@@ -240,23 +255,23 @@ is_still_inbetween = True
 
 while is_still_inbetween:
     a = int(input("Enter number a: "))
-    b = int(input("Enter number b: (should be bigger then a"))
+    b = int(input("Enter number b (should be bigger than a): "))
     c = int(input("Enter number c: "))
 
     is_still_inbetween = c >= a and c <= b
     if is_still_inbetween:
-        print("c is inbetween a and b")
+        print("c is in between a and b")
 else:
-    print("c is not inbetween a and b")
+    print("c is not in between a and b")
 ~~~
 
-Als state wordt hier het resultaat van de vergelijking genomen.  
-Zolang c tussen a en b ligt zal deze loop getallen blijven vragen.
+Als toestand wordt hier het resultaat van de vergelijking c >= a and c <= b genomen.  
+Zolang c tussen a en b ligt, zal deze lus getallen blijven vragen.
 
-### Niet eindigende loops
+### Niet eindigende lus
 
-Wat iedereen als fout maakt in de code is een een loop die niet stopt.  
-Bijvoorbeeld als we in onderstaande code:
+Wat iedereen wel eens als fout maakt in code, is een een lus die niet stopt.  
+Bijvoorbeeld als we in onderstaande correcte code:
 
 ~~~python
 number_of_stars = int(input("Number of stars to print? "))
@@ -267,7 +282,7 @@ while counter < number_of_stars:
     counter = counter + 1
 ~~~
 
-een **foutje** introduceren
+een **foutje** introduceren:
 
 ~~~python
 number_of_stars = int(input("Number of stars to print? "))
@@ -278,22 +293,23 @@ while counter < number_of_stars:
 counter = counter + 1
 ~~~
 
-Zie je het **verschil**!!!  
-In de laatste lijn is de **indentatie** namelijk **weggenomen**, 
-dit zorgt er namelijk voor dat de **update** van de **state** wordt **weggenomen** ...
+Zie je het **verschil**?
+In de laatste regel is de **indentatie** namelijk **weggenomen**.
+Daardoor gebeurt de aanpassing van de teller niet in het blok van de while-lus, maar erachter.
+Maar omdat de teller nu niet in het blok aangepast wordt, blijft die altijd dezelfde waarde hebben als vóór de while-lus.
 
-Het gevolg ervan is dat counter **voor eeuwig 0** blijft en de loop nooit wordt beindigd.
+Het gevolg? De variabele counter blijft **voor eeuwig 0**, aan de voorwaarde van de while-lus blijft altijd voldaan en de lus wordt nooit beëindigd. Het programma blijft regel per regel sterretjes tonen op de opdrachtprompt. Dit noemen we een oneindige lus of **infinite loop**.
 
-### Geen paniek ctrl+c
+### Geen paniek, ctrl+c helpt je
 
-Als dit gebeurt hoef je niet je console af te sluiten, het volstaat namelijk van de combinatie
-"ctrl + c" te gebruiken om het Python-proces af te sluiten
+Als dit gebeurt, hoef je niet je console af te sluiten. Druk gewoon de toetsencombinatie **ctrl+c** in om het Python-proces te stoppen.
 
-### for-loop
+### for-lus
 
-Heel veel loops zijn counter-loops, de bedoeling hiervan is de code een exact aantal uit te voeren.  
-We introduceren - naast de while-loop - een **2de soort loop**, de **for-loop** die dikwijls meer aangewezen dan de while-loop.  
-De **voorgaande teller-code**:
+Heel veel lussen zijn lussen met een teller: de bedoeling is dat een codeblok een exact aantal keren uitgevoerd wordt.
+Python heeft daarom - naast de while-lus - een **tweede soort lus**, de **for-lus**, die dikwijls meer aangewezen is dan de while-lus.
+
+De voorgaande code met **while-lus met teller**:
 
 ~~~python
 number_of_stars = int(input("Number of stars to print? "))
@@ -304,7 +320,7 @@ while counter < number_of_stars:
     counter = counter + 1
 ~~~
 
-vervangen we door een **equivalente for-loop**
+vervangen we door een **equivalente for-lus**
 
 ~~~python
 number_of_stars = int(input("Number of stars to print? "))
@@ -313,25 +329,25 @@ for counter in range(number_of_stars) :
     print("*")
 ~~~
 
-De **for-loop-clausule** heeft 2 componenten:
+De **for-lus** heeft twee componenten:
 
-* Een **teller-variabele** volgend op het **keyword for** die je kan gebruiken vanuit de block-code
-* Een **range-functie** die bepaalt hoeveel je moet tellen **gevolgd door** het **keyword in**
+* Een **teller-variabele** volgend op het **keyword for** die je kan gebruiken in het blok van de for-lus
+* Een **range-functie** volgend op het **keyword in** die bepaalt welke waardes de teller aanneemt
 
-Net zoals bij een while-loop zal deze **blijven de block-statement uit te voeren**, maar dan **tot** dat de **gehele range is afgelopen**.
+Net zoals bij een while-lus zal deze lus **het block-statement blijven uitvoeren**, maar dan **tot** alle waardes in de **gehele range afgelopen** zijn.
 
-### Voordelen for-loop
+### Voordelen van een for-lus
 
-Zowel de **state-update** als de **state-evaluatie** wordt door de for-loop uitgevoerd, dit brengt ons 2 voordelen:
+Zowel het bijwerken van de toestand (**state update**) als het evalueren van de toestand (**state evaluatie**) wordt impliciet door de for-lus uitgevoerd, zodat we dit zelf niet meer moeten doen. Dit brengt ons twee voordelen:
 
 * De code is **compacter**
-* De loop is ook **veiliger**  
-  want de **state-update** gebeurt **automatisch**  
-  => minder riscio op eindeloze loops
+* De code is ook **veiliger**  
+  want de **state update** gebeurt **automatisch**  
+  => minder risico op oneindige lus
 
-### 2de voorbeeld for-loop: exponent
+### Tweede voorbeeld van een for-lus: macht van een getal
 
-Als we dit toepassen op het **exponent-voorbeeld**:
+Als we dit toepassen op het voorbeeld van de while-lus om de macht van een getal te berekenen:
 
 ~~~python
 base = int(input("Give base: "))
@@ -346,7 +362,7 @@ while exponent_counter < exponent:
 print(result)
 ~~~
 
-kunnen we dit **herwerken** naar
+kunnen we dit **herwerken tot een for-lus**:
 
 ~~~python
 base = int(input("Give base: "))
@@ -361,18 +377,15 @@ print(result)
 
 ### range-functie
 
-De range-functie genereert een range, meer bepaald een iterator-implementatie.  
+De range-functie genereert een *range* (bereik).  
 
-Met range zal je  tellen van **0** tot een **eindwaarde - 1**.  
-range(5) zal 5 maal tellen van 0 tem 4 (niet tem 5)
+Met range kun je tellen van **0** tot een **eindwaarde - 1**.  
+range(5) zal tellen van 0 tot en met 4, en in totaal dus 5 getallen afgaan.
 
-> Nota:  
-> In het volgende deel bekijken we dit verder hoe dit werkt en waar het vandaan komt, voorlopig moet je er van uit gaan dat deze range bepaalt tot waar je telt.
+### Derde voorbeeld van een for-lus: range van ... tot ...
 
-### 3de voorbeeld: range van/tot
-
-De range-functie kan ook worden ingesteld met een start-waarde.  
-Stel dat je bijvoorbeeld wil tellen tem van een bepaald getal tot een ander getal kan je 2 argumenten geven aan range:
+De range-functie kan ook worden aangeroepen met een start-waarde.  
+Stel dat je wil tellen tem van een bepaald getal tot een ander getal, dan geef je twee argumenten door aan range:
 
 ~~~python
 start = int(input("Count from: "))
@@ -381,8 +394,8 @@ for counter in range(start,stop+1):
     print(counter)
 ~~~
 
-Het eerste deel is waar je begint tellen, het 2de deel tot welke waarde.  
-Let wel, dit **2de** argument **telt tot**, **niet tot en met**
+Het eerste argument is het getal waarvan je begint tellen, het tweede argument tot welke waarde.
+Let wel, dit tweede argument is een eindwaarde die **telt tot**, **niet tot en met**.
 
 ~~~
 $ python count_from_to.py
@@ -396,10 +409,10 @@ Count to: 10
 10
 ~~~
 
-### Geneste loop
+### Geneste lus
 
-Binnen een for- of while-loop kan je ook **andere block-statements** toevoegen.  
-In onderstaand voorbeeld drukken we bijvoorbeeld de **maaltafels** door een **geneste for-loop**.
+Binnen een for- of while-lus kan je ook **andere block statements** toevoegen, en dus ook weer een lus. Dat noemen we een **geneste lus**.
+In onderstaand voorbeeld tonen we bijvoorbeeld de **maaltafels** met een **geneste for-lus**.
 
 ~~~python
 for left_part in range(1,10):
@@ -407,8 +420,8 @@ for left_part in range(1,10):
         print(str(left_part) + " * " + str(right_part) + " = " + str(left_part * right_part))
 ~~~
 
-De **1ste loop** is wat we noemen de **outer-loop**, deze zal het linker-gedeelte laten optellen van **1 tem 9**.  
-De **2de loop** daarentegen noemen we de **inner-loop**, deze zal telkens van 1 tem 9 tellen voor **iedere waarde** van de **outer-loop** een rechter-gedeelte geven.
+De **eerste lus** is wat we noemen de **outer loop** (buitenste lus). Deze zal het linker-gedeelte laten optellen van **1 tot en met 9**.  
+De **tweede lus** noemen we de **inner loop** (binnenste lus). Deze zal telkens van 1 tot en met 9 tellen voor **iedere waarde** van de **outer loop** en zo een rechtergedeelte geven.
 
 ~~~
 $ python multiplication_table.py
@@ -421,15 +434,15 @@ $ python multiplication_table.py
 9 * 9 = 81
 ~~~
 
-### String-concatenation
+### String concatenation
 
-De +-operator voert **string-concatenation** uit, deze **plakt** letterlijk verschillende strings aan elkaar.
+De +-operator op twee strings voert **string concatenation** uit. Dit **plakt** letterlijk verschillende strings aan elkaar.
 
 ~~~python
 ...
         print(str(left_part) + " * " + str(right_part) + " = " + str(left_part * right_part))
 ~~~
 
-Om deze string-concatenation te kunnen uitvoeren moet elke operand van de +-operator van het type string zijn.  
-Gezien dat de waardes van het integer-type zijn we de str-functie om elke deel te converteren naar een string.
+Om deze string concatenation te kunnen uitvoeren, moet elke operand van de +-operator van het type string zijn.
+Aangezien de waardes die range teruggeeft van het type int zijn, gebruiken we de str-functie om elk deel te converteren naar een string.
 

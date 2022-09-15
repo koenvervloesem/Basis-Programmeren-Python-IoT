@@ -2,15 +2,14 @@
 
 ### Stijl van lesgeven
 
-Dit is een **praktische cursus**, dus we vliegen er direct in met praktijk.  
-Het motto van deze cursus, **"eerst coderen, dan leren"** (of eerst schieten dan praten)
+Dit is een **praktische cursus**, dus we vliegen er direct in met praktijk.
+Het motto van deze cursus is **"eerst coderen, dan leren"** (of eerst schieten, dan praten).
+Je zal merken dat je gemakkelijker theorie oppikt als je eerst al hebt geëxperimenteerd.
 
-Een aantal jaren ervaring in het aanleren van programmeren (en programmeertalen) leert dat de studenten veel gemakkelijker theorie oppikken als ze eerst al hebben geëxperimenteerd dus vandaar het onderstaand verloop.
+### Verloop van de lessen
 
-### Verloop van de les
-
-Hoe ziet deze les eruit?  
-Voor de moment wordt deze les gegeven van 18.00 tem 22.00 met de volgende activiteiten:
+Hoe zien deze lessen eruit?  
+Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
 
 ~~~
 
@@ -18,7 +17,7 @@ Voor de moment wordt deze les gegeven van 18.00 tem 22.00 met de volgende activi
         +-----------+                  +------------+
         |   Quiz    |                  |  Oefenen   |
         |    en     <------------------+    en      |
-        | Herhaling |                  |  studeren  |
+        | Herhaling |                  |  Studeren  |
         +-----+-----+                  +------^-----+
               |                               |
               |                               |
@@ -42,12 +41,12 @@ Voor de moment wordt deze les gegeven van 18.00 tem 22.00 met de volgende activi
 **(1) 18.00-18.30: Quiz en Herhaling**
 
 * We starten met een **Quiz** over de **vorige les**
-* Vervolgens - tezamen met het overlopen van de quiz - is er tijd voorzien voor **Q&A** over de leerstof van vorige les
+* Vervolgens - samen met het overlopen van de quiz - is er tijd voorzien voor vragen over de leerstof van vorige les en bijbehorende herhaling.
 
 **(2) 18.30-19.45: Leerstof en Coderen**
 
 * Op basis van de **slides**
-* Maken klassikaal **oefeningen**
+* We maken klassikaal **oefeningen**
     * Lector toont slides 
     * Lector doet oefeningen voor
     * Studenten doen deze oefeningen mee
@@ -55,9 +54,9 @@ Voor de moment wordt deze les gegeven van 18.00 tem 22.00 met de volgende activi
 
 > **Nota:**  
 > De slides worden getoond tijdens deze oefeningen maar niet gegeven.  
-> Op deze manier word je als student gedwongen op te letten en te oefenen
+> Op deze manier word je als student gedwongen om op te letten en te oefenen.
 
-**(3) 19.45-20.15 => PAUZE!!!**
+**(3) 19.45-20.15 => PAUZE**
 
 **(4) 20.15-21.30: Opdrachten (met support)**
 
@@ -66,20 +65,20 @@ Voor de moment wordt deze les gegeven van 18.00 tem 22.00 met de volgende activi
 
 **(5) 21.30-22.00: Slides en herhaling**
 
-* **Slides** worden ter beschikking gesteld
+* **Slides** worden ter beschikking gesteld op Toledo
 * Belangrijkste punten worden **herhaald**
 * **Q&A** (vanaf 21.45)
-* **Opladen** van je code op **Toledo** 
+* **Opladen** van je code op **Toledo**
     * Zelfs als deze nog niet af is
     * Je hebt nog **3 weken** de **tijd** om **verbeteringen** aan te brengen
-    * Maar op deze manier kan **vroeg** **feedback** krijgen op verbeteringen
+    * Maar op deze manier kan je **vroeg feedback** krijgen voor verbeteringen
 
-**(6) After class: Oefenen en studeren**
+**(6) Thuis: Oefenen en studeren**
 
-* **Slides bestuderen** ter voorbereiding **quiz**
-* Vragen en antwoorden per **mail** (bart.voet@ucll.be)
-* **Bemerkingen en feedback** op cursus is zeer hard **welkom**    
-  (per mail of via Toledo)
+* **Slides bestuderen** ter voorbereiding **quiz** van de volgende les
+* Vragen stellen per **e-mail** (koen.vervloesem@ucll.be)
+* **Bemerkingen en feedback** op cursus zijn **welkom**    
+  (via e-mail of Toledo)
 * **Extra oefeningen** worden **beschikbaar** gesteld
 
 ### Labo's/Opdrachten op Toledo
@@ -88,52 +87,49 @@ Alle **oefeningen** uit de cursus die je **moet maken** worden aangeduid in Tole
 
 #### Termijn
 
-Deze oefeningen moeten ingediend op de datum zoals in Toledo vermeld.  
-Dit zal standaard op 3 weken na de les komen, tenzij anders aangeduid.  
+Deze oefeningen moeten worden ingediend op de datum zoals in Toledo vermeld.  
+Tenzij anders aangeduid is dat standaard 3 weken na de betreffende les.
 
-> Nota: in uitzonderlijke redenen kan deze termijn worden uitgebreid.
+> Nota: alleen om uitzonderlijke redenen kan deze termijn worden uitgebreid.
 
 #### Uploaden in Toledo
 
-Je laadt de Python-files (.py-files) op tenzij anders beschreven in de opdracht (geen zip-files of andere documenten)
+Je laadt de Python-bestanden (met bestandsextensie .py) op tenzij anders beschreven in de opdracht (geen zip-bestanden of andere documenten)
 
-### Leren programmeren met Python?
+### Waarom leren programmeren met Python?
 
-De keuze voor deze introductiecursus is gevallen op **Python**, waarom?  
+De keuze voor deze introductiecursus is gevallen op **Python**. Waarom?  
 
-* Python is zeer **eenvoudig** aan te leren
-  (wordt ook veel gebruikt om kinderen te leren programmeren)
-* Een taal gebruikt om **kleine tot grote applicaties** te bouwen
-* **Uitstekend** **gedocumenteerd**
-* Python is enorm **populair**
-* Python heeft enorm veel **libraries** en **utilities** om allerlei **taken** uit te voeren
-* **Eenvoudig en snel** applicaties (command line of gui) bouwen **zonder al te veel voorkennis.**  
-* Python heeft  zeer grote **community** en online **support**
-* Python is **open-source**, vrij beschikbaar en ondersteund voor **alle operating systems**
+* Python is **eenvoudig** aan te leren
+* Python wordt gebruikt om **kleine tot grote applicaties** te bouwen
+* Python is **uitstekend gedocumenteerd** (zie https://docs.python.org)
+* Python is enorm **populair** (zie https://www.tiobe.com/tiobe-index/)
+* Python heeft enorm veel **bibliotheken** en **hulpprogramma's** om allerlei **taken** uit te voeren
+* Python laat je toe om **eenvoudig en snel** toepassingen (op de opdrachtregel of met een grafische interface) te bouwen **zonder al te veel voorkennis**  
+* Python heeft een grote **community** en veel online **support**
+* Python is **opensource**, vrij beschikbaar en ondersteund op **alle besturingssystemen**
 * ...
 
 
-### Waar gaan we python voor gebruiken binnen de cursus?
+### Waarvoor gaan we Python gebruiken binnen de cursus?
 
 * scripting en automatisatie
-* destop-gui
-* data-verwerking
+* grafische interface (GUI/graphical user interface)
+* dataverwerking
 * plotting
-* scientific programming (ipv matlab of maple)
+* scientific programming (in plaats van MATLAB of Maple)
 * interfacing
-* api's
-* text
-* scripting
-* automatisatie
+* API's (application programming interfaces)
+* tekstmanipulatie
 * encryptie
 * web
 * netwerken
 * embedded programming
 * ...
 
-### Let op, introductie in programmeren!!
+### Let op, dit is een introductie in programmeren
 
-Let wel, het betreft een **introductie** in programmeren in python, niets meer.  
+Dit vak heet "Basis programmeren". Het geeft dan ook een **introductie** in programmeren in Python, niets meer.  
 We zien nog maar het **tipje** van de **ijsberg**...
 
 ~~~
