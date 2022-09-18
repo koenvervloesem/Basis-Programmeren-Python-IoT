@@ -19,11 +19,11 @@
   
   
 
-Bart Voet  
-Mobyus CVO  
-Vak: Embedded C en Microcontrollers
+Koen Vervloesem
+UCLL
+Vak: Basis programmeren
 
-Schooljaar: 2016-2017  
+Schooljaar: 2022-2023
   
   
   
