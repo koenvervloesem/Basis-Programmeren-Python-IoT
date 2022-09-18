@@ -1,2 +1,7 @@
-# README
-Please navigate to [dutch introduction](nl/course_introduction.md)
+# Cursus 'Basis programmeren' in Graduaat Internet of Things @ UCLL
+
+Genereer de cursusdocumenten met:
+
+~~~
+make
+~~~
