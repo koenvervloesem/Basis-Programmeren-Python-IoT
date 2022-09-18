@@ -300,9 +300,9 @@ Maar omdat de teller nu niet in het blok aangepast wordt, blijft die altijd deze
 
 Het gevolg? De variabele counter blijft **voor eeuwig 0**, aan de voorwaarde van de while-lus blijft altijd voldaan en de lus wordt nooit beëindigd. Het programma blijft regel per regel sterretjes tonen op de opdrachtprompt. Dit noemen we een oneindige lus of **infinite loop**.
 
-### Geen paniek, ctrl+c helpt je
+### Geen paniek, Ctrl+C helpt je
 
-Als dit gebeurt, hoef je niet je console af te sluiten. Druk gewoon de toetsencombinatie **ctrl+c** in om het Python-proces te stoppen.
+Als dit gebeurt, hoef je niet je console af te sluiten. Druk gewoon de toetsencombinatie **Ctrl+C** in om het Python-proces te stoppen.
 
 ### for-lus
 

@@ -12,7 +12,7 @@ a = "test"
 b = 2
 ~~~
 
-**"test"** en **2** zijn hier **literals** of  **letterlijke expressies** die een waarde geven die in een variabele wordt opgeslagen via de assignment operator = (en assignment statement).
+**"test"** en **2** zijn hier **literals** of **letterlijke expressies** die een waarde geven die in een variabele wordt opgeslagen via de assignment operator = (en assignment statement).
 
 Een andere expressie is bijvoorbeeld wanneer je de naam van een variabele als argument aan een functie doorgeeft:
 
@@ -23,16 +23,22 @@ print(a)
 
 Hier geldt a - op de tweede regel - als een expressie die de waarde van de variabele a ("test") oplevert.
 
+
 ### Rekenkundige expressies
 
 Een andere soort expressie waar je normaal gezien vanuit de wiskunde al met vertrouwd bent, zijn **rekenkundige expressies**.
 
-~~~python
-print(4 / 2)  # 2
-print(2 - 6)  # -4
-print(5 * 2)  # 10 
-print(5 % 2)  # 1
-print(2 ** 8)  # 256
+~~~
+>>> 4/2
+2.0
+>>> 2-6
+-4
+>>> 5*2
+10
+>>> 5%2
+1
+>>> 2**8
+256
 ~~~
 
 Het overzicht van deze **rekenkundige operatoren** vind je hieronder:
@@ -47,10 +53,18 @@ Het overzicht van deze **rekenkundige operatoren** vind je hieronder:
 | %          | rest van deling      |
 | **         | macht                |
 
+De Python REPL kent een speciale variabele _ die altijd de waarde van de laatste expressie bevat:
 
-De operatoren in Python komen grotendeels overeen met wat je gewoon bent uit de klassieke wiskunde en hebben geen verdere verklaring nodig, met uitzondering misschien van de deling.
+~~~
+>>> 6*7
+42
+>>> _/2
+21.0
+~~~
 
 ### Delen van integers
+
+De operatoren in Python komen grotendeels overeen met wat je gewoon bent uit de klassieke wiskunde en hebben geen verdere verklaring nodig, met uitzondering misschien van de deling.
 
 Voor het **delen** van getallen in Python heb je **twee operatoren**:
 
@@ -60,15 +74,19 @@ Voor het **delen** van getallen in Python heb je **twee operatoren**:
 Bij het delen van twee gehele getallen zie je het verschil duidelijk:
 
 ~~~
-print(5/2)  # 2.5
-print(type(5/2))  # <class 'float'>
-print(5//2)  # 2
-print(type(5//2))  # <class 'int'>
+>>> 5/2
+2.5
+>>> type(_)
+<class 'float'>
+>>> 5//2
+2
+>>> type(_)
+<class 'int'>
 ~~~
 
 De eerste bewerking met **true division** levert een **niet afgeronde uitkomst** op.  
 Gezien het resultaat een kommagetal is, is het resultaat een waarde van het **type float**
-(gezien je geen kommaresultaten in een integer kan opslaan).
+(aangezien je geen kommaresultaten in een integer kan opslaan).
 
 ### Delen van floats
 
@@ -76,10 +94,14 @@ Bij de **floor division** daarentegen wordt er afgerond naar beneden en is het *
 Bewerkingen waarbij een float is betrokken (ook voor andere rekenkundige operatoren) zullen altijd in een float resultaat resulteren (ongeacht het andere getal een integer is of niet).
 
 ~~~
-print(3.50 / 2)  # 1.75
-print(type(3.50/2))  # <class 'float'>
-print(3.50 // 2)  # 1.0
-print(type(3.50//2))  # <class 'float'>
+>>> 3.5/2
+1.75
+>>> type(_)
+<class 'float'>
+>>> 3.5//2
+1.0
+>>> type(_)
+<class 'float'>
 ~~~
 
 Wel zullen de operatoren het resultaat afronden of niet naargelang het om floor division of true division gaat.
@@ -96,29 +118,32 @@ Wat deze wel gemeenschappelijk hebben, is dat deze alle uit **operatoren** en **
 Bijvoorbeeld als ik de **variabele a** vermenigvuldig met de **literal 2**:
 
 ~~~
-a = 5
-b = a * 2
-print(b)  # 10
+>>> a=5
+>>> b=a*2
+>>> b
+10
 ~~~
 
 Dan is **a** de **linker-operand** en **2** de **rechter-operand**  
 Een **operand** dient altijd zelf een **expressie** te zijn. In dit geval zijn de operanden een **variabele** en een **literal**, maar een operand kan ook een andere rekenkundige expressie zijn:
 
 ~~~
-a = 5
-b = a * (2 + a)
-print(b)  # 35
+>>> a=5
+>>> b=a*(2+a)
+>>> b
+35
 ~~~
 
 ### Volgorde van berekeningen (operator precedence) en haakjes
 
-Net zoals in klassieke wiskunde kan je ook **haakjes** gebruiken om de **volgorde van berekening** af te dwingen.  
+Net zoals in klassieke wiskunde kan je ook **haakjes** gebruiken om de **volgorde van berekening** af te dwingen, zoals we in het voorbeeld hierboven deden.  
 Als je dit niet doet, zal Python de voorrang van bewerkingen bepalen aan de hand van basisregels.
 
-~~~python
-a = 5
-b = a * 2 + a
-print(b)  # 15
+~~~
+>>> a=5
+>>> b=a*2+a
+>>> b
+15
 ~~~
 
 In bovenstaand geval zal eerst worden vermenigvuldigd (a * 2) en dan pas de som worden gemaakt met a.
@@ -134,9 +159,24 @@ Binnen de zelfde "voorrang" (*precedence*), bijvoorbeeld *, /, // en %, wordt er
 
 Bijvoorbeeld:
 
-~~~python
-print(260 / 10 * 2)  # 52 en niet 13
-print(35 - 10 + 4)  # 29 en niet 21
+~~~
+>>> 260/10*2
+52.0
+>>> (260/10)*2
+52.0
+>>> 260/(10*2)
+13.0
+~~~
+
+En:
+
+~~~
+>>> 35-10+4
+29
+>>> (35-10)+4
+29
+>>> 35-(10+4)
+21
 ~~~
 
 Als je van **links naar rechts** uitrekent tussen operatoren met **dezelfde voorrang** krijg je een **wiskundig correct** resultaat:

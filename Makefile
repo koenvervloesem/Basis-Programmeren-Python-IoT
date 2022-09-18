@@ -29,8 +29,6 @@ PY_CHAPTER_01 += pandoc_page_break.txt
 
 PY_CHAPTER_02 += 200_part_two.md
 PY_CHAPTER_02 += pandoc_page_break.txt
-PY_CHAPTER_02 += 201_console.md
-PY_CHAPTER_02 += pandoc_page_break.txt
 PY_CHAPTER_02 += 202_lists.md
 PY_CHAPTER_02 += pandoc_page_break.txt
 PY_CHAPTER_02 += 203_strings.md
@@ -69,13 +67,12 @@ PY_ANNEX += pandoc_page_break.txt
 PY_ANNEX += tools_command_getting_started_windows.md
 PY_ANNEX += pandoc_page_break.txt
 PY_ANNEX += tools_command_getting_started_linux.md
-PY_ANNEX += pandoc_page_break.txt
-PY_ANNEX += test.md
+#PY_ANNEX += pandoc_page_break.txt
+#PY_ANNEX += test.md
 
 
-PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_ANNEX)
-#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_ANNEX)
-#PY_CHAPTERS = 00_part_one_excercises.md
+#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_ANNEX)
+PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_ANNEX)
 
 pagebreak = pandoc_page_break.txt
 

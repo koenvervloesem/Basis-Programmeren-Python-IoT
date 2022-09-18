@@ -1,9 +1,148 @@
+## Interactief code uitvoeren (of REPL)
+
+Voor sommige programmeertalen -en/of omgevingen is een **REPL** voorzien.
+Dit staat voor **R**ead **E**val **P**rint **L**oop:
+
+* **R**ead: lezen van een instructie van de gebruiker
+* **E**val: evaluatie van deze instructie en uiteindelijk uitvoering hiervan
+* **P**rint: tonen van het resultaat van de instructie (als er één is)
+* **L**oop: wacht (continu) opnieuw op de volgende instructie
+
+Je krijgt als het ware onmiddellijk **feedback op je instructies**.
+
+### Interactieve "Hello World"
+
+De REPL van Python open je gewoon door de opdracht **python** te typen op de opdrachtregel:
+
+~~~bash
+$ python
+Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+~~~
+
+Vanaf het moment dat er **>>>** verschijnt (voorafgegaan door wat systeeminformatie) kan je aan de slag en Python-instructies uitvoeren.
+
+De REPL is een ongelooflijk handige tool die je toelaat om snel iets uit te testen zonder dat je er een Python-script voor hoeft aan te maken. Het is aan te raden om altijd een REPL-sessie open te hebben staan wanneer je in Python aan het programmeren bent.
+
+### Eenvoudige berekeningen
+
+De Python-interpreter is handig om eenvoudige berekeningen uit te voeren:
+
+~~~
+$ python
+Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 37+5
+42
+>>> 5/2
+2.5
+>>>
+~~~
+
+### Geldige code
+
+Vanzelfsprekend moet je geldige instructies invoeren, anders zal er een foutboodschap verschijnen:
+
+~~~
+>>> 3+
+  File "<stdin>", line 1
+    3+
+      ^
+SyntaxError: invalid syntax
+>>>
+~~~
+
+Interessant is wel dat de interpreter bij een fout niet wordt afgesloten en je je code opnieuw kan proberen.   
+Bij een script dat een fout bevat zou het programma beëindigd worden...
+
+### Tab completion
+
+De Python REPL vult code aan waar mogelijk als je de toets Tab indrukt. Als er meerdere mogelijke vervolledigingen zijn, moet je twee keer op Tab duwen. Dan worden ze allemaal getoond. Een voorbeeld als je p intypt en dan twee keer op Tab drukt: 
+
+~~~
+>>> p
+pass       pow(       print(     property( 
+~~~
+
+Als je nu na de p een r typt en dan twee keer op Tab drukt, toont de REPL:
+
+~~~
+>>> pr
+print(     property(
+~~~
+
+En als je nu de i intypt en één keer op Tab drukt, vervolledigt de REPL dit tot:
+
+~~~
+>>> print(
+~~~
+
+Dit kan je nu zelf verder vervolledigen tot een geldig statement:
+
+~~~
+>>> print("Hello")
+Hello
+~~~
+
+De REPL vervolledigt overigens niet alleen namen die door Python zelf gedefinieerd zijn, maar ook namen in modules die je geïmporteerd hebt en namen die je zelf gedefinieerd hebt (zie later in de cursus). Dat maakt tab completion een handig hulpmiddel om nog efficiënter met de REPL te werken.
+
+### Geschiedenis
+
+De REPL onthoudt de voorgaande opdrachten die je hebt ingetypt. Door met de pijltjestoetsen naar boven en onder te werken, kan je de eerder ingetypte opdrachten weer oproepen. Nadat je zo een eerder ingetypte opdracht op de opdrachtprompt van de REPL ziet, druk je op Enter om deze weer uit te voeren.
+
+### Help!
+
+De REPL heeft een handige ingebouwde helpfunctie waarmee je informatie kunt opvragen over allerlei onderdelen van Python.
+
+Wil je bijvoorbeeld meer informatie over de functie **print** die we al enkele keren gebruikt, hebben typ dan het volgende in de REPL:
+
+~~~
+>>> help(print)
+~~~
+
+Je krijgt dan het volgende te zien:
+
+~~~
+Help on built-in function print in module builtins:
+
+print(...)
+    print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+
+    Prints the values to a stream, or to sys.stdout by default.
+    Optional keyword arguments:
+    file:  a file-like object (stream); defaults to the current sys.stdout.
+    sep:   string inserted between values, default a space.
+    end:   string appended after the last value, default a newline.
+    flush: whether to forcibly flush the stream.
+~~~
+
+Als de helptekst langer dan een scherm is, kun je erdoor scrollen met de pijltjestoetsen naar boven en beneden of met PgUp en PgDown.
+
+Typ de toets Q in om het helpscherm te verlaten en weer de opdrachtprompt van de REPL te zien.
+
+Maak er een gewoonte van om als je vragen hebt over gelijk wat in Python de helpfunctie van de REPL te gebruiken. Je vindt zo vaak sneller het antwoord op je vraag dan de online documentatie of andere websites te raadplegen.
+
+### De console verlaten
+
+Om de REPL te verlaten, roep je de functie **exit()** of **quit()** aan:
+
+~~~
+$ python
+Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+$
+~~~
+
+De toetsencombinatie **Ctrl+D** doet hetzelfde.
+
 ## Sequentiële uitvoering
 
 ### Een tweede programma ... met meerdere statements
 
 Ons eerste programma had **één statement**. Wat als je nu meerdere statements toevoegt?
-Pas het vorige voorbeeld aan tot de volgende code:
+Pas het voorbeeldprogramma aan tot de volgende code:
 
 ~~~python
 print("Hello")
@@ -45,10 +184,12 @@ Het komt dus neer op:
 * *(3)* Uitvoeren van het **tweede statement**
 * *(...)* Tot er geen statements meer zijn
 
+De REPL werkt hetzelfde, maar leest de opeenvolgende statements niet uit een bestand uit maar wacht telkens op een nieuw statement dat je in de console intypt.
+
 ### Basisblok "sequentiële uitvoering"
 
 Wat we hiervoor zagen, noemen we **sequentiële uitvoering**  .
-**Sequentieel** betekent hier dat alle **statements** die je in een Python-script plaatst:
+**Sequentieel** betekent hier dat alle **statements** die je in een Python-script of de REPL plaatst:
 
 * **één voor één** worden **uitgevoerd**
 * in de **volgorde** dat jij ze hebt geplaatst

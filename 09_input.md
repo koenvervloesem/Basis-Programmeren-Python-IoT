@@ -57,7 +57,7 @@ Het type van deze **return value** is een **str**, zoals je in de uitvoer van di
 Enter number: 22
 Enter another number: Elvis
 type of number <class 'str'>
-type of number_two<class 'str'>
+type of number_two <class 'str'>
 ~~~
 
 ### Wat als je met getallen wil werken?
@@ -90,7 +90,7 @@ Als je dan een getal ingeeft, zie je dat variabele number ook echt een int is (w
 Enter number: 22
 Enter another number: Elvis
 type of number <class 'int'>
-type of number_two<class 'str'>
+type of number_two <class 'str'>
 ~~~
 
 ### Wat als je geen getal ingeeft?
@@ -108,4 +108,4 @@ ValueError: invalid literal for int() with base 10: 'arzez'
 
 Je ziet hier een **ValueError**, en je krijgt ook een omschrijving van wat er mis is: de functie int verwacht een literal die een getal is met grondtal 10, en 'arzez' is dat niet.
 
-Later in de cursus zien we hoe je in je programma kan reageren op dit soort foutmeldingen zoals ene ValueError.
+Later in de cursus zien we hoe je in je programma kan reageren op dit soort foutmeldingen zoals een ValueError.

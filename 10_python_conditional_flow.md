@@ -90,22 +90,27 @@ Dit zijn expressies die een **vergelijking** maken **tussen twee variabelen** (i
 Deze expressies geven aan of een vergelijking **waar** (**True**) of **onwaar** (**False**) is. Enkele voorbeelden:
 
 ~~~
-1 == 1  => waar
-1 != 1  => niet waar
-5 >  6  => niet waar
-6 >= 6  => waar
-...
+>>> 1==1
+True
+>>> 1!=1
+False
+>>> 5>6
+False
+>>> 6>=6
+True
 ~~~
 
-Onderstaand Python-voorbeeld illustreert het gebruik van relationele expressies:
+Met variabelen wordt dat dan:
 
-~~~python
-a = 5
-b = 6
-c = a < b 
-print(c)  # True 
-d = a > b
-print(d)  # False
+~~~
+>>> a=5
+>>> b=6
+>>> c=a<b
+>>> c
+True
+>>> d=a>b
+>>> d
+False
 ~~~
 
 Als men **a (5) vergelijkt met b (6)** voor de **relatie kleiner dan** (a < b) verkrijgt men de waarde **True**.  
@@ -113,21 +118,14 @@ Daarna vergelijken we de zelfde variabelen voor de **relatie groter dan** en ver
 
 ### Variabelen van het type bool
 
-**True** en **False** zijn de **enige mogelijke** resultaten van relationele expressies.   
-Hiervoor is in Python een specifiek type gecreëerd, namelijk het type **bool** (boolean).  
-
-Als je onderstaande code uitvoert:
-
-~~~python
-a = 5
-b = 6
-c = a < b
-print(type(c))
-~~~
-
-geeft deze het type **bool** aan voor variabele c:
+**True** en **False** zijn de **enige mogelijke** resultaten van relationele expressies.
+Hiervoor is in Python een specifiek type gecreëerd, namelijk het type **bool** (boolean):
 
 ~~~
+>>> a=5
+>>> b=6
+>>> c=a<b
+>>> type(c)
 <class 'bool'>
 ~~~
 
@@ -540,10 +538,14 @@ else:
 De not-operator of logische inverter draait het resultaat van een boolean expressie om.  
 
 ~~~
-print(4 > 5)       # False
-print(not(4 > 5))  # not False => True
-print(5 > 4)       # True
-print(not(5 > 4))  # not True => False 
+>>> 4>5
+False
+>>> not(4>5)
+True
+>>> 5>4
+True
+>>> not(5>4)
+False
 ~~~
 
 > Nota: De haakjes rond de expressie die volgt op not zijn niet verplicht maar vermijden verwarring bij grotere expressies.

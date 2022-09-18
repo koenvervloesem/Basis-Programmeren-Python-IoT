@@ -66,7 +66,7 @@ a = int(input_a)
 # str() converts an int back to a string
 output_a = str(a + 1)
 # the concatenated result is printed back through the string function
-print(input_a + " + 1  = " + output_a)
+print(input_a + " + 1 = " + output_a)
 ~~~
 
 ### Gebruiken van functies
@@ -133,7 +133,7 @@ Je kan een waarde, variabele (of andere expressies) meegeven als argument.
 Je bent **niet beperkt tot 1 argument**. Een functie kan van **0 tot oneindig aantal parameters** definiëren.
 
 ~~~python
-result = multiply(3,2)
+result = multiply(3, 2)
 print(result)  # 6
 ~~~
 
@@ -167,12 +167,16 @@ Andere - meer gespecialiseerde - functies zijn gegroepeerd in modules.
 Als je bijvoorbeeld wiskundige functies wil gebruiken in Python, maak je gebruik van de module **math** (die standaard voorzien is in Python):
 
 
-~~~python
-import math
-degrees = 45
-radians = degrees / 360.0 * 2 * math.pi
-math.sin(radians)
-math.sqrt(2) / 2.0
+~~~
+>>> import math
+>>> degrees = 45
+>>> radians = math.pi * degrees / 180
+>>> radians
+0.7853981633974483
+>>> math.sin(radians)
+0.7071067811865475
+>>> math.sqrt(2)/2
+0.7071067811865476
 ~~~
 
 Merk op: de module bevat niet alleen functies, maar ook constanten, zoals **math.pi** dat de waarde van het getal π (3,14159...) bevat.
@@ -186,17 +190,24 @@ Om dan de functies te gebruiken, volstaat het niet om de naam van deze functies 
 
 Documentatie over de module math vind je op https://docs.python.org/3/library/math.html#module-math.
 
-Een ander voorbeeld is de module **random**. Deze bevat functies om met willekeurige getallen te werken.  
+Merk op: de functie math.sin verwacht zijn argument in radialen (*radians*), niet in graden. De module math bevat overigens de functie math.radians om een hoek in graden naar radialen om te zetten, zodat je dat niet zelf hoeft te doen zoals in het voorbeeld hierboven.
+
+Een andere nuttige module is **random**. Deze bevat functies om met willekeurige getallen te werken.  
 Onderstaande code demonstreert het gebruik van deze module:
 
 ~~~python
-import random
-
-x = random.random()
-print(x)  # a float between 0 and 1 (not included)
-x = random.randint(0, 100)
-print(x)  # an int between 0 and 100 (not included)
+>>> import random
+>>> random.random()
+0.06618251511918116
+>>> random.random()
+0.3704299911950565
+>>> random.randint(1, 100)
+77
+>>> random.randint(1, 100)
+12
 ~~~
+
+De functie random geeft bij elke aanroep een willekeurig kommagetal tussen 0 en 1 terug, en de functie randint een willekeurig getal van de ondergrens tot en met de bovengrens die je opgeeft.
 
 Documentatie over de module random vind je op https://docs.python.org/3/library/random.html#module-random.
 

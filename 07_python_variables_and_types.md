@@ -82,16 +82,19 @@ Zo'n assignment statement heeft altijd de vorm van :
 
 ### Waarde van een variabele wijzigen
 
-Een variabele zou niet "variabel" zijn als je deze niet kan wijzigen. We beschouwen het volgende voorbeeld:
+Een variabele zou niet "variabel" zijn als je deze niet kan wijzigen. We beschouwen het volgende voorbeeld in de REPL:
 
 ~~~python
-say_hello = "hello"
-print(say_hello)
-say_hello = "world"
-print(say_hello)
+>>> say_hello = "hello"
+>>> print(say_hello)
+hello
+>>> say_hello = "world"
+>>> print(say_hello)
+world
+>>>
 ~~~
 
-Wat verwachte je dat deze code toont? Probeer het eens uit?
+Wat verwachtte je dat deze instructies toonden?
 
 Je kan later in hetzelfde programma of dezelfde sequentie variabelen van **waarde wijzigen** (zo veel als je wilt) via deze **assignment statements**.
 
@@ -144,13 +147,17 @@ Python ondersteunt verschillende types. Tot nog toe hebben we gebruik gemaakt va
 In onderstaand stuk code maken we drie variabelen aan van verschillende types.  
 Met de functie **type** vragen we het type van de variabele op.
 
-~~~python
-a = "hello"
-b = 10
-c = 0.5
-print(type(a))
-print(type(b))
-print(type(c))
+~~~
+>>> a = "hello"
+>>> b = 10
+>>> c = 0.5
+>>> type(a)
+<class 'str'>
+>>> type(b)
+<class 'int'>
+>>> type(c)
+<class 'float'>
+>>>
 ~~~
 
 Python leidt direct het type af bij creatie van de variabele. Dit principe wordt **type inference** genoemd.
@@ -159,14 +166,6 @@ In dit geval kan de Python-interpreter vanuit de **literal** afleiden tot **welk
 * "hello" is omgeven door aanhalingstekens
 * 10 is niet omgeven door aanhalingstekens en bevat alleen cijfers
 * 0.5 is een getal met een decimaal punt (kommagetal)
-
-Als we dan bovenstaand programma uitvoeren, krijgen we de volgende uitvoer:
-
-~~~
-<class 'str'>
-<class 'int'>
-<class 'float'>
-~~~
 
 Het eerste type hier is **str**, dat we al een aantal keren hebben gebruikt.  
 
@@ -193,28 +192,18 @@ Natuurlijk wordt het **beperkt** door de **hoeveelheid geheugen** die je **syste
 Maar verder kan een geheel getal zo lang zijn als je nodig hebt, zoals hieronder:
 
 ~~~python
-a = 154646546465465465465465465464
-print(a)
-~~~
-
-Uitgevoerd wordt dit:
-
-~~~
+>>> a = 154646546465465465465465465464
+>>> print(a)
 154646546465465465465465465464
 ~~~
 
 Vanzelfsprekend kan je hier ook berekeningen mee uitvoeren:
 
-~~~python
-a = 3
-b = 4
-c = a + b
-print(c)
 ~~~
-
-Dit geeft als uitvoer:
-
-~~~
+>>> a = 3
+>>> b = 4
+>>> c = a + b
+>>> print(c)
 7
 ~~~
 
@@ -228,16 +217,11 @@ Dat doe je door dit getal te typen startende met 0 gevolgd door:
 Onderstaand voorbeeld illustreert dit:
 
 ~~~
-print(0o10)  # 0o = octal notation
-print(0x10)  # 0x = hexadecimal notation
-print(0b1110)  # 0b = binary notation
-~~~
-
-Met als uitvoer:
-
-~~~
+>>> print(0o10)
 8
+>>> print(0x10)
 16
+>>> print(0b1110)
 14
 ~~~
 
@@ -248,13 +232,8 @@ Python gebruikt ook een floating-point type (**float**).
 Dit wordt gebruikt voor kommagetallen, dus getallen waar je precisie nodig hebt na de komma.
 
 ~~~
-a = -3.0
-b = 24.75
-print(a+b)
-~~~
-
-Dit geeft als uitvoer:
-
-~~~
+>>> a = -3.0
+>>> b = 24.75
+>>> print(a+b)
 21.75
 ~~~
