@@ -77,17 +77,17 @@ PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_ANNEX)
 pagebreak = pandoc_page_break.txt
 
 all:
-	pandoc title.txt $(PY_CHAPTERS) -o dist/py_cursus_epub_nl.epub --css base.css --epub-cover-image=front_page.jpg\
+	pandoc title.txt $(PY_CHAPTERS) -o dist/basis_programmeren.epub --css base.css --epub-cover-image=front_page.jpg\
 
 	pandoc frontpage.md -o dist/front_page_nl.html  --self-contained -s -c github-pandoc.css
 
 	pandoc header.md -o dist/header_nl.html  --self-contained -s -c github-pandoc.css
 
-	pandoc title.txt $(PY_CHAPTERS) -o dist/py_cursus_nl.html -B dist/header_nl.html  --self-contained -s --toc --toc-depth=2  -c github-pandoc.css
+	pandoc title.txt $(PY_CHAPTERS) -o dist/basis_programmeren.html -B dist/header_nl.html  --self-contained -s --toc --toc-depth=2  -c github-pandoc.css
 
-	wkhtmltopdf dist/py_cursus_nl.html dist/py_cursus_nl.pdf
+	wkhtmltopdf dist/basis_programmeren.html dist/basis_programmeren.pdf
 
-	zip dist/py_cursus_nl.zip dist/py_cursus_nl.epub dist/py_cursus_nl.html dist/py_cursus_nl.pdf
+	zip dist/basis_programmeren.zip dist/basis_programmeren.epub dist/basis_programmeren.html dist/basis_programmeren.pdf
 
 clean:
 	rm dist/cursus.epub
