@@ -62,6 +62,7 @@ Dit is technisch gezien niet verplicht, maar er is geen reden om deze conventie 
 
 Een **programmeertaal is gevoelig voor fouten**, nog meer dan mensen (en lectoren).
 Bekijk de volgende ongeldige Python-code bijvoorbeeld:
+
 ~~~python
 print("Hello world"
 ~~~
