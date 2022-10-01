@@ -1,7 +1,7 @@
 ## Werken met tekst
 
-Eerder hebben we reeds kennisgemaakt met het dataype string in Python.  
-Hieronder gaan we dit wat verder uitspitten...
+Eerder hebben we reeds kennisgemaakt met het datatype string (str) in Python.  
+Hieronder gaan we dit even herhalen en wat verder uitspitten...
 
 ### Literals
 
@@ -10,32 +10,47 @@ Hieronder gaan we dit wat verder uitspitten...
 Het eerste gebruik dat we hebben gezien was als **literal**:
 
 ~~~python
-text = "Hello World"
-print(text)
+>>> text = "Hello World"
+>>> print(text)
+Hello World
 ~~~
 
-#### Enkele en dubbele qoutes
+#### Enkele en dubbele aanhalingstekens
 
-Zon'n literal wordt **gedemarkeerd** door quotes, dit kunnen enkele of dubbele quotes zijn.  
-Belangrijk is wel als je start met de ene (" of ') ook eindigt met de andere.
+Zo'n literal wordt **gedemarkeerd** door aanhalingstekens (*quotes*). Dit kunnen enkele of dubbele aanhalingstekens zijn.  
+Belangrijk is wel: als je start met de ene soort (" of '), moet je ook eindigen met dezelfde:
 
 ~~~python
-a = "A string in double quotes can contain 'single quote' characters."
-b = 'A string in single quotes can contain "double quote" characters.'
+>>> text = "Hello world'
+  File "<stdin>", line 1
+    text = "Hello world'
+           ^
+SyntaxError: unterminated string literal (detected at line 1)
 ~~~
 
-Dit geeft als voordeel dat je binnen enkele quotes dubbele kan gebruiken en omgekeerd zoals hierboven geillustreerd.
-
-#### Backslash als escape-character
-
-Als je echter toch een een double quote wil gebruiken binnen een double quoted string kan je altijd een backslash gebruiken als escape character.
+Je kunt wel enkele aanhalingstekens binnen een string met dubbele aanhalingstekens gebruiken en andersom:
 
 ~~~python
-print("\"Double quotes\" with backslash.")
-print('\'Singe quotes\' with backslash.')
+>>> print("A string in double quotes can contain 'single quote' characters.")
+A string in double quotes can contain 'single quote' characters.
+>>> print('A string in single quotes can contain "double quote" characters.')
+A string in single quotes can contain "double quote" characters.
 ~~~
 
-Een **escape charachter** laat je toe karakters in een literal te zetten die er normaal niet kunnen instaan.
+Dit doe je als je enkele of dubbele aanhalingstekens wilt tonen.
+
+#### Backslash als escape character
+
+Als je toch dubbele aanhalingstekens wilt gebruiken binnen een string die je met dubbele aanhalingstekens demarkeert, kan je altijd een backslash gebruiken als escape character:
+
+~~~python
+>>> print("\"Double quotes\" with backslash.")
+"Double quotes" with backslash.
+>>> print('\'Singe quotes\' with backslash.')
+'Singe quotes' with backslash.
+~~~
+
+Een **escape character** laat je toe om tekens in een literal te zetten die er normaal niet kunnen instaan:
 
 ~~~
 \\	      Backslash (\)
@@ -46,12 +61,14 @@ Een **escape charachter** laat je toe karakters in een literal te zetten die er 
 Naast het escapen van deze quotes, gebruik je de backslash om er voor te zorgen dat je deze backslash zelf in een literal kan plaatsen.
 
 ~~~python
-print("Een backslash \\ gebruik je in python als escape-character")
+>>> print("Een backslash \\ gebruik je in Python als escape character.")
+Een backslash \ gebruik je in Python als escape character.
 ~~~
 
-#### Speciale karakters
+#### Speciale tekens 
 
-Een backslash kan ook worden gebruikt om specifieke karakters af te drukken zoals een tab, een nieuwe lijn of een tab... 
+Een backslash kan ook worden gebruikt om specifieke karakters te tonen zoals een tab of een nieuwe regel:
+
 
 ~~~
 \n	      ASCII Linefeed (LF)
@@ -59,35 +76,44 @@ Een backslash kan ook worden gebruikt om specifieke karakters af te drukken zoal
 \t	      ASCII Horizontal Tab (TAB)
 ~~~
 
-Bijvoorbeeld...
+Bijvoorbeeld:
 
 ~~~python
-print("Deze tekst wordt gevolgd door een tab\t en \n een new line ")
+>>> print("Deze tekst wordt gevolgd door een tab\t en \n een newline.")
+Deze tekst wordt gevolgd door een tab	 en 
+ een newline.
 ~~~
-
-...zal het volgende afprinten
-
-~~~
-Deze tekst wordt gevolgd door een tab	    en 
- een new line 
-~~~
-
 
 #### Triple quotes
 
-Een gewone string-literal kan je maar over 1 lijn worden ingegeven.   
+Een gewone string literal kan je maar op één regel invoeren. Zodra je op enter drukt om een volgende regel in te voeren zonder dat je de string met een aanhalingsteken hebt gesloten, krijg je een foutmelding:
 
 ~~~python
-print("""This is a triple double quoted string.
-It can contain more then one line""")
-print('''Same thing for 
-single triple single quoted string''')
+>>> print("Dit is een string die
+  File "<stdin>", line 1
+    print("Dit is een string die
+          ^
+SyntaxError: unterminated string literal (detected at line 1)
+~~~
+
+Maar als je drie aanhalingstekens gebruikt (dubbele of enkele), kan je een string literal over meerdere regels invoeren tot je de string met weer drie aanhalingstekens sluit:
+
+~~~python
+>>> print("""Dit is een string die
+... over meerdere regels
+... loopt.""")
+Dit is een string die
+over meerdere regels
+loopt.
 ~~~
 
 #### ASCII-codes
 
-Een stuk tekst bestaat eigenlijk uit cijfers.  
-Dit zie je in de encodering van een tekst-file, maar dit wordt evenwel zo intern in het datatype van een python-string.
+Een stuk tekst bestaat eigenlijk uit opeenvolgende bytes: elk teken wordt door een byte met een specifieke numerieke waarde voorgesteld.
+
+De standaardcodering van tekens door bytes is de ASCII-codering (American Standard Code for Information Interchange). Deze wordt gebruikt om tekstbestanden op te slaan, maar ook in Python voor het datatype string.
+
+De codering wordt voorgesteld in een ASCII-tabel:
 
 ~~~
 Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex  
@@ -109,160 +135,147 @@ Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex
  15 0F SI   31 1F US   47 2F /  63 3F ?  79 4F O  95 5F _  111 6F o  127 7F DEL
 ~~~
 
-Met python kan je met deze ascii-codes een string construeren.  
-Volgend stuk code zal de string hello afdrukken.
+In Python kan je met deze ASCII-codes een string construeren, bijvoorbeeld met de hexadecimale waardes:
 
 ~~~python
-print("\x68\x65llo")
+>>> print("\x68\x65llo")
+hello
 ~~~
 
-### Opvragen van tekst over console
-
-Je kan tekst opvragen van de console met de input-methode
+Python kent ook en functie om een ASCII-waarde naar het bijbehorende teken om te zetten:
 
 ~~~python
-name = input("Geef naam aub")
-print(name)
+>>> chr(104)
+'h'
+>>> chr(0x68)
+'h'
 ~~~
 
-### String-concatenatie
-
-Je kan via de +-operator verschillende strings concateneren
+En ook andersom kun je de ASCII-waarde van een teken opvragen:
 
 ~~~python
-text = "Hello"
-print(text + " world")
+>>> ord("h")
+104
+~~~
+
+### Opvragen van tekst op de console
+
+Je kan zoals we al zagen tekst opvragen op de console met de functie input:
+
+~~~python
+>>> name = input("Geef uw naam: ")
+Geef uw naam: Koen
+>>> print(name)
+Koen
+~~~
+
+### String concatenation
+
+Je kan via de +-operator verschillende strings 'aan elkaar plakken' (concateneren):
+
+~~~python
+>>> text = "Hello"
+>>> print(text + " world")
+Hello world
 ~~~
 
 ### Concatenatie met andere types
 
-En je kan zelf concateneren met andere data-types
+Let op als je een string wilt concateneren met andere data-types:
 
 ~~~python
-text = "Hello"
-a_number = 2
-print(text + " world " + str(a_number))
-~~~
-
-Dit drukt de tekst "Hello world 2" af.  
-Let wel dat je de integer-variabele moet converteren naar een string...
-
-~~~python
-text = "Hello"
-a_number = 2
-print(text + " world " + a_number)
-~~~
-
-...als je dit niet doet krijg je een error
-
-~~~
+>>> text = "Hello"
+>>> a_number = 2
+>>> print(text + " world " + a_number)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: must be str, not int
+TypeError: can only concatenate str (not "int") to str
 ~~~
 
-Je kan geen string optellen met een getal via de +-operator
+Zoals de `TypeError` toont, kan je geen int concateneren aan een string met de +-operator.
+
+Hoe doe je dat dan wel? Door eerst de int naar een string om te zetten:
+
+~~~python
+>>> text = "Hello"
+>>> a_number = 2
+>>> print(text + " world " + str(a_number))
+Hello world 2
+~~~
 
 ### Concatenatie via print
 
-De concatenatie kan echter ook wel via de print-methode.  
+De concatenatie kan echter ook via de functie print:
 
 ~~~python
-text = "Hello"
-a_number = 2
-print(text, " world", a_hello)
+>>> text = "Hello"
+>>> a_number = 2
+>>> print(text, "world", a_number)
+Hello world 2
 ~~~
 
-Je kan hier alle types gebruiken gezien de print-functie zelf de conversie zal uitvoeren via str()
+Je kan hier alle types door elkaar gebruiken, aangezien de functie print zelf de omzetting zal uitvoeren via str().
+
+Merk op: print voegt standaard een spatie tussen elk argument toe.
 
 ### String vermenigvuldigen
 
-Naast de +-operator heb je ook de \*-operator
+Naast de +-operator heb je ook de \*-operator:
 
-~~~
-print("Hello " * 2)
+~~~python
+>>> "allo" * 3
+'alloalloallo'
 ~~~
 
+En dit kun je ook nog combineren met de concatenatie:
+
+~~~python
+>>> "allo" * 3 + "vélo"
+'alloalloallovélo'
+~~~
 
 ### Lengte van strings
 
-~~~python
-print(len("testje")) # prints 6
-print(len("")) # prints 0
-~~~
-
-### Formatteren van een string
-
-De nieuwe manier, die zowel in Python 2 als Python 3 gesupporteerd is:
+We kunnen eenvoudig het aantal tekens in een string opvragen:
 
 ~~~python
->>> print("{:d}-{:d}".format(1,2))
-1-2
->>> print("{}-{}".format(1,2))
-1-2
+>>> len("testje")
+6
+>>> len("")
+0
 ~~~
 
-Bij deze (nieuwe) manier ben je niet verplicht een formaat aan tegen een {} is voldoende.  
-Optioneel kan je - binnen de string selecteren - welk getal uit de luist je wil selecteren:
+### Stringinterpolatie of f-strings (Python 3.6+)
 
-~~~python
->>> print("{0}-{1}-{0}".format(1,2))
-1-2-1
->>> print("{0:d}-{1:d}-{0:d}".format(1,2))
-1-2-1
-~~~
-
-Een ander voorbeeld is het uitlijnen van tekst.
-
-~~~python
->>> print("{0:2d}{1:3d}{0:4d}".format(1,2))
- 1  2   1
->>> print("{0:2d}{1:3d}{0:4d}".format(10,20))
-10 20  10
-~~~
-
-Voor een volledig overzicht kan je naar de betreffende python-documentatie gaan kijken:  
-https://docs.python.org/3/tutorial/inputoutput.html
-
-
-> Nota:  
-> In dit geval zien we dat we dat we een methode rechtstreeks op een string (of object) aanroepen (string.methode()).  
-> Dit is **Object-Georienteerd programmeren**, hier komen zo direct nog even op terug
-
-### String Interpolatie of f-Strings (Python 3.6+)
-
-Een **nieuwe feature** sinds **Python 3.6** is het gebruik van **string-interpollatie**.  
-In plaats van een placeholder kan je hier binnenin je string direct **expressies injecteren**.  
+Sinds **Python 3.6** kun je gebruikmaken van **stringinterpolatie**. Hiermee kun je in een string rechtstreeks **expressies injecteren**.
 
 Hiervoor moet je:
 
-* De string laten **starten** met **f**
-* De **expressies** tussen **"curly braces"** plaatsen
+* De string laten **starten** met **f** vóór het eerste aanhalingsteken.
+* De **expressies** in de string tussen accolades {} (*curly braces*) plaatsen.
 
-Het volgend voorbeeld...
-
-~~~python
-name="bart"
-print(f'Hello, {name}!')
-~~~
-
-... restulteert dan in volgende output
-
-~~~
-Hello, bart
-~~~
-
-Ook zijn het hier niet enkel variabelen dat je kan vergelijken maar dus **ook rekenkundige expressies**.
+Bijvoorbeeld:
 
 ~~~python
-a = 5
-b = 10
-print(f'{a} + {b} =  {a + b} and not {2 * (a + b)}.')
+>>> name = "Koen"
+>>> f"Hallo {name}!"
+'Hallo Koen!'
 ~~~
 
-resulteert dan in:
+Alle expressies zijn toegestaan tussen de accolades, dus ook **ook rekenkundige expressies**:
 
-~~~
-5 + 10 =  15 and not 30.
+~~~python
+>>> a = 2
+>>> b = 3
+>>> c = 5
+>>> print(f"{a} + {b} * {c} = {a + b * c} and not {(a + b) * c}.")
+2 + 3 * 5 = 17 and not 25.
 ~~~
 
+En je kunt ook functies gebruiken tussen de accolades:
+
+~~~python
+>>> name = "Koen"
+>>> print(f"Hallo {name}! Je naam is {len(name)} letters lang.")
+Hallo Koen! Je naam is 4 letters lang.
+~~~

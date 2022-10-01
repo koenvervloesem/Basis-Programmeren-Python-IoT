@@ -1,129 +1,122 @@
-## Errors en excepties
+## Errors en exceptions
 
-### Syntax-error
+### Syntax error => programma wordt niet uitgevoerd
 
-Het **uitvoeren** van Python-code gebeurt in **2 fases**:
+Het **uitvoeren** van Python-code gebeurt in **twee fases**:
 
-* **Parsen en interpreteren** van de Python-code
+* Het **parsen en interpreteren** van de Python-code
 * Het eigenlijke **uitvoeren**
 
-Als er **fouten** in de **code-syntax** kan dit **geweten** zijn bij de **start** van het **programma**  
-Bijvoorbeeld bij volgende code **vergeten** we (expres) een **":"** te plaatsen **na de for-clausule**:
+Als er **fouten** in de **codesyntaxis** zijn, herkent de Python-interpreter dat al in de eerste fase en dus al vóór de **start** van het **programma**.
+
+In de volgende code **vergeten** we bijvoorbeeld (bewust) een **":"** te plaatsen **na de for**:
 
 ~~~python
-a = [1,2,3,4,5,6,7]
-print("From 1 until 7")
-for i in a
-	print(i)
+print("Van 1 tot en met 7")
+for i in range(7)
+    print(i + 1)
 ~~~
 
-Dit is **ongeldige code**, **wat** gebeurt er dan **als je deze code probeert uit te voeren?**
+Dit is **ongeldige code**. Wat gebeurt er nu **als je deze code probeert uit te voeren?**
 
 ~~~
-  File "test.py", line 2
-    for i in a
-             ^
-SyntaxError: invalid syntax
+$ python test.py
+  File "/home/koan/test.py", line 2
+    for i in range(7)
+                     ^
+SyntaxError: expected ':'
 ~~~
 
-Er gebeurt niets... buiten een indicatie van de interpreter
+Er gebeurt niets... De code op regel 1 wordt zelfs niet uitgevoerd, ook al staat de fout op regel 2. De interpreter heeft namelijk al vóór het uitvoeren van het programma de code bekeken en ziet een fout tegen de syntaxis, die het meldt.
 
-### Programma wordt niet uitgevoerd
+### Runtime error (exception) => programma stopt
 
-De Python-interpreter **bespeurt de error**  -in de 1ste fase van **parsing** - en zal **niet starten** met de code uit te voeren.
+De syntax errors worden dus snel gedetecteerd.  
+Er kunnen echter ook fouten gebeuren **"at runtime"** zoals **bijvoorbeeld**:
 
-Dat de code niet wordt uitgevoerd zie je aan het feit dat de print-statement ("From 1 until 7") - die voor de error voorkomt - niet wordt uitgevoerd.
+* Een functie oproepen die niet bestaat.
+* Een string die niet kan omgezet worden naar een integer (bijvoorbeeld `int("6abc")`).
+* Delen door 0 (bijvoorbeeld `a = 5/0`).
 
-De Python-interpreter zal de **volledige code** eerst **inladen** en **nakijken** op fouten **alvorens** deze **uit te voeren**. 
+Deze "runtime errors" benoemen we ook als **exceptions**.
 
-Als er dan een fout in de code is geplaatst wordt de code niet uitgevoerd.
-
-### Runtime error => exceptie
-
-De syntax-errors worden dus snel gedetecteerd.  
-Er kunnen echter ook errors gebeuren **"at runtime"** zoals **bijvoorbeeld**:
-
-* Een functie-call die niet bestaat
-* Een string die niet kan omgezet worden naar een integer (bijvoorbeeld int("6abc"))
-* Delen door 0 (bijvoorbeeld a = 5/0)
-
-Deze "runtime error" benoemen we ook als **excepties**
-
-De onderstaande code bijvoorbeeld...
+Neem bijvoorbeeld het volgende programma:
 
 ~~~python
 print("Hello")
-a = 0/0
+a = 5/0
 print(a)
 ~~~
 
-...veroorzaakt de volgende error...
+Voer je dit programma uit, dan zie je:
 
-~~~
+~~~bash
+$ python test.py
 Hello
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ZeroDivisionError: integer division or modulo by zero
+  File "/home/koan/test.py", line 2, in <module>
+    a = 5/0
+ZeroDivisionError: division by zero
 ~~~
 
 In dit geval zien we dat er ook duidelijk een **error** wordt aangegeven, in dit geval een **ZeroDivisionError**.  
 
-### Een exceptie stopt het programma
+Bemerk wel dat de **code** die **vóór de fout** (a = 5/0) komt wel **wordt uitgevoerd** (`print("Hello")`).
 
-Bemerk wel dat de **code** die **voor de error** (a = 0/0) komt wel **wordt uitgevoerd** (print("Hello")).
+Het programma **start** wel degelijk **maar stopt** bij het **aangegeven punt waarop de fout gebeurt**.
 
-Het programma **start** wel degelijk **maar stopt** bij het **aangegeven punt van error**.
+In tegenstelling tot een syntax error kan de Python-interpreter niet al in de eerste fase bij het parsen van de Python-code bepalen dat er een fout is.
 
-In tegenstelling tot een syntax-error kan een python-programma niet bij het parsen van de Python-code bepalen dat er eer error is.
+### Exceptions en functies
 
-### Excepties en functies
+Het maakt ook niet uit als je deze **exception genereert** binnen een functie. Deze wordt dan **gepropageerd** naar de plaats waar de functie wordt aangeroepen zolang deze niet wordt opgevangen.
 
-Er is ook geen verschil als je deze **error genereert** binnen een functie, deze **error** wordt **gepropageerd** zolang deze niet wordt opgevangen.
+Bijvoorbeeld:
 
 ~~~python
-def divide(a,b):
-  return a/b
+def divide(a, b):
+    return a / b
 
 print("Hello")
-a = divide(0,0)
+a = divide(5, 0)
 print(a)
 ~~~
 
-met als resultaat
+Voer je dit uit, dan geeft dit als resultaat:
 
 ~~~
 Hello
 Traceback (most recent call last):
   File "tmp.py", line 5, in <module>
-    a = divide(0,0)
+    a = divide(5, 0)
   File "tmp.py", line 2, in divide
-    return a/b
+    return a / b
 ZeroDivisionError: division by zero
-
 ~~~
 
-### Excepties opvangen
+### Exceptions opvangen
 
-Je kan in je code ervoor zorgen dat deze **excepties** worden **opgevangen** zonder dat ze het programma beëindigen.
+Je kan in je code ervoor zorgen dat deze **exceptions** worden **opgevangen**, zodat ze het programma niet beëindigen.
 
-Dit kan via een **try-block** in combinatie met **except-block**  
-In onderstaande code proberen we een variabele af te printen die niet bestaat.  
+Dit kan via een **try-block** in combinatie met een **except-block**  
+In onderstaande code proberen we een variabele te tonen die niet bestaat.  
 
 ~~~python
 print("Before try-catch")
 try:
-  print(x)
-  print("After error")
+    print(x)
+    print("After error")
 except:
-  print("An exception occurred")
+    print("An exception occurred")
 print("After try-catch")
 ~~~
 
-We kunnen dit doen aan de hand van een default **except-block**, deze gaat eender welke error (buiten SyntaxError) opvangen.
+We kunnen dit doen aan de hand van een default **except-block**. Deze vangt gelijk welke exception (behalve een SyntaxError) op.
 
 Dit heeft volgende uitvoering als resultaat...
 
-~~~
+~~~bash
+$ python test.py
 Before try-catch
 An exception occured
 After try-catch
@@ -131,253 +124,278 @@ After try-catch
 
 We zien hier dat:
 
-* Het **programma** wordt **uitgevoerd**
-* De **try-block** wordt **onderbroken** (bij print(x))
-* De **except** wordt **uitgevoerd**
-* De **code verder** loopt **na** de **except**
+* Het **programma** wordt **uitgevoerd**.
+* Het **try-block** wordt **onderbroken** (bij `print(x)`) omdat `x` niet gedefinieerd is en de print-opdracht de regel erna niet uitgevoerd wordt.
+* Het **except-block** wordt **uitgevoerd**.
+* De **code loopt verder** na de except.
 
-### Excepties opvangen per type
+### Exceptions opvangen per type
 
-Je kan ook het **type van exceptie aangeven** dat je wil opvangen.  
-In dit geval beperk je het opvangen tot een specifieke error, de NameError
+Het gebruik van except zoals hierboven is alles-of-niets: alle exceptions worden opgevangen. Doorgaans is het een betere stijl van je code om alleen specifieke exceptions op te vangen die je verwacht. Zo kun je gerichter reageren in het except-blok, en zal het programma nog altijd stoppen wanneer er onverwachte exceptions optreden waarop je je code niet voorbereid hebt.
+
+Je kan in Python dus ook het **type exception aangeven** dat je wil opvangen.  
+In dit geval beperk je het opvangen tot een specifieke exception, de `NameError`:
 
 ~~~python
 print("Before try-catch")
 try:
-  print(x)
-  print("After error")
+    print(x)
+    print("After error")
 except NameError:
-  print("An exception occurred")
+    print("An exception occurred")
 print("After try-catch")
 ~~~
 
-Het volstaan hier het type te definieren na het except-keyword.
+Het volstaat hier om het type exception te definiëren na het except-keyword.
 
-Als je echter een andere error genereert (bijvoorbeeld een ZeroDivisionError)...
+Wat dan als er een andere exception optreedt (bijvoorbeeld een ZeroDivisionError)?
 
 ~~~python
 print("Before try-catch")
 try:
-  print(0/0)
-  print(x)
-  print("After error")
-except  NameError:
-  print("An exception occurred")
+    print(5 / 0)
+    print(x)
+    print("After error")
+except NameError:
+    print("An exception occurred")
 print("After try-catch")
 ~~~
 
-...zal dit echter niet worden opgevangen...
+Dan wordt deze niet opgevangen:
 
-~~~
-ZeroDivisionError: integer division or modulo by zero
+~~~bash
+$ python test.py
+Before try-catch
+Traceback (most recent call last):
+  File "/home/koan/test.py", line 3, in <module>
+    print(5 / 0)
+ZeroDivisionError: division by zero
 ~~~
 
-...en wordt het programma beeindigd (prints daarna worden niet afgedrukt)
+... en wordt het programma beëindigd: de print-opdrachten na de regel waarin de ZeroDivisionError optreedt worden niet uitgevoerd.
 
 ### Meerdere except-blokken
 
-Om dit probleem te verhelpen - en meerdere excepties op te vangen - kan je meerdere except-blocks plaatsen.  
-Met onderstaande except-block op ZeroDivisionError te plaatsen vermijd je dat het programma wordt beeindigd.
+Om dit probleem te verhelpen - en meerdere types exceptions op te vangen - kan je meerdere except-blokken plaatsen.  
+Door onderstaande except-blok voor ZeroDivisionError toe te voegen vermijd je dat het programma bij het optreden van die exception wordt beëindigd.
 
 ~~~python
 print("Before try-catch")
 try:
-  print(0/0)
-  print(x)
-  print("After error")
-except  NameError:
-  print("A NameError-exception occurred")
-except  ZeroDivisionError:
-  print("A ZeroDivision-exception occurred")
+    print(5 / 0)
+    print(x)
+    print("After error")
+except NameError:
+    print("A NameError exception occurred")
+except ZeroDivisionError:
+   print("A ZeroDivisionError exception occurred")
 print("After try-catch")
 ~~~
 
-Je kan ook de de **default** except-block hier aan toevoegen
+Dit geeft deze uitvoer:
+
+~~~bash
+$ python test.py
+Before try-catch
+A ZeroDivisionError exception occurred
+After try-catch
+~~~
+
+Je kan ook nog altijd het except-blok zonder type toevoegen:
 
 ~~~python
 print("Before try-catch")
 try:
-  print(0/0)
-  print(x)
-  print("After error")
-except  NameError:
-  print("A NameError-exception occurred")
-except  ZeroDivisionError:
-  print("A ZeroDivision-exception occurred")
+    x = [1, 2]
+    print(x[2])
+    print(5 / 0)
+    print(x)
+    print("After error")
+except NameError:
+    print("A NameError exception occurred")
+except ZeroDivisionError:
+    print("A ZeroDivisionError exception occurred")
 except:
-  print("Another error")
+    print("Another error")
 print("After try-catch")
 ~~~
 
-In dat geval zullen alle error worden opgevangen (maar de boodschap zal verschillen in geval van NameError of ZeroDivisionError)
+De uitvoer is in dit geval:
 
+~~~bash
+$ python test.py
+Before try-catch
+Another error
+After try-catch
+~~~
+
+De regel `print(x[2])` genereert immers geen NameError of ZeroDivisionError, maar een IndexError. Omdat die niet na een except-blok staat maar er wel een algemeen except-blok zonder type bestaat, wordt dit laatste except-blok uitgevoerd.
+
+Let op: het standaard except-blok zonder type exception moet altijd als laatste staan als je meerdere except-blokken gebruikt.
 
 ### else-clausule
 
-Je kan ook een else-clausule toevoegen, deze zal **enkel** uitvoeren als er geen error is uitgevoerd
+Je kan ook een else-clausule toevoegen. Dit blok zal **alleen** uitgevoerd worden als er geen exception optreedt:
 
 ~~~python
 try:
-  print("Hello")
-except:
-  print("Something went wrong")
+    print("Welkom")
+    a = int(input("Teller: "))
+    b = int(input("Noemer: "))
+    print(f"{a} / {b} = {a / b}")
+except ZeroDivisionError:
+    print("Delen door nul is flauwekul")
 else:
-  print("Nothing went wrong")
+    print("Tot de volgende keer")
+~~~
+
+Dat geeft:
+
+~~~bash
+$ python test.py
+Welkom
+Teller: 5
+Noemer: 2
+5 / 2 = 2.5
+Tot de volgende keer
+$ python test.py
+Welkom
+Teller: 5
+Noemer: 0
+Delen door nul is flauwekul
 ~~~
 
 ### finally
 
-~~~python
-try:
-  print(0/0)
-except:
-  print("Something went wrong when writing to the file")
-finally:
-  print("Some cleaning)
-~~~
+Er is ook een finally-clausule. Die wordt **altijd** uitgevoerd, ongeacht er een exception optreedt in het try-blok. Dit wordt doorgaans gebruikt om zaken 'op te kuisen'.
+
+Een voorbeeld:
 
 ~~~python
 try:
-  f = open("demofile.txt")
-  f.write("Lorum Ipsum")
-except:
-  print("Something went wrong when writing to the file")
+    print("Welkom")
+    a = int(input("Teller: "))
+    b = int(input("Noemer: "))
+    print(f"{a} / {b} = {a / b}")
+except ZeroDivisionError:
+    print("Delen door nul is flauwekul")
 finally:
-  f.close() 
+    print("Tot de volgende keer")
 ~~~
 
-### Zelf excepties opwerpen
+Kijk hoe in beide gevallen het finally-blok uitgevoerd wordt:
 
-Naast het afvangen van excepties kan je deze ook zelf opwerpen met het keyword **raise**
+~~~bash
+$ python test.py
+Welkom
+Teller: 5
+Noemer: 2
+5 / 2 = 2.5
+Tot de volgende keer
+$ python test.py
+Welkom
+Teller: 5
+Noemer: 0
+Delen door nul is flauwekul
+Tot de volgende keer
+~~~
 
-Praktisch, stel als je maakt een functie:
+### Zelf exceptions opwerpen
 
-* Die de oppervlakte van een circel berekent
-* Je wenst echter geen negatieve input
+Naast het afvangen van exceptions kan je deze ook zelf opwerpen met het keyword **raise**.
+
+Stel dat je de volgende functie maakt:
+
+* Berekent de oppervlakte van een cirkel op basis van de straal.
+* Je wil een exception werpen als je de functie oproept met een negatieve straal.
+
+Dat kan als volgt:
 
 ~~~python
-import math
+from math import pi
 
-def circumference(radius): 
-  if radius < 0:
-    raise Exception("Sorry, no numbers below zero")
-  return 2 * radius * math.pi
+def circumference(radius):
+    if radius < 0:
+        raise Exception("A negative radius is invalid")
+    return 2 * radius * pi
 
-circumference(1)  # prints +- 6,283...
-circumference(-1) # raises error
+print(circumference(1))
+print(circumference(-1))
 ~~~
 
-De functie-aanroep op de laaste lijn zal het het programma doen crashen en beindigen.
+De functie-aanroep op de laatste regel zal het het programma doen beëindigen:
 
-~~~
+~~~bash
+$ python test.py
 6.283185307179586
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 3, in circumference
-Exception: Sorry, no numbers below zero
+  File "/home/koan/test.py", line 9, in <module>
+    print(circumference(-1))
+  File "/home/koan/test.py", line 5, in circumference
+    raise Exception("A negative radius is invalid")
+Exception: A negative radius is invalid
 ~~~
 
-### Zelf (custom) excepties aanmaken
+### Zelf (aangepaste) exceptions definiëren
+
+Je kunt zelf een specifiek type exception definiëren:
 
 ~~~python
-import math
+from math import pi
 
-class RadiusException(Exception):
-  pass
+class NegativeRadiusException(Exception):
+    pass
 
-def circumference(radius): 
-  if radius < 0:
-    raise RadiusException()
-  return 2 * radius * math.pi
+def circumference(radius):
+    if radius < 0:
+        raise NegativeRadiusException()
+    return 2 * radius * pi
 
-circumference(1)  # prints +- 6,283...
-circumference(-1) # raises error
+print(circumference(1))
+print(circumference(-1))
+~~~
+
+Noot: je definieert hier een klasse, iets wat we verder in de cursus uitleggen.
+
+Als je dit uitvoert, krijg je:
+
+~~~bash
+$ python test.py
+6.283185307179586
+Traceback (most recent call last):
+  File "/home/koan/test.py", line 12, in <module>
+    print(circumference(-1))
+  File "/home/koan/test.py", line 8, in circumference
+    raise NegativeRadiusException()
+__main__.NegativeRadiusException
 ~~~
 
 ### En opvangen...
 
-Je kan deze exceptie dan ook naar type opvangen zoals we eerder hebben gezien.
+Je kan deze exception dan ook volgens het type opvangen zoals we eerder hebben gezien:
 
 ~~~python
-import math
+from math import pi
 
-class RadiusException(Exception):
-  pass
+class NegativeRadiusException(Exception):
+    pass
 
-def circumference(radius): 
-  if radius < 0:
-    raise RadiusException()
-  return 2 * radius * math.pi
+def circumference(radius):
+    if radius < 0:
+        raise NegativeRadiusException()
+    return 2 * radius * pi
 
 try:
-  circumference(1)  # prints +- 6,283...
-  circumference(-1) # raises error
-except RadiusException:
-  print("Problem with radius...")
+    print(circumference(1))
+    print(circumference(-1))
+except NegativeRadiusException:
+    print("Straal mag niet negatief zijn")
 ~~~
 
-Stel dan dat je toch nog een andere exception zou opwerpen...
+Dit geeft:
 
-~~~python
-import math
-
-class RadiusException(Exception):
-  pass
-
-def circumference(radius): 
-  if radius < 0:
-    raise RadiusException()
-  return 2 * radius * math.pi
-
-try:
-  a = 5/0
-  circumference(1)  # prints +- 6,283...
-  circumference(-1) # raises error
-except RadiusException:
-  print("Problem with radius...")
-~~~
-
-... wordt deze niet opgevangen
-
-### Oefening
-
-~~~python
-"""
-Volgend programma deelt 2 getallen door elkaar
-"""
-
-"""
-Vraag 1:
-Zorg dat je het resultaat afprint met een f-string
-"""
-
-"""
-Vraag 2:
-Vang de division by zero op (met een try-except)
-"""
-
-"""
-Vraag 3:
-Volgende functie vraagt een number op (command-line).
-Het probleem is echter dat deze een ValueError-exceptie 
-zal raisen als de gebruiker geen getalingeeft.
-
-Wijzig deze code opdat deze het getal blijft
-opvragen zolang dat de gebruiker geen geldig
-integer ingeeft.
-Je zal hiervoor een loop moeten combineren met
-een try-except-statement.
-"""
-
-def get_number(message):
-    input_user = input(message)
-    try:
-        return int(input_user)
-    except ValueError:
-        return 0
-
-a = get_number("Geef een eerste nummer: ")
-b = get_number("Geef een 2de nummer: ")
-
-print(str(a) + " / " + str(b) + " = " + str(a / b))
+~~~bash
+$ python test.py
+6.283185307179586
+Straal mag niet negatief zijn
 ~~~

@@ -1,5 +1,48 @@
 ## Oefeningen
 
+### Oefening op exceptions
+
+~~~python
+"""
+Volgend programma deelt 2 getallen door elkaar
+"""
+
+"""
+Vraag 1:
+Zorg dat je het resultaat afprint met een f-string
+"""
+
+"""
+Vraag 2:
+Vang de division by zero op (met een try-except)
+"""
+
+"""
+Vraag 3:
+Volgende functie vraagt een number op (command-line).
+Het probleem is echter dat deze een ValueError-exceptie
+zal raisen als de gebruiker geen getalingeeft.
+
+Wijzig deze code opdat deze het getal blijft
+opvragen zolang dat de gebruiker geen geldig
+integer ingeeft.
+Je zal hiervoor een loop moeten combineren met
+een try-except-statement.
+"""
+
+def get_number(message):
+    input_user = input(message)
+    try:
+        return int(input_user)
+    except ValueError:
+        return 0
+
+a = get_number("Geef een eerste nummer: ")
+b = get_number("Geef een 2de nummer: ")
+
+print(str(a) + " / " + str(b) + " = " + str(a / b))
+~~~
+
 ### Oefening rond maanden
 
 Deze oefening focust zich op het lezen uit een list.     
