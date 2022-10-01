@@ -44,7 +44,7 @@ Hergebruik van uitvoering kan op drie manieren:
 ### Functies en hergebruik
 
 Het **sleutelwoord** bij **functies** is dus **hergebruik**.
-We hebben we al **eerder** **hergebruik** gezien ... namelijk met **variabelen**:
+We hebben al **eerder** **hergebruik** gezien ... namelijk met **variabelen**:
 
 * voorzien **hergebruik** van **data/geheugen**
 * **tussen** verschillende **statements**
@@ -61,11 +61,11 @@ We hebben al eerdere functies gebruikt zoals input, int, str en print:
 ~~~python
 # input() gets a string from the user
 input_a = input("Number a: ")
-# int() converts the input-string into an int we can use to calculate
+# int() converts the input string into an int we can use to calculate
 a = int(input_a)
 # str() converts an int back to a string
 output_a = str(a + 1)
-# the concatenated result is printed back through the string function
+# the concatenated result is printed back through the print function
 print(input_a + " + 1 = " + output_a)
 ~~~
 
@@ -166,7 +166,6 @@ Andere - meer gespecialiseerde - functies zijn gegroepeerd in modules.
 
 Als je bijvoorbeeld wiskundige functies wil gebruiken in Python, maak je gebruik van de module **math** (die standaard voorzien is in Python):
 
-
 ~~~
 >>> import math
 >>> degrees = 45
@@ -187,6 +186,22 @@ Om dan de functies te gebruiken, volstaat het niet om de naam van deze functies 
 
 * je moet de naam laten voorafgaan door de naam van de module
 * gevolgd door een **punt**
+
+Een andere manier is dat je één of meer functies (of variabelen) expliciet uit een module importeert:
+
+~~~
+>>> from math import pi, sin, sqrt
+>>> degrees = 45
+>>> radians = pi * degrees / 180
+>>> radians
+0.7853981633974483
+>>> sin(radians)
+0.7071067811865475
+>>> sqrt(2) / 2
+0.7071067811865476
+~~~
+
+Hierdoor hoef je de naam van de functie/variabele niet meer te laten voorafgaan door de naam van de module en een punt.
 
 Documentatie over de module math vind je op https://docs.python.org/3/library/math.html#module-math.
 
@@ -284,7 +299,7 @@ Traceback (most recent call last):
 NameError: name 'greeting' is not defined
 ~~~
 
-Opdat code een functie kan aanroepen/gebruiken, moet deze dus eerder in de "sequentiele uitvoering" gedefinieerd zijn.
+Opdat code een functie kan aanroepen/gebruiken, moet deze dus eerder in de "sequentiële uitvoering" gedefinieerd zijn.
 
 ### Argumenten
 

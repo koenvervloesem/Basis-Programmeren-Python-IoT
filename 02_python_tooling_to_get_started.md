@@ -52,9 +52,14 @@ Afhankelijk van de installatie kan het zijn dat je op Windows **py** moet typen 
 > Nota:  
 > Op deze manier kun je na de installatie ook testen of de installatie correct gebeurd is.
 
+Windows opent mogelijk de Microsoft Store om Python daaruit te installeren wanneer je bovenstaande opdracht intypt en je nog geen Python geïnstalleerd hebt.
+
 #### Installeren op Windows
 
-Zie https://www.python.org/downloads/ en installeer de nieuwste Python-versie.
+Er zijn twee manieren om Python te installeren onder Windows:
+
+* Ga naar https://www.python.org/downloads/ en installeer de nieuwste Python-versie. Daarna kun je Python uitvoeren op de opdrachtprompt met de opdracht `py`.
+* Installeer Python vanuit de Microsoft Store. Daarna kun je Python uitvoeren door in het startmenu te zoeken op Python. 
 
 #### Installeren op macOS
 
@@ -101,7 +106,7 @@ Een aantal teksteditors zijn **vrij beschikbaar**:
 * Gebruikers van **macOS** kunnen terecht bij **TextMate**.
 * Linux-distributies bieden doorgaans al standaard een krachtige teksteditor aan (**Gedit**, Xedit, Kate, Vi, ...).
 
-Er zijn nog veel andere goede teksteditors op de markt, specifiek voor ontwikkelaars: **Visual Studio Code**, Atom, Sublime, Brackets, ...
+Er zijn nog veel andere goede teksteditors op de markt, specifiek voor ontwikkelaars: **Visual Studio Code**, Sublime, Brackets, ...
 
 > Nota: als je ervaring hebt met een IDE (integrated development environment) zoals
 > Eclipse, PyCharm, ... mag je deze ook gebruiken.

@@ -385,7 +385,7 @@ range(5) zal tellen van 0 tot en met 4, en in totaal dus 5 getallen afgaan.
 ### Derde voorbeeld van een for-lus: range van ... tot ...
 
 De range-functie kan ook worden aangeroepen met een start-waarde.  
-Stel dat je wil tellen tem van een bepaald getal tot een ander getal, dan geef je twee argumenten door aan range:
+Stel dat je wil tellen van een bepaald getal tot een ander getal, dan geef je twee argumenten door aan range:
 
 ~~~python
 start = int(input("Count from: "))
@@ -415,8 +415,8 @@ Binnen een for- of while-lus kan je ook **andere block statements** toevoegen, e
 In onderstaand voorbeeld tonen we bijvoorbeeld de **maaltafels** met een **geneste for-lus**.
 
 ~~~python
-for left_part in range(1,10):
-    for right_part in range(1,10):
+for left_part in range(1, 10):
+    for right_part in range(1, 10):
         print(str(left_part) + " * " + str(right_part) + " = " + str(left_part * right_part))
 ~~~
 
