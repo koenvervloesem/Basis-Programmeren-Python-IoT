@@ -1,37 +1,37 @@
-## Werken met text-files
+## Werken met tekstbestanden
 
-### Files
+### Bestanden
 
-Een programma zal data (in- en output) verwerken, in vele gevallen zal een programma data willen **bewaren** voor **later gebruik**.  
-De eerste en meest directe manier om data op te slagen door deze **data** naar een **file** te schrijven.  
+Een programma neemt doorgaans invoer aan, verwerkt die en toont een resultaat als uitvoer. Maar in veel gevallen zal een programma ook data willen **bewaren** voor **later gebruik**.  
+De meest directe manier om data op te slaan is deze naar een **bestand** te schrijven.
 
-Een file is in essentie:
+Een bestand is in essentie:
 
 * een **verzameling** van **bytes**
-* opgeslagen op een **persistend medium** (harde schijf, usb-stick, ...)
-* geadresseerd binnen **een filesysteem**
-* met een specifiek **path** en **address**
+* opgeslagen op een **persistent medium** (harde schijf, solid state disk, usb-stick, ...)
+* geadresseerd binnen **een bestandssysteem**
+* met een specifiek **pad**
 
-Er bestaan verschillende soorten files:
+Er bestaan verschillende soorten bestanden:
 
-* Text-files  
-  Bevatten tekst-karakters die je kan lezen
-* Executables  
-  Bevatten code-instructies
-* Media-files  
-  Files die afspeelbare media (beelden, audio, video, ...)
-* Andere binaire datafils zoals spreadsheet-documenten, teksverwerkings-documenten, databases, ...
-* ...
+* Tekstbestanden
+  Bevatten tekstkarakters die je kan lezen
+* Uitvoerbare bestanden (*executables*)
+  Bevatten programma's met code-instructies voor de processor
+* Mediabestanden
+  Bevatten afspeelbare media (beelden, audio, video, ...)
+* Andere binaire gegevensbestanden
+  Bevatten spreadsheets, tekstverwerkingsdocumenten, databases, printplaatontwerpen, ...
   
-### Text-files
+### Tekstbestanden
 
-In dit deel gaan we leren werken met text-files.  
+In dit deel gaan we in Python leren werken met tekstbestanden.
 
-Text-files bevatten karakters (zoals we deze ook kennen van strings), karakters zijn bytes waarvan de waarde overeenstemt met een specifiek karakter.
+Tekstbestanden bevatten karakters, zoals we die ook kennen van strings in Python. Dit zijn bytes waarvan de waarde overeenstemt met een specifiek teken.
 
 #### ASCII-encodering
 
-Een heel veel gebruikte **encodering** die hiervoor wordt gebruikt bijvoorbeeld is ASCII
+We zagen eerder al ASCII, een veel gebruikte **encodering** die hiervoor gebruikt wordt: 
 
 ~~~
 Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex  
@@ -53,115 +53,61 @@ Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex
  15 0F SI   31 1F US   47 2F /  63 3F ?  79 4F O  95 5F _  111 6F o  127 7F DEL
 ~~~
 
-Stel dat we een tekst-file aanmaken met de volgende inhoud
+Stel dat we een tekstbestand aanmaken met de volgende inhoud:
 
 ~~~
 hello
   world
 ~~~
 
-zien we (via het programma hexdump) de volgende bytes
+Je kunt de inhoud als een tekstbestand bekijken. In Linux:
 
-~~~
+~~~bash
 $ cat hello.txt 
 hello
-	world
-$ od -t x1 hello.txt 
-0000000 68 65 6c 6c 6f 0a 09 77 6f 72 6c 64 0a
-0000015
+  world
 ~~~
 
-Deze bytes (hexadecimaal voorgesteld) kan je mappen naar de tekst volgens de bovenstaande ascii-tabel:
+En in Windows:
 
 ~~~
-68 65 6c 6c 6f 0a 09 77 6f 72 6c 64 0a
-=
-h  e  l  l  o  LF HT w  o  r  l  d  LF
+C:\Users\User\Documents>type hello.txt
+hello
+  world
 ~~~
 
+Maar je kunt ook de waarde van de overeenkomende bytes bekijken. In Linux:
 
-### Werken met text-files in Python
-
-Gelukkig genoeg moet je niet deze encodering kennen of toepassen om vanuit Python met text te kunnen werken.  
-Hiervoor bestaan er een aantal operaties binnen de Python. 
-
-#### Open en close
-
-Werken met text-files start met aanmaken van een **file-object**
-Dit file-object kan je aanmaken met de functie **open()** als volgt.  
-
-~~~python
-f = open("demofile.txt")
-# Een aantal operaties...
-f.close()
+~~~bash
+$ od -t x1z hello.txt 
+0000000 68 65 6c 6c 6f 0a 20 20 77 6f 72 6c 64 0a        >hello.  world.<
+0000016
 ~~~
 
-Na gebruik is het belangrijk dit **file-object** te **sluiten** met de operatie close.  
-Het operating system kan namelijk de file locken voor gebruik vanuit andere programma's zolang dit file-object open staat.
+In Windows:
 
-#### Relatief vs absoluut
+~~~
+C:\Users\User\Documents>PowerShell Format-Hex hello.txt
 
-Vorig voorbeeld opende een file die in dezelfde directory staat als van waaruit je het python-programma uitvoert.
-Je kan ook zeggen dat deze file **relatief** is aan het path waar je applicatie wordt uitgevoerd.
 
-Als er een de file in een subdirectory staat vanwaar je programma wordt uitgevoerd kan je een path beschrijven als volgt:
+           Path: C:\Users\User\Documents\hello.txt
 
-~~~python
-f = open("subdirectory/demofile.txt")
-# Een aantal operaties...
-f.close()
+           00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+00000000   68 65 6C 6C 6F 0D 0A 20 20 77 6F 72 6C 64        hello..  world
 ~~~
 
-Daarnaast als je een exact path wil beschrijven
+Je ziet hier dat beide programma's eerst de opeenvolgende bytes tonen, en daarna de overeenkomende leesbare tekens van de tekst volgens de ASCII-codering. Tekens zonder leesbare voorstelling worden met een punt aangeduid.
 
-~~~python
-f = open("/home/bart/demofile.txt")
-# Een aantal operaties...
-f.close()
-~~~
+Je ziet hier ook een verschil tussen Linux en Windows als je tekstbestanden aanmaakt: in Linux wordt er voor de nieuwe regel het byte 0a (LF in de ASCII-tabel) toegevoegd, terwijl Windows daarvoor twee bytes gebruikt: 0d 0a (CRLF in de ASCII-tabel).
 
-(en voor de Windows-gebruikers een plezier te doen)
+### Werken met tekstbestanden in Python
 
-~~~python
-f = open("c:/users/bart/demofile.txt")
-f.close()
-~~~
-
-#### Automatische close
-
-Het probleem met bovenstaande code is dat als er een exceptie voordoet na open() het file-object mogelijk niet gesloten wordt.
-Om dit te vermijden bestaat er de with-statement
-
-~~~python
-with open("demofile.txt") as f:
-  print(f.read())
-# Een aantal operaties...
-print(f.closed)
-~~~
-
-Deze zal er voor zorgen dat - na het uitvoeren van de code binnen deze statement - het file-object zowiezo wordt gesloten (zelfs al is er een exceptie/crash)
-
-#### Modes
-
-Een eerste notie die je moet kennen is het gebruik van modes bij het openen van een file:
-
-* "r" - Read
-* "x" - Create - maakt een file aan, en geeft een error wanneer deze file al bestaat
-* "a" - Append - maakt een file aan als deze nog niet bestaat, alle writes zijn toevoegingen
-* "w" - Write -  maakt een file aan als deze nog niet bestaat, overschrijft bestaande file
-
-Deze mode kan je meegeven als een 2de (optioneel argument)
-
-~~~python
-with open("demofile.txt", "r") as f:
-  print(f.read()) 
-~~~
-
-Als je dit 2de argument niet toevoegt, is de default-mode is r (read-only) 
+In de meeste gevallen moet je niets van deze encodering weten om met tekstbestanden te werken in Python. We tonen nu enkele standaardoperaties die je in Python met bestanden kunt uitvoeren.
 
 ### Lezen uit een tekst-file 
 
-Om te demonstreren hoe we met een text-file om kunnen gaan starten met het aanmaken van een file genaamd **demofile.txt** met de volgende (nietszeggende) content:
+Om te demonstreren hoe we met een tekstbestand kunnen omgaan, starten we met het aanmaken van een bestand genaamd **demofile.txt** met de volgende (nietszeggende) inhoud:
 
 ~~~
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
@@ -176,58 +122,125 @@ Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viver
 Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui
 ~~~
 
+#### Open en close
+
+Werken met een tekstbestand start met het aanmaken van een **file-object**.
+Dat doe je met de functie **open()**. Daarna kun je bestandsoperaties op het file-object uitvoeren, zoals een leesoperatie, en daarna sluit je het file-object:
+
+~~~python
+>>> f = open("demofile.txt")
+>>> print(f.read())
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aenean commodo ligula eget dolor. Aenean massa.
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.
+Integer tincidunt. Cras dapibus.
+Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.
+Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui
+
+>>> f.close()
+~~~
+
+Na gebruik is het belangrijk dat je dit **file-object sluit** met de operatie `close()`.  
+Het besturingssysteem kan namelijk het bestand blokkeren voor gebruik vanuit andere programma's zolang het file-object open staat.
+
+Als je na het sluiten van het file-object nog een leesopdracht uitvoert, krijg je overigens een foutmelding:
+
+~~~python
+>>> f.close()
+>>> print(f.read())
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: I/O operation on closed file.
+~~~
+
+#### Automatisch sluiten
+
+Het probleem met bovenstaande code is: als er zich een exception voordoet na `open()` wordt het file-object mogelijk niet gesloten.
+Om dit te vermijden bestaat er het with-statement:
+
+~~~python
+with open("demofile.txt") as f:
+    print(f.read())
+# Een aantal operaties...
+print(f.closed)
+~~~
+
+Het with-statement zal er voor zorgen dat - na het uitvoeren van de code binnen dit blok - het file-object sowieso wordt gesloten, zelfs al treedt er een exception op.
+
+**Bijna altijd is het aangeraden om `with open()` te gebruiken in plaats van `open()`.** In de rest van de cursus gebruiken we dan ook dit with-statement om met bestanden te werken.
+
 #### Volledige inhoud uitlezen
 
-Je kan de hele inhoud van een text-file opvragen via de read-functie.
+Je kan zoals we zagen de hele inhoud van een tekstbestand opvragen via de functie `read()`:
 
 ~~~python
-with open("demofile.txt", "r") as f:
-  print(f.read()) 
+with open("demofile.txt") as f:
+    print(f.read()) 
 ~~~
-Bovenstaande zal de volledige tekst afprinten (zoals hierboven).
 
-Je kan je ook beperken tot het aantal bytes (in geval van tekstfiles de characters)
+Het is interessant om in de REPL eens te kijken wat voor type data de functie read() teruggeeft:
 
 ~~~python
-with open("demofile.txt", "r") as f:
-  print(f.read(5)) 
-  print(f.read(5)) 
+>>> with open("demofile.txt") as f:
+...     content = f.read()
+... 
+>>> type(content)
+<class 'str'>
+>>> content
+'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAenean commodo ligula eget dolor. Aenean massa.\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\nDonec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.\nDonec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.\nInteger tincidunt. Cras dapibus.\nVivamus elementum semper nisi. Aenean vulputate eleifend tellus.\nAenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.\nAliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.\nQuisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui\n'
 ~~~
 
-Bemerk ook dat de positie tot waar je al hebt gelezen wordt bijgehouden in het file-object
+Je ziet hier dat read() de volledige inhoud van het bestand als een string teruggeeft. En als je de inhoud van de string bekijkt, zie je dat elke nieuwe regel vervangen is door een teken `\n` (voor newline).
+
+#### Aantal tekens uitlezen
+Je kunt je ook beperken tot het uitlezen van een aantal bytes (in het geval van een tekstbestand het aantal tekens):
+
+~~~python
+with open("demofile.txt") as f:
+    print(f.read(5)) 
+    print(f.read(5)) 
+~~~
+
+Bemerk ook dat de positie tot waar je al hebt gelezen wordt bijgehouden in het file-object.
 
 ~~~
 Lorem
  ipsu
 ~~~
 
-#### Lijn per lijn lezen
+#### Regel per regel lezen
 
-Je kan ook kiezen om lijn per lijn uit te lezen.
+Je kan ook kiezen om het bestand regel per regel uit te lezen.
 
 ~~~python
-with open("demofile.txt", "r") as f:
-  print(f.readline())
-  print(f.readline()) 
+with open("demofile.txt") as f:
+    print(f.readline())
+    print(f.readline()) 
 ~~~
 
-Bovenstaande code zal de 2 eerste lijnen afdrukken.
+Bovenstaande code zal de eerste twee regels afdrukken:
 
 ~~~
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
 Aenean commodo ligula eget dolor. Aenean massa.
 ~~~
 
-#### Loopen door alle lijnen
+#### Alle regels lezen met een lus
 
-Het file-object kan zich ook gedragen zoals een lijst van lijnen;  
-Op dit object kan je dan een loop uitvoeren door de ganse file.
+Het file-object kan zich ook gedragen als een lijst van regels.  
+Op dit object kan je dan een lus uitvoeren om het hele bestand regel per regel uit te lezen:
 
 ~~~python
-with open("demofile.txt", "r") as f:
-  for x in f:
-    print(x) 
+with open("demofile.txt") as f:
+    for x in f:
+        print(x) 
 ~~~
+
+Dan krijg je:
 
 ~~~
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
@@ -241,167 +254,146 @@ Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla conse
 ...
 ~~~
 
-### Schrijven naar een een file
+Doordenker: waarom toont het programma hier een lege regel tussen elke regel? En hoe zorg je dat dit niet gebeurt?
 
-Voor het schrijven naar een file zijn er 3 belangrijke modi die we moeten begrijpen:
+#### Modi
 
-* Een nieuwe file schrijven  => x (geeft een error aan als deze al bestaat)
-* Een bestaande file overschrijven => w
-* Toevoegen aan het einde van een file => a
+tot nu toe hebben we altijd bestanden gelezen. Dat is één van de mogelijke modi bij bij het openen van een bestand:
 
-#### Een nieuwe file aanmaken
+* "r" - Read   - Opent een bestand aan om dit te lezen.
+* "w" - Write  - Maakt een bestand aan als dit nog niet bestaat, overschrijft een bestaand bestand. Opent het bestand om ernaar te schrijven.
+* "a" - Append - Maakt een bestand aan als dit nog niet bestaat. Alle schrijfoperaties worden aan het einde van het bestand toegevoegd.
+* "x" - Create - Maakt een bestand aan als dit nog niet bestaat en opent het om ernaar te schrijven. Geeft een exception FileExistsError als het bestand al bestaat.
 
-Het eerste scenario is dat we een nieuwe file willen aanmaken.  
-In dit geval gebruiken we de modus **x**
+Deze mode kan je meegeven als een tweede (optioneel) argument aan de functie open:
+
+~~~python
+with open("demofile.txt", "r") as f:
+    print(f.read()) 
+~~~
+
+Als je dit tweede argument niet toevoegt, is de standaardmodus is r (read-only).
+
+### Schrijven naar een een bestand
+
+Voor het schrijven naar een bestand zijn er drie belangrijke modi die we moeten begrijpen:
+
+* Een nieuw bestand schrijven => x (geeft een FileExistsError als het bestand al bestaat)
+* Een bestaand bestand overschrijven => w
+* Aan het einde van een bestaand bestand toevoegen => a
+
+#### Een nieuw bestand aanmaken
+
+Het eerste scenario is dat we een nieuw bestand willen aanmaken.  
+In dit geval gebruiken we de modus **x**:
 
 ~~~python
 with open("hello.txt", "x") as f:
-  f.write("Dit is een nieuwe file!!!")
+    f.write("Dit is een nieuw bestand")
 with open("hello.txt", "r") as f:
-  print(f.read()) 
+    print(f.read()) 
 ~~~
 
-Als de file nog niet mocht bestaan zal er een nieuwue file hello.txt worden aangemaakt
+Als het bestand nog niet bestaat, zal er een nieuw bestand hello.txt worden aangemaakt.
+
+~~~bash
+$ python create_new_file.py
+Dit is een nieuw bestand
+~~~
+
+Mocht het bestand al bestaan, bijvoorbeeld door het programma een tweede keer uit te voeren, zal er een exception worden opgeworpen door de open-functie:
 
 ~~~
-$ python3 create_new_file.py
-Dit is een nieuwe file!!!
-$
-~~~
-
-Mocht deze file reeds bestaan, bijvoorbeeld door het programma een 2de maal te runnen zal er een exceptie worden opgeworpen door de open-functie
-
-~~~
-$ python3 create_new_file.py
+$ python create_new_file.py
 Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
+  File "/home/koan/create_new_file.py", line 1, in <module>
+    with open("hello.txt", "x") as f:
 FileExistsError: [Errno 17] File exists: 'hello.txt'
-$
 ~~~
 
-#### Nieuwe file of bestaande file overschrijven
+#### Nieuw of bestaand bestand overschrijven
 
-Als we dezelfde code wijzigen om de modus **w** te gebruiken:
+Als we dezelfde code wijzigen en de modus **w** gebruiken:
 
-* zal er **geen error** worden opgeworpen als de **file reeds bestaat**
-* maar wordt deze **overschreven**
-* als deze toch **niet bestaat** wordt deze **aangemaakt**
+* zal er **geen exception** worden opgeworpen als het **bestand reeds bestaat**
+* maar wordt dit **overschreven**
+* als het bestand **niet bestaat**, wordt het **aangemaakt**
 
 Onderstaande code:
 
 ~~~python
 with open("hello.txt", "w") as f:
-  f.write("Dit is een nieuwe file!!!")
+    f.write("Dit is een nieuw bestand")
 with open("hello.txt", "r") as f:
-  print(f.read()) 
+    print(f.read()) 
 
 with open("hello.txt", "w") as f:
-  f.write("De file is overschreven!!!")
+    f.write("Het bestand is overschreven")
 with open("hello.txt", "r") as f:
-  print(f.read()) 
+    print(f.read()) 
 ~~~
 
-* Zal de file eerst aanmaken (als deze nog niet bestaat)
+* Zal het bestand eerst aanmaken (als dit nog niet bestaat)
 * En vervolgens de inhoud overschrijven
 
 ~~~
-$ python3 create_new_file.py
-Dit is een nieuwe file!!!
+$ python create_new_file.py
+Dit is een nieuw bestand
 
-De file is overschreven
-
-$
+Het bestand is overschreven
 ~~~
 
-#### Toevoegen aan de einde van de text-file
+#### Toevoegen aan het einde van een tekstbestand
 
 ~~~python
 with open("hello.txt", "w") as f:
-  f.write("Dit is een nieuwe file!!!")
+    f.write("Dit is een nieuw bestand")
 with open("hello.txt", "r") as f:
-  print(f.read()) 
+    print(f.read()) 
 
 with open("hello.txt", "a") as f:
-  f.write("Deze lijn is toegevoegd!!!")
+    f.write("Deze regel is toegevoegd")
 with open("hello.txt", "r") as f:
-  print(f.read()) 
+    print(f.read()) 
 ~~~
 
 ~~~
-$ python3 append_to_file.py
-Dit is een nieuwe file!!!
+$ python append_to_file.py
+Dit is een nieuw bestand
 
-Dit is een nieuwe file!!!
-Deze lijn is toegevoegd!!!
-$
+Dit is een nieuw bestand
+Deze regel is toegevoegd
 ~~~
 
-### Andere file-operaties
+#### Relatief of absoluut pad
 
-Naast het lezen en schrijven van een file kan je ook nog andere operaties uitvoeren op files
+Vorige voorbeelden openden een bestand dat in dezelfde directory staat als van waaruit je het Python-programma uitvoert.
 
-#### Deleten van files
+We gaven als pad om te openen dan ook gewoon de bestandsnaam door. Dit pad is **relatief** ten opzichte van de toepassing die je uitvoert.
 
-Het verwijderen van een file kan je via de functie remove.  
-Hiervoor dien je wel de os-library te importeren
+Als je een bestand wilt inlezen dat in een subdirectory staat ten opzichte van de directory vanwaar je programma wordt uitgevoerd, beschrijf je het pad als volgt:
 
 ~~~python
-import os
-os.remove("hello.txt") 
+with open("subdirectory/demofile.txt") as f:
+    print(f.read())
 ~~~
 
-Hou er natuurlijk rekening mee dat als de file niet bestaat deze code een error zal opwerpen:
+Zowel in Linux als Windows kun je een forward slash (/) gebruiken om directory's af te scheiden, ook al gebruikt Windows intern een backslash (\). Een backslash wordt in Python-strings immers als escape character gebruikt (zie voorheen).
+
+Daarnaast kan je ook een exact pad opgeven, dit wordt ook een **absoluut** pad genoemd. Een voorbeeld in Linux:
 
 ~~~python
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: 'hello.txt'
+with open("/home/koan/demofile.txt") as f:
+    print(f.read())
 ~~~
 
-#### Testen of de file bestaat
-
-Deze exceptie kan je vermijden door na te gaan of deze file reeds betaat, die kan je met de exists()-functie
-Zo kan je bovenstaande code verbeteren door de remove()-call af te schermen met een if-clausule
+En in Windows:
 
 ~~~python
-import os
-if os.path.exists("demofile.txt"):
-  os.remove("demofile.txt")
-else:
-  print("The file does not exist") 
-~~~
-
-#### Verwijderen van een directory
-
-Om een directory te verwijderen dien je de rmdir()-functie te gebruiken
-
-~~~python
-import os
-os.rmdir("a_folder") 
-~~~
-
-* Let wel, deze zal falen als de directory niet bestaat 
-
-~~~
-...
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: 'a_folder'
->>> 
-~~~
-
-> Om dit te vermijden kan je os.path.exists() gebruiken)
-
-* Als de directory niet leeg is zal je trouwens ook een error krijgen
-
-~~~
-...
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-OSError: [Errno 39] Directory not empty: 'a_folder'
+with open("C:/Users/User/Documents/demofile.txt") as f:
+    print(f.read())
 ~~~
 
 ### Verdere info
 
-Er zijn nog vele mogelijkheden om files en directories te bewerken.  
-Om deze te leren kennen kan je terecht bij https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
+Meer info over het werken met bestanden vind je op https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files.
