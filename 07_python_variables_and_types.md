@@ -237,3 +237,48 @@ Dit wordt gebruikt voor kommagetallen, dus getallen waar je precisie nodig hebt 
 >>> print(a+b)
 21.75
 ~~~
+
+Let op: werken met floats heeft zo zijn beperkingen. Zo worden floats intern als breuken met grondtal 2 (binair) voorgesteld, terwijl niet alle decimaal voorgestelde getallen een exacte binaire voorstelling hebben.
+
+Vergelijk dit met ons decimale talstelsel: we kunnen de breuk 1/3 niet exact voorstellen. We kunnen dit wel benaderen als 0,3, 0,33, 0,333, enzovoort, maar dit is nooit volledig correct, het is een zich oneindig herhalende waarde 0,33333... Op welk punt je stopt, bepaalt hoe goed je benadering van de exacte waarde 1/3 is.
+
+Op dezelfde manier kun je de breuk 1/10, dus de decimale waarde 0,1, niet exact voorstellen in grondtal 2. Het is de oneindig herhalende waarde 0,00011001100110011... Op welk punt je stopt, bepaalt hier weer hoe goed je benadering van de exacte waarde 1/10 is.
+
+Als je dus met floats werkt, gebruikt Python altijd een benaderende waarde, maar toont het niet de waarde die het opslaat, maar een benadering door de waarde af te ronden.
+
+Dat kun je eenvoudig testen in de REPL:
+
+```python
+>>> 0.1*3
+0.30000000000000004
+```
+
+Hoe komt dit? 0.1 wordt door Python intern voorgesteld als 0.1000000000000000055511151231257827021181583404541015625. Door dit met 3 te vermenigvuldigen, kom je aan die 4 helemaal achteraan.
+
+Hou hier ook rekening mee als je floats gaat vergelijken met elkaar. Door dit soort afrondingen kunnen de waardes dan onverwacht niet overeenkomen.
+
+Als je met floats werkt, is het daarom meestal aan te raden om zelf resultaten altijd af te ronden tot op het aantal decimalen dat je nodig hebt. Dat doe je met de ingebouwde functie round:
+
+```python
+>>> round(0.1*3, 2)
+0.3
+>>> round(0.1*3, 17)
+0.30000000000000004
+>>> round(0.1*3, 16)
+0.3
+>>> round(4/3, 2)
+1.33
+>>> round(4/3, 5)
+1.33333
+>>> round(0.11)
+0
+```
+
+Het tweede argument dat je aan de functie round doorgeeft, is het aantal cijfers na de komma dat je wilt weergeven. Laat je dit weg, dan rondt de functie de waarde af tot op een geheel getal (dus zonder cijfers na de komma).
+
+Wil je meer weten over de uitdagingen van met floats te werken, lees dan https://docs.python.org/3/tutorial/floatingpoint.html.
+
+In de zeldzame gevallen dat je toch exacte berekeningen nodig hebt, gebruik dan een van de volgende modules:
+
+* https://docs.python.org/3/library/decimal.html
+* https://docs.python.org/3/library/fractions.html

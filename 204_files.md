@@ -378,7 +378,7 @@ with open("subdirectory/demofile.txt") as f:
     print(f.read())
 ~~~
 
-Zowel in Linux als Windows kun je een forward slash (/) gebruiken om directory's af te scheiden, ook al gebruikt Windows intern een backslash (\). Een backslash wordt in Python-strings immers als escape character gebruikt (zie voorheen).
+Zowel in Linux als Windows kun je een forward slash (/) gebruiken om directory's af te scheiden, ook al gebruikt Windows intern een backslash (\\). Een backslash wordt in Python-strings immers als escape character gebruikt (zie voorheen).
 
 Daarnaast kan je ook een exact pad opgeven, dit wordt ook een **absoluut** pad genoemd. Een voorbeeld in Linux:
 
