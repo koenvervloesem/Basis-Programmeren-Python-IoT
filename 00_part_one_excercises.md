@@ -74,7 +74,7 @@ Dit kan je doen met onderstaande code:
 ~~~python
 import random
 
-print(random.randint(1,100))  # Toont een willekeurig getal van 1 tot 100
+print(random.randint(1, 100))  # Toont een willekeurig getal van 1 tot 100
 ~~~
 
 #### Uitbreiding
@@ -83,7 +83,7 @@ Beperk het aantal pogingen dat je kan raden.
 
 ### Cirkel
 
-Schrijf code die de oppervlakte van een cirkel berekent, gebruik makend van de variabele straal en de constante math.pi die je uit de module math importeert. 
+Schrijf code die de oppervlakte van een cirkel berekent, gebruikmakend van de variabele straal en de constante `math.pi` die je uit de module `math` importeert. 
 Voor het geval je het vergeten bent, de formule voor de oppervlakte van een cirkel is straal maal straal maal pi. Toon de uitkomst als volgt: “De oppervlakte van een cirkel met straal ...
 is ...”
 
@@ -113,7 +113,7 @@ Schrijf een programma dat
 * stopt wanneer je een negatief getal ingeeft
 * een aantal statistieken bijhoudt over (de positieve) getallen
 
-Zie onderstaand voorbeedl van uitvoering.
+Zie onderstaand voorbeeld van uitvoering.
 
 ~~~
 $ python3 number.py
@@ -352,7 +352,7 @@ print_multiple_triangles(6, 3)
 
 
 ~~~
-$ python3 print_mutliple_triangles.py
+$ python3 print_multiple_triangles.py
      *           *            *      
     * *         * *          * *
    *   *       *   *        *   *

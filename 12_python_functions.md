@@ -126,11 +126,11 @@ result = times_two(1)
 print(result)  # 2
 ~~~
 
-Je kan een waarde, variabele (of andere expressies) meegeven als argument.
+Je kan een waarde, variabele (of andere expressies) meegeven als argument. In dit geval geef je de waarde 1 als argument mee aan de functie `times_two`, en geeft die als waarde 2 terug.
 
 ### Meerdere argumenten
 
-Je bent **niet beperkt tot 1 argument**. Een functie kan van **0 tot oneindig aantal parameters** definiëren.
+Je bent **niet beperkt tot één argument**. Een functie kan van **0 tot oneindig aantal parameters** definiëren.
 
 ~~~python
 result = multiply(3, 2)
@@ -187,6 +187,8 @@ Om dan de functies te gebruiken, volstaat het niet om de naam van deze functies 
 * je moet de naam laten voorafgaan door de naam van de module
 * gevolgd door een **punt**
 
+Bijvoorbeeld: `math.sqrt`, waarbij `math` de module is en `sqrt` een functie in die module.
+
 Een andere manier is dat je één of meer functies (of variabelen) expliciet uit een module importeert:
 
 ~~~
@@ -201,11 +203,16 @@ Een andere manier is dat je één of meer functies (of variabelen) expliciet uit
 0.7071067811865476
 ~~~
 
-Hierdoor hoef je de naam van de functie/variabele niet meer te laten voorafgaan door de naam van de module en een punt.
+Hierdoor hoef je de naam van de functie/variabele niet meer te laten voorafgaan door de naam van de module en een punt. Je kunt nu bijvoorbeeld gewoon de functie `sqrt` aanroepen.
+
+Samengevat heb je twee opties:
+
+* Ofwel importeer je de module met `import math` en roep je de functie aan als `math.sqrt`.
+* Ofwel importeer je expliciet de functie uit de module met `from math import sqrt` en roep je de functie aan als `sqrt`.
 
 Documentatie over de module math vind je op https://docs.python.org/3/library/math.html#module-math.
 
-Merk op: de functie math.sin verwacht zijn argument in radialen (*radians*), niet in graden. De module math bevat overigens de functie math.radians om een hoek in graden naar radialen om te zetten, zodat je dat niet zelf hoeft te doen zoals in het voorbeeld hierboven.
+Merk op: de functie `math.sin` verwacht zijn argument in radialen (*radians*), niet in graden. De module `math` bevat overigens de functie `math.radians` om een hoek in graden naar radialen om te zetten, zodat je dat niet zelf hoeft te doen zoals in het voorbeeld hierboven.
 
 Een andere nuttige module is **random**. Deze bevat functies om met willekeurige getallen te werken.  
 Onderstaande code demonstreert het gebruik van deze module:
@@ -303,13 +310,13 @@ Opdat code een functie kan aanroepen/gebruiken, moet deze dus eerder in de "sequ
 
 ### Argumenten
 
-Je kan een functie **flexibeler** maken door er **argumenten** of parameters aan toe te voegen.  
+Je kan een functie **algemener** maken door er **argumenten** of parameters aan toe te voegen.  
 In onderstaand voorbeeld voegen we een argument *name* toe. Met dit argument kan je de naam bepalen die door de functie wordt getoond.
 
 ~~~python
 def greeting(name):
     print("Hello")
-    print(" from " + name)
+    print(" from", name)
 greeting("Koen")
 ~~~
 
@@ -319,13 +326,13 @@ Je kan als gevolg dezelfde functie meerdere malen **hergebruiken** met een versc
 ~~~python
 def greeting(name):
     print("Hello")
-    print(" from " + name)
+    print(" from", name)
 
 greeting("Koen")
 greeting("Bart")
 ~~~
 
-Als je deze code dan uitvoert krijg je twee keer dezelfde uitvoering maar met een andere naam.
+Als je deze code dan uitvoert, krijg je twee keer dezelfde uitvoering maar met een andere naam.
 
 ~~~
 $ python3 greeting.py
@@ -344,7 +351,7 @@ In het volgende voorbeeld geven we zowel een voor- als achternaam mee...
 ~~~python
 def greeting(name, surname):
     print("Hello")
-    print(" from " + name + " " + surname)
+    print(" from", name, surname)
 
 greeting("Koen", "Vervloesem")
 greeting("Bart", "Voet")
@@ -408,7 +415,7 @@ Een functie kan natuurlijk ook nog een andere functie aanroepen.
 
 ~~~python
 def greeting(name, surname):
-    print("Hello " + name + " " + surname)
+    print("Hello", name, surname)
 
 def polite_conversation():
     name = input("What's your first name? ")
@@ -446,7 +453,7 @@ print(c)  # NameError
 ~~~
 
 Deze code probeert c, die alleen binnen de functie sum bekend is, buiten de functie sum te gebruiken.  
-De python-interpreter geeft dan de volgende foutmelding:
+De Python-interpreter geeft dan de volgende foutmelding:
 
 ~~~
 $python3 test.py
