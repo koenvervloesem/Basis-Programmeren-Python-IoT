@@ -18,7 +18,7 @@ Hello World
 #### Enkele en dubbele aanhalingstekens
 
 Zo'n literal wordt **gedemarkeerd** door aanhalingstekens (*quotes*). Dit kunnen enkele of dubbele aanhalingstekens zijn.  
-Belangrijk is wel: als je start met de ene soort (" of '), moet je ook eindigen met dezelfde:
+Belangrijk is wel: als je start met de ene soort (" of '), moet je ook eindigen met dezelfde. Anders krijg je een foutmelding:
 
 ~~~python
 >>> text = "Hello world'
@@ -107,6 +107,8 @@ over meerdere regels
 loopt.
 ~~~
 
+Merk op dat de REPL de volgende regels telkens met drie puntjes (...) laat beginnen, om aan te geven dat het een blok is.
+
 #### ASCII-codes
 
 Een stuk tekst bestaat eigenlijk uit opeenvolgende bytes: elk teken wordt door een byte met een specifieke numerieke waarde voorgesteld.
@@ -142,7 +144,7 @@ In Python kan je met deze ASCII-codes een string construeren, bijvoorbeeld met d
 hello
 ~~~
 
-Python kent ook en functie om een ASCII-waarde naar het bijbehorende teken om te zetten:
+Python kent ook een functie om een ASCII-waarde naar het bijbehorende teken om te zetten:
 
 ~~~python
 >>> chr(104)
@@ -157,6 +159,15 @@ En ook andersom kun je de ASCII-waarde van een teken opvragen:
 >>> ord("h")
 104
 ~~~
+
+Overigens zijn ondertussen veel meer tekens dan in de ASCII-tabel gedefinieerd, namelijk in de standaard Unicode. De 256 mogelijke tekens van een 8-bits getal waren immers niet voldoende. Unicode kan tot 32 bits gebruiken en heeft miljoenen tekens met een bijbehorende code gedefinieerd. De Python-functies chr en ord kunnen ook met Unicode-tekens om:
+
+```python
+>>> ord("🤯")
+129327
+>>> chr(129326)
+'🤮'
+```
 
 ### Opvragen van tekst op de console
 
@@ -175,7 +186,8 @@ Je kan via de +-operator verschillende strings 'aan elkaar plakken' (concatenere
 
 ~~~python
 >>> text = "Hello"
->>> print(text + " world")
+>>> welcome_text = text + " world"
+>>> print(welcome_text)
 Hello world
 ~~~
 
@@ -205,7 +217,7 @@ Hello world 2
 
 ### Concatenatie via print
 
-De concatenatie kan echter ook via de functie print:
+De concatenatie kan zoals we zagen echter ook via de functie print:
 
 ~~~python
 >>> text = "Hello"
@@ -279,3 +291,49 @@ En je kunt ook functies gebruiken tussen de accolades:
 >>> print(f"Hallo {name}! Je naam is {len(name)} letters lang.")
 Hallo Koen! Je naam is 4 letters lang.
 ~~~
+
+### Indexen en slicing
+
+Net zoals bij lists kun je ook bij strings delen selecteren met indexen en slicing. De syntaxis van slicing is hetzelfde: lijst[startindex:stopindex]. Let op: ook hier is de stopindex niet inclusief! Een voorbeeld:
+
+~~~python
+>>> naam = "Koen"
+>>> naam[0]
+'K'
+>>> naam[-1]
+'n'
+>>> naam[:-1]
+'Koe'
+>>> naam[1:-1]
+'oe'
+~~~
+
+Maar let op: in tegenstelling tot een lijst kun je een string niet veranderen: eenmaal aangemaakt, staat de waarde ervan vast. Probeer je een string toch te veranderen, dan krijg je een foutmelding:
+
+~~~python
+>>> naam = "Koen"
+>>> naam[0] = "k"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  TypeError: 'str' object does not support item assignment
+~~~
+
+### Bewerkingen op strings
+
+Hoe bewerk je dan wel een string? Door allerlei methodes die je op een string kunt uitvoeren. Die veranderen de string niet, maar maken een nieuwe string aan met de gevraagde wijzigingen. Enkele voorbeelden:
+
+~~~python
+>>> boodschap = "Ik ben Koen"
+>>> boodschap.capitalize()
+'Ik ben koen'
+>>> boodschap.lower()
+'ik ben koen'
+>>> boodschap.replace("Koen", "Bart")
+'Ik ben Bart'
+>>> boodschap.swapcase()
+'iK BEN kOEN'
+>>> boodschap.upper()
+'IK BEN KOEN'
+~~~
+
+Meer bewerkingen op strings krijg je te zien als je `help(str)` opvraagt of de documentatie op https://docs.python.org/3/library/stdtypes.html#str bekijkt.

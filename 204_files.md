@@ -14,14 +14,10 @@ Een bestand is in essentie:
 
 Er bestaan verschillende soorten bestanden:
 
-* Tekstbestanden
-  Bevatten tekstkarakters die je kan lezen
-* Uitvoerbare bestanden (*executables*)
-  Bevatten programma's met code-instructies voor de processor
-* Mediabestanden
-  Bevatten afspeelbare media (beelden, audio, video, ...)
-* Andere binaire gegevensbestanden
-  Bevatten spreadsheets, tekstverwerkingsdocumenten, databases, printplaatontwerpen, ...
+* Tekstbestanden: Bevatten tekstkarakters die je kan lezen
+* Uitvoerbare bestanden (*executables*): Bevatten programma's met code-instructies voor de processor
+* Mediabestanden: Bevatten afspeelbare media (beelden, audio, video, ...)
+* Andere binaire gegevensbestanden: Bevatten spreadsheets, tekstverwerkingsdocumenten, databases, printplaatontwerpen, ...
   
 ### Tekstbestanden
 
@@ -121,6 +117,8 @@ Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
 Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. 
 Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui
 ~~~
+
+Open dus Kladblok of een andere teksteditor, plak deze tekst daarin en sla het op onder de naam **demofile.txt**.
 
 #### Open en close
 
@@ -272,9 +270,9 @@ with open("demofile.txt", "r") as f:
     print(f.read()) 
 ~~~
 
-Als je dit tweede argument niet toevoegt, is de standaardmodus is r (read-only).
+Als je dit tweede argument niet toevoegt, is de standaardmodus r (read-only).
 
-### Schrijven naar een een bestand
+### Schrijven naar een bestand
 
 Voor het schrijven naar een bestand zijn er drie belangrijke modi die we moeten begrijpen:
 

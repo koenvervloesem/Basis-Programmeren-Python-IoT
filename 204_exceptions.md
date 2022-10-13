@@ -7,7 +7,7 @@ Het **uitvoeren** van Python-code gebeurt in **twee fases**:
 * Het **parsen en interpreteren** van de Python-code
 * Het eigenlijke **uitvoeren**
 
-Als er **fouten** in de **codesyntaxis** zijn, herkent de Python-interpreter dat al in de eerste fase en dus al vóór de **start** van het **programma**.
+Als er **fouten** in de **codesyntaxis** (de taalregels) zijn, herkent de Python-interpreter dat al in de eerste fase en dus al vóór de **start** van het **programma**.
 
 In de volgende code **vergeten** we bijvoorbeeld (bewust) een **":"** te plaatsen **na de for**:
 
@@ -36,7 +36,7 @@ Er kunnen echter ook fouten gebeuren **"at runtime"** zoals **bijvoorbeeld**:
 
 * Een functie oproepen die niet bestaat.
 * Een string die niet kan omgezet worden naar een integer (bijvoorbeeld `int("6abc")`).
-* Delen door 0 (bijvoorbeeld `a = 5/0`).
+* Delen door 0 (bijvoorbeeld `a = 5 / 0`).
 
 Deze "runtime errors" benoemen we ook als **exceptions**.
 
@@ -44,7 +44,7 @@ Neem bijvoorbeeld het volgende programma:
 
 ~~~python
 print("Hello")
-a = 5/0
+a = 5 / 0
 print(a)
 ~~~
 
@@ -55,13 +55,13 @@ $ python test.py
 Hello
 Traceback (most recent call last):
   File "/home/koan/test.py", line 2, in <module>
-    a = 5/0
+    a = 5 / 0
 ZeroDivisionError: division by zero
 ~~~
 
 In dit geval zien we dat er ook duidelijk een **error** wordt aangegeven, in dit geval een **ZeroDivisionError**.  
 
-Bemerk wel dat de **code** die **vóór de fout** (a = 5/0) komt wel **wordt uitgevoerd** (`print("Hello")`).
+Bemerk wel dat de **code** die **vóór de fout** (a = 5 / 0) komt wel **wordt uitgevoerd** (`print("Hello")`).
 
 Het programma **start** wel degelijk **maar stopt** bij het **aangegeven punt waarop de fout gebeurt**.
 
@@ -69,7 +69,7 @@ In tegenstelling tot een syntax error kan de Python-interpreter niet al in de ee
 
 ### Exceptions en functies
 
-Het maakt ook niet uit als je deze **exception genereert** binnen een functie. Deze wordt dan **gepropageerd** naar de plaats waar de functie wordt aangeroepen zolang deze niet wordt opgevangen.
+Het maakt ook niet uit als je deze **exception genereert** binnen een functie. Deze wordt dan **gepropageerd** (doorgegeven) naar de plaats waar de functie wordt aangeroepen zolang deze niet wordt opgevangen.
 
 Bijvoorbeeld:
 

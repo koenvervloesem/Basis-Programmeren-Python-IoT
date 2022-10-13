@@ -24,6 +24,7 @@ Het eerste en meest eenvoudige type is de List (lijst).
 Praktisch uitgedrukt heeft een list in Python de volgende eigenschappen:
 
 * Het is een **geordende verzameling** of collectie van elementen.
+* Een element kan meermaals in een lijst voorkomen.
 * Elk **element** van zo'n lijst kan **gelezen of gewijzigd** worden via een **index**.
 * Deze index **start** bij **0** (eerste element) en **eindigt** bij de index **n-1**.
 * Een lijst heeft een **grootte of dimensie** (die we voor de gemakkelijkheid aanduiden als n).
@@ -42,7 +43,7 @@ Dit doe je door een List-literal aan te maken:
 ~~~python
 x = [1.0, 2.0, 3.0]
 y = ["a", "list", "of", "strings"]
-z = ["a", 1, "mixed", 3.0, "list"]
+z = ["a", 1, "mixed", 3.0, "list", "with", 1, "float"]
 ~~~
 
 
@@ -83,6 +84,13 @@ Je kan zelfs een lijst van lijsten maken...
 x = [[1.0, 2.0, 3.0], ["a", 1, "mixed", 3.0, "list"]]
 ~~~
 
+Of wat duidelijker weergegeven:
+
+~~~python
+x = [[1.0, 2.0, 3.0],
+     ["a", 1, "mixed", 3.0, "list"]]
+~~~
+
 ### Dimensie van een lijst
 
 Een eerste actie die we kunnen uitvoeren is de grootte of dimensie van een lijst opvragen.  
@@ -99,6 +107,8 @@ Daarvoor bestaat een generieke functie len(), die niet alleen voor lijsten maar 
 >>> len(z)
 2
 ~~~
+
+Zie je waarom die laatste lijst lengte 2 heeft?
 
 ### Lege lijst
 
@@ -268,6 +278,37 @@ for n in x[2:4]:
     print(n)
 ~~~
 
+Zowel de startindex als stopindex zijn overigens optioneel:
+
+~~~python
+>>> x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> x[2:]
+[2, 3, 4, 5, 6, 7, 8, 9]
+>>> x[:4]
+[0, 1, 2, 3]
+>>> x[:]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+~~~
+
+En je kunt met een slice ook een deel van je lijst veranderen:
+
+~~~python
+>>> x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> x[2:4] = [99]
+>>> x
+[0, 1, 99, 4, 5, 6, 7, 8, 9]
+~~~
+
+Let op: als je een waarde toekent aan een slice, moet dit ook een lijst zijn. Dit kan dus niet:
+
+~~~python
+>>> x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> x[2:4] = 99
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only assign an iterable
+~~~
+
 #### Slicing met negatieve indexen
 
 Je kan hier ook negatieve indexen gebruiken:
@@ -299,9 +340,95 @@ for n in x[2:-2]:
     print(n)
 ~~~
 
+### Een variabele is een naam
+
+We moeten even teruggaan naar het concept van een variabele. Zoals we eerder zagen is een variabele:
+
+* Een stuk **geheugen** dat je kan hergebruiken
+* Dat een **waarde** kan bevatten
+* Waaraan een **naam** is gelinkt
+  (of ook wel **symbool** genoemd)
+
+Stel dat je nu een variabele x de waarde 5 geeft met een assignment, en daarna de variabele y de waarde van de variabele x geeft met een assignment, dan krijg je de volgende waardes:
+
+~~~python
+>>> x = 5
+>>> y = x
+>>> x
+5
+>>> y
+5
+~~~
+
+Als je nu de waarde van x verandert, blijft y de originele waarde 5 behouden:
+
+~~~python
+>>> x = x + 1
+>>> x
+6
+>>> y
+5
+~~~
+
+Bij het assignment `y = x` werd immers de inhoud van het geheugen van variabele x gekopieerd naar het geheugen van variabele y. Veranderingen aan x daarna hebben geen impact meer op y, want dat is een ander stukje geheugen.
+
+Hetzelfde geldt voor strings:
+
+~~~python
+>>> x = "foobar"
+>>> y = x
+>>> x
+'foobar'
+>>> y
+'foobar'
+>>> x = x + "Z"
+>>> x
+'foobarZ'
+>>> y
+'foobar'
+~~~
+
+Wat als we nu hetzelfde doen met een lijst? We creëren een lijst x, kennen x aan y toe, veranderen x, en kijken naar de waardes van x en y:
+
+~~~python
+>>> x = [0, 1, 2, 3, 4]
+>>> y = x
+>>> x
+[0, 1, 2, 3, 4]
+>>> y
+[0, 1, 2, 3, 4]
+>>> x[0] = 99
+>>> x
+[99, 1, 2, 3, 4]
+>>> y
+[99, 1, 2, 3, 4]
+~~~
+
+Deze keer is de waarde van y wel mee veranderd met die van x! Hoe kan dat?
+
+De verklaring: als Python een assignment doet met een lijst, steekt hij niet de waarde van die lijst in het bijbehorende geheugen, maar een verwijzing naar een geheugenplaats waar de lijst staat. Als je dan `y = x` uitvoert, kopieer je dat geheugenadres van lijst x naar y, en daarna verwijzen x en y dus naar dezelfde lijst, het zijn gewoon aliassen.
+
+Hoe zou je dan wel de ene lijst kunnen veranderen en niet de andere? Dan moet je de lijst x naar de lijst y kopiëren, zodat er een nieuwe lijst wordt aangemaakt, op een nieuw geheugenadres, met dezelfde elementen. Eén manier daarvoor is om een slice van de lijst te nemen zonder start- of stopindex:
+
+~~~python
+>>> x = [0, 1, 2, 3, 4]
+>>> y = x[:]
+>>> x
+[0, 1, 2, 3, 4]
+>>> y
+[0, 1, 2, 3, 4]
+>>> x[0] = 99
+>>> x
+[99, 1, 2, 3, 4]
+>>> y
+[0, 1, 2, 3, 4]
+~~~
+
+Een andere manier om een lijst te kopiëren, is `x.copy()`.
+
 ### Bewerken van een lijst 
 
-Een lijst kan je ook nog vergroten eenmaal je die gecreëerd hebt:
+Een lijst kan je nog op allerlei manieren verwerken nadat je die gecreëerd hebt:
 
 * append(): element toevoegen aan einde van de lijst
 * extend(): zelfde maar een ineens een andere lijst of iterable toevoegen 
@@ -320,28 +447,34 @@ Zie volgende sequentie in de REPL voor voorbeelden hiervan:
 >>> car_park.append("Porsche")
 >>> car_park
 ['Audi', 'Volkswagen', 'Skoda', 'Porsche']
->>> car_park.extend(["SEAT", "Cupra"])
+>>> car_park.extend(["SEAT", "Cupra", "Porsche"])
 >>> car_park
-['Audi', 'Volkswagen', 'Skoda', 'Porsche', 'SEAT', 'Cupra']
+['Audi', 'Volkswagen', 'Skoda', 'Porsche', 'SEAT', 'Cupra', 'Porsche']
+>>> car_park.count("Porsche")
+2
+>>> car_park.index("Porsche")
+3
 >>> car_park.remove("Porsche")
 >>> car_park
-['Audi', 'Volkswagen', 'Skoda', 'SEAT', 'Cupra']
+['Audi', 'Volkswagen', 'Skoda', 'SEAT', 'Cupra', 'Porsche']
 >>> car_park.pop(1)
 'Volkswagen'
 >>> car_park
-['Audi', 'Skoda', 'SEAT', 'Cupra']
+['Audi', 'Skoda', 'SEAT', 'Cupra', 'Porsche']
 >>> car_park.insert(1, "Lamborghini")
 >>> car_park
-['Audi', 'Lamborghini', 'Skoda', 'SEAT', 'Cupra']
+['Audi', 'Lamborghini', 'Skoda', 'SEAT', 'Cupra', 'Porsche']
 >>> car_park.reverse()
 >>> car_park
-['Cupra', 'SEAT', 'Skoda', 'Lamborghini', 'Audi']
+['Porsche', 'Cupra', 'SEAT', 'Skoda', 'Lamborghini', 'Audi']
 >>> car_park.sort()
 >>> car_park
-['Audi', 'Cupra', 'Lamborghini', 'SEAT', 'Skoda']
+['Audi', 'Cupra', 'Lamborghini', 'Porsche', 'SEAT', 'Skoda']
 >>> del car_park[:]
 >>> car_park
 []
 ~~~
 
 Meer informatie over de mogelijkheden met een lijst vraag je in de REPL op met `help(list)`.
+
+Merk op: een gelijkaardige datastructuur om meerdere waarden op te slaan in een container is **set**. Hierbij maakt de volgorde niet uit en zijn er geen dubbele waardes mogelijk. Dit is te vergelijken met een verzameling uit de wiskunde. Meer informatie vind je hier: https://docs.python.org/3/tutorial/datastructures.html#sets
