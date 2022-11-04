@@ -207,7 +207,7 @@ Bovenop dit principe heb je een **aantal andere principes** die we de komende ho
 * **Repetitieve** uitvoering  
   Statements blijven **uitvoeren zolang aan een bepaalde voorwaarde** is voldaan.  
   In het vakjargon wordt dit ook meestal **loops** (lussen) genoemd.
-* **Hergebruik** van uitvoering
+* **Hergebruik** van uitvoering  
   Statements **groeperen** om **herhaaldelijk** te kunnen **uitvoeren**  
 
 Het meest **elementaire hergebruik** vinden we bij **functies**, maar later gaan we ook zien dat we deze functies kunnen groeperen in **modules** en **objectgeoriënteerd programmeren**.

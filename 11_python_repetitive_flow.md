@@ -270,7 +270,7 @@ Zolang c tussen a en b ligt, zal deze lus getallen blijven vragen.
 
 ### Niet eindigende lus
 
-Wat iedereen wel eens als fout maakt in code, is een een lus die niet stopt.  
+Wat iedereen wel eens als fout maakt in code, is een lus die niet stopt.  
 Bijvoorbeeld als we in onderstaande correcte code:
 
 ~~~python
