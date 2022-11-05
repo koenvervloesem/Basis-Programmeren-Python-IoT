@@ -257,6 +257,25 @@ We kunnen eenvoudig het aantal tekens in een string opvragen:
 0
 ~~~
 
+### Een string splitsen
+Je kunt een string splitsen in woorden:
+
+~~~python
+>>> "Dit is een test".split()
+['Dit', 'is', 'een', 'test']
+~~~
+
+Dit geeft een lijst terug van strings.
+
+Standaard splitst de functie `split()` een string op spaties en andere witruimte. Maar je kunt een string ook splitsen op andere tekens:
+
+~~~python
+>>> "gebruiker:wachtwoord:directory".split()
+['gebruiker:wachtwoord:directory']
+>>> "gebruiker:wachtwoord:directory".split(":")
+['gebruiker', 'wachtwoord', 'directory']
+~~~
+
 ### Stringinterpolatie of f-strings (Python 3.6+)
 
 Sinds **Python 3.6** kun je gebruikmaken van **stringinterpolatie**. Hiermee kun je in een string rechtstreeks **expressies injecteren**.

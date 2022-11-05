@@ -6,7 +6,8 @@ Hier bekijken we nog een **aantal zaken** die we **nog niet hebben gezien** in h
 * **Types van argumenten**
 * **pass**-statement
 * Arguments **by name**
-* **kwargs** (varargs in andere talen)
+* **Variabel aantal argumenten**
+* **Recursie**
 
 ### Optionele argumenten
 

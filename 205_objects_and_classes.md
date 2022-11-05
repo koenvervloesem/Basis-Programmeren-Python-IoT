@@ -345,10 +345,10 @@ Let op het verschil tussen attribuut en methode:
 ### __str__
 
 Een andere speciale methode (eerder hadden we al reeds de constructor gezien) is de string-methode.  
-Als je de methode __str__ toevoegt zal deze automatisch worden aangeroepen als je een naar een string wil converteren:
+Als je de methode `__str__` toevoegt zal deze automatisch worden aangeroepen als je een object naar een string wilt converteren:
 
-* Door de str()-operator te gebruiken
-* Door het object mee te geven aan de print-functie (die op zijn beurt str() aanroept)
+* Door de functie `str()` te gebruiken.
+* Door het object mee te geven aan de functie `print()` (die op zijn beurt `str()` aanroept).
 
 ~~~python
 class Student:

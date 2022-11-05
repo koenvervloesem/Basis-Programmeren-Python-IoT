@@ -1,20 +1,17 @@
-## Lists
-
-### Collecties
+## Collecties 
 
 Tot nog toe hebben we met enkelvoudige types gewerkt (ook wel primitieve types genoemd). Variabelen van dit type bevatten één waarde.
 
 In het tweede deel van de cursus bekijken we datatypes die meerdere waardes kunnen bevatten:
 
-* Collecties: lists, dictionaries, tuples
-* Abstracte datatypes en concepten: klassen, modules
+* Collecties: lists, sets, dictionaries, tuples
+* Abstracte datatypes: klassen
 
 Collecties zijn generieke datatypes waarin je meer dan één waarde kan plaatsen, een beetje zoals een container die verschillende goederen kan bevatten.
 
 
 ### List
 
-I
 Het eerste en meest eenvoudige type is de List (lijst).
 
 > *Nota:*  
@@ -408,11 +405,11 @@ Deze keer is de waarde van y wel mee veranderd met die van x! Hoe kan dat?
 
 De verklaring: als Python een assignment doet met een lijst, steekt hij niet de waarde van die lijst in het bijbehorende geheugen, maar een verwijzing naar een geheugenplaats waar de lijst staat. Als je dan `y = x` uitvoert, kopieer je dat geheugenadres van lijst x naar y, en daarna verwijzen x en y dus naar dezelfde lijst, het zijn gewoon aliassen.
 
-Hoe zou je dan wel de ene lijst kunnen veranderen en niet de andere? Dan moet je de lijst x naar de lijst y kopiëren, zodat er een nieuwe lijst wordt aangemaakt, op een nieuw geheugenadres, met dezelfde elementen. Eén manier daarvoor is om een slice van de lijst te nemen zonder start- of stopindex:
+Hoe zou je dan wel de ene lijst kunnen veranderen en niet de andere? Dan moet je de lijst x naar de lijst y kopiëren, zodat er een nieuwe lijst wordt aangemaakt, op een nieuw geheugenadres, met dezelfde elementen:
 
 ~~~python
 >>> x = [0, 1, 2, 3, 4]
->>> y = x[:]
+>>> y = x.copy()
 >>> x
 [0, 1, 2, 3, 4]
 >>> y
@@ -423,8 +420,6 @@ Hoe zou je dan wel de ene lijst kunnen veranderen en niet de andere? Dan moet je
 >>> y
 [0, 1, 2, 3, 4]
 ~~~
-
-Een andere manier om een lijst te kopiëren, is `x.copy()`.
 
 ### Bewerken van een lijst 
 
@@ -476,5 +471,3 @@ Zie volgende sequentie in de REPL voor voorbeelden hiervan:
 ~~~
 
 Meer informatie over de mogelijkheden met een lijst vraag je in de REPL op met `help(list)`.
-
-Merk op: een gelijkaardige datastructuur om meerdere waarden op te slaan in een container is **set**. Hierbij maakt de volgorde niet uit en zijn er geen dubbele waardes mogelijk. Dit is te vergelijken met een verzameling uit de wiskunde. Meer informatie vind je hier: https://docs.python.org/3/tutorial/datastructures.html#sets
