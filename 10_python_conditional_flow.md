@@ -525,7 +525,7 @@ Je kan deze or-expressie trouwens uitbreiden met meerdere logische operatoren zo
 a = int(input("Enter number a: "))
 b = int(input("Enter number b: "))
 c = int(input("Enter number c: "))
-c = int(input("Enter number d: "))
+d = int(input("Enter number d: "))
 
 if d > a or d > b or d > c:
     print("d is bigger than a or b or c")

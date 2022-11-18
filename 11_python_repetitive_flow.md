@@ -389,7 +389,7 @@ Stel dat je wil tellen van een bepaald getal tot een ander getal, dan geef je tw
 
 ~~~python
 start = int(input("Count from: "))
-from = int(input("Count to: "))
+stop = int(input("Count to: "))
 for counter in range(start, stop + 1):
     print(counter)
 ~~~
