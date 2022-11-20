@@ -61,7 +61,7 @@ ZeroDivisionError: division by zero
 
 In dit geval zien we dat er ook duidelijk een **error** wordt aangegeven, in dit geval een **ZeroDivisionError**.  
 
-Bemerk wel dat de **code** die **vóór de fout** (a = 5 / 0) komt wel **wordt uitgevoerd** (`print("Hello")`).
+Merk op dat de **code** die **vóór de fout** (a = 5 / 0) komt wel **wordt uitgevoerd** (`print("Hello")`).
 
 Het programma **start** wel degelijk **maar stopt** bij het **aangegeven punt waarop de fout gebeurt**.
 
@@ -94,6 +94,13 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ~~~
 
+Je ziet hier dat Python twee locaties in je bestand toont waar de exception optreedt:
+
+* enerzijds op regel 5 met `a = divide(5, 0)`
+* anderzijds op regel 2 met `return a/ b`
+
+De onderste getoonde locatie is de uiteindelijke regel waar de exception optreedt. Maar waarom treedt die daarop? Omdat door de aanroep van `divide(5, 0)` b de waarde 0 krijgt en daardoor dus door 0 gedeeld wordt. Bij het uitzoeken wat er juist misloopt, moet je dus de hele keten van plaatsen waar de esception wordt doorgegeven nagaan. In complexere programma's kan die keten heel lang zijn...
+
 ### Exceptions opvangen
 
 Je kan in je code ervoor zorgen dat deze **exceptions** worden **opgevangen**, zodat ze het programma niet beëindigen.
@@ -125,13 +132,15 @@ After try-catch
 We zien hier dat:
 
 * Het **programma** wordt **uitgevoerd**.
-* Het **try-block** wordt **onderbroken** (bij `print(x)`) omdat `x` niet gedefinieerd is en de print-opdracht de regel erna niet uitgevoerd wordt.
+* Het **try-block** wordt **onderbroken** (bij `print(x)`) omdat `x` niet gedefinieerd is en de print-opdracht op de regel erna niet uitgevoerd wordt.
 * Het **except-block** wordt **uitgevoerd**.
 * De **code loopt verder** na de except.
 
 ### Exceptions opvangen per type
 
 Het gebruik van except zoals hierboven is alles-of-niets: alle exceptions worden opgevangen. Doorgaans is het een betere stijl van je code om alleen specifieke exceptions op te vangen die je verwacht. Zo kun je gerichter reageren in het except-blok, en zal het programma nog altijd stoppen wanneer er onverwachte exceptions optreden waarop je je code niet voorbereid hebt.
+
+Je vindt hier een lijst van alle ingebouwde exceptions in Python: https://docs.python.org/3/library/exceptions.html
 
 Je kan in Python dus ook het **type exception aangeven** dat je wil opvangen.  
 In dit geval beperk je het opvangen tot een specifieke exception, de `NameError`:
@@ -267,7 +276,7 @@ Delen door nul is flauwekul
 
 ### finally
 
-Er is ook een finally-clausule. Die wordt **altijd** uitgevoerd, ongeacht er een exception optreedt in het try-blok. Dit wordt doorgaans gebruikt om zaken 'op te kuisen'.
+Er is ook een finally-clausule. Die wordt **altijd** uitgevoerd, ongeacht of er een exception optreedt in het try-blok. Dit wordt doorgaans gebruikt om zaken 'op te kuisen'.
 
 Een voorbeeld:
 
@@ -306,7 +315,7 @@ Naast het afvangen van exceptions kan je deze ook zelf opwerpen met het keyword 
 
 Stel dat je de volgende functie maakt:
 
-* Berekent de oppervlakte van een cirkel op basis van de straal.
+* Je berekent de oppervlakte van een cirkel op basis van de straal.
 * Je wil een exception werpen als je de functie oproept met een negatieve straal.
 
 Dat kan als volgt:

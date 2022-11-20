@@ -167,7 +167,7 @@ with open("demofile.txt") as f:
 print(f.closed)
 ~~~
 
-Het with-statement zal er voor zorgen dat - na het uitvoeren van de code binnen dit blok - het file-object sowieso wordt gesloten, zelfs al treedt er een exception op.
+Het with-statement zal er voor zorgen dat - na het uitvoeren van de code binnen dit blok - het file-object sowieso wordt gesloten, zelfs al treedt er een exception op. We controleren dit hier door met `print(f.closed)` te tonen of het bestand gesloten is.
 
 **Bijna altijd is het aangeraden om `with open()` te gebruiken in plaats van `open()`.** In de rest van de cursus gebruiken we dan ook dit with-statement om met bestanden te werken.
 
@@ -256,14 +256,14 @@ Doordenker: waarom toont het programma hier een lege regel tussen elke regel? En
 
 #### Modi
 
-tot nu toe hebben we altijd bestanden gelezen. Dat is één van de mogelijke modi bij bij het openen van een bestand:
+Hiervoor hebben we altijd bestanden gelezen. Dat is één van de mogelijke modi bij het openen van een bestand:
 
-* "r" - Read   - Opent een bestand aan om dit te lezen.
+* "r" - Read   - Opent een bestand om dit te lezen.
 * "w" - Write  - Maakt een bestand aan als dit nog niet bestaat, overschrijft een bestaand bestand. Opent het bestand om ernaar te schrijven.
 * "a" - Append - Maakt een bestand aan als dit nog niet bestaat. Alle schrijfoperaties worden aan het einde van het bestand toegevoegd.
-* "x" - Create - Maakt een bestand aan als dit nog niet bestaat en opent het om ernaar te schrijven. Geeft een exception FileExistsError als het bestand al bestaat.
+* "x" - Create - Maakt een bestand aan als dit nog niet bestaat en opent het om ernaar te schrijven. Geeft een exception `FileExistsError` als het bestand al bestaat.
 
-Deze mode kan je meegeven als een tweede (optioneel) argument aan de functie open:
+Deze modus kan je meegeven als een tweede (optioneel) argument aan de functie `open`:
 
 ~~~python
 with open("demofile.txt", "r") as f:
@@ -276,7 +276,7 @@ Als je dit tweede argument niet toevoegt, is de standaardmodus r (read-only).
 
 Voor het schrijven naar een bestand zijn er drie belangrijke modi die we moeten begrijpen:
 
-* Een nieuw bestand schrijven => x (geeft een FileExistsError als het bestand al bestaat)
+* Een nieuw bestand schrijven => x (geeft een `FileExistsError` als het bestand al bestaat)
 * Een bestaand bestand overschrijven => w
 * Aan het einde van een bestaand bestand toevoegen => a
 
@@ -309,6 +309,8 @@ Traceback (most recent call last):
 FileExistsError: [Errno 17] File exists: 'hello.txt'
 ~~~
 
+Deze exception kunnen we natuurlijk opvangen met try-except om aan de gebruiker een duidelijker foutmelding te geven.
+
 #### Nieuw of bestaand bestand overschrijven
 
 Als we dezelfde code wijzigen en de modus **w** gebruiken:
@@ -331,8 +333,8 @@ with open("hello.txt", "r") as f:
     print(f.read()) 
 ~~~
 
-* Zal het bestand eerst aanmaken (als dit nog niet bestaat)
-* En vervolgens de inhoud overschrijven
+* zal het bestand eerst aanmaken (als dit nog niet bestaat)
+* en vervolgens de inhoud overschrijven
 
 ~~~
 $ python create_new_file.py
@@ -342,6 +344,8 @@ Het bestand is overschreven
 ~~~
 
 #### Toevoegen aan het einde van een tekstbestand
+
+Met de modus a(ppend) wordt elke write aan het einde van het bestand toegevoegd. Aan de bestaande regels in het bestand wordt dus niet geraakt. Dit is ideaal voor logbestanden, of bijvoorbeeld om sensordata te registreren zonder de voorgaande data te wissen:
 
 ~~~python
 with open("hello.txt", "w") as f:

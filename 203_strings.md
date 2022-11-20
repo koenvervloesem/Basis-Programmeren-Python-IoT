@@ -265,7 +265,26 @@ Je kunt een string splitsen in woorden:
 ['Dit', 'is', 'een', 'test']
 ~~~
 
-Dit geeft een lijst terug van strings.
+Dit geeft een lijst terug van strings. En zo kun je bijvoorbeeld het aantal woorden in een string tellen:
+
+~~~python
+>>> woorden = "Dit is een test".split()
+>>> len(woorden)
+4
+~~~
+
+Of je kunt elk woord uit de string op een afzonderlijke regel tonen:
+
+~~~python
+>>> woorden = "Dit is een test".split()
+>>> for woord in woorden:
+...     print(woord)
+... 
+Dit
+is
+een
+test
+~~~
 
 Standaard splitst de functie `split()` een string op spaties en andere witruimte. Maar je kunt een string ook splitsen op andere tekens:
 
@@ -274,6 +293,27 @@ Standaard splitst de functie `split()` een string op spaties en andere witruimte
 ['gebruiker:wachtwoord:directory']
 >>> "gebruiker:wachtwoord:directory".split(":")
 ['gebruiker', 'wachtwoord', 'directory']
+~~~
+
+### Een lijst van strings aan elkaar plakken
+
+Ook de bewerking in de andere richting komt wel eens voor: een lijst van strings aan elkaar plakken en daar één string van maken. Hoe doe je dat? Met de methode `join` toegepast op de separator, en als argument de lijst:
+
+~~~python
+>>> woorden = ["Dit", "is", "een", "tekst"]
+>>> " ".join(woorden)
+'Dit is een tekst'
+>>> ":".join(woorden)
+'Dit:is:een:tekst'
+~~~
+
+Dat werkt overigens alleen met een lijst van strings. Zodra één element in de lijst een ander type dan str heeft, krijg je een foutmelding:
+
+~~~python
+>>> " ".join(["Dit", "is", "een", 4])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: sequence item 3: expected str instance, int found
 ~~~
 
 ### Stringinterpolatie of f-strings (Python 3.6+)
