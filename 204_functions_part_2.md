@@ -8,6 +8,7 @@ Hier bekijken we nog een **aantal zaken** die we **nog niet hebben gezien** in h
 * Arguments **by name**
 * **Variabel aantal argumenten**
 * **Recursie**
+* **Globale variabelen** aanpassen in een functie
 
 ### Optionele argumenten
 
@@ -19,7 +20,7 @@ def power_of(base, exponent=2):
     return base ** exponent
 ~~~
 
-Bij het aanroepen van deze functie heb je de mogelijkheid het tweede argument weg te laten:
+Bij het aanroepen van deze functie heb je de mogelijkheid om het tweede argument weg te laten:
 
 ~~~python
 def power_of(base, exponent=2):
@@ -149,7 +150,7 @@ print(power_of(2, exponent=4))       # prints 16
 
 Je kan in dat geval zelfs **kiezen** in welke **volgorde** je deze meegeeft (als je per naam meegeeft).  
 
-Je kan ook **combineren** met de **standaard** manier van **argumenten** passeren, maar dat kan dan enkel voor de **laatste argumenten**. Dit kan dus niet:
+Je kan dit ook **combineren** met de **standaard** manier van **argumenten** passeren, maar dat kan dan enkel voor de **laatste argumenten**. Dit kan dus niet:
 
 ```python
 >>> print(power_of(base=2, 4))
@@ -161,7 +162,7 @@ SyntaxError: positional argument follows keyword argument
 
 ### \*args
 
-In een aantal functies (zoals bijvoorbeeld **printf**) heb je de mogelijkheid om een **variabel aantal argumenten** mee te geven.  
+In een aantal functies (zoals bijvoorbeeld **print**) heb je de mogelijkheid om een **variabel aantal argumenten** mee te geven.  
 
 Je kan dit ook zelf doen door een **sterretje** te plaatsen **voor** je **argument** waarna je dit argument kan **behandelen** zoals een **lijst** (zie de lessen met list en de for-lus)
 
@@ -221,7 +222,7 @@ print_students(["Jan", "Piet", "Joris", "Korneel"])
 
 ### recursie
 
-De volgende functie/code telt af vanaf 10
+De volgende functie telt af vanaf 10
 
 ~~~python
 def countdown_function(count):
@@ -243,4 +244,105 @@ def countdown_function(count):
 countdown_function(10)
 ~~~
 
-> NOTA: dit stuk over recursie is enkel ter introductie en zal later in de cursus uitgebreider behandeld worden.
+Let op: als je een recursieve functie schrijft, moet je altijd zorgen dat het aanroepen van de functie ooit eindigt. In dit geval doen we dat door:
+
+* de functie alleen aan te roepen als count groter is dan 0
+* van count bij elke aanroep 1 af te trekken, zodat count uiteindelijk wel 0 wordt
+
+### Globale variabelen
+
+Als we een variabele bovenaan de code definiëren, kun je die ook gebruiken in functies:
+
+~~~python
+x = 10
+
+def print_x():
+    print(x)
+
+print_x()
+print(x)
+~~~
+
+Dit zal twee keer de waarde 10 tonen: binnen en buiten de functie heeft x gewoon dezelfde waarde. We noemen dit een **globale variabele**.
+
+Stel nu dat we x in de functie een andere waarde geven:
+
+~~~python
+x = 10
+
+def increment_x():
+    x = 11
+    print(x)
+
+increment_x()
+print(x)
+~~~
+
+Dan zien we:
+
+~~~shell
+$ python test.py
+11
+10
+~~~
+
+Met de regel `x = 11` in de functie maak je immers een nieuwe, **lokale variabele** aan die alleen binnen de functie gedefinieerd is. Toevallig heeft die dezelfde naam als de globale variabele x. Binnen de functie heeft x dan de waarde 11 (de lokale variabele), maar buiten de functie 10 (de globale variabele).
+
+Maar wat als we nu in de functie de globale variabele een nieuwe waarde willen geven? Dat kan, maar dan moeten we expliciet aangeven dat we in de functie met de naam x naar de globale variabele verwijzen:
+
+~~~python
+x = 10
+
+def increment_x():
+    global x
+    x = 11
+    print(x)
+
+increment_x()
+print(x)
+~~~
+
+Dit geeft dan twee keer de waarde 11 terug.
+
+Maar stel nu dat we de waarde van de variabele x op de volgende manier willen veranderen in de functie:
+
+~~~python
+x = 10
+
+def increment_x():
+    x = x + 1
+    print(x)
+
+increment_x()
+print(x)
+~~~
+
+Dit levert een exception op:
+
+~~~shell
+$ python test.py 
+Traceback (most recent call last):
+  File "/home/koan/test.py", line 7, in <module>
+    increment_x()
+  File "/home/koan/test.py", line 4, in increment_x
+    x = x + 1
+UnboundLocalError: local variable 'x' referenced before assignment
+~~~
+
+Waarom? Omdat Python denkt dat je naar een lokale variabele x verwijst, maar die heeft nog geen waarde, er is namelijk nog geen assignment binnen de functie gebeurd.
+
+Dat los je hier dus ook op door met `global x` aan te duiden dat je binnen de functie de globale variabele x wilt gebruiken:
+
+~~~python
+x = 10
+
+def increment_x():
+    global x
+    x = x + 1
+    print(x)
+
+increment_x()
+print(x)
+~~~
+
+En dan geven beide print-statements weer 11 terug.
