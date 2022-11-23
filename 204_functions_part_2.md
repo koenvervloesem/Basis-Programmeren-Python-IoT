@@ -6,6 +6,7 @@ Hier bekijken we nog een **aantal zaken** die we **nog niet hebben gezien** in h
 * **Types van argumenten**
 * **pass**-statement
 * Arguments **by name**
+* Een **lijst als argument** doorgeven
 * **Variabel aantal argumenten**
 * **Recursie**
 * **Globale variabelen** aanpassen in een functie
@@ -159,6 +160,54 @@ Je kan dit ook **combineren** met de **standaard** manier van **argumenten** pas
                            ^
 SyntaxError: positional argument follows keyword argument
 ```
+
+### Een lijst als argument doorgeven
+
+Tot nu toe hebben we aan functies vooral enkelvoudige types als argumenten doorgegeven, zoals een string of getal. We hebben gezien dat een string als argument zich gedraagt als een **lokale variabele** binnen de functie:
+
+~~~python
+def dupliceer(tekst):
+    tekst = 2 * tekst
+    print(tekst)
+
+tekst = "banana"
+
+dupliceer(tekst)
+print(tekst)
+~~~
+
+Als je dit uitvoert, krijg je:
+
+~~~
+bananabanana
+banana
+~~~
+
+We dupliceren binnen de functie dus het argument "banana" tot "bananabanana", maar buiten de functie blijft de variabele tekst de originele waarde "banana" hebben. Veranderingen binnen de functie aan het argument blijven lokaal binnen de functie, omdat Python het argument als waarde (**by value**) doorgeeft en dus een kopie maakt.
+
+Als we een lijst doorgeven als argument, gedraagt Python zich anders:
+
+~~~python
+def dupliceer(lijst):
+    lijst.extend(lijst)
+    print(lijst)
+
+fruit = ["apple", "banana", "kiwi"]
+
+dupliceer(fruit)
+print(fruit)
+~~~
+
+Dit geeft als uitvoer:
+
+~~~
+['apple', 'banana', 'kiwi', 'apple', 'banana', 'kiwi']
+['apple', 'banana', 'kiwi', 'apple', 'banana', 'kiwi']
+~~~
+
+Wat is hier gebeurd? Python geeft een lijst als argument aan een functie niet als waarde door, maar geeft een verwijzing naar de lijst door (**by reference**). Dus als je binnen de functie iets aan de lijst verandert, is die verandering ook buiten de functie zichtbaar, want het gaat om dezelfde lijst, niet om een kopie.
+
+Voor een set geldt hetzelfde: ook die wordt by reference doorgegeven aan functies.
 
 ### \*args
 

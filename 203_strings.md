@@ -333,7 +333,7 @@ Bijvoorbeeld:
 'Hallo Koen!'
 ~~~
 
-Alle expressies zijn toegestaan tussen de accolades, dus ook **ook rekenkundige expressies**:
+Alle expressies zijn toegestaan tussen de accolades, dus ook **rekenkundige expressies**:
 
 ~~~python
 >>> a = 2
@@ -353,7 +353,7 @@ Hallo Koen! Je naam is 4 letters lang.
 
 ### Indexen en slicing
 
-Net zoals bij lists kun je ook bij strings delen selecteren met indexen en slicing. De syntaxis van slicing is hetzelfde: lijst[startindex:stopindex]. Let op: ook hier is de stopindex niet inclusief! Een voorbeeld:
+Net zoals bij lists kun je ook bij strings delen selecteren met indexen en slicing. De syntaxis van slicing is hetzelfde: string[startindex:stopindex]. Let op: ook hier is de stopindex niet inclusief! Een voorbeeld:
 
 ~~~python
 >>> naam = "Koen"
