@@ -394,7 +394,7 @@ In de code kan dit via een **return statement**
 Stel dat je een functie schrijft om de som van twee variabelen te berekenen, dan kan dit als volgt:
 
 ~~~python
-def sum(a, b)
+def som(a, b):
     result = a + b
     return result
 ~~~
@@ -402,10 +402,10 @@ def sum(a, b)
 Via het **return statement** kan je dan het resultaat van deze som teruggeven aan de aanroepende code. Die kan dit resultaat dan opslaan in bijvoorbeeld een variabele.
 
 ~~~python
-def sum(a, b)
+def som(a, b):
     result = a + b
     return result
-a = sum(2, 5)
+a = som(2, 5)
 print(a)  # 7
 ~~~
 
@@ -432,11 +432,11 @@ De functie polite_conversation roept hier niet alleen de standaard in Python ged
 Je kan binnen een functie variabelen declareren.  
 
 ~~~python
-def sum(a, b):
+def som(a, b):
     c = a + b
     return c
 
-result = sum(2, 5)
+result = som(2, 5)
 print(result)
 ~~~
 
@@ -444,15 +444,15 @@ Je hebt deze vaak nodig - zoals in bovenstaand voorbeeld - om tussenresultaten i
 Wel kan je deze **lokale variabelen** niet buiten deze functie gebruiken, zoals in de functie hieronder...
 
 ~~~python
-def sum(a, b):
+def som(a, b):
     c = a + b
     return c
 
-sum(2, 5)
+som(2, 5)
 print(c)  # NameError
 ~~~
 
-Deze code probeert c, die alleen binnen de functie sum bekend is, buiten de functie sum te gebruiken.  
+Deze code probeert c, die alleen binnen de functie som bekend is, buiten de functie som te gebruiken.  
 De Python-interpreter geeft dan de volgende foutmelding:
 
 ~~~
