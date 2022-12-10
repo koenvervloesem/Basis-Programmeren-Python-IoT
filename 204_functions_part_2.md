@@ -3,7 +3,6 @@
 Hier bekijken we nog een **aantal zaken** die we **nog niet hebben gezien** in het eerste gedeelte van **functies**:
 
 * **Optionele argumenten**
-* **Types van argumenten**
 * **pass**-statement
 * Arguments **by name**
 * Een **lijst als argument** doorgeven
@@ -35,31 +34,6 @@ print(power_of(2, 3))  # prints 8
 Met andere woorden: de exponent wordt dan **optioneel**. Als je dit argument niet invult, geeft Python dit automatisch de waarde 2 omdat dit als standaardwaarde in de definitie van de functie staat.
 
 Dit kan interessant zijn in situaties waar er in de meeste gevallen een standaardwaarde is, maar je hier wel van wil kunnen afwijken.
-
-### Types van argumenten
-
-Je kan in de definitie van een functie de types van de argumenten definiëren die je verwacht:
-
-~~~python
-def times(a: int, b: int):
-    return a * b
-
-print(times(2, 5))
-print(times("2", 5))
-~~~
-
-We verwachten hier dus dat de argumenten die je aan de functie `times` doorgeeft twee ints zijn.
-
-Als je dit programma uitvoert, krijg je het volgende te zien:
-
-~~~
-10
-22222
-~~~
-
-Python 'vermenigvuldigt' dus gewoon de string "2" met 5, ook al hebben we aangegeven dat dit argument het type int moet hebben. Python houdt hier dus geen rekening mee: dit type is gewoon een aanduiding om het onszelf duidelijk te maken wat voor type we verwachten.
-
-Later gaan we zien hoe je met externe tools zoals mypy toch kunt controleren of de juiste types in je programma gebruikt zijn.
 
 ### pass-statement
 

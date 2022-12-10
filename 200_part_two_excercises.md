@@ -1,32 +1,32 @@
-## Oefeningen
+## Extra oefeningen
 
 ### Oefening op exceptions
 
 ~~~python
 """
-Volgend programma deelt 2 getallen door elkaar
+Volgend programma deelt twee getallen door elkaar
 """
 
 """
 Vraag 1:
-Zorg dat je het resultaat afprint met een f-string
+Zorg dat je het resultaat toont met een f-string
 """
 
 """
 Vraag 2:
-Vang de division by zero op (met een try-except)
+Vang de deling door nul op (met een try-except)
 """
 
 """
 Vraag 3:
-Volgende functie vraagt een number op (command-line).
-Het probleem is echter dat deze een ValueError-exceptie
-zal raisen als de gebruiker geen getalingeeft.
+Volgende functie vraagt een getal op.
+Het probleem is echter dat deze een ValueError-exception
+zal opwerpen als de gebruiker geen getal invoert.
 
 Wijzig deze code opdat deze het getal blijft
 opvragen zolang dat de gebruiker geen geldig
-integer ingeeft.
-Je zal hiervoor een loop moeten combineren met
+integer invoer.
+Je zal hiervoor een lus moeten combineren met
 een try-except-statement.
 """
 
@@ -45,7 +45,7 @@ print(str(a) + " / " + str(b) + " = " + str(a / b))
 
 ### Car management
 
-Implementeer een python-programma dat voertuigen gaat beheren
+Implementeer een Python-programma dat voertuigen beheert. Je moet er iets als het volgende mee kunnen doen:
 
 ~~~
 $ python carmanagement.py 
