@@ -60,7 +60,7 @@ Als je de docstring van deze functie nu leest, weet je alles wat je nodig hebt o
 
 Tip: installeer in Visual Studio Code de extensie autoDocstring. Als je dan drie dubbele aanhalingstekens opent als eerste statement in een functie, toont de extensie je een knopje **Generate Docstring**. Als je hierop klikt, wordt al een sjabloon van een docstring toegevoegd, die je dan zelf verder invult.
 
-Er bestaan ook tools zoals Sphinx en Read the Docs die automatisch html-pagina's kunnen genereren met documentatie over je Python-project. Die documentatie halen ze dan uit de docstrings van je Python-bestanden. Als je dan al de hele tijd consistent docstrings hebt gebruikt, is dit een eenvoudige manier om documentatie voor je Python-project te genereren voor anderen die niet in je code gaan duiken.
+Er bestaan ook tools zoals Sphinx (https://www.sphinx-doc.org) en Read the Docs (https://readthedocs.org) die automatisch html-pagina's kunnen genereren met documentatie over je Python-project. Die documentatie halen ze dan uit de docstrings van je Python-bestanden. Als je dan al de hele tijd consistent docstrings hebt gebruikt, is dit een eenvoudige manier om documentatie voor je Python-project te genereren voor anderen die zo niet in je code hoeven te duiken.
 
 ### Voorbeelden in een docstring opnemen
 
@@ -462,7 +462,7 @@ print(times(getal, 5))
 
 Dan krijgen we geen foutmelding meer.
 
-Het aantal lege regels of spaties of andere stilistische zaken lijken misschien wat overbodig, maar het zorgt er wel voor dat je code er consistent uitziet en dat het in één oogopslag duidelijker leest. Probeer dus de code linters Pylint en Flake8 te gebruiken terwijl je aan het programmeren bent om de kwaliteit van je code hoog te houden.
+Het aantal lege regels of spaties of andere stilistische zaken lijken misschien wat vergezocht, maar het zorgt er wel voor dat je code er consistent uitziet en dat het in één oogopslag duidelijker leest. Probeer dus de code linters Pylint en Flake8 te gebruiken terwijl je aan het programmeren bent om de kwaliteit van je code hoog te houden.
 
 ### Code formatters
 
@@ -471,7 +471,7 @@ Terwijl code linters je wijzen op problemen in je code, gaan **code formatters**
 De bekendste code formatter voor Python is Black (https://black.readthedocs.io). Installeer dit als Python-module met:
 
 ```
-pip3 install black
+pip install black
 ```
 
 Of installeer in Visual Studio Code de extensie Black Formatter van Microsoft.
@@ -499,4 +499,4 @@ Probeer deze methodes om de codekwaliteit te verbeteren eens op een van de opdra
 * Voer de suggesties van Pylint en Flake8 uit.
 * Formatteer je code met Black.
 
-Bekijk het resultaat en vergelijk dit met je initiële code. Zie je het verschil in kwaliteit?
+Bekijk het resultaat en vergelijk dit met je initiële code. Zie je het verschil in kwaliteit? Heb je op deze manier fouten ontdekt die je over het hoofd had gezien?
