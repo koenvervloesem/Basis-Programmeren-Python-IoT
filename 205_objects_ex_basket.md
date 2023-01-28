@@ -101,7 +101,7 @@ class BasketItem:
 
 Deze klasse bevat **twee attributen**: een beschrijving en een prijs van het item.
 
-Om zeker te zijn van correctheid voeren we onze applicatie uit om zeker te zijn dat deze geen code-fouten bevat.
+Om de code te controleren op correctheid, voeren we onze applicatie uit:
 
 ~~~
 $ python basket.py 
@@ -109,7 +109,7 @@ $
 ~~~
 
 Vanzelfsprekend doet deze nog **niet** erg **veel**, daar komen we zo dadelijk **op** **terug**.  
-Eerst gaan we echter onze eerste **code-wijzigen registereren/revisioneren**
+Eerst gaan we echter onze eerste **code-wijzigen registreren/revisioneren**
 
 ### Git: Je eerste commit met git...
 
@@ -151,7 +151,7 @@ Zo'n **commit** moet altijd vergezeld gaan van een boodschap, in dit geval "Crea
 
 > Belangrijk:  
 > Probeer deze **boodschap** kort maar toch **duidelijk** te maken.  
-> Hoe **duidelijker** deze is hoe **gemakkelijker achteraf** om te consulteren wat je wijzigingen waren.
+> Hoe **duidelijker** deze is, hoe **gemakkelijker achteraf** om na te gaan wat je wijzigingen waren.
 
 ~~~
 $ git commit -m "Create class BasketItem"
@@ -177,11 +177,11 @@ Date:   Sat Nov 5 18:03:57 2022 +0100
 
 Op de eerste regel van deze uitvoer zie je lange string van **hexadecimale tekens** (4ba8385472e5dd3c74cd1f8954620a22cf0c67d8), dit is wat we noemen de **commit id**, een unieke **identifier** voor je code-wijzigingen
 
-Deze kan je dan gebruiken om achteraf je code wijzigingen te bekijken via het commando `git show`.  
+Deze kan je dan gebruiken om achteraf je codewijzigingen te bekijken via het commando `git show`.  
 Typ `git show` gevolgd door de commit-id (normaal gezien is het voldoende om de eerste vijf tekens te typen).
 
 > **Belangrijk:**  
-> Zo'n commit is het centrale begrip in git, het is een soort van snapshot van je code op een bepaald tijdstip
+> Zo'n commit is het centrale begrip in git, het is een soort van snapshot van je code op een bepaald tijdstip.
 
 ~~~
 $ git show 4ba83
@@ -551,8 +551,6 @@ In een nieuwe **wijziging/commit** gaan we deze **lijst tonen**. Aangezien we ec
 > **Belangrijk:**  
 > Deze lijst met voorbeelddata dient achteraf verwijderd te worden 
 > maar het laat ons toe om onze code-wijziging te testen.
-> In een latere les gaan we meer geavanceerde technieken zien om onze code te testen
-> (en deze testen zelf te automatiseren)
 
 ~~~python
 from dataclasses import dataclass
@@ -1268,7 +1266,6 @@ $ git commit -m "Intercept non-numeric values in user input"
 We gaan deze oefening in latere hoofdstukken verderzetten als leidraad:
 
 * Aanmaken van modules
-* Werken met test frameworks
 * GUI met Tkinter
 * Webinterface
 * Persistentie in een database
