@@ -1,57 +1,54 @@
-## Werken met een embedded database: Sqlite Primer
+## Werken met een embedded database: introductie in SQLite
 
-### "Getting started" met SQL
+### Starten met SQL
 
-Als vervolg gaan we nu leren werken relationele databases
+Als vervolg gaan we nu leren werken met relationele databases.
 
-* Als **eerste stap** is leren **werken met SQL**, hier voor gebruiken we een sql-browser-tool
-* Vervolgens gaan we een **database** gebruiken vanuit **Python** door middel van een **api** 
+* In een **eerste stap** leren we **werken met SQL**. Hiervoor gebruiken we een grafisch programma.
+* Vervolgens gaan we een **embedded database** gebruiken vanuit **Python** door middel van een **API**.
 
-### Sqlite (een relationele database in praktijk)
+### SQLite, een relationele database in de praktijk
 
-Eerder maakten we melding van het **verschil** tussen **client-server** en **embedded databases**.  
-In dit deel van de cursus (kennismaking met sql) gaan we gebruik maken van een **embedded database** vanwege de **gebruiksvriendelijkheid** en de **snelheid van ontwikkeling**.  
+Eerder maakten we melding van het verschil tussen client-server en embedded databases.  
+In dit deel van de cursus (kennismaking met SQL) maken we gebruik van een **embedded database** vanwege de **gebruiksvriendelijkheid** en de **snelheid van ontwikkeling**. We hoeven zo geen server op te zetten.
 
-We kiezen hier voor **Sqlite**, een veel (meest) gebruikte embedded database (zie ook https://www.sqlite.org/index.html).  
-Deze wordt binnen de industrie gebruikt door verschillende toepassingen:
+We kiezen voor de embedded database **SQLite** (https://www.sqlite.org).  
+Deze wordt binnen de industrie gebruikt door talloze toepassingen:
 
-* Storage voor Android-systeem en -applicaties
-* Office-toepassingen
-* CAD-systemen
-* History voor internetbrowsers
-* Embedded Systemen
-* Configuratie van desktop-toepassingen
-* Educationele redenen als deze applicatie
-* ...
+* Opslag voor het besturingssysteem en apps in Android
+* Kantoortoepassingen
+* Geschiedenis voor webbrowsers
+* Embedded systemen
+* Configuratie van desktoptoepassingen
 
-### Sqlitebrowser
+### DB Browser for SQLite
 
-Om met Sqlite te werken starten we met het gebruik van een handige tool om sql-commando's toe te passen op deze database.
+Om met SQLite te leren werken, starten we met het gebruik van een handige tool om SQL-opdrachten uit te voeren op deze database.
 
-Download sqlitebrowser vanaf https://sqlitebrowser.org/ of via de packagemanager van je Linux-distro.  
+Download DB Browser for SQLite op https://sqlitebrowser.org of via de pakketbeheerder van je Linux-distributie (bijvoorbeeld `sudo apt install sqlitebrowser`).
 
-### Database aanmaken met Sqlite
+### Database aanmaken
 
-Zo'n sqlite-database betaat uit **1 file**, meestal met de extensie **db**.  
+Een SQLite-database bestaat uit **één bestand**, meestal met de extensie **db**.  
 
-Onze eerste stap is zo'n nieuwe database aan te maken, hiervoor open je de sqlite-browser die we eerder hebben gedownloaded
-
-Binnen dit scherm selecteer je linksboven de optie nieuwe database (zie screenshot)
+Onze eerste stap is zo'n nieuwe database aanmaken. Hiervoor open je DB Browser for SQLite en klik je bovenaan links op de knop **New Database**. Daarna dien je de locatie op je computer te kiezen waar je het bestand wilt opslaan:
 
 ![](sqlite_new_db.png)
 
-Bij het bewaren geef je deze de naam **students.db** (meest gebruikte extensie voor sqlite-databases)
+Bij het bewaren geef je deze de naam **students.db**.
 
-### Werken met SQL in Sqlite
+Daarna verschijnt er een venster **Edit table definition**. Druk hier onderaan op **Cancel**, want dit gaan we later doen.
 
-Als je vervolgens de database wil gebruiken om data op te slagen of te ondervragen kan je hiervoor SQL gebruiken.  
-SQL is - zoals we in het volgende deel gaan zien - manier om te interageren met een relationele database via een sql-statements (of meerdere statements via een sql-script).  
+### Werken met SQLite
 
-We komen zo dadelijk terug op SQL zelf, hier willen enkel demonstreren eerst hoe we zulk en script via sqlitebrowser kunnen uitvoeren, gezien we dit nog veelvuldige gaan nodig hebben.
+Als we nu vervolgens de database willen gebruiken om data in op te slaan of op te vragen, kunnen we hiervoor de taal SQL gebruiken.  
+SQL is - zoals we in het volgende deel gaan zien - een manier om met een relationele database te 'praten' via SQL-statements (of meerdere statements na elkaar via een SQL-script).  
 
-Gegeven het volgend voorbeeld SQL-script:
+We komen zo dadelijk terug op SQL zelf. Hier willen we alvast demonstreren hoe we zo'n script via DB Browser for SQLite kunnen uitvoeren, aangezien we dit nog veelvuldig gaan nodig hebben.
 
-> *Nota:* als je hier nog niet met mee bent, dit wordt in het volgende deel uitgelegd.
+Gegeven het volgende SQL-script:
+
+> *Nota:* We leggen de betekenis van dit script in het volgende deel uit.
 
 ~~~sql
 CREATE TABLE student (
@@ -68,33 +65,32 @@ INSERT INTO student (student_id, name, lab, theory) VALUES (3, 'George Bush', 10
 select * from student;
 ~~~
 
+Selecteer nu nadat je je SQLite-bestand aangemaakt hebt de tab **Execute SQL**."
 
-We gaan hier wel van uit dat je een bestaande database-file hebt geopend of hebt gecreerd.
-Om **SQL-scripts** uit te voeren selecteer je de tab "Execute SQL".  
+In het tekstveld bovenaan dit tabblad kun je SQL-opdrachten (of queries) typen om je database te ondervragen (select) of te wijzigen (insert, update, delete).  
 
-Binnen dit venster kan je dan SQL-commando's (of queries) typen om je database te ondervragen (select) of te wijzigen (insert, update, delete).  
-
-* Copieer het script hierboven in de sql-editor zoals hieronder geillustreerd
-* Druk op de play-button onder de tab
+* Kopieer het script hierboven in de SQL-editor zoals hieronder geïllustreerd.
+* Druk op het playknopje bovenaan of op de toets F5.
 
 ![](sqlite_execute_sql.png)
 
-Na het uitvoeren zie je onderaan 2 belangrijke vensters.  
-Allereerst zie je een venster dat aangeeft of je script goed of slecht is uitgevoerd:
+Na het uitvoeren van het SQL-script zie je onderaan twee belangrijke vensters.  
+Het venster helemaal onderaan geeft aan of je script goed of slecht is uitgevoerd:
 
 ~~~
-Result: 3 rows returned in 89ms
-At line 11:
+Execution finished without errors.
+Result: 3 rows returned in 21ms
+At line 12:
 select * from student;
 ~~~
 
-Daarboven zie je ook - in tabulaire vorm - het resultaat van de laatste statement...
+Daarboven zie je ook - in tabelvorm - het resultaat van de laatste opdracht in je script:
 
 ~~~sql
 select * from student;
 ~~~
 
-dat de inhoud van de tabel student weergeeft
+De inhoud van de tabel student wordt dan als volgt weergegeven:
 
 ~~~
 student_id  name                lab          theory
@@ -104,5 +100,4 @@ student_id  name                lab          theory
 3           George Bush         10           12
 ~~~
 
-In het volgende deel gaan we deze sql-syntax onder de loep nemen.
-
+In het volgende deel gaan we deze SQL-syntax onder de loep nemen.

@@ -1,14 +1,11 @@
 # Deel 3 - Databases
 
-In de vorige hoofdstukken focusten we op de basis van het programmeren zelf.
+In de vorige hoofdstukken hebben we op de basis van het programmeren zelf gefocust.
 
-* We starten met variabelen condities en loops
-* We maakte de programma's interactiever via input en output
-* We werkten met lijsten die konden groter worden met de duurtijd van je programma
-* We werkten met klassen en object waarmee we gestructureerde data konden bijhouden
+* We startten met variabelen, voorwaarden en lussen.
+* We maakten onze programma's interactiever via invoer en uitvoer.
+* We werkten met lijsten, tekst en bestanden.
+* We deelden onze code op in functies om ons programma meer structuur te geven.
+* We definieerden klassen om data op een gestructureerde manier bij te houden.
 
-In dit deel gaan we ons focussen op het verwerken van deze data.  
-In daarop volgende hoofdstukken focussen we dan 
-
-* Uitwisselen van data via API'S
-* Analyseren Visualiseren van data (Matplotlib, Numpy en Pandas)
+In dit derde deel gaan we ons focussen op het verwerken van deze data met behulp van een database.
