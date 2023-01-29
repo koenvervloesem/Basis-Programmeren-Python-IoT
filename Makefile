@@ -49,8 +49,8 @@ PY_CHAPTER_02 += 205_objects_ex_basket.md
 PY_CHAPTER_02 += pandoc_page_break.txt
 PY_CHAPTER_02 += 206_tkinter.md
 PY_CHAPTER_02 += pandoc_page_break.txt
-#PY_CHAPTER_02 += 207_gui_and_serial.md
-#PY_CHAPTER_02 += pandoc_page_break.txt
+PY_CHAPTER_02 += 207_gui_and_serial.md
+PY_CHAPTER_02 += pandoc_page_break.txt
 PY_CHAPTER_02 += 200_part_two_excercises.md
 
 PY_CHAPTER_03 += 300_part_three_data.md
