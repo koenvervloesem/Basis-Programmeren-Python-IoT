@@ -43,7 +43,7 @@ Een applicatie maakt over het **netwerk** een **verbinding** met een **database*
 +-------------------+            +----------------+
 ~~~
 
-Bekende voorbeelden van zulke databases zijn bijvoorbeeld MySQL, MariaDB, Oracle Database, Microsoft SQL Server, ...  
+Bekende voorbeelden van zulke databases zijn bijvoorbeeld MySQL, MariaDB, PostgreSQL, Oracle Database, Microsoft SQL Server, ...  
 
 #### Database (SQL) API's
 
