@@ -206,6 +206,7 @@ Breid deze code nu uit:
 * Voeg een knop **TOGGLE** toe die de led op de Digispark laat omschakelen tussen aan en uit door de opdracht "2" naar de seriële interface te schrijven.
 * Voeg een knop **FLASH** toe die de led op de Digispark laat flitsen door de opdracht "3" naar de seriële interface te schrijven.
 * Momenteel zoekt het programma in het begin naar de seriële poorten die het vindt en voegt die toe aan de uitklaplijst. Als je tijdens de werking van het programma een Digispark aansluit, wordt die poort niet gevonden. Breid de klasse `SerialPortManager` uit met een knop die een methode `refresh` van de klasse aanroept waarmee je de combobox nieuwe waardes geeft.
-* Er gebeurt geen foutenafhandeling in de code. Als je bijvoorbeeld op **Connect**, **ON** of **OFF** klikt wanneer je nog niet met een seriële interface verbonden bent, zul je in de console waarin je het programma opgestart hebt exceptions zien. Vang die op met try-except en toon dan een foutmelding in een label.
+* Er gebeurt geen foutenafhandeling in de code. Als je bijvoorbeeld op **Connect** klikt wanneer je nog geen poort gekozen hebt, of op **ON** of **OFF** klikt wanneer je nog niet met een seriële interface verbonden bent, krijg je in de console waarin je het programma opgestart hebt een exception te zien. Vang die op met try-except en toon dan een foutmelding in een label.
 * Voeg een tekstveld toe om de baudrate (bitsnelheid) te kiezen waarmee je de seriële verbinding opzet.
+* Toon de toestand van de seriële verbinding, bijvoorbeeld met een label dat **Connected** of **Not connected** toont, of met een ander widget naar keuze.
 * Zoek eens uit hoe je de interface wat mooier kan maken, bijvoorbeeld door sommige widgets naast in plaats van onder elkaar te zetten.
