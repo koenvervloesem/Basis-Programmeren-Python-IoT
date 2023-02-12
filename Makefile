@@ -59,10 +59,11 @@ PY_CHAPTER_03 += 302_databases_sqlite_intro.md
 PY_CHAPTER_03 += 303_databases_sql_intro.md
 PY_CHAPTER_03 += 304_python_en_sql.md
 PY_CHAPTER_03 += 306_modules.md
-PY_CHAPTER_03 += 306_part_four_apis.md
-PY_CHAPTER_03 += 309_dictionaries.md
-PY_CHAPTER_03 += 307_http_and_rest.md
-PY_CHAPTER_03 += 305_flask.md
+
+PY_CHAPTER_04 += 306_part_four_apis.md
+PY_CHAPTER_04 += 309_dictionaries.md
+PY_CHAPTER_04 += 307_http_and_rest.md
+PY_CHAPTER_04 += 305_flask.md
 
 PY_ANNEX += annex.md
 PY_ANNEX += pandoc_page_break.txt
@@ -75,8 +76,9 @@ PY_ANNEX += tools_command_getting_started_linux.md
 #PY_ANNEX += test.md
 
 #PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_ANNEX)
-#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_ANNEX)
-PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_ANNEX)
+PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_ANNEX)
+#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_ANNEX)
+#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_CHAPTER_04) $(PY_ANNEX)
 
 pagebreak = pandoc_page_break.txt
 

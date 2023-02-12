@@ -11,7 +11,7 @@ In dit deel bekijken we klassen in Python, waarmee we data op willekeurige manie
 
 ### Voorbeeld: studentenapplicatie
 
-Stel, je wil een een applicatie bouwen die de punten voor een vak bijhoudt, zoals in de onderstaande tabel voorgesteld:
+Stel, je wilt een een applicatie bouwen die de punten voor een vak bijhoudt, zoals in de onderstaande tabel voorgesteld:
 
 |   | Voornaam | Naam     | Labo  | Theorie |
 | - | -------- | -------- | ----- | ------- |
@@ -92,7 +92,7 @@ class Student:
 jan = Student()
 ~~~
 
-Een **object** wordt aangemaakt door een speciale functie (`Student()`), genaamd de **constructor**. 
+Een **object** wordt aangemaakt door een speciale functie `Student()`, genaamd de **constructor**. 
 
 Deze **constructor**:
 
@@ -247,11 +247,11 @@ Merk op dat we nu niet meer de decorator `@dataclass` voor de klasse zetten, en 
 
 De constructor definiëren we hier als een functie met de naam `__init__`, die in het blok van de klasse staat (geïndenteerd), en daardoor aan de klasse gekoppeld is. Zo'n aan een klasse gekoppelde functie noemen we een **methode**.
 
-Deze methode heeft vijf parameters, waarvan de eerste **self**. Dit is een verwijzing naar het object zelf, en is altijd verplicht als eerste parameter bij een methode.
+Deze methode heeft vijf parameters, waarvan de eerste `self`. Dit is een verwijzing naar het object zelf, en is altijd verplicht als eerste parameter bij een methode.
 
 Daarna komen de vier parameters die we als attributen van onze klasse willen definiëren, inclusief hun type en standaardwaarde.
 
-De inhoud van de constructor is eenvoudig: ze kent elk van de argumenten toe aan een gelijknamig attribuut van de klasse, waarnaar we verwijzen met **self**, een punt en de naam van het attribuut.
+De inhoud van de constructor is eenvoudig: ze kent elk van de argumenten toe aan een gelijknamig attribuut van de klasse, waarnaar we verwijzen met `self`, een punt en de naam van het attribuut.
 
 In de volgende regel:
 
@@ -261,7 +261,7 @@ self.first_name = first_name
 
 verwijst `self.first_name` dus naar het attribuut `first_name` van het object, terwijl `first_name` aan de rechterkant van de assignment verwijst naar het argument van de methode `__init__`.
 
-Bovenstaande code doet exact hetzelfde als de gelijknamige code met de dataklasse.
+Bovenstaande code doet exact hetzelfde als de gelijknamige code met de dataklasse die we eerder zagen.
 
 ### Constructor zonder types en standaardwaardes
 
@@ -342,7 +342,7 @@ Let op het verschil tussen attribuut en methode:
 * Omdat `first_name` een attribuut is van het object, kunnen we dit opvragen met `student.first_name`, dus objectnaam, punt en attribuutnaam.
 * Omdat `points` een methode is, kunnen we dit opvragen met `student.points()`, dus objectnaam, punt, methodenaam en haakjes. Als de methode nog extra parameters zou hebben, zouden deze tussen de haakjes komen te staan.
 
-### __str__
+### De methode `__str__`
 
 Een andere speciale methode (eerder hadden we al reeds de constructor gezien) is de string-methode.  
 Als je de methode `__str__` toevoegt zal deze automatisch worden aangeroepen als je een object naar een string wilt converteren:

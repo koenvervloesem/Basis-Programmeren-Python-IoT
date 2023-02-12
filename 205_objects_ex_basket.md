@@ -1261,16 +1261,6 @@ $ git commit -m "Intercept non-numeric values in user input"
  1 file changed, 3 insertions(+), 1 deletion(-)
 ~~~
 
-### En verder... voor de student
-
-We gaan deze oefening in latere hoofdstukken verderzetten als leidraad:
-
-* Aanmaken van modules
-* GUI met Tkinter
-* Webinterface
-* Persistentie in een database
-* ...
-
 #### Git
 
 Dit voorbeeld is als zipbestand downloadbaar in de cursus.  

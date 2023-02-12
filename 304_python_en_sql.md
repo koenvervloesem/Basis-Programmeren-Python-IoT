@@ -1,75 +1,78 @@
 ## Databases met Python
 
-We hebben nu een eerste basis-introductie gehad in 
+We hebben nu:
 
-* Principe van een **database** en SQL
-* **Toegepast** op een SQL-datbase, in dit geval de embedded database **Sqlite**
-* Het **aanmaken** van zo'n **database** en **creatie** van **tabellen**
-* Het **ondervragen** en **aanvullen** van data via **CRUD-statements**
+* een eerste introductie gehad in de principes van een **database** en SQL
+* dit **toegepast** op een SQL-database, in dit geval de embedded database **SQLite**
+* een **database en tabellen aangemaakt**
+* data via **CRUD-statements** opgevraagd en gewijzigd
+
+Dan gaan we nu met databases in Python werken.
 
 ### Voorbereiding 1: Hernemen van studenten-applicatie
 
-Als voorbeeld We hernemen we de applicatie die we eerder in de cursus hebben gemaakt rond studenten.  
+Als voorbeeld hernemen we een variant van de applicatie die we eerder in de cursus hebben gemaakt rond studenten:
 
 ~~~python
 class Student:
-    def __init__(self,name,lab=0,theory=0):
+    def __init__(self, name, lab_points=0, theory_points=0):
         self.name = name
-        self.lab_points = lab
-        self.theory_points = 0
-
-    def points(self):
-        return (self.lab_points + self.theory_points)/2
-
-    def succeeded(self):
-        return points(self) >= 10    
-        
-    def __str__(self):
-        return "Student {} has {} for lab and {} for theory, so average of {}".format(
-            self.name, self.lab_points,self.theory_points,self.points())
-
-students = []
-
-students.append(Student("Jan Janssens",15,17))
-students.append(Student("Piet Pieters",15,17))
-
-for student in students:
-    print(student)
-~~~
-
-Deze applicatie laat ons toe studenten-gegevens in een lijst op te slagen en deze te hergebruiken.
-
-~~~
-Student Jan Janssens has 15 for lab and 0 for theory, so average of 7.5
-Student Piet Pieters has 15 for lab and 0 for theory, so average of 7.5
-~~~
-
-### Voorbereiding 2: Interactiviteit toevoegen
-
-We breiden deze ook uit door er wat **interactiviteit** aan toe te voegen door middel van een **éénvoudig menu**...
-
-~~~python
-class Student:
-    def __init__(self,name,lab=0,theory=0):
-        self.name = name
-        self.lab_points = lab
-        self.theory_points = theory
+        self.lab_points = lab_points
+        self.theory_points = theory_points
 
     def points(self):
         return (self.lab_points + self.theory_points) // 2
 
     def succeeded(self):
-        return points(self) >= 10    
-        
+        return self.points() >= 10
+
     def __str__(self):
-        return "Student {} has {} for lab and {} for theory, so average of {}".format(
-            self.name, self.lab_points,self.theory_points,self.points())
+        return f"Student {self.name} heeft {self.lab_points} voor het labo en {self.theory_points} voor theorie, dus een gemiddelde van {self.points()}."
+
 
 students = []
 
+students.append(Student("Jan Janssens", 15, 17))
+students.append(Student("Piet Pieters", 16, 12))
+
+for student in students:
+    print(student)
+~~~
+
+Deze applicatie laat ons toe om studentengegevens in een lijst op te slaan en deze te hergebruiken.
+
+~~~
+Student Jan Janssens heeft 15 voor het labo en 17 voor theorie, dus een gemiddelde van 16.
+Student Piet Pieters heeft 16 voor het labo en 12 voor theorie, dus een gemiddelde van 14.
+~~~
+
+### Voorbereiding 2: Interactiviteit toevoegen
+
+We breiden dit programma nu uit door er wat **interactiviteit** aan toe te voegen met een **eenvoudig menu**:
+
+~~~python
+class Student:
+    def __init__(self, name, lab_points=0, theory_points=0):
+        self.name = name
+        self.lab_points = lab_points
+        self.theory_points = theory_points
+
+    def points(self):
+        return (self.lab_points + self.theory_points) // 2
+
+    def succeeded(self):
+        return self.points() >= 10    
+        
+    def __str__(self):
+        return f"Student {self.name} heeft {self.lab_points} voor het labo en {self.theory_points} voor theorie, dus een gemiddelde van {self.points()}."
+
+
+students = []
+
+
 def input_number(request):
-    number_input = input(request)
-    return int(number_input)   
+    return int(input(request))
+
 
 menu = """
 1. Voeg student toe
@@ -79,12 +82,12 @@ menu = """
 while True:
 
     menu_input = input(menu)
-    
+
     if menu_input == "1":
-        student_name = input("Naam student(e): ")
+        student_name = input("Naam student: ")
         lab_points = input_number("Labo-punten: ")
         theory_points = input_number("Theorie-punten: ")
-        students.append(Student(student_name,lab=lab_points,theory=theory_points))
+        students.append(Student(student_name, lab_points, theory_points))
     elif menu_input == "2":
         for student in students:
             print(student)
@@ -92,10 +95,10 @@ while True:
         print("")
         quit()
     else:
-        print("ongekende input")
+        print("Ongeldige invoer")
 ~~~
 
-Hiermee kan je deze dan vanuit een éénvoudige command-line-interface **bewerken**
+Hiermee kun je de studenten dan vanuit een eenvoudige command-line-interface **bewerken**:
 
 ~~~
 python3 students.py 
@@ -104,7 +107,7 @@ python3 students.py
 2. Toon studenten
 3. Stop applicatie
 1
-Naam student(e): Jan Jannssens
+Naam student: Jan Janssens
 Labo-punten: 15
 Theorie-punten: 12
 
@@ -112,7 +115,7 @@ Theorie-punten: 12
 2. Toon studenten
 3. Stop applicatie
 1
-Naam student(e): Bart Voet
+Naam student: Bart Voet
 Labo-punten: 15
 Theorie-punten: 16
 
@@ -120,20 +123,22 @@ Theorie-punten: 16
 2. Toon studenten
 3. Stop applicatie
 2
-Student Jan Jannssens has 15 for lab and 12 for theory, so average of 13
-Student Bart Voet has 15 for lab and 16 for theory, so average of 15
+Student Jan Janssens heeft 15 voor het labo en 12 voor theorie, dus een gemiddelde van 13.
+Student Bart Voet heeft 15 voor het labo en 16 voor theorie, dus een gemiddelde van 15.
 
 1. Voeg student toe
 2. Toon studenten
 3. Stop applicatie
+3
+
 ~~~
 
-Groot nadeel is natuurlijk dat - **éénmaal** deze **afgesloten** - je **niet meer** aan de **data** kan geraken.  
-Hiervoor gaan we deze **code omvormen** om de data in een database bij te houden.
+Dit programma heeft één groot nadeel: zodra je het afgesloten hebt, zijn de data die je ingevoerd hebt verloren.
+Als je dat niet wil, moeten we deze code omvormen om de **data in een database** bij te houden.
 
-### sqlite in python - basis
+### SQLite in Python - basis
 
-De sql-commando's die we eerder hebben gezien, kan je vanuit een api doorsturen naar een database.
+De SQL-opdrachten die we eerder gezien hebben, kun je vanuit een API (application programming interface) doorsturen naar een database.
 
 ~~~
 +---------------+---+---------+----------------+
@@ -147,162 +152,193 @@ De sql-commando's die we eerder hebben gezien, kan je vanuit een api doorsturen 
 +---------------+---+---------+----------------+
 ~~~
 
-ipv een sql-editor te gebruiken kan je dus **vanuit je python code met sql praten**...
+In plaats van een SQL-editor te gebruiken, kun je dus **vanuit je Python-code met de SQL-database praten**...
 
-> Nota: Gedetailleerde documentatie rond het gebruik hiervan vind je te https://docs.python.org/3/library/sqlite3.html maar we proberen de basis-principes te hernemen.
+> Nota: Gedetailleerde documentatie rond het gebruik hiervan vind je in https://docs.python.org/3/library/sqlite3.html. Wij beperken ons hier tot de basisprincipes.
 
 
-#### Connectie maken met een database
+#### Verbinding maken met een database
 
-De eerste stap die je dient te doen is een **connectie-object** aan te maken.  
-Dit doe je met de volgende code:
+In een eerste stap maak je een **verbindingsobject** aan.
+Dat doe je met de volgende code:
 
 ~~~python
 import sqlite3
 con = sqlite3.connect('student.db')
 cur = con.cursor()
-# ...code to interrogate the database
+# Hier komt de code om de database te ondervragen
 con.close()
 ~~~
 
-Dit gaat aan een database connecteren die zich in dezelfde folder bevindt als vanwaar je code uitvoert.  
-Als deze nog niet bestaat zal de library een lege database aanmaken.
+Deze code verbindt met een SQLite-database waarvan het bestand zich in dezelfde map bevindt als waar je de Python-code uitvoert.  
+Als dit bestand nog niet bestaat, maakt de functie `connect` in dit bestand een lege database aan.
 
-Wel belangrijk is het om de database vrij te geven voor gebruik via de **close()-functie**!!!!
+Het is belangrijk dat je achteraf de database vrijgeeft voor gebruik via de functie `close`.
 
 #### Automatisch sluiten met with
 
-Een **good practice** wanneer je werkt met connectie-georienteerde objecten zoals files, database- of netwerk-connecties is gebruik maken van het **with-keyword**  (binnen Python maar gelijkaardig bestaat ook in andere talen).
+Voorgaande code heeft een probleem: als het programma een exception genereert, wordt de functie `close` niet aangeroepen.
 
-Het probleem met voorgaande code is dat als je er een error of exceptie wordt gegenereerd de close()-functie niet aangeroepen.  
-Om dit te vermijden kan je - zoals we eerder bij het het openen van een file hebben gezien - with kunnen gebruiken als volgt:
+Dit kan je, zoals we eerder bij het openen van een bestand gezien hebben, in Python vermijden met het keyword `with`. Het gebruik hiervan is een **good practice** wanneer je in Python werkt met objecten zoals bestanden of database- of netwerkverbindingen.
+
+Voor een database werkt dit als volgt:
 
 ~~~python
 import sqlite3
 with sqlite3.connect('student.db') as con:
     cur = con.cursor()
-    # ...other code to interrogate the database
+    # Hier komt de code om de database te ondervragen
 ~~~
 
-Na het uitvoeren van deze with-block zal de **close()-functie** op het connectie-object automatisch worden aangeroepen en wordt dus de connectie en zijn resources automatisch gesloten.
+Na het uitvoeren van dit `with`-blok wordt de functie `close` automatisch op het verbindingsobject aangeroepen. De verbinding wordt dan na het blok automatisch gesloten en de gebruikte resources worden teruggegeven.
 
-Meer gedetailleerde informatie hieromtrent kan je vinden te https://www.python.org/dev/peps/pep-0343/.  
-De essentie is als je een klasse (in bijvoorbeeld een sql-library) aanmaakt die 2 functies implementeerd je deze met een with-statement kan gebruiken.
+Meer informatie over `with` vind je in https://www.python.org/dev/peps/pep-0343/.  
 
-~~~python
-class SomeConnection:
+#### Een database query uitvoeren
+In de bovenstaande code maakten we door de methode `cursor` op het verbindingsobject uit te voeren een cursorobject aan.
 
-    def __enter__(self):
-        # called before running the with-block
-        # 
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        # make sure the dbconnection gets closed
-~~~
-
-
-#### Uitvoeren van een query
-
-Voortgaande op bovenstaande code kan je een cursor-object aanmaken.  
-Dit object kan je dan gebruiken om queries uit te voeren via de functie execute() 
+Op dit cursusobject kunnen we nu database queries uitvoeren via de methode `execute`:
 
 ~~~python
+import sqlite3
 with sqlite3.connect('student.db') as con:
     cur = con.cursor()
     query_result = cur.execute('SELECT student_id, name, lab, theory FROM student')
 ~~~
 
-Het resultaat van dit - een lijst van records - wordt voor de python-code ter beschikking gesteld als een iterator.
+Het resultaat hiervan - een lijst van records - is in je Python-code beschikbaar als een iterator. Met een for-lus kun je door alle elementen gaan:
 
 ~~~python
     for row in query_result:
-        print(Student(row[1],"met id",row[0]))
+        print("Student", row[1], "met id", row[0]))
 ~~~
 
-#### Gebruik van parameter-substution
+Als we dit programma nu uitvoeren op een studentendatabase, krijgen we iets te zien als het volgende:
 
-Eerder hadden we gezien dat we binnen een where-clausule condities konnen bepalen om een filtering/selectie toe te passen.  
-Hiervoor voorziet de api de mogelijkheid van substutie, stel dat je enkel studenten wil query-en die meer dan 10 punten hebben kan je dit als volgt doen.
-
-~~~python
-query_result = cur.execute('SELECT student_id, name, lab, theory FROM student where lab > ?', [10])
-
-for row in query_result:
-    print(Student(row[1],"met id",row[0]))
-
-con.close()
+~~~
+$ python3 students.py
+Student Bart met id 1
+Student Jan met id 2
+Student Piet met id 3
+Student Joris met id 4
 ~~~
 
-De conventie is dat je op de plek waar je een parameter wil toevoegen een vraagteken plaatst, en de parameter als opeenvolgende paramzeter opgeeft van de execute-functie.  
-Niets weerhoud je ervan van meerdere parameters toe te voegen/combineren
+Vergelijk dit met het resultaat van de SQL-query `SELECT student_id, name, lab, theory FROM student` als je die uitvoert in DB Browser for SQLite op dezelfde database. De variabele `row` in de `for`-lus van ons Python-programma verwijst in elke iteratie van de lus naar een nieuwe rij in de resultaten. Met `row[0]` verwijzen we naar het eerste veld in de rij, namelijk `student_id`, en met `row[1]` naar het tweede veld in de rij, namelijk `name`.
+
+#### Gebruik van parameter substitution
+
+Eerder hadden we gezien dat we binnen een `where`-clausule in een SQL-statement voorwaarden kunnen toevoegen om een filtering/selectie toe te passen.  
+Hiervoor voorziet de SQLite API van Python de mogelijkheid van **substitutie**. Stel dat je alleen studenten wilt opvragen die meer dan 10 scoren op hun labo. Dan kun je dit als volgt doen:
 
 ~~~python
-query_result = cur.execute('SELECT student_id, name, lab, theory FROM student where lab > ? and theory > ?', [10,12])
+import sqlite3
 
-for row in query_result:
-    print(Student(row[1],"met id",row[0]))
-
-con.close()
+with sqlite3.connect('students.db') as con:
+    cur = con.cursor()
+    query_result = cur.execute('SELECT student_id, name, lab, theory FROM student where lab > ?', [10])
+    for row in query_result:
+        print("Student", row[1], "met id", row[0])
 ~~~
 
-### Oefening 2: Persisteren van studenten-applicatie
+De conventie is dat je op de plaats waar je een parameter wilt toevoegen een vraagteken plaatst. Het tweede argument van de methode `execute` is dan een lijst met de opeenvolgende parameters, hier één.
 
-Onderstaande code is een toepassing van bovenstaande uitleg rond het gebruik van een connectie en cursor binnen Python.  
-Onder deze code overlopen we elke wijziging...
+Het resultaat?
+
+~~~
+$ python3 students.py
+Student Bart met id 1
+Student Jan met id 2
+Student Joris met id 4
+~~~
+
+Niets weerhoudt je ervan om meerdere parameters toe te voegen, bijvoorbeeld:
 
 ~~~python
-import sqlite3 as sl
+import sqlite3
+
+with sqlite3.connect('students.db') as con:
+    cur = con.cursor()
+    query_result = cur.execute('SELECT student_id, name, lab, theory FROM student where lab > ? and theory > ?', [10, 12])
+    for row in query_result:
+        print("Student", row[1], "met id", row[0])
+~~~
+
+Het resultaat:
+
+~~~
+$ python3 students.py
+Student Bart met id 1
+Student Jan met id 2
+~~~
+
+### Persistentie in de studentenapplicatie
+
+In onderstaande code passen we bovenstaande uitleg toe rond het gebruik van een verbinding en cursor binnen Python:
+
+~~~python
+import sqlite3
+import sys
+
 
 class Student:
-    def __init__(self,name,lab=0,theory=0,id=0):
+    def __init__(self, name, lab_points=0, theory_points=0, id=0):
         self.name = name
-        self.lab_points = lab
-        self.theory_points = theory
+        self.lab_points = lab_points
+        self.theory_points = theory_points
+        self.student_id = id
 
     def points(self):
         return (self.lab_points + self.theory_points) // 2
 
     def succeeded(self):
-        return points(self) >= 10    
-        
+        return self.points() >= 10
+
     def __str__(self):
-        return "Student {} has {} for lab and {} for theory, so average of {}".format(
-            self.name, self.lab_points,self.theory_points,self.points())
+        return f"Student {self.name} heeft {self.lab_points} voor het labo en {self.theory_points} voor theorie, dus een gemiddelde van {self.points()}."
+
 
 STUDENT_DB_FILE_NAME = "students.db"
 
+
 def init_database():
-    con = sl.connect(STUDENT_DB_FILE_NAME)
-    with con:
-        con.execute("""
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute(
+            """
             CREATE TABLE IF NOT EXISTS student (
                 student_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 name TEXT,
                 lab INTEGER,
                 theory INTEGER
             );
-        """)
+        """
+        )
+
 
 def get_students():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('SELECT student_id, name, lab, theory FROM student')
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute("SELECT student_id, name, lab, theory FROM student")
         students = []
         for row in query_result:
-            students.append(Student(row[1],row[2],row[3],row[0]))
+            students.append(Student(row[1], row[2], row[3], row[0]))
     return students
 
+
 def save_new_student(student):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         cur = con.cursor()
-        cur.execute('insert into student(name, lab, theory) values(?,?,?)', [student.name,student.lab_points,student.theory_points])
+        cur.execute(
+            "INSERT INTO student(name, lab, theory) VALUES(?,?,?)",
+            [student.name, student.lab_points, student.theory_points],
+        )
         con.commit()
+
 
 def input_number(request):
     number_input = input(request)
-    return int(number_input)   
+    return int(number_input)
 
-menu = """
+
+MENU = """
 1. Voeg student toe
 2. Toon studenten
 3. Stop applicatie
@@ -311,55 +347,53 @@ menu = """
 init_database()
 
 while True:
-    menu_input = input(menu)
+    menu_input = input(MENU)
 
     if menu_input == "1":
-        student_name = input("Naam student(e): ")
-        lab_points = input_number("Labo-punten: ")
-        theory_points = input_number("Theorie-punten: ")
-        save_new_student(Student(student_name,lab=lab_points,theory=theory_points))
+        student_name = input("Naam student: ")
+        lab_points = input_number("Punten op labo: ")
+        theory_points = input_number("Punten op theorie: ")
+        save_new_student(Student(student_name, lab_points, theory_points))
     elif menu_input == "2":
         for student in get_students():
             print(student)
     elif menu_input == "3":
         print("")
-        quit()
+        sys.exit()
     else:
-        print("ongekende input")
+        print("Ongeldige invoer")
 ~~~
 
-#### Toevoegen van de sqlite-library
-
-~~~python
-import sqlite3 as sl
-~~~
-
+Laten we hier eens door gaan... De klasse `Student` nemen we over van vroeger, maar we voegen in de constructor nog een attribuut `id` toe, met als standaardwaarde 0.
 
 #### Inialiseren van de database
 
-We maken de database aan bij opstarten van de applicatie.  
-Het keyword "if not exists" zorgt ervoor dat de create niet opnieuw wordt aangemaakt als deze reeds bestaat.
+We maken de database aan bij opstarten van de applicatie. Verwijder een eventueel nog bestaand bestand students.db om dit te testen.
+
+Het SQL-keyword `IF NOT EXISTS` zorgt ervoor dat de tabel de volgende keren dat je het programma uitvoert niet opnieuw aangemaakt wordt als deze dan al bestaat. We initialiseren de database dus met de volgende functie `init_database`:
 
 ~~~python
 STUDENT_DB_FILE_NAME = "students.db"
 
+
 def init_database():
-    con = sl.connect(STUDENT_DB_FILE_NAME)
-    with con:
-        con.execute("""
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute(
+            """
             CREATE TABLE IF NOT EXISTS student (
-                student_id INTEGER PRIMARY KEY,
+                student_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 name TEXT,
                 lab INTEGER,
                 theory INTEGER
             );
-        """)
+        """
+        )
 ~~~
 
-We voegen deze initialisatie toe bij het opstarten van de applicatie
+Die functie roepen we aan bij het opstarten van de applicatie:
 
 ~~~python
-menu = """
+MENU = """
 1. Voeg student toe
 2. Toon studenten
 3. Stop applicatie
@@ -372,19 +406,19 @@ while True:
 
 #### Ophalen van studenten-data
 
-We maken een fucntie die het **resultaat** van een **query** gaat omzetten naar een **object**
+We maken ook een fucntie die het resultaat van een SQL-query omzet naar een lijst met objecten van de klasse `Student`:
 
 ~~~python
 def get_students():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('SELECT student_id, name, lab, theory FROM student')
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute("SELECT student_id, name, lab, theory FROM student")
         students = []
         for row in query_result:
-            students.append(Student(row[1],row[2],row[3],row[0]))
+            students.append(Student(row[1], row[2], row[3], row[0]))
     return students
 ~~~
 
-En **roepen** dit **aan** bij optie **2**
+We roepen deze functie aan wanneer de gebruiker in het menu voor optie 2 kiest en tonen alle studenten in de lijst:
 
 ~~~python
     elif menu_input == "2":
@@ -394,248 +428,280 @@ En **roepen** dit **aan** bij optie **2**
 
 #### Aanmaken van een student
 
-Een nieuwe student aanmaken doe we via een functie **save_new_student** (met als argument een Student-object)
-
-Deze functie neemt als **argument** een object (van de klasse student) schrijft deze naar de database weg
+Een nieuwe student aanmaken doe we in de functie `save_new_student`. Deze heeft als argument een object van de klasse `Student` en voegt deze in de databasetabel toe:
 
 ~~~python
 def save_new_student(student):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         cur = con.cursor()
-        cur.execute('insert into student(name, lab, theory) values(?,?,?)', [student.name,student.lab_points,student.theory_points])
+        cur.execute(
+            "INSERT INTO student(name, lab, theory) VALUES(?,?,?)",
+            [student.name, student.lab_points, student.theory_points],
+        )
         con.commit()
 ~~~
 
-Deze wordt dan **aangeroepen** vanuit **optie 1**:
+We roepen die functie aan wanneer de gebruiker in het menu voor optie 1 kiest:
 
 ~~~python
     if menu_input == "1":
-        student_name = input("Naam student(e): ")
-        lab_points = input_number("Labo-punten: ")
-        theory_points = input_number("Theorie-punten: ")
-        save_new_student(Student(student_name,lab=lab_points,theory=theory_points))
+        student_name = input("Naam student: ")
+        lab_points = input_number("Punten op labo: ")
+        theory_points = input_number("Punten op theorie: ")
+        save_new_student(Student(student_name, lab_points, theory_points))
 ~~~
+
+Probeer het programma maar eens uit. Start het op voeg, wat studenten toe (optie 1 in het menu) en toon de lijst met studenten (optie 2). Sluit het programma af en start het opnieuw op. Wanneer je nu onmiddellijk de lijst met studenten opvraagt, krijg je de studenten te zien die je voorheen toegevoegd hebt. De persistentie werkt dus! Het programma leest immers de studenten uit de database in en toont ze. Als je nog extra studenten toevoegt, worden die ook aan de database toegevoegd.
 
 ### Oefening 2: updaten en verwijderen
 
-We kunnen studenten toevoegen en bekijken, we voegen nu 3 functies toe:
+Nu we studenten kunnen toevoegen en bekijken. voegen we nog drie functies toe:
 
-* Update van de punten van een student
-* Verwijderen van een student
-* Een student individueel opzoeken
+* Pas de punten van een student aan
+* Verwijder een student
+* Zoek een student individueel op
+
+De volledige code ziet er als volgt uit:
 
 ~~~python
-import sqlite3 as sl
+import sqlite3
+import sys
+
 
 class Student:
-    def __init__(self,name,lab=0,theory=0,id=0):
+    def __init__(self, name, lab_points=0, theory_points=0, id=0):
         self.name = name
-        self.lab_points = lab
-        self.theory_points = theory
-        self.student_id=id
+        self.lab_points = lab_points
+        self.theory_points = theory_points
+        self.student_id = id
 
     def points(self):
         return (self.lab_points + self.theory_points) // 2
 
     def succeeded(self):
-        return self.points() >= 10    
-        
-    def __str__(self):
-        return "Student {} - {} has {} for lab and {} for theory, so average of {}".format(
-            self.student_id, self.name, self.lab_points,self.theory_points,self.points())
+        return self.points() >= 10
 
-students = []
+    def __str__(self):
+        return f"Student {self.name} (ID {self.student_id}) heeft {self.lab_points} voor het labo en {self.theory_points} voor theorie, dus een gemiddelde van {self.points()}."
+
 
 STUDENT_DB_FILE_NAME = "students.db"
 
+
 def init_database():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        con.execute("""
-            create table if not exists student_group
-            (
-                group_name text primary key,
-                teacher text,
-                room text
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute(
+            """
+            CREATE TABLE IF NOT EXISTS student (
+                student_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                name TEXT,
+                lab INTEGER,
+                theory INTEGER
             );
-        """)
+        """
+        )
+
 
 def get_students():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('SELECT student_id, name, lab, theory FROM student')
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute("SELECT student_id, name, lab, theory FROM student")
         students = []
         for row in query_result:
-            students.append(Student(row[1],row[2],row[3],row[0]))
+            students.append(Student(row[1], row[2], row[3], row[0]))
     return students
 
+
 def save_new_student(student):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         cur = con.cursor()
-        cur.execute('insert into student(name, lab, theory) values(?,?,?)', [student.name,student.lab_points,student.theory_points])
+        cur.execute(
+            "INSERT INTO student(name, lab, theory) VALUES(?,?,?)",
+            [student.name, student.lab_points, student.theory_points],
+        )
         con.commit()
+
 
 def get_student(id):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('select student_id, name, lab, theory FROM student where student_id = ?',str(id))
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute(
+            "SELECT student_id, name, lab, theory FROM student WHERE student_id = ?",
+            str(id),
+        )
         row = query_result.fetchone()
-    return Student(row[1],row[2],row[3],row[0])
+    return Student(row[1], row[2], row[3], row[0])
 
-def update_points(id,lab,theory):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        update_tatement = 'update student SET lab = ? , theory = ? WHERE student_id = ?'
-        con.execute(update_tatement, [lab,theory,id])
+
+def update_points(id, lab, theory):
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        update_statement = (
+            "UPDATE student SET lab = ? , theory = ? WHERE student_id = ?"
+        )
+        con.execute(update_statement, [lab, theory, id])
         con.commit()
+
 
 def delete_student(id):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        con.execute("delete from student where student_id = ?", [id])
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute("DELETE FROM student WHERE student_id = ?", [id])
         con.commit()
+
 
 def input_number(request):
     number_input = input(request)
-    return int(number_input)   
+    return int(number_input)
 
-menu = """
+
+MENU = """
 1. Voeg student toe
 2. Toon studenten
 3. Toon student
-4. Update van punten student
-5. Verwijderen van een student
+4. Update punten student
+5. Verwijder student
 6. Stop applicatie
 """
 
 init_database()
 
 while True:
-    menu_input = input(menu)
+    menu_input = input(MENU)
 
     if menu_input == "1":
-        student_name = input("Naam student(e): ")
-        lab_points = input_number("Labo-punten: ")
-        theory_points = input_number("Theorie-punten: ")
-        save_new_student(Student(student_name,lab=lab_points,theory=theory_points))
+        student_name = input("Naam student: ")
+        lab_points = input_number("Punten op labo: ")
+        theory_points = input_number("Punten op theorie: ")
+        save_new_student(Student(student_name, lab_points, theory_points))
     elif menu_input == "2":
         for student in get_students():
             print(student)
     elif menu_input == "3":
-        id = input_number("> ")
+        id = input_number("ID: ")
         student = get_student(id)
         print(student)
     elif menu_input == "4":
-        print("Kies student op id")
+        print("Kies student met id")
         for student in get_students():
-            print("Student met id",student.student_id,"en naam",student.name)
-        id = input_number("> ")
-        lab = input_number("Labo-punten:")
-        theory = input_number("Theorie-punten:")
-        update_points(id,lab,theory)
+            print("Student met id", student.student_id, "en naam", student.name)
+        id = input_number("ID: ")
+        lab = input_number("Punten op labo: ")
+        theory = input_number("Punten op theorie: ")
+        update_points(id, lab, theory)
     elif menu_input == "5":
-        print("Verwijder student op id")
+        print("Verwijder student met id")
         for student in get_students():
-            print("Student met id",student.student_id,"en naam",student.name)
-        id = input_number("> ")
+            print("Student met id", student.student_id, "en naam", student.name)
+        id = input_number("ID: ")
         delete_student(id)
     elif menu_input == "6":
-        print("De applicatie wordt afgesloten")
-        quit()
+        print("")
+        sys.exit()
     else:
-        print("ongekende input")
-
+        print("Ongeldige invoer")
 ~~~
+
+Laten we hier weer eens door gaan. Merk allereerst op dat we de methode `__str__` van de klasse `Student` aangepast hebben zodat die nu ook het ID van de student toont, omdat we dit nodig hebben.
 
 #### Een student individueel opzoeken
 
-Om enkel 1 student te consulteren voegen we een optie 3 toe.  
-Binnen get_student() voeren we de code uit om 1 enkele student op te halen
+We voegen een optie toe om een individuele student op te vragen, en creëren daarvoor een functie `get_student`. Het belangrijkste verschil met de functie `get_students` is dat we hier één rij verwachten van de database. We maken daarom gebruik van de methode `fetchone` op de query.
+
+Aan de functie `get_student` geven we het ID van de gevraagde student door:
+
+~~~python
+def get_student(id):
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute(
+            "SELECT student_id, name, lab, theory FROM student WHERE student_id = ?",
+            str(id),
+        )
+        row = query_result.fetchone()
+    return Student(row[1], row[2], row[3], row[0])
+~~~
+
+In het menu roepen we deze functie als volgt aan:
 
 ~~~python
     elif menu_input == "3":
-        id = input_number("> ")
+        id = input_number("ID: ")
         student = get_student(id)
         print(student)
 ~~~
 
-Het belangrijkste verschil met voorgaande code is dat we hier **enkel 1 rij** verwachten van de database.  
-Hier hebben we dus geen **iterable** nodig maar slecht 1 rij, de sqlite-api laat dit toe via de functie **fetchone()**.  
-ipv dat we dan het resultaat-object itereren met een loop bekomen we dan de enige rij via deze functie
+#### De punten van een student aanpassen
+
+Met de functie `update_points` passen we de punten van een student aan:
 
 ~~~python
-def get_student(id):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('select student_id, name, lab, theory FROM student where student_id = ?',str(id))
-        row = query_result.fetchone()
-    return Student(row[1],row[2],row[3],row[0])
+def update_points(id, lab, theory):
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        update_statement = (
+            "UPDATE student SET lab = ? , theory = ? WHERE student_id = ?"
+        )
+        con.execute(update_statement, [lab, theory, id])
+        con.commit()
 ~~~
 
-#### Update van de punten van een student
+Aan deze functie geven we het ID van de student door en de punten die we de student willen geven voor het labo en voor theorie. Let op het SQL-statement waarbij we student met het gegeven ID selecteren.
 
-Om een **update-query** te **demonstreren** voegen we een optie die de punten van de student gaat aanpassen
+Deze functie roepen we nu aan als de gebruiker in het menu optie 4 kiest:
 
 ~~~python
     elif menu_input == "4":
-        print("Kies student op id")
+        print("Kies student met id")
         for student in get_students():
-            print("Student met id",student.student_id,"en naam",student.name)
-        id = input_number("> ")
-        lab = input_number("Labo-punten:")
-        theory = input_number("Theorie-punten:")
-        update_points(id,lab,theory)
+            print("Student met id", student.student_id, "en naam", student.name)
+        id = input_number("ID: ")
+        lab = input_number("Punten op labo: ")
+        theory = input_number("Punten op theorie: ")
+        update_points(id, lab, theory)
 ~~~
 
-De update-query is **gelijkaardig** aan de voorgaande **insert** met het **verschil** dat je hier een **where-clausule** nodig hebt om de student-id mee te geven.
+#### Een student verwijderen
 
-~~~python
-def update_points(id,lab,theory):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        update_tatement = 'update student SET lab = ? , theory = ? WHERE student_id = ?'
-        con.execute(update_tatement, [lab,theory,id])
-        con.commit()
-~~~
-
-#### Verwijderen van een student
-
-De laaste toevoeging is als je een student wil verwijderen:
-
-~~~sql
-    elif menu_input == "5":
-        print("Verwijder student op id")
-        for student in get_students():
-            print("Student met id",student.student_id,"en naam",student.name)
-        id = input_number("> ")
-        delete_student(id)
-~~~
-
-In dit geval:
+De laatste toevoeging is het verwijderen van een student. De functie daarvoor is vrij eenvoudig:
 
 ~~~python
 def delete_student(id):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        con.execute("delete from student where student_id = ?", [id])
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute("DELETE FROM student WHERE student_id = ?", [id])
         con.commit()
+~~~
+
+En die roepen we als volgt aan als de gebruiker in het menu optie 5 kiest:
+
+~~~python
+    elif menu_input == "5":
+        print("Verwijder student met id")
+        for student in get_students():
+            print("Student met id", student.student_id, "en naam", student.name)
+        id = input_number("ID: ")
+        delete_student(id)
 ~~~
 
 ### Oefening 3: Werken met meerdere groepen
 
-In het voorgaande deel - waar we sql introduceerde - hebben gezien dat we ook met meerdere tabellen konden werken.
+Toen we SQL introduceerden, hebben we gezien dat je ook met meerdere tabellen kunt werken. We maakten toen naast de tabel met studenten een tabel met klasgroepen aan voor die studenten. Dat kunnen we ook in ons programma doen:
 
 ~~~python
-import sqlite3 as sl
+import sqlite3
+import sys
+
 
 class Student:
-    def __init__(self,name,lab=0,theory=0,id=0):
+    def __init__(self, name, lab_points=0, theory_points=0, id=0):
         self.name = name
-        self.lab_points = lab
-        self.theory_points = theory
-        self.student_id=id
+        self.lab_points = lab_points
+        self.theory_points = theory_points
+        self.student_id = id
 
     def points(self):
         return (self.lab_points + self.theory_points) // 2
 
     def succeeded(self):
-        return self.points() >= 10    
-        
+        return self.points() >= 10
+
     def __str__(self):
-        return "Student {} - {} has {} for lab and {} for theory, so average of {}".format(
-            self.student_id, self.name, self.lab_points,self.theory_points,self.points())
+        return f"Student {self.name} (ID {self.student_id}) heeft {self.lab_points} voor het labo en {self.theory_points} voor theorie, dus een gemiddelde van {self.points()}."
+
 
 class StudentGroup:
     def __init__(self, name, teacher, room):
@@ -644,104 +710,133 @@ class StudentGroup:
         self.room = room
 
     def __str__(self):
-        return "Group with name '{}' and teacher {} at room {}".format(
-            self.name, self.teacher, self.room)    
+        return f"Group with name {self.name} and teacher {self.teacher} in room {self.room}"
 
-students = []
 
 STUDENT_DB_FILE_NAME = "students.db"
 
-def init_database():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        con.execute("""
-            create table if not exists student_group
-            (
-                group_name text primary key,
-                teacher text,
-                room text
-            );
-        """)
 
-        con.execute("""
-            create table if not exists student
+def init_database():
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute(
+            """
+            CREATE TABLE IF NOT EXISTS student_group
+            (
+                group_name TEXT PRIMARY KEY,
+                teacher TEXT,
+                room TEXT
+            );
+        """
+        )
+
+        con.execute(
+            """
+            CREATE TABLE IF NOT EXISTS student
             (
                 student_id INTEGER PRIMARY KEY,
                 name TEXT,
                 lab INTEGER,
                 theory INTEGER,
-                fk_student_group text references student_group
+                fk_student_group TEXT REFERENCES student_group
             );
-        """)
+        """
+        )
+
 
 def get_students():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('SELECT student_id, name, lab, theory FROM student')
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute("SELECT student_id, name, lab, theory FROM student")
         students = []
         for row in query_result:
-            students.append(Student(row[1],row[2],row[3],row[0]))
+            students.append(Student(row[1], row[2], row[3], row[0]))
     return students
+
 
 def get_students_for_group(group_name):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('SELECT student_id, name, lab, theory FROM student where fk_student_group = ?',[group_name])
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute(
+            "SELECT student_id, name, lab, theory FROM student where fk_student_group = ?",
+            [group_name],
+        )
         students = []
         for row in query_result:
-            students.append(Student(row[1],row[2],row[3],row[0]))
+            students.append(Student(row[1], row[2], row[3], row[0]))
     return students
 
+
 def get_groups():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('SELECT group_name, teacher, room FROM student_group')
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute(
+            "SELECT group_name, teacher, room FROM student_group"
+        )
         groups = []
         for row in query_result:
-            groups.append(StudentGroup(row[0],row[1],row[2]))
+            groups.append(StudentGroup(row[0], row[1], row[2]))
     return groups
 
+
 def save_new_student(student, group_name):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         cur = con.cursor()
-        cur.execute('insert into student(name, lab, theory,fk_student_group) values(?,?,?,?)', [student.name,student.lab_points,student.theory_points,group_name])
+        cur.execute(
+            "INSERT INTO student(name, lab, theory,fk_student_group) VALUES(?,?,?,?)",
+            [student.name, student.lab_points, student.theory_points, group_name],
+        )
         con.commit()
 
-def save_new_group(group_name, lector, room):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
+
+def save_new_group(group_name, teacher, room):
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         cur = con.cursor()
-        cur.execute("insert into student_group(group_name, teacher, room) values(?,?,?)", [group_name, lector, room])
+        cur.execute(
+            "INSERT INTO student_group(group_name, teacher, room) values(?,?,?)",
+            [group_name, teacher, room],
+        )
         con.commit()
+
 
 def get_student(id):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('select student_id, name, lab, theory FROM student where student_id = ?',str(id))
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute(
+            "SELECT student_id, name, lab, theory FROM student WHERE student_id = ?",
+            str(id),
+        )
         row = query_result.fetchone()
-    return Student(row[1],row[2],row[3],row[0])
+    return Student(row[1], row[2], row[3], row[0])
 
-def update_points(id,lab,theory):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        update_tatement = 'update student SET lab = ? , theory = ? WHERE student_id = ?'
-        con.execute(update_tatement, [lab,theory,id])
+
+def update_points(id, lab, theory):
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        update_statement = (
+            "UPDATE student SET lab = ? , theory = ? WHERE student_id = ?"
+        )
+        con.execute(update_statement, [lab, theory, id])
         con.commit()
+
 
 def delete_student(id):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        con.execute("delete from student where student_id = ?", [id])
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute("DELETE FROM student WHERE student_id = ?", [id])
         con.commit()
+
 
 def input_number(request):
     number_input = input(request)
-    return int(number_input)   
+    return int(number_input)
 
-menu = """
-a. Maak studenten-groep aan
+
+MENU = """
+a. Maak studentengroep aan
 b. Toon groepen
 1. Voeg student toe
 2. Toon studenten
 3. Toon student
-4. Update van punten student
-5. Verwijderen van een student
+4. Update punten student
+5. Verwijder student
 6. Stop applicatie
 """
 
-sub_menu_students = """
+SUB_MENU_STUDENTS = """
 a. Alle studenten
 b. Studenten voor groep
 """
@@ -749,7 +844,7 @@ b. Studenten voor groep
 init_database()
 
 while True:
-    menu_input = input(menu)
+    menu_input = input(MENU)
 
     if menu_input == "a":
         group_name = input("Naam groep: ")
@@ -758,73 +853,91 @@ while True:
         save_new_group(group_name, lector, room)
     elif menu_input == "b":
         for student_group in get_groups():
-            print(student_group)    
+            print(student_group)
     elif menu_input == "1":
-        student_name = input("Naam student(e): ")
-        lab_points = input_number("Labo-punten: ")
-        theory_points = input_number("Theorie-punten: ")
+        student_name = input("Naam student: ")
+        lab_points = input_number("Punten op labo: ")
+        theory_points = input_number("Punten op theorie: ")
         print("Kies uit volgende groepen: ")
         for student_group in get_groups():
-            print(student_group.name)  
-        group_name = input("> ")
-        save_new_student(Student(student_name,lab=lab_points,theory=theory_points), group_name)
+            print(student_group.name)
+        group_name = input("Groep: ")
+        save_new_student(Student(student_name, lab_points, theory_points), group_name)
     elif menu_input == "2":
-        choice = input(sub_menu_students)
+        choice = input(SUB_MENU_STUDENTS)
         if choice == "a":
             students = get_students()
         else:
             print("Kies uit volgende groepen: ")
             for student_group in get_groups():
                 print(student_group.name)
-            group_name = input("Kies groep> ")
+            group_name = input("Groep: ")
             students = get_students_for_group(group_name)
-            
-        for student in get_students():
-            print(student)
 
+        for student in students:
+            print(student)
     elif menu_input == "3":
-        id = input_number("> ")
+        id = input_number("ID: ")
         student = get_student(id)
         print(student)
     elif menu_input == "4":
-        print("Kies student op id")
+        print("Kies student met id")
         for student in get_students():
-            print("Student met id",student.student_id,"en naam",student.name)
-        id = input_number("> ")
-        lab = input_number("Labo-punten:")
-        theory = input_number("Theorie-punten:")
-        update_points(id,lab,theory)
+            print("Student met id", student.student_id, "en naam", student.name)
+        id = input_number("ID: ")
+        lab = input_number("Punten op labo: ")
+        theory = input_number("Punten op theorie: ")
+        update_points(id, lab, theory)
     elif menu_input == "5":
-        print("Verwijder student op id")
+        print("Verwijder student met id")
         for student in get_students():
-            print("Student met id",student.student_id,"en naam",student.name)
-        id = input_number("> ")
+            print("Student met id", student.student_id, "en naam", student.name)
+        id = input_number("ID: ")
         delete_student(id)
     elif menu_input == "6":
-        print("De applicatie wordt afgesloten")
-        quit()
+        print("")
+        sys.exit()
     else:
-        print("ongekende input")
+        print("Ongeldige invoer")
 ~~~
+
+We gaan hier weer door, maar verwijder eerst het databasebestand `students.db` voor je het programma uitvoert, zodat we met een schone lei kunnen beginnen.
 
 #### Extra tabel
 
-Eerste wijziging die we moeten uitvoeren is zorgen dat er een nieuwe tabel wordt aangemaakt.  
+De eerste wijziging in onze oorspronkelijke code is zorgen dat er een nieuwe tabel `student_group` wordt aangemaakt, en dat de tabel `student` met een foreign key naar die tabel verwijst. De functie `init_database` breiden we daarom uit tot:
 
 ~~~python
-        con.execute("""
-            create table if not exists student
+def init_database():
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        con.execute(
+            """
+            CREATE TABLE IF NOT EXISTS student_group
+            (
+                group_name TEXT PRIMARY KEY,
+                teacher TEXT,
+                room TEXT
+            );
+        """
+        )
+
+        con.execute(
+            """
+            CREATE TABLE IF NOT EXISTS student
             (
                 student_id INTEGER PRIMARY KEY,
                 name TEXT,
                 lab INTEGER,
                 theory INTEGER,
-                fk_student_group text references student_group
+                fk_student_group TEXT REFERENCES student_group
             );
-        """)
+        """
+        )
 ~~~
 
-#### Extra opties voor het aanmaken van groepen
+#### Extra opties voor groepen
+
+Het menu breiden we uit met twee opties, één om een nieuwe groep aan te maken en een andere om alle groepen op te vragen:
 
 ~~~python
     if menu_input == "a":
@@ -834,75 +947,96 @@ Eerste wijziging die we moeten uitvoeren is zorgen dat er een nieuwe tabel wordt
         save_new_group(group_name, lector, room)
     elif menu_input == "b":
         for student_group in get_groups():
-            print(student_group)  
+            print(student_group)
 ~~~
+
+Die functies `save_new_group` en `get_groups` moeten we uiteraard ook nog creëren.
 
 #### Opvragen van de groepen
 
+De groepen opvragen gaat met een eenvoudige SQL-query, gelijkaardig aan die om de studenten op te vragen. De functie `get_groups` ziet er als volgt uit:
+
 ~~~python
 def get_groups():
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        query_result = con.execute('SELECT group_name, teacher, room FROM student_group')
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
+        query_result = con.execute(
+            "SELECT group_name, teacher, room FROM student_group"
+        )
         groups = []
         for row in query_result:
-            groups.append(StudentGroup(row[0],row[1],row[2]))
+            groups.append(StudentGroup(row[0], row[1], row[2]))
     return groups
 ~~~
 
-#### Bewaren van een nieuwe groep
+#### Aanmaken van een nieuwe groep
+
+Een nieuwe groep aanmaken doen we met een SQL-statement `INSERT INTO`:
 
 ~~~python
-def save_new_group(group_name, lector, room):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
+def save_new_group(group_name, teacher, room):
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         cur = con.cursor()
-        cur.execute("insert into student_group(group_name, teacher, room) values(?,?,?)", [group_name, lector, room])
+        cur.execute(
+            "INSERT INTO student_group(group_name, teacher, room) values(?,?,?)",
+            [group_name, teacher, room],
+        )
         con.commit()
 ~~~
 
-#### Aanpassing bij het aanmaken van een student
+#### Groep opgeven bij het aanmaken van een student
+
+Bij het aanmaken van een student moeten we nu ook de student aan een groep toekennen. Daarom tonen we eerst alle groepen waaruit je kunt kiezen (met de functie `get_groups`) en vragen we dan om een groep. De optie 1 uit het menu passen we daarom aan tot:
 
 ~~~python
     elif menu_input == "1":
-        student_name = input("Naam student(e): ")
-        lab_points = input_number("Labo-punten: ")
-        theory_points = input_number("Theorie-punten: ")
+        student_name = input("Naam student: ")
+        lab_points = input_number("Punten op labo: ")
+        theory_points = input_number("Punten op theorie: ")
         print("Kies uit volgende groepen: ")
         for student_group in get_groups():
-            print(student_group.name)  
-        group_name = input("> ")
-        save_new_student(Student(student_name,lab=lab_points,theory=theory_points), group_name)
+            print(student_group.name)
+        group_name = input("Groep: ")
+        save_new_student(Student(student_name, lab_points, theory_points), group_name)
 ~~~
+
+En de bijbehorende functie `save_new_student` wordt:
 
 ~~~python
 def save_new_student(student, group_name):
-    with sl.connect(STUDENT_DB_FILE_NAME) as con:
+    with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         cur = con.cursor()
-        cur.execute('insert into student(name, lab, theory,fk_student_group) values(?,?,?,?)', 
-        [student.name,student.lab_points,student.theory_points,group_name])
+        cur.execute(
+            "INSERT INTO student(name, lab, theory,fk_student_group) VALUES(?,?,?,?)",
+            [student.name, student.lab_points, student.theory_points, group_name],
+        )
         con.commit()
 ~~~
 
-### Opdracht Sensordatabase (deel 2)
+Merk op hoe we hierin nu de verwijzing naar de studentgroep in de tabel opnemen (`fk_student`group`).
 
-Deze oefening is een vervolg op een voorgaande opdracht waar
-we reeds 2 tabellen probeerden te maken.
+#### Verdere uitbreidingen
 
-We maken eenvoudige command-line applicatie die sensor- een meet-informatie
-kan opslagen in een SQLite-database.
+Er zijn nog allerlei uitbreidingen mogelijk aan dit programma. Enkele suggesties:
 
-Hiervoor starten we vanuit onderstaande code.  
-Het is de bedoeling dat je de TODO's aanvult...
+* Maak het programma gebruiksvriendelijker. Geef bijvoorbeeld een speciale melding wanneer de gebruiker de studenten (van een groep of alle) opvraagt en er geen studenten zijn. Nu wordt er gewoon niets getoond, wat verwarrend kan zijn.
+* Maak het programma robuuster. Momenteel kun je bijvoorbeeld een student aanmaken met een onbestaande klasgroep. Ga eens door de hele code, kijk wat er nog allemaal kan mislopen met ongeldige gebruikersinvoer en laat het programma hierop reageren.
+
+### Opdracht: Sensordatabase
+
+In deze opdracht maak je een eenvoudige commandlinetoepassing die informatie over sensoren en metingen opslaat in een SQLite-database.
+
+Hiervoor kun je starten vanuit onderstaande code. Het is de bedoeling dat je de TODO's aanvult...
 
 #### Startcode
 
 ~~~python
-import sqlite3 as sl
-import datetime as dt
+import sqlite3
+from datetime import datetime
 
 SENSORS_DB_FILE_NAME = "sensors.db"
 
 def init_database():
-    con = sl.connect(SENSORS_DB_FILE_NAME)
+    con = sqlite3.connect(SENSORS_DB_FILE_NAME)
     with con:
         con.executescript("""
             CREATE TABLE IF NOT EXISTS sensor (
@@ -919,14 +1053,12 @@ def init_database():
 
 init_database()
 
-menu = """
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+MENU = """
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 """
 
 class Sensor:
@@ -940,167 +1072,144 @@ class SensorMeasurement:
         self.value = value
 
 def add_sensor(id, sensor_type):
-    # TODO: Voeg een sensor toe in de database
-    pass
+    # TODO: Voeg een sensor toe aan de database
 
 def get_sensors():
     # TODO: Haal een lijst van sensoren op uit de database
-    return []
 
 def add_measurement(sensor, moment, value):
-    # TODO: Voeg een sensor-meting toe
+    # TODO: Voeg een sensormeting toe aan de database
 
 def get_sensor_measurements(sensor):
-    # TODO: Vraag een lijst van metingen op
+    # TODO: Haal een lijst van metingen op uit de database
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     while True:
-        read = input(menu)
-        read = read.strip()
+        read = input(MENU).strip()
         if read == "1":
-            sensor_name = input("Geen sensor-naam: ")
-            sensor_type = input("Geef het type van sensor: ")
+            sensor_name = input("Naam van de sensor: ")
+            sensor_type = input("Type van de sensor: ")
             add_sensor(sensor_name, sensor_type)
         elif read == "2":
             for sensor in get_sensors():
                 print("Sensor met naam", sensor.name, "van het type", sensor.type)
         elif read == "3":
-            sensor = input("Geen sensor-naam: ")
-            moment = dt.datetime.now()
-            sensor_value = int(input("Geef waarde: "))
+            sensor = input("Naam van de sensor: ")
+            moment = datetime.now()
+            sensor_value = int(input("Waarde van de sensor: "))
             add_measurement(sensor, moment, sensor_value)
         elif read == "4":
-            sensor = input("Geef de sensor-id: ")
+            sensor = input("ID van de sensor: ")
             for measurement in get_sensor_measurements(sensor):
-                print("Op", measurement.value , " werd gemeten ", measurement.time)
+                print("Op", measurement.value, "werd gemeten", measurement.time)
         elif read == "5":
-            print("De applicatie sluit af")
             break
         else:
-            print(read ,"is geen geldige keuze")
-
+            print(read, "is een ongeldige keuze")
 ~~~
 
 #### Demo
 
-Hieronder zie je een voorbeeld van gebruik van de applicatie.
+Hieronder zie je een voorbeeld van wat je met de applicatie allemaal moet kunnen doen.
 
 ##### Optie 1: sensor toevoegen
 
 Optie 1 geeft je de mogelijkheid om een sensor toe te voegen.  
-In onderstaand voorbeeld voegen we een vocht- en druk-sensor toe.
+In onderstaand voorbeeld voegen we een luchtvochtigheidssensor en een luchtdruksensor toe:
 
 ~~~
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 1
-Geen sensor-naam: A1
-Geef het type van sensor: vocht
+Naam van de sensor: A1
+Type van de sensor: luchtvochtigheid
 
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 1
-Geen sensor-naam: A2
-Geef het type van sensor: Druk
+Naam van de sensor: A2
+Type van de sensor: luchtdruk
 ~~~
 
-##### Optie 2: lijst van de sensoren
+##### Optie 2: sensoren opvragen
 
-Optie 2 zorgt er voor dat je deze sensoren kan oplijsten...
+Met optie 2 kun je deze sensoren opvragen...
 
 ~~~
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 2
-Sensor met naam A1 van het type vocht
-Sensor met naam A2 van het type Druk
+Sensor met naam A1 van het type luchtvochtigheid
+Sensor met naam A2 van het type luchtdruk
 ~~~
 
-##### Optie 3: Sensor-meting toevoegen
+##### Optie 3: meting toevoegen
 
-Vervolgens kunnen we via optie 3 metingen toevoegen
+Vervolgens kunnen we via optie 3 metingen toevoegen:
 
 ~~~
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 3
-Geen sensor-naam: A1
-Geef waarde: 100
+Naam van de sensor: A1
+Waarde van de sensor: 100
 
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 3
-Geen sensor-naam: A1
-Geef waarde: 150
+Naam van de sensor: A1
+Waarde van de sensor: 150
 
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 3
-Geen sensor-naam: A2
-Geef waarde: 64
+Naam van de sensor: A2
+Waarde van de sensor: 64
 ~~~
 
-##### Optie 4: Sensor-metingen opvragen
+##### Optie 4: metingen opvragen
 
-De eerder ingegeven sensorwaardes kunnen we uiteindelijk oplijsten.  
-Als input dien je hier wel de sensor
+De eerder ingegeven sensormetingen kunnen we uiteindelijk ook opvragen in de applicatie:
 
 ~~~
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 4
-Geef de sensor-id: A1
+ID van de sensor: A1
 Op 2022-04-13 22:45:38.335312 werd gemeten 100
 Op 2022-04-13 22:46:01.097266 werd gemeten 150
 ~~~
 
-##### Optie 5: Afsluiten van de applicatie
+##### Optie 5: de applicatie afsluiten
 
-Ten slotte ga je deze applicatie afsluiten met optie 5
+En uiteraard willen we de applicatie ook proper kunnen afsluiten met optie 5:
 
 ~~~
-Kies opties:
-    1. Voeg sensor toe
-    2. Lijst sensoren
-    3. Voeg meting toe
-    4. Lijst metingen
-    5. Sluit af
-(type het getal overeenkomstig met je keuze)
+1. Voeg sensor toe
+2. Vraag sensoren op
+3. Voeg meting toe
+4. Vraag metingen op
+5. Sluit af
 5
-De applicatie sluit af
 ~~~
