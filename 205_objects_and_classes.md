@@ -13,12 +13,12 @@ In dit deel bekijken we klassen in Python, waarmee we data op willekeurige manie
 
 Stel, je wilt een een applicatie bouwen die de punten voor een vak bijhoudt, zoals in de onderstaande tabel voorgesteld:
 
-|   | Voornaam | Naam     | Labo  | Theorie |
-| - | -------- | -------- | ----- | ------- |
-| 1 | Jan      | Janssens |  15   | 16      |
-| 2 | Piet     | Pieters  |  15   | 16      |
-| 3 | Joris    | Jorissen |  15   | 16      |
-| 3 | Korneel  | Korneels |  15   | 16      |
+| Voornaam | Naam     | Labo  | Theorie |
+| -------- | -------- | ----- | ------- |
+| Jan      | Janssens |  15   | 16      |
+| Piet     | Pieters  |  15   | 16      |
+| Joris    | Jorissen |  15   | 16      |
+| Korneel  | Korneels |  15   | 16      |
 
 ### Verschillende studenten => Lijst
 
@@ -364,7 +364,7 @@ class Student:
         return (self.lab_points + self.theory_points) / 2
 
     def __str__(self):
-        return f"{student.first_name} {student.surname} heeft {student.lab_points} op het labo en {student.theory_points} op theorie, of {student.points()} in totaal."
+        return f"{self.first_name} {self.surname} heeft {self.lab_points} op het labo en {self.theory_points} op theorie, of {self.points()} in totaal."
 
 
 students = []
