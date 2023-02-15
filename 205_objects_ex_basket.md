@@ -1261,14 +1261,9 @@ $ git commit -m "Intercept non-numeric values in user input"
  1 file changed, 3 insertions(+), 1 deletion(-)
 ~~~
 
-#### Git
-
-Dit voorbeeld is als zipbestand downloadbaar in de cursus.  
-Download dit en probeer via de opdrachten `git log` en `git show <commit-id>` dit voorbeeld te bestuderen en wat handigheid op te bouwen met Git zelf.
-
 #### Uitbreidingsoefeningen
 
-Daarnaast kunnen er nog veel verbeteringen worden toegevoegd:
+Er kunnen nog veel verbeteringen worden toegevoegd aan deze applicatie:
 
 * Verwijderen van een item
 * Wijzigen van de hoeveelheid
