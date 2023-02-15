@@ -7,6 +7,15 @@ Naast het herhalen van het principe van **objectgeoriënteerd programmeren** wil
 De oefening gaat er van uit dat je reeds Git hebt geïnstalleerd.  
 Indien dit nog niet het geval is, zie https://git-scm.com/ voor installatie-instructies.
 
+Na de installatie van Git configureer je je e-mailadres en naam, zodat Git je identiteit aan je code koppelt. Dat kan met deze twee opdrachten:
+
+~~~
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+~~~
+
+Vul hier uiteraard je eigen gegevens in.
+
 ### Stap voor stap programmeren
 
 Dit doe je door de volgende stappen constant te herhalen:
