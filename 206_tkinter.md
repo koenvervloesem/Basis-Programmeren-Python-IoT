@@ -50,7 +50,7 @@ De GUI die TkInter toont, bestaat uit twee onderdelen:
 * De **titelbalk** (titel en acties)
 * Het **canvas** waarop je **grafische elementen** of **widgets** kunt plaatsen
 
-Een eerste element dat je op het canvas kunt plaatsen is een **label**. Dit is een stuk tekst dat je programmatorisch kutt manipuleren:
+Een eerste element dat je op het canvas kunt plaatsen is een **label**. Dit is een stuk tekst dat je programmatorisch kunt manipuleren:
 
 ~~~python
 from tkinter import Tk
@@ -105,7 +105,7 @@ Het resultaat ziet er als volgt uit:
 
 ![](tkinter_button.png)
 
-Als je nu op de knop klikt, wordt de functie aangeroepen die je als argument `command` bij het aanmaken van het `Button`-object hebt opgegeven. Dat is in dit geval sys.exit`, waarmee je het Python-programma afsluit.
+Als je nu op de knop klikt, wordt de functie aangeroepen die je als argument `command` bij het aanmaken van het `Button`-object hebt opgegeven. Dat is in dit geval `sys.exit`, waarmee je het Python-programma afsluit.
 
 Overigens kun je met het argument `side="left"` of `side="right"` bij het oproepen van de methode `pack` aangeven of je widget op een andere plaats moet komen te staan dan de standaardpositie bovenaan. Probeer hiermee eens het label links en de knop rechts te zetten.
 

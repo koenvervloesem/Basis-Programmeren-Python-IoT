@@ -1,12 +1,78 @@
 ## Led aansturen via een seriële interface
 
-In dit laatste stuk van deel 2 van de cursus gaan we een stukje **physical computing** doen. We maken een grafische interface in TkInter voor een programma dat via de USB-poort opdrachten geeft aan een microcontrollerbordje.
+In dit laatste stuk van deel 2 van de cursus gaan we een stukje **physical computing** doen. We maken een grafische interface in TkInter voor een programma dat via de USB-poort opdrachten geeft aan een microcontrollerbordje. Dit bordje luistert naar de opdrachten die via de USB-poort binnenkomen en reageert daarop door de ingebouwde LED in en uit te schakelen.
 
-Dit bordje draait Arduino-code (in C++), dat luistert naar de opdrachten die via de USB-poort binnenkomen en daarop reageert door de ingebouwde LED in en uit te schakelen.
+We hebben twee soorten microcontrollerbordjes voorbereid: enkele met CircuitPython en enkele Arduino-compatibele bordjes.
+
+### CircuitPython-bordjes
+
+CircuitPython (https://circuitpython.org) is een afgeslankte versie van de programmeertaal Python, zodat je er microcontrollers mee kunt programmeren. CircuitPython ondersteunt honderden microcontrollerbordjes (https://circuitpython.org/downloads), maar voor onze code hebben we een bordje nodig dat seriële communicatie via USB CDC (https://docs.circuitpython.org/en/latest/shared-bindings/usb_cdc/index.html) ondersteunt. Dat zijn bijvoorbeeld:
+
+* Arduino Nano RP2040 Connect (microUSB)
+* Raspberry Pi Pico (microUSB)
+* Raspberry Pi Pico W (microUSB)
+* Seeed Studio XIAO SAMD21 (USB-C)
+* Seeed Studio XIAO nRF52840 (USB-C)
+
+Na de installatie van de CircuitPython-firmware kun je je eigen CircuitPython-code eenvoudig op het bordje kopiëren. Onze code bestaat uit twee bestanden: **boot.py** wordt bij het opstarten uitgevoerd voor vroege initialisatie, en **code.py** wordt daarna uitgevoerd.
+
+We zetten het volgende in **boot.py**:
+
+```python
+import usb_cdc
+
+# Enable console-over-serial and data-over-serial
+usb_cdc.enable(console=True, data=True)
+```
+
+Hiermee creëren we een serieel apparaat om data door te sturen. Dit verschijnt dan als COM-poort in Windows of als serieel tty-apparaat in Linux of macOS.
+
+In **code.py** staat het volgende:
+
+```python
+from time import sleep
+from board import LED
+from digitalio import DigitalInOut, Direction
+import usb_cdc
+
+led = DigitalInOut(LED)
+led.direction = Direction.OUTPUT
+
+if __name__ == "__main__":
+    # Get the USB data feed object
+    serial = usb_cdc.data
+
+    while True:
+        # Check for incoming data
+        if serial.in_waiting > 0:
+            command = serial.read(1)
+
+            # Process command
+            if command == b"0":
+                led.value = False
+            elif command == b"1":
+                led.value = True
+            elif command == b"2":
+                led.value = not led.value
+            elif command == b"3":
+                led.value = not led.value
+                sleep(0.020)
+                led.value = not led.value
+
+            # Return state of led
+            if led.value:
+                serial.write(b"1")
+            else:
+                serial.write(b"0")
+```
+
+Met de Python-kennis die je in deze cursus hebt opgedaan, zou dit eenvoudig te volgen moeten zijn. We importeren eerst enkele functies en klassen die we nodig hebben. Daarna maken we een object `led` van de klasse `DigitalInOut` aan, met als argument de constante `LED` die naar het pin-nummer van de ingebouwde led verwijst. Daarna vragen we het object `usb_cdc.data` aan, dat we gebruiken voor de seriële communicatie.
+
+De rest van de code bestaat uit een oneindige lus, die continu wacht op binnenkomende seriële data en deze byte per byte leest. Komt er een teken "0" binnen, dan wordt de led uitgeschakeld, komt er een teken "1" binnen, dan wordt de led ingeschakeld, bij "2" verandert de led van status en bij "3" knippert de led eenmalig. Daarna schrijft de code de huidige status van de led naar de seriële interface.
 
 ### Arduino-code voor het Digispark-ontwikkelbordje
 
-Als microcontrollerbordje gebruiken we de Digispark, dat goedkoop is (ca. € 2,5), klein (2 x 2 cm) en eenvoudig zonder kabel in een vrije usb-poort van je computer past. Het is gebaseerd op de ATtiny85 AVR-microcontroller. De Digispark is ondersteund in de Arduino IDE. Volg daarvoor de instructies op http://digistump.com/wiki/digispark/tutorials/connecting.
+Een ander microcontrollerbordje is de Digispark, dat goedkoop is (ca. € 2,5), klein (2 x 2 cm) en eenvoudig zonder kabel in een vrije usb-poort van je computer past. Het is gebaseerd op de ATtiny85 AVR-microcontroller. De Digispark is ondersteund in de Arduino IDE. Volg daarvoor de instructies op http://digistump.com/wiki/digispark/tutorials/connecting. Een nadeel is dat er geen ondersteunde drivers voor nieuwe Windows-versies van bestaan.
 
 We draaien op de Digispark de volgende code:
 
@@ -73,11 +139,11 @@ In de functie `setup()` initialiseren we de USB-poort als een seriële interface
 
 De functie `loop()` wordt keer op keer uitgevoerd zolang de microcontroller draait. Hierin controleren we of er invoer op de seriële terminal klaar staat. Zo ja, dan lezen we één teken in, en kijken we of het gelijk is aan het cijfer 0. Zo ja, dan schrijven we de waarde `LOW` naar de ledpin, waardoor die pin met GND wordt verbonden en er dus geen stroom door loopt. De led gaat uit. Is de invoer gelijk aan het cijfer 1, dan schrijven we de waarde HIGH naar de ledpin, waardoor die pin met 5 V van de USB-poort wordt verbonden en er dus stroom door loopt. De led gaat aan. Verder laat de microcontroller de led omschakelen van aan naar uit of andersom bij het inlezen van het cijfer 2, en hij laat de led kort flitsen als hij het cijfer 3 inleest. Leest de microcontroller een andere waarde in, dan doet hij niets. Na elke opdracht die je geeft, stuurt de code ook de huidige toestand van de led terug over de seriële interface.
 
-Steek je de Digispark nu in een USB-poort van je computer, dan blijft hij wachten op opdrachten van je computer.
-
 ### Python-code
 
-De Python-code om de Digispark aan te sturen, maakt niet alleen gebruik van TkInter voor de grafische interface, maar ook van de externe Python-bibliotheek pySerial (https://pyserial.readthedocs.io) voor de communicatie over de seriële interface. Installeer pySerial met:
+Als je je microcontrollerbordje op een USB-poort van je computer aansluit, dan blijft het wachten op opdrachten van je computer.
+
+De Python-code om de microcontroller aan te sturen, maakt niet alleen gebruik van TkInter voor de grafische interface, maar ook van de externe Python-bibliotheek pySerial (https://pyserial.readthedocs.io) voor de communicatie over de seriële interface. Installeer pySerial met:
 
 ~~~
 pip install pyserial
@@ -130,7 +196,7 @@ class SerialPortManager:
     def write_command(self, command):
         """Schrijf een opdracht naar de seriële interface.
 
-        Dit geeft de toestand die de Digispark terugstuurt terug.
+        Dit geeft de toestand die de microcontroller terugstuurt terug.
         """
         # Zet de string met encode om naar de overeenkomstige bytes.
         self.connection.write(command.encode())
@@ -189,23 +255,23 @@ window.mainloop()
 
 Wat gebeurt er hier allemaal? In de klasse `SerialPortManager` creëren we in de constructor een combobox. De waardes hierin zijn alle poorten die pySerial vindt met de functie `comports()`. We maken hier gebruik van iets nieuws, een **list comprehension**. De functie `comports()` geeft namelijk een lijst terug met objecten, waarvan we een lijst met strings maken: `[f"{port.device} ({port.manufacturer})" for port in comports()]`.
 
-We maken in de constructor van `SerialPortManager` ook een knop aan. Als je hierop klikt, roept die de methode `connect` van de klasse aan. Hierin maken we een `Serial`-object van pySerial aan met als poort de poort die je gekozen hebt in de combobox, en enkele andere verbindingsparameters. Daarna kun je met de methode `write_command` van de klasse `SerialPortManager` een opdracht naar de seriële interface schrijven. De code leest daarna ook een byte terug, want de Digispark stuurt een byte met de nieuwe toestand van de led terug. Die waarde zetten we met `decode` naar een string om en geven we terug.
+We maken in de constructor van `SerialPortManager` ook een knop aan. Als je hierop klikt, roept die de methode `connect` van de klasse aan. Hierin maken we een `Serial`-object van pySerial aan met als poort de poort die je gekozen hebt in de combobox, en enkele andere verbindingsparameters. Daarna kun je met de methode `write_command` van de klasse `SerialPortManager` een opdracht naar de seriële interface schrijven. De code leest daarna ook een byte terug, want de microcontroller stuurt een byte met de nieuwe toestand van de led terug. Die waarde zetten we met `decode` naar een string om en geven we terug.
 
-Daarna definiëren we een klasse led. Die toont een label met de huidige toestand van de led en knoppen om de led in en uit te schakelen. Die knoppen koppelen we aan methodes om de juiste opdracht naar de `SerialPortManager` te sturen, en we updaten hierin ook het label om de toestand van de led te tonen.
+Daarna definiëren we een klasse `Led`. Die toont een label met de huidige toestand van de led en knoppen om de led in en uit te schakelen. Die knoppen koppelen we aan methodes om de juiste opdracht naar de `SerialPortManager` te sturen, en we updaten hierin ook het label om de toestand van de led te tonen.
 
 Uiteindelijk creëren we dan een venster en widgets voor de poortbeheerder en led, waarna we de main loop starten.
 
 ### Aan de slag
 
-Steek het Digispark-bordje in een USB-poort van je computer. Start dan je Python-code op. Kies een poort uit de uitklaplijst en klik op **Connect**. Klik daarna op **ON**. De led op je Digispark gaat aan. Klik je op **OFF**, dan gaat de led uit.
+Sluit het microcontrollerbordje op een USB-poort van je computer aan en wacht enkele seconden tot het opgestart is. Start dan je Python-code op je computer op. Kies een poort uit de uitklaplijst (voor de CircuitPython-bordjes is het normaal de poort met het hoogste nummer) en klik op **Connect**. Klik daarna op **ON**. De led op het microcontrollerbordje gaat aan. Klik je op **OFF**, dan gaat de led uit.
 
 ### Opdracht
 
 Breid deze code nu uit:
 
-* Voeg een knop **TOGGLE** toe die de led op de Digispark laat omschakelen tussen aan en uit door de opdracht "2" naar de seriële interface te schrijven.
-* Voeg een knop **FLASH** toe die de led op de Digispark laat flitsen door de opdracht "3" naar de seriële interface te schrijven.
-* Momenteel zoekt het programma in het begin naar de seriële poorten die het vindt en voegt die toe aan de uitklaplijst. Als je tijdens de werking van het programma een Digispark aansluit, wordt die poort niet gevonden. Breid de klasse `SerialPortManager` uit met een knop die een methode `refresh` van de klasse aanroept waarmee je de combobox nieuwe waardes geeft.
+* Voeg een knop **TOGGLE** toe die de led op de het microcontrollerbordje laat omschakelen tussen aan en uit door de opdracht "2" naar de seriële interface te schrijven.
+* Voeg een knop **FLASH** toe die de led op het microcontrollerbordje laat flitsen door de opdracht "3" naar de seriële interface te schrijven.
+* Momenteel zoekt het programma in het begin naar de seriële poorten die het vindt en voegt die toe aan de uitklaplijst. Als je tijdens de werking van het programma een microcontrollerbordje aansluit, wordt die poort niet gevonden. Breid de klasse `SerialPortManager` uit met een knop die een methode `refresh` van de klasse aanroept waarmee je de combobox nieuwe waardes geeft.
 * Er gebeurt geen foutenafhandeling in de code. Als je bijvoorbeeld op **Connect** klikt wanneer je nog geen poort gekozen hebt, of op **ON** of **OFF** klikt wanneer je nog niet met een seriële interface verbonden bent, krijg je in de console waarin je het programma opgestart hebt een exception te zien. Vang die op met try-except en toon dan een foutmelding in een label.
 * Voeg een tekstveld toe om de baudrate (bitsnelheid) te kiezen waarmee je de seriële verbinding opzet.
 * Toon de toestand van de seriële verbinding, bijvoorbeeld met een label dat **Connected** of **Not connected** toont, of met een ander widget naar keuze.
