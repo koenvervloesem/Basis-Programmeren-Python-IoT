@@ -145,6 +145,12 @@ Dat ziet er dan als volgt uit:
 
 ![](tkinter_font.png)
 
+Let op: op Windows dien je een alternatieve stijl in te stellen, omdat de standaardstijl niet de achtergrondkleur van knoppen instelt maar alleen het kader errond. Voeg dan de volgende regel toe na `style = Style()`:
+
+```
+style.theme_use("alt")
+```
+
 ### Grootte van het venster aanpassen
 
 Je kunt ook de grootte van het volledige venster instellen, bijvoorbeeld 500 pixels breed en 300 pixels hoog:
