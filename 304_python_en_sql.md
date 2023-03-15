@@ -179,7 +179,7 @@ Het is belangrijk dat je achteraf de database vrijgeeft voor gebruik via de func
 
 Voorgaande code heeft een probleem: als het programma een exception genereert, wordt de functie `close` niet aangeroepen.
 
-Dit kan je, zoals we eerder bij het openen van een bestand gezien hebben, in Python vermijden met het keyword `with`. Het gebruik hiervan is een **good practice** wanneer je in Python werkt met objecten zoals bestanden of database- of netwerkverbindingen.
+Dit kan je, zoals we eerder bij het openen van een bestand gezien hebben, in Python vermijden met het keyword `with`. Het gebruik hiervan is een **best practice** wanneer je in Python werkt met objecten zoals bestanden of database- of netwerkverbindingen.
 
 Voor een database werkt dit als volgt:
 
@@ -192,7 +192,7 @@ with sqlite3.connect('student.db') as con:
 
 Na het uitvoeren van dit `with`-blok wordt de functie `close` automatisch op het verbindingsobject aangeroepen. De verbinding wordt dan na het blok automatisch gesloten en de gebruikte resources worden teruggegeven.
 
-Meer informatie over `with` vind je in https://www.python.org/dev/peps/pep-0343/.  
+Meer informatie over `with` vind je in https://www.python.org/dev/peps/pep-0343/ (Python Enhancement Proposal 343).
 
 #### Een database query uitvoeren
 In de bovenstaande code maakten we door de methode `cursor` op het verbindingsobject uit te voeren een cursorobject aan.
@@ -240,7 +240,7 @@ with sqlite3.connect('students.db') as con:
         print("Student", row[1], "met id", row[0])
 ~~~
 
-De conventie is dat je op de plaats waar je een parameter wilt toevoegen een vraagteken plaatst. Het tweede argument van de methode `execute` is dan een lijst met de opeenvolgende parameters, hier één.
+De conventie is dat je op de plaats waar je een parameter wilt toevoegen een vraagteken plaatst. Het tweede argument van de methode `execute` is dan een lijst met de opeenvolgende parameters, hier één element, namelijk 10.
 
 Het resultaat?
 
@@ -451,9 +451,9 @@ We roepen die functie aan wanneer de gebruiker in het menu voor optie 1 kiest:
         save_new_student(Student(student_name, lab_points, theory_points))
 ~~~
 
-Probeer het programma maar eens uit. Start het op voeg, wat studenten toe (optie 1 in het menu) en toon de lijst met studenten (optie 2). Sluit het programma af en start het opnieuw op. Wanneer je nu onmiddellijk de lijst met studenten opvraagt, krijg je de studenten te zien die je voorheen toegevoegd hebt. De persistentie werkt dus! Het programma leest immers de studenten uit de database in en toont ze. Als je nog extra studenten toevoegt, worden die ook aan de database toegevoegd.
+Probeer het programma maar eens uit. Start het op, voeg wat studenten toe (optie 1 in het menu) en toon de lijst met studenten (optie 2). Sluit het programma af en start het opnieuw op. Wanneer je nu onmiddellijk de lijst met studenten opvraagt, krijg je de studenten te zien die je voorheen toegevoegd hebt. De persistentie werkt dus! Het programma leest immers de studenten uit de database in en toont ze. Als je nog extra studenten toevoegt, worden die ook aan de database toegevoegd.
 
-### Oefening 2: updaten en verwijderen
+### Studenten updaten, verwijderen en opzoeken
 
 Nu we studenten kunnen toevoegen en bekijken. voegen we nog drie functies toe:
 
@@ -677,7 +677,7 @@ En die roepen we als volgt aan als de gebruiker in het menu optie 5 kiest:
         delete_student(id)
 ~~~
 
-### Oefening 3: Werken met meerdere groepen
+### Werken met meerdere groepen
 
 Toen we SQL introduceerden, hebben we gezien dat je ook met meerdere tabellen kunt werken. We maakten toen naast de tabel met studenten een tabel met klasgroepen aan voor die studenten. Dat kunnen we ook in ons programma doen:
 
@@ -1012,7 +1012,7 @@ def save_new_student(student, group_name):
         con.commit()
 ~~~
 
-Merk op hoe we hierin nu de verwijzing naar de studentgroep in de tabel opnemen (`fk_student`group`).
+Merk op hoe we hierin nu de verwijzing naar de studentgroep in de tabel opnemen (`fk_student_group`).
 
 #### Verdere uitbreidingen
 

@@ -15,7 +15,7 @@ In dit deel van de cursus (kennismaking met SQL) maken we gebruik van een **embe
 We kiezen voor de embedded database **SQLite** (https://www.sqlite.org).  
 Deze wordt binnen de industrie gebruikt door talloze toepassingen:
 
-* Opslag voor het besturingssysteem en apps in Android
+* Opslag voor het besturingssysteem en apps in Android en iOS
 * Kantoortoepassingen
 * Geschiedenis voor webbrowsers
 * Embedded systemen
@@ -25,7 +25,7 @@ Deze wordt binnen de industrie gebruikt door talloze toepassingen:
 
 Om met SQLite te leren werken, starten we met het gebruik van een handige tool om SQL-opdrachten uit te voeren op deze database.
 
-Download DB Browser for SQLite op https://sqlitebrowser.org of via de pakketbeheerder van je Linux-distributie (bijvoorbeeld `sudo apt install sqlitebrowser`).
+Download DB Browser for SQLite op https://sqlitebrowser.org of via de pakketbeheerder van je Linux-distributie (bijvoorbeeld `sudo apt install sqlitebrowser` onder Debian of Ubuntu).
 
 ### Database aanmaken
 
@@ -65,9 +65,9 @@ INSERT INTO student (student_id, name, lab, theory) VALUES (3, 'George Bush', 10
 select * from student;
 ~~~
 
-Selecteer nu nadat je je SQLite-bestand aangemaakt hebt de tab **Execute SQL**."
+Selecteer nu nadat je je SQLite-bestand aangemaakt hebt de tab **Execute SQL**.
 
-In het tekstveld bovenaan dit tabblad kun je SQL-opdrachten (of queries) typen om je database te ondervragen (select) of te wijzigen (insert, update, delete).  
+In het tekstveld bovenaan dit tabblad kun je SQL-opdrachten (of queries) typen om je database te ondervragen (`select`) of te wijzigen (`insert`, `update`, `delete`).  
 
 * Kopieer het script hierboven in de SQL-editor zoals hieronder geïllustreerd.
 * Druk op het playknopje bovenaan of op de toets F5.

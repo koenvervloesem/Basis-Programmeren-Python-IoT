@@ -67,7 +67,7 @@ In veel gevallen hoeven de data niet noodzakelijk gedeeld te worden tussen versc
 Een voorbeeld is een smartphone (of een app op de smartphone) die wat lokale gegevens of instellingen wil bijhouden, de geschiedenis van een webbrowser, ...
 
 Deze tegenhanger van  **client-server-systemen** noemen we een **embedded database**.  
-In dit geval draait de database **op dezelfde machine** en in de **meeste gevallen** is de database ook **ingebed** (embedded) in dezelfde **applicatie**. Ze maakt een onderdeel uit can de applicatie.
+In dit geval draait de database **op dezelfde machine** en in de **meeste gevallen** is de database ook **ingebed** (embedded) in dezelfde **applicatie**. Ze maakt een onderdeel uit van de applicatie.
 
 ~~~
 +---------------+---+------------+----------------+
@@ -180,7 +180,7 @@ Wat is het **nut** van zo'n primaire of unieke sleutel?
 Dat wordt duidelijk als we de twee tabellen naast (of onder) elkaar zetten.  
 Je kan nu namelijk - relationele - **verbanden tussen** de verschillende **tabellen** (student en class) gaan leggen.  
 
-In onderstaand voorbeeld zie je dat we aan de class-tabel een kolom (class_name) toegevoegd hebben.  
+In onderstaand voorbeeld zie je dat we aan de tabel student een kolom (class_name) toegevoegd hebben.  
 Deze kolom bevat een waarde die **verwijst** naar de kolom class_name in de tabel class, we noemen dit ook wel een **foreign key**
 
 ~~~
@@ -235,12 +235,10 @@ Het garanderen van deze regels noemen we in een database ook wel **constraints**
 Dankzij de constraints kunnen we informatie uit verschillende tabellen **samenvoegen** via een **join**-operatie als je de database ondervraagt.  
 Hoe dit gebeurt, gaan we verder bekijken als we SQL uitleggen. Een voorbeeld van zo'n SQL-query is:
 
-TODO: deze query checken
-
 ~~~sql
 select student.student_name, student.lab, student.theory, class.class_name, class.teacher, class.room
 from student, class
-where student.class_name = student.class_name
+where student.class_name = class.class_name
 ~~~
 
 Met als **resultaat** de gegevens van beide tabellen **gecombineerd** met elkaar:

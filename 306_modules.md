@@ -1,70 +1,42 @@
-## Python modules
+## Python-modules
 
 ### Modulariteit
 
-**Modulair** programmeren of modulariteit houdt in dat je leert je **code** te **ordenen**  en te groeperen.  
-Tot nu toe hebben we al 2 elementen gezien die ons daarbij kunnen helpen, namelijk **functies** en **klasses**.
+**Modulair** programmeren of modulariteit houdt in dat je leert je **code** te **ordenen**  en te groeperen.
+Tot nu toe hebben we al twee elementen gezien die ons daarbij kunnen helpen, namelijk **functies** en **klassen**.
 
 #### Modulariteit met functies
 
-**Functies** stelde ons in staat stukken code te isoleren:
+**Functies** stelden ons in staat om stukken code te isoleren:
 
 * Om code **op te delen** in logische onderdelen (en je code leesbaar te houden)
 * Om code te **hergebruiken** en herhalingen te vermijden
   
-#### Modulariteit met objecten...
+#### Modulariteit met klassen
 
-**Klasses** stelde ons in staat data te groeperen in een structuur.  
+**Klassen** stelden ons in staat om data te groeperen in een structuur.  
 Herinner bijvoorbeeld de student met een naam, labo-punten en theorie-punten.  
 
-~~~python
-class Student:
-    def __init__(self)
-        self.name = ""
-        self.labo = 0
-        self.theory = 0
+Wat klassen nog bijzonder maakt, is de mogelijkheid om functies te koppelen aan deze data. Zo'n functie heet dan een **methode**. 
+Zo konden we een methode `points` definiëren die - via de referentie `self` - op de data van het object kon werken.
 
-bart = Student()
-bart.labo = 16
-bart.theory = 12
-~~~
-
-Wat klasses nog bijzonder maakt is de mogelijkheid functies te koppelen aan deze data.  
-Zo konden we bijvoorbeeld een functie average die - via de self-referentie - kon opereren op de data ban het object
-
-~~~python
-class Student:
-    def __init__(self)
-        self.name = ""
-        self.labo = 0
-        self.theory =
-
-    def points(self):
-        return self.labo / self.theory
-
-bart = Student()
-bart.labo = 16
-bart.theory = 12
-
-print(bart.points()) # prints 14
-~~~
-
-### Python modules
+### Python-modules
 
 Een module zit nog een niveau **hoger** dan **functies** en **klassen**.  
 Een module is een **geheel/verzameling** van klassen, functies en variabelen die **logisch bij elkaar horen**.  
 
-De reden om deze te groeperen zijn divers:
+De redenen om deze te groeperen zijn divers:
 
-* Je programma logisch onder te verdelen te groeperen om het overzichtelijk en onderhoudsvriendelijk te houden
-* Je code te laten herbruiken binnen andere programma's
+* Je programma logisch onder te verdelen om de code overzichtelijk en onderhoudsvriendelijk te houden
+* Je code te laten hergebruiken binnen andere programma's
 * Een stuk van je code te isoleren om het gemakkelijker te testen
-* ... en vele andere redenen die je nog zal ontdekken
+* ... en vele andere redenen die je nog zult ontdekken
 
-### Python modules in praktijk
+### Python-modules in de praktijk
 
-Een Python module aanmaken is **zeer éénvoudig**, een **Python-file** is een **module**
-Stel **onderstaande code**...
+Een Python-module aanmaken is **heel eenvoudig** en je hebt het al de hele tijd gedaan. Elk **Python-bestand** is immers een **module**.
+
+Maak bijvoorbeeld onderstaande code aan, die twee eenvoudige functies definieert:
 
 ~~~python
 def hello():
@@ -74,13 +46,13 @@ def world():
     print("world")
 ~~~
 
-... we bewaren deze file onder de **naam hello.py**  
+Bewaar deze in een bestand met de naam **hello.py**.
 
-**Let op, deze naam (hello.py) moeten we onthouden voor de volgende stap**
+**Let op, deze bestandsnaam moet je onthouden voor de volgende stap.**
 
 ### Een module hergebruiken via import
 
-Als we een Python console openen vanuit dezelfde locatie waar deze python-file is bewaard kunnen we deze **functies importeren**:
+Als we een Python-REPL openen vanuit dezelfde directory waarin we dit Python-bestand bewaard hebben, kunnen we deze **module importeren**:
 
 ~~~python
 >>> import hello
@@ -90,12 +62,9 @@ hello
 world
 ~~~
 
-De eerste statement "import hello" zorgt ervoor dat de functies (en ook variabelen als die er zijn) beschikbaar worden gesteld.  
+Met het eerste statement, `import hello`, maken we de inhoud van het hele bestand hello.py beschikbaar. De naam van deze import dient overeen te komen met de naam van het bestand, zonder de extensie .py. Standaard zoekt Python naar modules in dezelfde directory en in een aantal voorgedefinieerde systeemdirectory's.
 
-De naam van deze import dient overéén te komen met de naam van de file (op voorwaarde dat deze in dezelfde file staat)
-
-Let wel, om deze aan te roepen ben je wel verplicht deze te prefixen met de naam van deze module.  
-Als je dit niet doet zal Python een error te voorschijn toveren (van het type NameError):
+In dit geval bevat de module de twee functies `hello()` en `world()`. Deze kunnen we nu aanroepen door ze vooraf te laten gaan door de naam van de module. Als je dit niet doet, toont Python een exception van het type `NameError`:
 
 ~~~python
 >>> hello()
@@ -104,11 +73,11 @@ Traceback (most recent call last):
 NameError: name 'hello' is not defined
 ~~~
 
-### Import vanuit een andere python-file
+### Import vanuit een ander Python-bestand
 
-Het voorgaand voorbeeld was vanit de **console** maar je kan dat ook het zelfde doen vanuit een andere Python-file.
+Het voorgaande voorbeeld was vanuit de REPL, maar je kunt ook hetzelfde doen vanuit een ander Python-bestand.
 
-Maar hiervoor - opnieuw binnen dezelfde directory - een andere file aan (bijvoorbeeld met de naam hello_application.py)
+Maar hiervoor - opnieuw binnen dezelfde directory - een ander bestand aan (bijvoorbeeld met de naam hello_application.py)
 
 ~~~python
 import hello
@@ -118,10 +87,10 @@ hello.world()
 ~~~
 
 > *Nota:*  
-> Probeer voor leesbaarheid een lege lijn tussen de imports (meestal bovenaan de code)
-> en de rest van je code
+> Voeg voor de leesbaarheid een lege lijn tussen de imports (meestal bovenaan de code)
+> en de rest van je code toe.
 
-Vanuit deze file kan je dan respectievelijk beide functies hergebruiken:
+Vanuit dit Python-bestand kun je dan beide functies hergebruiken:
 
 ~~~bash
 $ ls 
@@ -133,7 +102,7 @@ world
 
 ### De naam van modules
 
-Een module krijgt ook **automatisch** een **naam** mee (die dan ook **overeenkomt** me de naam die je gebruikt om deze te **importeren**)
+Een module krijgt automatisch een naam mee, die overeenkomt met de naam die je gebruikt om deze te importeren.
 
 ~~~python
 >>> import hello
@@ -146,11 +115,9 @@ Een module krijgt ook **automatisch** een **naam** mee (die dan ook **overeenkom
 
 Deze variabele is ook beschikbaar als globale variabele, en deze heeft een specifieke waarde afhankelijk van de modus waar de code zich in bevindt.
 
-In normale omstandigheden zal de waarde van deze functie **__main__** zijn, maar dit kan ook verschillend zijn zoals we zo dadelijk gaan zien...
-
 ### name-variabele met verschillende waardes
 
-Om dit te illustreren printen voegen we een lijntje toe aan onze voor Python-file
+Om dit te illustreren, voegen we een regel toe aan ons Python-bestandi **hello.py** om de naam van de module te tonen:
 
 ~~~python
 def hello():
@@ -162,14 +129,14 @@ def world():
 print("Name: ", __name__)
 ~~~
 
-Als je deze dan uitvoert print deze zoals verwacht __main__ af
+Als je deze dan uitvoert, toont deze `__main__`:
 
 ~~~bash
 $ python3 hello.py
 Name: __main__
 ~~~
 
-Als we echter nu echter hello_application.py uitvoeren zien we het volgende:
+Als we echter nu echter hello_application.py uitvoeren, zien we het volgende:
 
 ~~~bash
 python3 hello_application.py
@@ -178,16 +145,16 @@ hello
 world
 ~~~
 
-Eerst en vooral zien we dat - ondanks dat we enkel importeren - de code effectief wordt uitgevoerd.  
-De naam is echter hello en niet __main__ maar hello.  
+Eerst en vooral zien we dat - ondanks dat we hello enkel importeren - de code effectief wordt uitgevoerd.  
+De naam die nu getoond wordt, is echter `hello` en niet `__main__`.  
 
-Bij het importeren van een file wordt dus alle code van deze file uitgevoerd, doordat deze code wordt uitgevoerd worden deze functies dan ook beschikbaar gesteld.
+Bij het importeren van een Python-module wordt dus alle code van dit bestand uitgevoerd. Hierdoor worden de erin gedefinieerde functies beschikbaar gesteld, maar ook andere code wordt uitgevoerd.
 
-Door dat de globale name-variabele echter op hello staat worden deze functies trouwens gekoppeld aan deze naam en niet aan de globale (main)-namespace (waardoor dat je hello als prefix dient te gebruiken)
+Doordat de globale variabele `__name__` in dit geval echter de waarde `hello` heeft, worden deze functies gekoppeld aan deze naam en niet aan de globale namespace. Daardoor dien je `hello` als prefix te gebruiken om de functies aan te roepen.
 
 ### Uitvoerbare modules
 
-Deze name-variabele heeft echter nog een belangrijke functie.  
+Deze variabele `__name__` heeft echter nog een belangrijke functie.  
 Stel dat je volgende code schrijft:
 
 ~~~python
@@ -201,12 +168,17 @@ hello()
 world()
 ~~~
 
-...dan zal deze inderdaad de functies en hello en world afdrukken...
+...dan zal deze inderdaad de functies `hello()` en `world()` uitvoeren.
 
 ~~~
 $ python3 hello.py
 hello
 world
+~~~
+
+Maar als we nu `hello_application.py` uitvoeren, zien we:
+
+~~~
 $ python3 hello_application.py
 hello
 world
@@ -214,8 +186,9 @@ hello
 world
 ~~~
 
-...maar deze code gaat echter ook worden uitgevoerd als je deze vanuit een andere file importeerd (hello_application.py)  
-Om er voor te kunnen zorgen dat je hello.py zowel als module als uitvoerbare file kan gebruiken kan je het volgende toevoegen:
+De code in hello.py wordt dus ook uitgevoerd als je deze vanuit een ander bestand importeert.
+
+Om ervoor te zorgen dat je hello.py niet alleen als module kunt importeren, maar ook als uitvoerbaar bestand kunt gebruiken, voeg je het volgende toe:
 
 ~~~python
 def hello():
@@ -229,7 +202,7 @@ if __name__ == "__main__":
     world()
 ~~~
 
-Door te gaan kijkne of de globale name-variabele main is of hello kan je vermijden dat de code wordt uitgevoerd als je in de import-modus zit.
+We kijken dus of de globale variabele `__name__` de waarde `__main__` heeft. Die heeft deze waarde alleen als je de module als Python-script uitvoert, en niet als je ze importeert. De code binnen het if-blok wordt dan ook alleen in het eerste geval uitgevoerd:
 
 ~~~
 $ python3 hello.py
@@ -242,13 +215,13 @@ world
 
 ### from-keyword
 
-Eerdoer hebben het **import-keyword** gebruikt om de functies vanuit voorgaande module te importeren.  
+Eerder hebben het keyword `import` gebruikt om functies vanuit de module `hello` te importeren.  
 
-Om die functies (en klasses als die er zouden zijn) te gebruiken diende je te **prefixen** met de module-naam (hello).  
-Dit had als voordeel dat je niet zomaar **conflicten** kan hebben met **functies** uit andere modules (of je eigen code) maar geeft wel wat extra type-werk.
+Om die functies (en klassen als die er zouden zijn) te gebruiken, diende je ze te **prefixen** met de naam van de module (hello).  
 
-Soms kunnen er situaties zijn waar je de functies in hoofd-namespace van het programma wil krijgen (zonder te moeten prefixen).  
-Dit kan je doen met de volgende **from ... import ... constructie** zoals in onderstaande code.
+Dit heeft als voordeel dat je niet zomaar **conflicten** kunt hebben met gelijknamige functies uit andere modules (of je eigen code), maar het geeft wel wat extra typewerk.
+
+Soms wil je dat typewerk liever besparen. Dat kan met de volgende **from ... import ... constructie**: 
 
 ~~~python
 from hello import world
@@ -256,11 +229,12 @@ from hello import world
 world()
 ~~~
 
-Deze heeft dezelfde eigenschap als import (alle code wordt daar ook uitgevoerd) maar enkel functies aangeduid achter import worden geimporteerd.  
-In onderstaande uitvoering zie je 2 zaken:
+Ook hier wordt alle code in de module uitgevoerd, maar alleen de functies die je achter `import` aanduidt worden beschikbaar gesteld in de namespace van het programma.
 
-* Je kan de functie world() aanroepen zonder prefix
-* hello() is niet beschikbaar
+In onderstaande uitvoering zie je twee zaken:
+
+* Je kan de functie `world()` aanroepen zonder prefix
+* De functie `hello()` is niet beschikbaar
 
 ~~~python
 Python 3.8.5 (default, Jan 27 2021, 15:41:15) 
@@ -275,11 +249,12 @@ Traceback (most recent call last):
 NameError: name 'hello' is not defined
 ~~~
 
-Als je wilt dat hello ook beschikbaar is kan je dit op 2 manieren.  
-Of je importeert beide (gescheiden door komma's)
+Als je wilt dat `hello()` ook beschikbaar is, kan dat op twee manieren.  
+
+Of je importeert beide (gescheiden door komma's):
 
 ~~~python
-from hello import hello,world
+from hello import hello, world
 
 world()
 hello()
@@ -291,19 +266,19 @@ hello()
 Python 3.8.5 (default, Jan 27 2021, 15:41:15) 
 [GCC 9.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> from hello import world
+>>> from hello import hello, world
 >>> world()
 world
 >>> hello()
 hello
 ~~~
 
-...of je gebruik \* om alle functies te importeren (met hetzelfde resultaat)
+Of je gebruik \* om alle functies te importeren.
 
 > Let op:  
-> !!! Het gebruik van import \* is meestal geen goed idee
-> dit kan zorgen voor conflicten met functies of klassen
-> uit andere modules!!!
+> Het gebruik van `import *` is meestal geen goed idee.
+> Je weet niet altijd welke namen je op deze manier importeert
+> en dat kan tot naamconflicten in je code leiden.
 
 ~~~python
 from hello import *
@@ -314,25 +289,25 @@ hello()
 
 ### Herwerken van studenten-applicatie
 
-Als voorbeeld van een modularisatie gaan we onze voorgaande studenten-applicatie modulariseren.  
-Als je de code bekijkt zou je deze kunnen verknippen in 3 delen:
+Als voorbeeld van een modularisatie gaan we onze voorgaande studenten-applicatie in modules opsplitsen.  
+Als je de code bekijkt, zou je deze in drie delen kunnen opsplitsen:
 
 * **student_command.py**   
-  Code die zich bezig houdt met de command-line-interactie
+  Code die zich bezighoudt met de command-line-interactie
 * **student_service.py**  
-  Code die zich bezig houtd met de applicatie-logica en het opslagen in de database
+  Code die zich bezighoudt met de applicatie-logica en de verbinding met de database
 * **student_entities.py**  
-  Code die de studenten-datatypes bevatten.
+  Code die de studenten-datatypes bevat
 
 Elk stuk code heeft zijn eigen verantwoordelijkheid.
 
 #### Afhankelijkheden
 
-In onderstaand diagram zien je ook de relaties en afhankelijkheden tussen de modules onderling.
+In onderstaand diagram zie je ook de relaties en afhankelijkheden tussen de modules onderling.
 
-* Bovenaan staat de command-line-module, deze heeft de service-module nodig om de studenten in de database op te slagen
-* Zowel de command- als de service- zijn op hun beurt afhankelijk van de entities
-* entities staat op zich zelf en heeft geen afhankelijheden
+* Bovenaan staat de command-line-module, deze heeft de service-module nodig om de studenten in de database op te slaan.
+* Zowel de command- als de service-moules zijn op hun beurt afhankelijk van de entities
+* entities staat op zichzelf en heeft geen afhankelijheden
 
 ~~~
                              +-------------------------------+
@@ -355,15 +330,13 @@ In onderstaand diagram zien je ook de relaties en afhankelijkheden tussen de mod
 
 #### Nut van modules
 
-Modules zijn zeer nuttig voor verschillende doeleinden: 
+Modules zijn zoals we al zagen nuttig voor verschillende doeleinden: 
 
-* Code (bij grotere projectjes) op te splitsten in kleinere beheersbare delen zodat.
-* Code te herbruiken binnen andere applicaties
-* Code individueel testen (je wil bijvoorbeeld je service-applicatie testen zonder de command-line)
+* om code (bij grotere projecten) op te splitsen in kleinere beheersbare delen
+* om code te hergebruiken binnen andere applicaties
+* om code individueel te testen (je wil bijvoorbeeld je service-applicatie testen zonder de command-line)
   
-Stel nu dat we naast onze command-line-module nu ook een web-api willen maken dan kan deze nieuwe module ook de service-module gebruiken
-
-(we passen dit toe in het volgend hoofdstuk)
+Stel nu dat we naast onze command-line-module ook een webversie willen maken, dan kan deze nieuwe module ook de service-module gebruiken:
 
 ~~~
                      +-------------------------------+
@@ -389,6 +362,10 @@ Stel nu dat we naast onze command-line-module nu ook een web-api willen maken da
                                                           |                              |
                                                           +------------------------------+
 ~~~
+
+Dit passen we toe in het volgende deel van de cursus.
+
+De code van onze drie modules ziet er nu als volgt uit:
 
 #### student_entities.py
 
@@ -594,15 +571,15 @@ while True:
 
 ### Andere weetjes
 
-Een aantal andere interessante weetjes ivm modules zijn
+We bespreken nog enkele interessante weetjes in verband met Python-modules.
 
-#### Waar vindt Python modules
+#### Waar vind je Python-modules?
 
-Om je een module te gebruiken moesten de python-module-file in dezelfde directory plaatsen.  
+Om een module te gebruiken, moesten we het bestand in dezelfde directory plaatsen.  
 
-Python voorziet echter - naast je eigen modules - ook een veel standaard-modules, waar bevinden zich deze modules nu.
+Python voorziet echter - naast je eigen modules - ook veel standaardmodules. Maar waar bevinden die zich dan?
 
-De locaties waar Python deze gaan halen bevindt zich in een variable binnen de standard-module sys.path
+De locaties waar Python deze gaat zoeken, bevinden zich in de variabele `path` van de standaardmodule `sys`:
 
 ~~~python
 >>> import sys
@@ -613,25 +590,31 @@ De locaties waar Python deze gaan halen bevindt zich in een variable binnen de s
 
 #### dir-functie
 
-De dir-functie kan je gebruiken om de verschillende onderdelen (functies, klassen, variabelen, ...) 
+Met de functie `dir` kun je de verschillende onderdelen (functies, klassen, variabelen, ...) van een module opvragen:
 
 ~~~python
+>>> import hello
 >>> dir(hello)
 ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'hello', 'world']
 ~~~
 
-De dir-functie kan je trouwens ook gebruiken op klasses, hieronder zie alle functies die betaan voor het type bytearray
+Diezelfde functie kun je overigens ook gebruiken op klassen om te weten welke attributen en methodes die bevatten. Zie hieronder voor het type `bytearray`:
 
 ~~~python
 >>> dir(bytearray)
 ['__add__', '__alloc__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'capitalize', 'center', 'clear', 'copy', 'count', 'decode', 'endswith', 'expandtabs', 'extend', 'find', 'fromhex', 'hex', 'index', 'insert', 'isalnum', 'isalpha', 'isascii', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'pop', 'remove', 'replace', 'reverse', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
 ~~~
 
-Voor het type list...
+Of voor het type `list`:
 
 ~~~python
 >>> dir(list)
 ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+~~~
+
+Je kunt dit ook bij een object opvragen:
+
+~~~python
 >>> a = [1,2,3]
 >>> dir(a)
 ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
@@ -640,30 +623,31 @@ Voor het type list...
 >>> 
 ~~~
 
-### PIP en PyPi
+### Pip en PyPI
 
-Een groot deel van programmeren is leren herbruiken van bestaande code.  
-We hebben net gezien hoe je code kan afzonderen in aparte files en herbruiken om deze functionaliteit te isoleren en eventueel te herbruiken in verschillende applicaties.  
+Een groot deel van programmeren bestaat uit het leren hergebruiken van bestaande code.  
+We hebben gezien hoe je code kan afzonderen in aparte bestanden om deze functionaliteit te isoleren en eventueel te hergebruiken in verschillende applicaties.  
 
-Om code te herbruiken van andere ontwikkelaars (over heel de wereld) hebben veel programmeeromgevingen het concept van packagemanagers.  
-Dit zijn tools die in staat zijn andere modules (en eventuele dependencies) automatisch te downloaden zoals bijvoorbeeld:
+Om code van andere ontwikkelaars (over heel de wereld) te gebruiken, hebben veel programmeeromgevingen het concept van _package managers_ (pakketbeheerders).  
+
+Dit zijn tools die in staat zijn om andere modules (en eventueel modules waarvan die andere modules afhangen) automatisch te downloaden. Zo heb je in andere programmeertalen:
 
 * Maven in Java
 * Nuget in C#
-* NPM in Javascript
-* ...
+* npm in Javascript
+* gem in Ruby
 
-In Python is dit **pip** (acrononiem voor **p**ip **i**nstalls **p**ackages), een tool die standaard wordt **meegeleverd** met **Python** (toch vanaf versie 3.4)
+In Python is dit **pip** (acroniem voor **p**ip **i**nstalls **p**ackages). Die tool wordt standaard **meegeleverd met Python** (vanaf versie 3.4).
 
-PIP gaat typisch modules downloaden over het internet, hiervoor werkt het standaard samen met Python Package Index, ook wel bekend als PyPI (spreek uit als Pie Pea Eye).
+Pip gaat typisch modules downloaden van internet. Hiervoor werkt het standaard samen met de Python Package Index, ook wel bekend als PyPI (spreek uit als Pie Pea Eye).
 
-Deze website bevindt zich te https://pypi.org/
+Deze website bevindt zich op https://pypi.org en daar kun je ook zoeken naar interessante Python-modules.
 
-PyPI is een webservice die een een uitgebreide verzameling packages (frameworks, tools en libraries) host.  
-De vind je te 
-2 van deze libraries (Flask en request) 
+PyPI is een webservice die een een uitgebreide verzameling Python-pakketten (frameworks, tools en bibliotheken) huisvest.  
 
-Om een package te installeren gebruik je het commando "pip install" gevolgd door de libra
+Om een Python-pakket te installeren, gebruik je de opdracht `pip install` gevolgd door de naam van het pakket:
+
+Voor het pakket requests:
 
 ~~~
 [student@fedora ~]$ pip install requests
@@ -674,6 +658,7 @@ Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/lib/python3.10/site
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/lib/python3.10/site-packages (from requests) (2.0.4)
 ~~~
 
+Voor het pakket Flask:
 
 ~~~
 [student@fedora ~]$ pip install flask
@@ -693,9 +678,9 @@ Collecting Werkzeug>=2.0
 Requirement already satisfied: MarkupSafe>=2.0 in /usr/lib64/python3.10/site-packages (from Jinja2>=3.0->flask) (2.0.0)
 Installing collected packages: Werkzeug, Jinja2, itsdangerous, flask
 Successfully installed Jinja2-3.1.2 Werkzeug-2.1.2 flask-2.1.2 itsdangerous-2.1.2
-[student@fedora ~]$ 
 ~~~
 
+Je kunt ook meerdere pakketten tegelijk installeren met pip. Geef gewoon meerdere namen na elkaar op, gescheiden door een spatie:
 
 ~~~
 [student@fedora ~]$ pip install serial pandas
@@ -726,9 +711,9 @@ Using legacy 'setup.py install' for future, since package 'wheel' is not install
 Installing collected packages: pyyaml, pytz, numpy, iso8601, future, serial, pandas
     Running setup.py install for future ... done
 Successfully installed future-0.18.2 iso8601-1.0.2 numpy-1.22.3 pandas-1.4.2 pytz-2022.1 pyyaml-6.0 serial-0.0.97
-[student@fedora ~]$ 
 ~~~
 
+Je kunt ook opvragen welke pakketten je al met pip geïnstalleerd hebt:
 
 ~~~
 student@fedora ~]$ pip list 
@@ -750,26 +735,11 @@ requests-ftp       0.3.1
 ...
 urllib3            1.26.7
 Werkzeug           2.1.2
-[student@fedora ~]$ 
 ~~~
 
-~~~
-[student@fedora ~]$ python
-Python 3.10.4 (main, Mar 25 2022, 00:00:00) [GCC 11.2.1 20220127 (Red Hat 11.2.1-9)] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import requests
->>> requests.__version__
-'2.27.1'
->>> import Flask
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ModuleNotFoundError: No module named 'Flask'
->>> import flask
->>> flask.__version__
-'2.1.2'
->>> 
-~~~
+Je zult zien dat hier heel wat pakketten bij staan die je zelf niet geïnstalleerd hebt. Dat is omdat bijvoorbeeld Flask zelf afhangt van andere pakketten zoals Jinja2. Als je dus Flask met pip installeert, gaat die automatisch Jinja2 en andere afhankelijkheden van Flask installeren.
 
+Van een geïnstalleerd pakket kun je ook meer informatie opvragen:
 
 ~~~
 [student@fedora ~]$ pip show flask
@@ -783,8 +753,30 @@ License: BSD-3-Clause
 Location: /home/student/.local/lib/python3.10/site-packages
 Requires: click, itsdangerous, Jinja2, Werkzeug
 Required-by: 
-[student@fedora ~]$
 ~~~
+
+Als er ondertussen een nieuwe versie van een pakket uit is en je dit wilt gebruiken, installeer je het opnieuw, maar dan met de optie `-U` (voor update):
+
+~~~
+[student@fedora ~]$ pip install -U flask
+Defaulting to user installation because normal site-packages is not writeable
+Collecting flask
+  Downloading Flask-2.2.3-py3-none-any.whl (101 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.8/101.8 KB 543.5 kB/s eta 0:00:00
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting Werkzeug>=2.2.2
+  Downloading Werkzeug-2.2.3-py3-none-any.whl (233 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 233.6/233.6 KB 908.7 kB/s eta 0:00:00
+Requirement already satisfied: click>=8.0 in /usr/lib/python3/dist-packages (from flask) (8.0.3)
+Requirement already satisfied: Jinja2>=3.0 in /usr/lib/python3/dist-packages (from flask) (3.0.3)
+Collecting MarkupSafe>=2.1.1
+  Downloading MarkupSafe-2.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Installing collected packages: MarkupSafe, itsdangerous, Werkzeug, flask
+Successfully installed MarkupSafe-2.1.2 Werkzeug-2.2.3 flask-2.2.3 itsdangerous-2.1.2
+~~~
+
+En als je een pakket niet meer nodig hebt, verwijder je het met `pip uninstall`:
 
 ~~~
 [student@fedora ~]$ pip uninstall flask
@@ -796,5 +788,4 @@ Uninstalling Flask-2.1.2:
     /home/student/.local/lib/python3.10/site-packages/flask/*
 Proceed (Y/n)? Y
   Successfully uninstalled Flask-2.1.2
-[student@fedora ~]$ 
 ~~~

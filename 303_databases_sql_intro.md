@@ -148,8 +148,6 @@ We klikken vervolgens op de play-knop om dit statement uit te voeren... en we kr
 
 ![](sql_error.png)
 
-Deze foutmelding is normaal, want dit is nog **geen geldig statement**. Een tabel moet immers **minstens één kolom**/veld bevatten.
-
 ~~~
 Result: near ")": syntax error
 At line 1:
@@ -158,6 +156,8 @@ CREATE TABLE student
 
 )
 ~~~
+
+Deze foutmelding is normaal, want dit is nog **geen geldig statement**. Een tabel moet immers **minstens één kolom**/veld bevatten.
 
 ##### Poging 2 (met velden)
 
@@ -243,7 +243,7 @@ We keren hiervoor terug naar het tabblad **Execute SQL**  om te zien hoe we **da
 insert into student(student_name,lab,theory) values("Bart Voet",15,16);
 ~~~
 
-Als dit succesvol is krijg je een vergelijkbare uitvoer zoals hieronder:
+Als dit succesvol is, krijg je een vergelijkbare uitvoer zoals hieronder:
 
 ~~~
 Execution finished without errors.
@@ -357,7 +357,7 @@ Je kunt voor dit filteren verschillende operatoren gebruiken, zoals:
 <>	Niet gelijk aan
 ~~~
 
-Deze zijn - met **uitzondering** van `<>` dat overeenkomt met `!=` in Python - **hetzelfde** zoals je deze in **Python-code** zou gebruiken in voorwaarden.  
+Deze zijn (met uitzondering van `<>` dat overeenkomt met `!=` in Python) **hetzelfde** zoals je deze in **Python-code** zou gebruiken in voorwaarden.  
 
 Als je de selectie in het statement omdraait (minder dan 16 in plaats van meer dan 16)...
 
@@ -404,7 +404,7 @@ De twee nieuwe studenten krijg je echter niet te zien, omdat hun scores voor zow
 select student_name, lab, theory from student where lab <= 14 and theory <= 14;
 ~~~
 
-... krijg je ...
+Dan krijg je:
 
 ~~~
 student_name  lab         theory    
@@ -455,7 +455,7 @@ De syntaxis is hier:
 Je kan ook **meerdere velden tegelijk** updaten. Hiervoor voeg je een nieuw update-veld/onderdeel toe, gescheiden door een komma:
 
 ~~~sql
-update student set lab = 16, theory=15 where student_name = "Jan Janssens";
+update student set lab = 16, theory = 15 where student_name = "Jan Janssens";
 ~~~
 
 Hierdoor passen we zowel de labo- als de theoriepunten van Jan Janssens aan:
@@ -893,7 +893,7 @@ create table student
 Er zijn twee belangrijke redenen voor het gebruik van een foreign key:
 
 * Garanderen van **referentiële integriteit**
-* Performantie en creatie van een index (wordt later verklaard)  
+* Performantie en creatie van een index
 
 **Referentiële integriteit** betekent dat de database controleert dat de links tussen tabellen correct zijn.  
 Met andere woorden: de database zorgt ervoor dat je geen data kunt toevoegen met een foutieve link.
@@ -968,6 +968,8 @@ student_id  name        lab         theory       fk_student_group
 ~~~
 
 Je ziet hier dat student jan geen link naar een student-groep heeft, maar de lege waarde `NULL` heeft.
+
+Merk op: je kunt bij het aanmaken van een tabel altijd extra constraints opleggen aan kolommen. Zo kun je met `NOT NULL` bij een kolom aanduiden dat deze altijd een waarde moet hebben die niet gelijk aan `NULL` is.
 
 ### Joins
 
