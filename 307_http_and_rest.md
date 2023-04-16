@@ -1,30 +1,30 @@
-## Werken met REST en web-api's
+## Werken met REST en web-API's
 
-In dit deel leggen we uit **hoe** met **web-api's** te werken we starten vanuit **client-side** met het doen dit via het **Requests-framework**, daaropvolgend zullen we naar de serverkant kijken via **Flask**-framework
+In dit deel leggen we uit hoe we met **web-API's** werken. We starten aan de clientkant via de Python-bibliotheek **Requests**. Daarna gaan we verder met de serverkant met behulp van het framework **Flask**.
 
-Voor we aan de slag gaan bekijken we een aantal elementen die je eerst moet begrijpen:
+Maar voordat we aan de slag gaan, bekijken we de werking van HTTP, de technologie achter het web:
 
 * HTTP
-* HTTP met HTML => Webpagina's
-* HTTP met data (json, xml)
+* HTTP met HTML: webpagina's
+* HTTP met data: JSON, XML, ...
 
 ### HTTP
 
 Laten we starten met HTTP.  
 **HTTP** staat voor **H**yper**t**ext **T**ransfer **P**rotocol.  
 
-**HTTP** behoor tot **layer 7** van het **OSI**-model.  
-Het protocol wordt typisch "ge-exposed" over port 80 (in development dikwijls over 8080 of 5000), de secure versie HTTPS over 443
+**HTTP** behoort tot **laag 7** van het **OSI**-model voor netwerken.  
+Het protocol wordt typisch toegankelijk gemaakt op poort 80 (tijdens de ontwikkeling dikwijls poort, 8000, 8080 of 5000). De versleutelde vorm HTTPS maakt gebruik van poort 443.
 
-Het betreft een **applicatie-netwerk-protocol** (client-server) dat wordt gebruikt om **resources** van een server af te halen.
+Het betreft een **applicatienetwerkprotocol** (client-server) dat wordt gebruikt om **resources** van een server te benaderen.
 
 ~~~
     +----------------------+
-    | 7   APPLICATION      |   ==>  HTTP
+    | 7   APPLICATION      |   ==> HTTP
     +----------------------+
-    | 6   PRESENTATION     |   ==>  ENCODERINGEN
+    | 6   PRESENTATION     |   ==> ENCODERINGEN
     +----------------------+
-    | 5   SESSION          |   ==>  AUTHENTICATIE, SESSIES, ...
+    | 5   SESSION          |   ==> AUTHENTICATIE, SESSIES, ...
     +----------------------+
     | 4   TRANSPORT        |   ==> TCP, UDP, ...
     +----------------------+
@@ -32,53 +32,52 @@ Het betreft een **applicatie-netwerk-protocol** (client-server) dat wordt gebrui
     +----------------------+
     | 2   DATA LINK        |   ==> SWITCH-LEVEL (MAC)
     +----------------------+
-    | 1   PHYSICAL         |   ==> TRANSMISSION OVER CABLE
+    | 1   PHYSICAL         |   ==> TRANSMISSIE OVER KABEL
     +----------------------+
 ~~~
 
-Deze **resources** kunnen van alles zijn.  
-Historisch waren dit vooral **resources** nodig om webpagina te laden (html, images, videos, ...).  
+Deze **resources** kunnen van velerlei aard zijn.  
+Historisch waren dit vooral **resources** nodig om webpagina's te laden (HTML, afbeeldingen, video's, ...).  
 
-Vandaag wordt HTTP via REST ook zeer veel gebruikt om data van een server af te halen.  
+Vandaag wordt HTTP via REST ook veel gebruikt om data van een server af te halen.  
 
 ~~~
- +--------+   --request-->     +--------+   html   gif
- | client |                    | server |   json   png
- +--------+   <--repy--        +--------+   xml    ...
+ +--------+   -- request -->     +--------+   html   gif
+ | client |                      | server |   json   png
+ +--------+   <- response --     +--------+   xml    ...
 ~~~
 
 ### Browsers, HTTP en HTML
 
-Een eerste vorm van applicaties die HTTP gebruiken zijn browsers (Firefox, Chrome, ...) waarmee een **gebruiker** **webpagina**'s en bijhorende resources (zoals afbeeldingen en videos) kan afhalen.  
+Een eerste vorm van applicaties die HTTP gebruiken, zijn webbrowsers zoals Firefox en Chrome. De gebruiker kan daarmee webpagina's en bijbehorende resources (zoals afbeeldingen en video's) afhalen.  
 
 
 ~~~
-    \O/                     +---------+   --request-->     +----------+   
-     |  ======= url ======> | BROWSER |  BROWSERCONTENT    |  SERVER  |   
-    / \ bv. www.google.com  +---------+  <--response--     +----------+   
+\O/                      +---------+  -- request -->   +----------+   
+ |  ======= url ======>  | BROWSER |  BROWSER CONTENT  |  SERVER  |   
+/ \ bv. www.google.com   +---------+  <- response --   +----------+   
 ~~~
 
 Dit gebeurt meestal via **HTML-pagina's** (statisch of dynamisch gegenereerd).  
-**HTML** is de standaard **markup**-taal voor **web-paginas** en staat voor **H**yper**T**ext **M**arkup **L**anguage
+**HTML** is de standaard opmaaktaal voor **webpagina's** en staat voor **H**yper**T**ext **M**arkup **L**anguage.
 
-Een heel **éénvoudig voorbeeld** vind je hieronder:
+Een heel **eenvoudig voorbeeld** vind je hieronder:
 
 ~~~html
 <!DOCTYPE html>
 <html>
-    <body>
-        <title>Een voorbeeld-pagina</title>
-    </body>
     <head>
-        <h1>Een voorbeeld-pagina</h1>
-        <img src="hello.png">
+        <title>Een voorbeeldpagina</title>
     </head>
+    <body>
+        <h1>Een voorbeeldpagina</h1>
+        <img src="hello.png">
+    </body>
 </html>
 ~~~
 
-**Naast** het eigenlijke **document** zal de **browser** (na het parsen van het document) ook
-de bijhorende elementen (nodig voor visualisatie) die verwezen worden binnen de html - zoals **images** en **videos** - 
-downloaden en displayen binnen het browserscherm.
+Naast het eigenlijke document zal de browser (na het parsen van het document) ook
+de bijhorende elementen (nodig voor visualisatie) waarnaar verwezen wordt binnen de html - zoals **afbeeldingen** en **video's** - downloaden en in het browserscherm tonen.
 
 ~~~
  +----------+                    +-------------+
@@ -100,104 +99,68 @@ downloaden en displayen binnen het browserscherm.
  +----------+                    +-------------+
 ~~~
 
-
 ### HTTP en HTML in actie
 
-Als je graag dit eens wil testen kan je een kleine webserver maken die 
-statische resources serveert...
+Je kunt deze gang van zaken eenvoudig testen door in Python een kleine webserver te starten die statische resources serveert.
 
-> Voor het volledige verhaal zie https://docs.python.org/3/library/http.server.html
+> Zie voor het volledige verhaal https://docs.python.org/3/library/http.server.html
 
-#### Stap 1: maak een html-file aan
+#### Stap 1: maak een html-bestand aan
 
-Maak een file test.html aan en kopieer de onderstaande inhoud (html-code) in deze file
+Maak een bestand test.html aan en kopieer de onderstaande inhoud (html-code) in dit bestand.
 
 ~~~html
 <!DOCTYPE html>
 <html>
-    <body>
-        <title>Een voorbeeld-pagina</title>
-    </body>
     <head>
+        <title>Een voorbeeld-pagina</title>
+    </head>
+    <body>
         <h1>Een voorbeeld-pagina</h1>
         <img src="hello.png">
-    </head>
+    </body>
 </html>
-~~~
-
-Het gemakkelijkste is een lokale html-file aan te maken...
-
-~~~
-bart@bvlegion:~/Tryout$ mkdir http_py_server
-bart@bvlegion:~/Tryout$ cd http_py_server/
-bart@bvlegion:~/Tryout/http_py_server$ vi test.html
-...
 ~~~
 
 #### Stap 2: voeg een hello.png toe
 
-De img-tag zal er voor zorgen dan een image-file wordt gedownload en de image op het scherm wordt gedisplayed.  
-Hiervoor moet je er voor zorgen dat je - in dezelfde folder - een png-file plaatst met de naam hello.png (of je wijzigt de naam binnen de html).  
+Met de img-tag geven we aan dat de webbrowser een afbeelding downloadt en die op het scherm toont.
+Plaats in dezelfde map als het html-bestand een png-bestand met de naam hello.png.
 
-Je kan hier eventueel een arbitraire png van het internet plukken zoals bijvoorbeeld https://www.ucll.be/sites/default/files/documents/algemeen/logo/logo_ucll_rgb.png
+Je kan hiervoor een willekeurig png-bestand van het internet plukken, zoals https://www.ucll.be/sites/default/files/documents/algemeen/logo/logo_ucll_rgb.png. Vergeet dan niet het gedownloade bestand te hernoemen naar hello.png, of in de img-tag van de html-code naar de juiste bestandsnaam te verwijzen.
 
-~~~
-bart@bvlegion:~/Tryout/http_py_server$ wget https://www.ucll.be/sites/default/files/documents/algemeen/logo/logo_ucll_rgb.png
---2022-04-26 23:32:14--  https://www.ucll.be/sites/default/files/documents/algemeen/logo/logo_ucll_rgb.png
-Resolving www.ucll.be (www.ucll.be)... 193.190.138.131
-Connecting to www.ucll.be (www.ucll.be)|193.190.138.131|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 26155 (26K) [image/png]
-Saving to: ‘logo_ucll_rgb.png’
+#### Stap 3: start de webserver
 
-logo_ucll_rgb.png                                           100%[=========================================================================================================================================>]  25,54K  --.-KB/s    in 0,01s   
-
-2022-04-26 23:32:15 (2,20 MB/s) - ‘logo_ucll_rgb.png’ saved [26155/26155]
-
-bart@bvlegion:~/Tryout/http_py_server$ ls
-logo_ucll_rgb.png  test.html
-~~~
-
-En je "renamed" de file naar de zelfde naam dan in de html-code staat
+Voer de volgende opdracht op de commandline uit:
 
 ~~~
-bart@bvlegion:~/Tryout/http_py_server$ mv logo_ucll_rgb.png hello.png
-bart@bvlegion:~/Tryout/http_py_server$ ls
-hello.png  test.html
-~~~
-
-#### Stap 3: start je web-applicatie
-
-Navigeer naar de command-line en voer het volgende python-commando uit:
-
-~~~
-bart@bvlegion:~/Tryout/http_py_server$ python -m http.server 9000
+$ python -m http.server 9000
 Serving HTTP on 0.0.0.0 port 9000 (http://0.0.0.0:9000/) ...
 ~~~
 
-Dit zal een lokale webserver opstarten op de poort 9000.
+Dit start een webserver op die naar aanvragen luistert op poort 9000.
 
-> Waarschuwing: gebruik dit niet voor productie-applicaties
+> Waarschuwing: Gebruik deze webserver niet voor productie. Dit is puur voor een test.
 
-#### Stap 4: test via een webrowser
+#### Stap 4: test via een webbrowser
 
-Als laatste stap open je de url http://localhost:9000/test.html in een browser-scherm en dan zou je volgend resultaat moeten krijgen....
+Als laatste stap open je de url http://localhost:9000/test.html in je webbrowser. Dan zou je het volgende resultaat moeten krijgen:
 
 ![](html_page.png)
 
-Aan de kant van de server zie je dat de http-server 2 files heeft verstuurd naar de browser.
+Aan de kant van de server zie je dat de webbrowser twee bestanden heeft aangevraagd aan de webserver:
 
 ~~~
-bart@bvlegion:~/Tryout/http_py_server$ python -m http.server 9000
+$ python -m http.server 9000
 Serving HTTP on 0.0.0.0 port 9000 (http://0.0.0.0:9000/) ...
 127.0.0.1 - - [26/Apr/2022 23:43:18] "GET /test.html HTTP/1.1" 200 -
 127.0.0.1 - - [26/Apr/2022 23:43:18] "GET /hello.png HTTP/1.1" 200 -
 ~~~
 
-Een wireshark-trace toont je dat firefox 2 request/reply interacties heeft:
+Als je dit in de netwerkprotocolanalyzer Wireshark zou bekijken, dan zie je dat je webbrowser twee interacties met een request en response heeft:
 
-* Een 1ste voor de html-file
-* Een 2de voor de png-file
+* Een eerste voor het html-bestand
+* Een tweede voor het png-bestand
 
 ~~~
 546	69.372822126	127.0.0.1	127.0.0.1	HTTP	519	GET /test.html HTTP/1.1 
@@ -209,9 +172,9 @@ Een wireshark-trace toont je dat firefox 2 request/reply interacties heeft:
 ### HTTP-protocol
 
 Een webpagina of andere resource wordt van een server afgehaald door middel van HTTP.  
-Hoe ziet zo'n HTTP request/reply er nu uit?
+Hoe ziet zo'n HTTP request/response er nu uit?
 
-Zowel de request en reply bestaan elk uit een **header** en **body**
+Zowel de request als de response bestaan elk uit een **header** en een **body**.
 
 ~~~
                 +-----------------------------------+
@@ -227,14 +190,14 @@ Zowel de request en reply bestaan elk uit een **header** en **body**
 ~~~
 
 Deze **body** is optioneel en bevat de **payload**.  
-Dit kan een stuk tekst zijn igv html maar kan ook een andere een png-file, video, ...
+Dit kan een stuk tekst zijn, zoals html, maar ook een png-bestand, video, ...
 
 
-De **header** daarentegen is altijd verplicht en bevat de nodige metadata nodig om deze uitwisseling te voltooien.  
+De **header** daarentegen is altijd verplicht en bevat metadata die nodig zijn om deze uitwisseling te voltooien.  
 
 #### HTTP-request
 
-In onderstaand dump (Wireshark) zie je de browser die een file test.html aanvraagt.  
+In onderstaand dump (verkregen met Wireshark) zie je dat je webbrowser een bestand test.html aanvraagt.  
 
 ~~~
 GET /test.html HTTP/1.1
@@ -252,25 +215,24 @@ Sec-Fetch-Site: none
 Sec-Fetch-User: ?1
 ~~~
 
-De **eerste lijn** is de belangrijkste, deze geeft aan welke **resource** en welke **operatie** er dient op uitgevoerd worden.  
-Daarnaast wordt er nog wat bijkomende informatie verschaft met het formaat...
+De **eerste regel** is de belangrijkste. Die geeft aan welke **resource** en welke **opdracht** er uitgevoerd dient te worden.  
+Daarnaast wordt er nog wat bijkomende informatie verschaft in het volgende formaat:
 
 ~~~
 <header-field>: <inhoud>
 ~~~
 
-...met onder andere de volgende info
+Zo geeft de webbrowser onder andere de volgende info:
 
-* Over HTTP 1.1-protcol
 * De host is localhost
 * Met port 9000
-* De browser duidt aan dat die een aantal formaten aanvaardt via de accept-clausule
+* De browser aanvaardt een aantal bestandsformaten, zoals text/html
 * ...
 
-#### De HTTP-reply
+#### De HTTP-response
 
-Bij de HTTP-reply is de eerste lijn ook de belangrijkste.  
-Deze geeft namelijk de status aan van de operatie, in onderstaand voorbeeld is deze OK (bevestiging dat de operatie geslaagd is)
+Bij de HTTP-response is de eerste regel ook de belangrijkste.  
+Deze geeft namelijk de status aan van de operatie. In onderstaand voorbeeld is deze OK (bevestiging dat de operatie geslaagd is):
 
 ~~~
 HTTP/1.0 200 OK
@@ -290,89 +252,88 @@ Last-Modified: Tue, 26 Apr 2022 21:31:30 GMT
 </html>
 ~~~
 
-Daarnaast geeft deze onder andere  krijgt een reply:
+Daarnaast geeft deze onder andere:
 
-* Het content-type (text-html)
-* Een datum van aanmaak hetgeen gebruikt wordt voor caching
-* De eigenlijke content onderaan de http-message
+* Het content-type (text/html)
+* De lengte in bytes van de content
+* Het tijdstip van aanmaak, wat gebruikt wordt voor caching
+* De eigenlijke content
 
-#### Method (HTTP-REQUEST)
+#### Method (HTTP REQUEST)
 
-Essentieel om een HTTP (en zo direct REST) te verstaan is dat er verschillende operaties mogelijk zijn.  
-We hadden onder andere al de GET-method gezien, maar er zijn heel wat andere methods of operaties mogelijk.  
+Essentieel om HTTP (en later REST) te verstaan, is dat er verschillende operaties mogelijk zijn.  
+We hadden onder andere al de GET-methode gezien, maar er zijn heel wat andere methodes of operaties mogelijk.  
 
-De 4 belangrijkste die wij zullen gebruiken zijn uiteindelijk.  
-Je kan deze operaties een beetje vergelijken met de CRUD-operaties op een database die we eerder hebben gezien:
+Je kan deze operaties een beetje vergelijken met de CRUD-operaties op een database die we eerder hebben gezien. De vier belangrijkste die wij zullen gebruiken, zijn:
 
 * **GET**  
-  Met deze operatie vraag je een resourse/document op van de server.  
-  Binnen CRUD kan je dit als een **read** beschouwen
+  Met deze operatie vraag je een resource/document op van de server.  
+  Binnen CRUD kan je dit als een **read** beschouwen.
 * **POST**  
   Dit overschrijft of maakt een **nieuwe resource** aan.   
-  Dit wordt beschouwd als een **create**
-* **PUT** 
-  Dit **wijzigt** een **resource** (meestal via een webform).  
-  Dit wordt beschouwd als een **update**
-* **DELETE** => verwijderd een resource
+  Dit wordt beschouwd als een **create**.
+* **PUT**  
+  Dit **wijzigt** een **resource** (meestal via een webformulier).  
+  Dit wordt beschouwd als een **update**.
+* **DELETE**  
+  Hiermee verwijder je een resource.
 
-> Voor een vollediger overzicht zie:
->
-> * https://www.w3schools.com/tags/ref_httpmethods.asp
-> * https://developer.mozilla.org/en-US/docs/Web/HTTP?retiredLocale=nl
-> * https://www.w3.org/Protocols/Specs.html
+Bekijk voor een vollediger overzicht:
 
-
+* https://www.w3schools.com/tags/ref_httpmethods.asp
+* https://developer.mozilla.org/en-US/docs/Web/HTTP
+* https://www.w3.org/Protocols/Specs.html
 
 ##### Praktisch voorbeeld
 
-Als voorbeeld een praktisch voorbeeld dat we in de praktijk gaan proberen te brengen
-wanneer we met Flask gaan proberen een REST-based studenten-applicatie te schrijven.
+Als voorbeeld gaan we dit nu in de praktijk brengen.
 
-Als je dit zou toepassen krijg je volgende mapping.
+De bedoeling is uiteindelijk dat we met Flask een REST-gebaseerde studentenapplicatie met een webinterface schrijven.
+
+Als we de voorgaande principes zouden toepassen op dit voorbeeld, krijg je volgende mapping:
 
 | Beschrijving                              | Method | Endpoint      | Idempotent |
 |-------------------------------------------|--------|---------------|------------|
 | Maak een student aan                      | POST   | /student      | Nee        |
 | Vraag de info over een student            | GET    | /student/{id} | Ja         |
-| Pas een student zijn data aan (bv.punten) | PUT    | /student/{id} | Ja         |
+| Pas data van een student aan (bv. punten) | PUT    | /student/{id} | Ja         |
 | Verwijder een student uit database        | DELETE | /student/{id} | Ja         |
 
+#### STATUS (HTTP RESPONSE)
 
-#### STATUS (HTTP-REPLY)
+Een **status** is naast de eigenlijke **response body** het belangrijkste onderdeel.  
+Het geeft namelijk twee stukken informatie door:
 
-Een **status** is naast de eigenlijke **reply-body** het belangrijkste onderdeel.  
-Het geeft namelijk 2 stukken info door:
+* Is de operatie geslaagd?
+* Wat is ermee gebeurd?
 
-* Is de operatie geslaagd
-* Wat is er met gebeurd
-
-De status-codes kan je opdelen in 4 groepen afhankelijk van hun hondertal.  
-Codes die starten met het onderstaande getal geven aan dat:
+De statuscodes kun je opdelen in vier groepen, afhankelijk van hun honderdtal.  
+Codes die starten met onderstaande cijfers, geven aan dat:
 
 * 2XX => OK, de operatie is geslaagd
 * 3XX => INFO, dit kan bijvoorbeeld een redirect zijn (ander endpoint)
-* 4XX => FOUT VAN JOU, je hebt bijvoorbeeld een niet bestaande pagina geselecteerd
-* 5XX => FOUT VAN DE SERVER, er is een interne fout op de server
+* 4XX => FOUT VAN JOU, je hebt bijvoorbeeld een niet bestaande pagina opgevraagd
+* 5XX => FOUT VAN DE SERVER, er is bijvoorbeeld een interne fout op de server
 
-De meest belangrijke:
+De belangrijkste:
 
 * 2XX
   * 200 **OK** – Het gevraagde document is succesvol opgevraagd.
 * 3XX
   * 301 **Redirect** - De informatie bevindt zich in een andere resource (je browser zal dan deze resource gaan ophalen)
-  * 304 **Not Modified** – T.o.v. de versie in de cache is de pagina niet gewijzigd.
+  * 304 **Not Modified** – De pagina is niet gewijzigd ten opzichte van de versie in de cache.
 * 4XX
   * 400 **Bad Request** - De gebruiker heeft een fout gemaakt in het verzoek waardoor deze niet verwerkt kan worden.
   * 403 **Forbidden** – Het opgevraagde document mag niet opgevraagd worden.
   * 404 **Not Found** – Het opgevraagde document bestaat niet.
   * 405 **Method Not Allowed** – De gebruikte requestmethode is niet toegestaan.
-  * 410 **Gone** – Het opgevraagde document heeft bestaan maar is niet meer beschikbaar. Vergelijkbaar met foutcode 404.
+  * 410 **Gone** – Het opgevraagde document heeft bestaan maar is niet meer beschikbaar.
   * 451 **Unavailable** For Legal Reasons - een website niet kan worden weergegeven vanwege juridische redenen
 * 5XX
   * 500 **Internal Server Error** – De webserver heeft de gevraagde actie niet kunnen uitvoeren.
   * 503 **Service Temporarily Unavailable** – De webserver is tijdelijk in onderhoud.
 
-Als je bijvoorbeeld een refresh van je pagina uitvoert zie je dat de server een 304 teruggeeft:
+Als je bijvoorbeeld een refresh van je pagina uitvoert, zie je dat de server een 304 teruggeeft:
 
 ~~~
 (base) bart@bvlegion:~/Tryout/http_py_server$ python -m http.server 9000
@@ -385,178 +346,93 @@ Serving HTTP on 0.0.0.0 port 9000 (http://0.0.0.0:9000/) ...
 
 ### Wat is een API?
 
-We gaan echter niet op de webpagina's gaan maken maar op API's.  
+We gaan nu echter geen webpagina's maken, maar API's.  
 
-Een API OF **A**pplication **P**rogramming **I**nterface (API) is een verzameling van operaties of functies 
-die je tussen 2 stukken software of applicaties kan definieren.  
+Een API of **A**pplication **P**rogramming **I**nterface is een verzameling van operaties of functies 
+die je tussen twee stukken software kan definiëren.  
 
-De API's waar wij over spreken zijn network-API's en in deze cursus meer specifiek REST-API's
+De API's waarover wij hier spreken zijn netwerk-API's en specifieker REST-API's (REpresentational State Transfer).
 
-### Web-API'S
+### Web-API's
 
-Tot hier gebruikten we als **gebruiker** - via een browser - het **http-protocol** om **(html-)resources** 
+Tot hiertoe gebruikten we via een webbrowser het **http-protocol** om **(html-)resources** 
 op te halen van een server.
 
 ~~~
-    \O/                     +---------+   --request-->     +----------+   
-     |  ======= url ======> | BROWSER |  BROWSERCONTENT    |  SERVER  |   
-    / \ bv. www.google.com  +---------+  <--response--     +----------+   
+\O/                     +---------+   -- request -->     +----------+   
+ |  ======= url ======> | BROWSER |  BROWSER CONTENT     |  SERVER  |   
+/ \ bv. www.google.com  +---------+  <-- response --     +----------+   
 ~~~
 
-HTTP kan echter ook gebruikt worden in andere scenario's om data op te halen (ipv visuele content) 
+HTTP kan echter ook gebruikt worden in andere scenario's om data op te halen (in plaats van webpagina's): 
 
 ~~~
                  (1)                        (2)
-    +--------+  --request-->  +--------+   --request-->  +------------+   
-    | SENSOR |      DATA      | SERVER |       DATA      | APPLICATIE |
-    +--------+  <--response-- +--------+  <--response--  +------------+ 
++--------+  -- request -->  +--------+   -- request -->  +------------+   
+| SENSOR |      DATA        | SERVER |       DATA        | APPLICATIE |
++--------+ <-- response --  +--------+  <-- response --  +------------+ 
                                                          (bv. dashboard)
 ~~~
 
-Een typisch voorbeeld-scenario is waar 1 of meerdere sensoren (of een embedded device met een sensor gekoppeld aan is)
-sensor-data doorstuurt naar een server in de cloud.  
+Een typisch voorbeeldscenario is waarbij een of meerdere sensoren (of een embedded device met een sensor) sensordata doorsturen naar een server in de cloud.  
 
-Aan de andere kant zal een andere applicatie (zoals bijvoorbeeld een dashboard) deze data (die wordt bijgehouden op de server) probeert af te halen.  
+Aan de andere kant zal een andere applicatie (zoals bijvoorbeeld een dashboard) deze data (die wordt bijgehouden op de server) afhalen.  
 Dit is een veel voorkomend patroon binnen IoT.
 
-Zulke API's die beschikbaar zijn op het web (of cloud), noemen we Web-API's.  
-Laten we een aantal elementen bekijken die we gaan gebruiken binnen het gebruik van deze API's
+Zulke API's die beschikbaar zijn op het web (of cloud), noemen we web-API's.  
+Laten we een aantal elementen bekijken van deze API's.
 
 
-#### REST (structuur van API)
+#### REST (structuur van de API)
 
-De meeste API's die je gaat gebruiken het principe van REST of RESTFull design.  
-Dit is niet noodzakelijk een protocol maar eerder een (architecturele) stijl van hoe dat je data (of "resources") ordent.
+Veel API's gebruiken het principe van REST of RESTful design.  
+Dit is niet zozeer een protocol, maar eerder een (architecturale) stijl van hoe dat je data (of "resources") ordent.
 
 De basisprincipes:
 
-* Je gebruikt de HTTP-methodes (POST, GET, PUT, DELETE) om CRUD-operaties uit te voeren
-* Je entiteiten worden voorgesteld als http-resources
-* Deze resources worden binnen de URL hiërarchisch geordend
+* Je gebruikt de HTTP-methodes (POST, GET, PUT, DELETE) om CRUD-operaties uit te voeren.
+* Je entiteiten worden voorgesteld als http-resources.
+* Deze resources worden binnen de URL hiërarchisch geordend.
 
-Stel bijvoorbeeld dat je een REST-api gaat maken om een school te beheren waar je:
+Het programma Insomnia (https://insomnia.rest) laat je toe om eenvoudig HTTP- en REST-aanvragen te doen en de resultaten te bekijken. Download het programma van https://insomnia.rest/download om eenvoudige tests uit te voeren.
 
-* Klassen kan beheren
-* Studenten aan deze klassen kunt toevoegen bewerken
+Voer nu in de adresbalk in het midden de url https://randomuser.me/api/ in en klik rechts ervan op **Send**. Je krijgt dan rechts als preview een hoop data in de vorm van een JSON-string. JSON (https://www.json.org/json-en.html) staat voor JavaScript Object Notation en is een tekstformaat om gestructureerde data uit te wisselen. Het wordt veel in REST-API's gebruikt.
 
+We kunnen ook extra query parameters toevoegen. Voeg in het tabblad **Query** onder de adresbalk een parameter **gender** met waarde **female** in een parameter **nat** met waarde **DE**. Insomnia past de url nu aan toet https://randomuser.me/api/?gender=female&nat=NL. Klik nog eens op **Send**. Je krijgt nu een willekeurige vrouwelijke gebruiker met Duitse naam.
 
-~~~
-grop: 1
-    student: 1
-    student: 2
-~~~
+Ook in Python kunnen we een REST-API aanroepen, namelijk met de module `requests`. Probeer dit bijvoorbeeld eens uit in de REPL:
 
-Om dit te illustreren, zo dadelijk gaan we een applicatie maken.  
-Laten we kijken hoe we deze zouden gebruiken door middel van curl 
-(tool om http-requests uit te voeren vanuit linux)
-
-> We gaan zo dadelijk het zelfde doen via de Requests-library
-> dus er er is geen nood om curl te installeren
-
-Stel als je een overzicht wil krijgen van de klasgroepen.  
-ga je naar het endpoint groups.
-
-> Zo'n eindpoint is het path relatief aan je host/domainame
-> In de url hieronder:
->
-> * http => protocol
-> * localhost => domain of sever-naam (zie dns)
-> * 5000 => poort waar je app op luistert
-> * groups => alles wat er op volgt
-
-
-We starten bijvoorbeeld met alle groepen op te lijsten:
-
-~~~bash
-$ curl http://localhost:5000/groups
+~~~python
+>>> import requests
+>>> response = requests.get("https://randomuser.me/api/")
+>>> response.text
+'{"results":[{"gender":"male","name":{"title":"Mr","first":"Melvin","last":"Holmes"},"location":{"street":{"number":3902,"name":"Fairview Road"},"city":"Portsmouth","state":"Tyne and Wear","country":"United Kingdom","postcode":"R2B 7LB","coordinates":{"latitude":"-5.5941","longitude":"-137.8553"},"timezone":{"offset":"-4:00","description":"Atlantic Time (Canada), Caracas, La Paz"}},"email":"melvin.holmes@example.com","login":{"uuid":"b6462ae3-84d0-4346-a6a0-8e107a9f8ff9","username":"redbear579","password":"having","salt":"HsZansyi","md5":"b003a842de456a8404aa8f1cca7a326c","sha1":"70ac4801b7f71c6fe623316ba4c81797430adfa9","sha256":"32005634c0ce6679632eaa011e32602684ff37e63448dddd3ab7a3055d287fb6"},"dob":{"date":"1997-10-21T19:35:13.544Z","age":25},"registered":{"date":"2004-01-15T02:24:01.423Z","age":19},"phone":"016973 76793","cell":"07888 154639","id":{"name":"NINO","value":"KW 85 91 00 J"},"picture":{"large":"https://randomuser.me/api/portraits/men/4.jpg","medium":"https://randomuser.me/api/portraits/med/men/4.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/4.jpg"},"nat":"GB"}],"info":{"seed":"91e2e7bba1572ef7","results":1,"page":1,"version":"1.4"}}'
 ~~~
 
-Dit geeft een json-lijst met alle groepen.
+Het resultaat is een string. Maar in Python kunnen we er ook een JSON-structuur van maken:
 
-~~~json
-[{"name":"1","room":"D114","teacher":"BV"},
- {"name":"hello","room":"D118","teacher":"Jos"}]
+~~~python
+>>> response.json()["results"][0]["name"]
+{'title': 'Mr', 'first': 'Melvin', 'last': 'Holmes'}
 ~~~
 
-We zien hier 2 groepen: 1 en hello.  
-Als we enkel groep 1 hebben kunnen we nu filteren op 1.  
-Dit zet je dan na de entiteits-naam "groups"
+We kunnen dus tussen rechte haken keys zetten zoals in een Python-dictionary om de bijbehorende waarde eruit te halen, en de 0 is een index om het eerste element uit de lijst "results" te halen.
 
-~~~bash
-$ curl http://localhost:5000/groups/1
+En we kunnen ook extra query-parameters toevoegen in de url:
+
+~~~python
+>>> response = requests.get("https://randomuser.me/api/?gender=female&nat=DE")
+>>> response.json()["results"][0]["name"]
+{'title': 'Ms', 'first': 'Ronja', 'last': 'Schädlich'}
 ~~~
 
-met als resultaat
+Of ook op deze manier:
 
-~~~json
-{"name":"1","room":"D114","teacher":"BV"}
+~~~python
+>>> query_params = {"gender": "female", "nat": "DE"}
+>>> response = requests.get("https://randomuser.me/api/", params=query_params)
+>>> response.json()["results"][0]["name"]
+{'title': 'Ms', 'first': 'Mareen', 'last': 'Wecker'}
 ~~~
 
-Studenten vallen in onze school onder een groep.  
-Als je alle studenten wil zien uit groep 1 schrijf je de entiteit-naam (students) achter voorgaand path
-
-~~~bash
-$ curl http://localhost:5000/groups/1/students
-~~~
-
-met als resultaat
-
-~~~json
-[{"lab_points":10,"name":"aa","student_id":1,"theory_points":20},
- {"lab_points":10,"name":"bb","student_id":2,"theory_points":15},
- {"lab_points":10,"name":"cc","student_id":3,"theory_points":15},
- {"lab_points":12,"name":"dd","student_id":4,"theory_points":15},
- {"lab_points":15,"name":"cc","student_id":5,"theory_points":16},
- {"lab_points":12,"name":"ff","student_id":6,"theory_points":20}]
-~~~
-
-Als je enkel student 2 wil zijn kan je dat opnieuw filteren adhv haar/zijn id
-
-~~~bash
-curl http://localhost:5000/groups/1/students/2
-~~~
-
-met als resultaat
-
-~~~json
-{"lab_points":10,"name":"bb","student_id":2,"theory_points":15}
-~~~
-
-Het is ook mogelijk dat je in je api query-parameters voorzien.  
-Met de query-parameter above hebben we in de api nu voorzien van te filteren op studenten die punten > 15 hebben.
-
-Het onderstaande voorbeeld...
-
-~~~bash
-$ curl http://localhost:5000/groups/1/students?above=15
-~~~
-
-...zorgt er voor dat je de lijst van studenten wordt beperkt
-
-~~~json
-[{"lab_points":10,"name":"aa","student_id":1,"theory_points":20},
- {"lab_points":15,"name":"cc","student_id":5,"theory_points":16},
- {"lab_points":12,"name":"ff","student_id":6,"theory_points":20}]
-~~~
-
-Als we nu een student willen toevoegen kan je 
-
-~~~
-$ curl -d  '{"lab_points":12,"name":"Filip van Saksen-Coburg","theory_points":15}'  -X POST -H "Content-Type: application/json" -X POST http://localhost:5000/groups/1/students
-{"id":7,"lab_points":12,"name":"Filip van Saksen-Coburg","student_id":0,"theory_points":15}
-~~~
-
-~~~bash
-$ curl http://localhost:5000/groups/1/students
-~~~
-
-~~~json
-[{"lab_points":10,"name":"aa","student_id":1,"theory_points":20},
-{"lab_points":10,"name":"bb","student_id":2,"theory_points":15},
-{"lab_points":10,"name":"cc","student_id":3,"theory_points":15},
-{"lab_points":12,"name":"dd","student_id":4,"theory_points":15},
-{"lab_points":15,"name":"cc","student_id":5,"theory_points":16},
-{"lab_points":12,"name":"ff","student_id":6,"theory_points":20},
-{"lab_points":12,"name":"Filip van Saksen-Coburg","student_id":7,"theory_points":15}]
-~~~
-
+We maken hier dus een dictionary met de query-parameters aan en geven die als extra argument door aan de methode `requests.get`.

@@ -164,7 +164,7 @@ Dat doe je met de volgende code:
 
 ~~~python
 import sqlite3
-con = sqlite3.connect('student.db')
+con = sqlite3.connect('students.db')
 cur = con.cursor()
 # Hier komt de code om de database te ondervragen
 con.close()
@@ -185,7 +185,7 @@ Voor een database werkt dit als volgt:
 
 ~~~python
 import sqlite3
-with sqlite3.connect('student.db') as con:
+with sqlite3.connect('students.db') as con:
     cur = con.cursor()
     # Hier komt de code om de database te ondervragen
 ~~~
@@ -201,7 +201,7 @@ Op dit cursusobject kunnen we nu database queries uitvoeren via de methode `exec
 
 ~~~python
 import sqlite3
-with sqlite3.connect('student.db') as con:
+with sqlite3.connect('students.db') as con:
     cur = con.cursor()
     query_result = cur.execute('SELECT student_id, name, lab, theory FROM student')
 ~~~
@@ -210,7 +210,7 @@ Het resultaat hiervan - een lijst van records - is in je Python-code beschikbaar
 
 ~~~python
     for row in query_result:
-        print("Student", row[1], "met id", row[0]))
+        print("Student", row[1], "met id", row[0])
 ~~~
 
 Als we dit programma nu uitvoeren op een studentendatabase, krijgen we iets te zien als het volgende:
@@ -366,7 +366,7 @@ while True:
 
 Laten we hier eens door gaan... De klasse `Student` nemen we over van vroeger, maar we voegen in de constructor nog een attribuut `id` toe, met als standaardwaarde 0.
 
-#### Inialiseren van de database
+#### Initialiseren van de database
 
 We maken de database aan bij opstarten van de applicatie. Verwijder een eventueel nog bestaand bestand students.db om dit te testen.
 
@@ -406,7 +406,7 @@ while True:
 
 #### Ophalen van studenten-data
 
-We maken ook een fucntie die het resultaat van een SQL-query omzet naar een lijst met objecten van de klasse `Student`:
+We maken ook een functie die het resultaat van een SQL-query omzet naar een lijst met objecten van de klasse `Student`:
 
 ~~~python
 def get_students():
@@ -428,7 +428,7 @@ We roepen deze functie aan wanneer de gebruiker in het menu voor optie 2 kiest e
 
 #### Aanmaken van een student
 
-Een nieuwe student aanmaken doe we in de functie `save_new_student`. Deze heeft als argument een object van de klasse `Student` en voegt deze in de databasetabel toe:
+Een nieuwe student aanmaken doen we in de functie `save_new_student`. Deze heeft als argument een object van de klasse `Student` en voegt deze in de databasetabel toe:
 
 ~~~python
 def save_new_student(student):
@@ -455,7 +455,7 @@ Probeer het programma maar eens uit. Start het op, voeg wat studenten toe (optie
 
 ### Studenten updaten, verwijderen en opzoeken
 
-Nu we studenten kunnen toevoegen en bekijken. voegen we nog drie functies toe:
+Nu we studenten kunnen toevoegen en bekijken, voegen we nog drie functies toe:
 
 * Pas de punten van een student aan
 * Verwijder een student
@@ -525,7 +525,7 @@ def get_student(id):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         query_result = con.execute(
             "SELECT student_id, name, lab, theory FROM student WHERE student_id = ?",
-            str(id),
+            [id],
         )
         row = query_result.fetchone()
     return Student(row[1], row[2], row[3], row[0])
@@ -611,7 +611,7 @@ def get_student(id):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         query_result = con.execute(
             "SELECT student_id, name, lab, theory FROM student WHERE student_id = ?",
-            str(id),
+            [id],
         )
         row = query_result.fetchone()
     return Student(row[1], row[2], row[3], row[0])
@@ -799,7 +799,7 @@ def get_student(id):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
         query_result = con.execute(
             "SELECT student_id, name, lab, theory FROM student WHERE student_id = ?",
-            str(id),
+            [id],
         )
         row = query_result.fetchone()
     return Student(row[1], row[2], row[3], row[0])

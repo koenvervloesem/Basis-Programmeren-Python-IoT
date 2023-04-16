@@ -456,7 +456,7 @@ Deze code probeert c, die alleen binnen de functie som bekend is, buiten de func
 De Python-interpreter geeft dan de volgende foutmelding:
 
 ~~~
-$python3 test.py
+$ python3 test.py
 Traceback (most recent call last):
   File "/home/bart/test.py", line 6, in <module>
     print(c)  # NameError

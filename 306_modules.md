@@ -117,7 +117,7 @@ Deze variabele is ook beschikbaar als globale variabele, en deze heeft een speci
 
 ### name-variabele met verschillende waardes
 
-Om dit te illustreren, voegen we een regel toe aan ons Python-bestandi **hello.py** om de naam van de module te tonen:
+Om dit te illustreren, voegen we een regel toe aan ons Python-bestand **hello.py** om de naam van de module te tonen:
 
 ~~~python
 def hello():
@@ -341,7 +341,7 @@ Stel nu dat we naast onze command-line-module ook een webversie willen maken, da
 ~~~
                      +-------------------------------+
                      |                               |
-                +----+       STUDENT_API             +--------------------+
+                +----+       STUDENT_WEB             +--------------------+
                 |    |                               |                    |
                 |    +-------------------------------+                    |
                 |                                                         |
@@ -398,11 +398,11 @@ class StudentGroup:
             self.name, self.teacher, self.room)   
 ~~~
 
-#### student_db.py
+#### student_service.py
 
 ~~~python
 import sqlite3 as sl
-from student_entities import *
+from student_entities import Student, StudentGroup
 
 STUDENT_DB_FILE_NAME = "students.db"
 
@@ -484,11 +484,11 @@ def delete_student(id):
 init_database()
 ~~~
 
-#### student_cmd.py
+#### student_command.py
 
 ~~~python
-from students import *
-from students_db import *
+from student_entities import Student, StudentGroup
+from student_service import *
 
 def input_number(request):
     number_input = input(request)
@@ -628,7 +628,7 @@ Je kunt dit ook bij een object opvragen:
 Een groot deel van programmeren bestaat uit het leren hergebruiken van bestaande code.  
 We hebben gezien hoe je code kan afzonderen in aparte bestanden om deze functionaliteit te isoleren en eventueel te hergebruiken in verschillende applicaties.  
 
-Om code van andere ontwikkelaars (over heel de wereld) te gebruiken, hebben veel programmeeromgevingen het concept van _package managers_ (pakketbeheerders).  
+Om code van andere ontwikkelaars (over heel de wereld) te gebruiken, hebben veel programmeeromgevingen het concept van **package managers** (pakketbeheerders).  
 
 Dit zijn tools die in staat zijn om andere modules (en eventueel modules waarvan die andere modules afhangen) automatisch te downloaden. Zo heb je in andere programmeertalen:
 

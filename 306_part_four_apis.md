@@ -1,5 +1,3 @@
-# Deel 4 - API'S
+# Deel 4 - Netwerkprogrammeren
 
-Om data op servers - of een meer populaire benaming te gebruiken "de cloud" - te krijgen bestaan er diverse protocollen gebruikt (zoals je nog gaat zien in de cursus).  
-Een heel populaire is via HTTP/REST.
-
+In dit vierde deel gaan we werken met API's (application programming interfaces) om te communiceren met servers of zelf een server op te zetten.
