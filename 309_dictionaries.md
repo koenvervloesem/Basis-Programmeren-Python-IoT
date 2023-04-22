@@ -1,7 +1,7 @@
 
 ## Werken met dictionary's
 
-Heel wat van de API's voor netwerkcommunicatie in Python maken gebruik van een datatype dat we nog niet gezien hebben: een dictionary. Dit is een vorm van collectie, zoals een lijst.
+Heel wat van de API's voor netwerkcommunicatie in Python maken gebruik van een datatype dat we nog niet gezien hebben: een **dictionary**. Dit is een vorm van collectie, zoals een lijst.
 
 ### Korte herhaling lijsten
 
@@ -18,7 +18,7 @@ print(f'student 0 heeft {punten[0]} punten')
 print(f'student 3 heeft {punten[3]} punten')
 ~~~
 
-#### Een lijst is geindexeerd
+#### Een lijst is geïndexeerd
 
 De individuele elementen kun je bereiken via een **index** (in bovenstaand voorbeeld 0 en 3) met als resultaat:
 
@@ -69,7 +69,7 @@ We konden ook gemakkelijk door een lijst "loopen" met een for-lus:
 
 ~~~python
 punten = [18, 15, 16, 17]
-for punt in studenten:
+for punt in punten:
   print(f'student heeft {punt} punten')
 ~~~
 
@@ -103,7 +103,7 @@ student 2 heeft 16 punten
 student 3 heeft 17 punten
 ~~~
 
-Gezien dit veel gebruikt wordt, heeft Python de functie `enumerate` toegevoegd. Die kun je in een for-lus gebruiken om zowel door de index als het element te loopen:
+Aangezien dit veel gebruikt wordt, heeft Python de functie `enumerate` toegevoegd. Die kun je in een for-lus gebruiken om zowel door de index als het element te loopen:
 
 ~~~python
 punten = [18, 15, 16, 17]
@@ -152,7 +152,7 @@ In dit geval hebben we strings gebruikt als key maar dit kan ook een integer of 
 
 ### Sleutels zijn uniek
 
-Wat wel belangrijk is dat er **geen twee verschillende elementen** met dezelfde **sleutel** kunnen zijn **binnen** een **dictionary**.  
+Wel belangrijk is dat er **geen twee verschillende elementen** met dezelfde **sleutel** kunnen zijn **binnen** een **dictionary**.  
 Onderstaande code demonstreert dit:
 
 ~~~python

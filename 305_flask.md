@@ -170,7 +170,7 @@ Content: <!doctype html>
 
 Als je in je Python-programma verbinding maakt met een server, werkt die verbinding niet altijd. Je netwerk ligt er even uit, of de server draait niet, of je maakt een typfout in de naam van de server of de poort. Hoe gaat je client daarmee om?
 
-Sluit bijvoorbeeld je server af met Ctrl+C en laat de client proberne om ermee te verbinden:
+Sluit bijvoorbeeld je server af met Ctrl+C en laat de client proberen om ermee te verbinden:
 
 ~~~python
 import requests
@@ -688,7 +688,7 @@ Met als resultaat:
 }
 ~~~
 
-We kunnen dit alles ook in Python doen met de module `requests` Voeg bijvoorbeeld een student toe aan groep 1 en vraag dan alle studenten van groep 1 op:
+We kunnen dit alles ook in Python doen met de module `requests`. Voeg bijvoorbeeld een student toe aan groep 1 en vraag dan alle studenten van groep 1 op:
 
 ~~~python
 >>> import requests

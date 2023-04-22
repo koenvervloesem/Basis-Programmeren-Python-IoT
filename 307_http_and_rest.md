@@ -11,7 +11,7 @@ Maar voordat we aan de slag gaan, bekijken we de werking van HTTP, de technologi
 ### HTTP
 
 Laten we starten met HTTP.  
-**HTTP** staat voor **H**yper**t**ext **T**ransfer **P**rotocol.  
+**HTTP** staat voor **H**yper**T**ext **T**ransfer **P**rotocol.  
 
 **HTTP** behoort tot **laag 7** van het **OSI**-model voor netwerken.  
 Het protocol wordt typisch toegankelijk gemaakt op poort 80 (tijdens de ontwikkeling dikwijls poort, 8000, 8080 of 5000). De versleutelde vorm HTTPS maakt gebruik van poort 443.
@@ -113,10 +113,10 @@ Maak een bestand test.html aan en kopieer de onderstaande inhoud (html-code) in 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Een voorbeeld-pagina</title>
+        <title>Een voorbeeldpagina</title>
     </head>
     <body>
-        <h1>Een voorbeeld-pagina</h1>
+        <h1>Een voorbeeldpagina</h1>
         <img src="hello.png">
     </body>
 </html>
@@ -225,8 +225,8 @@ Daarnaast wordt er nog wat bijkomende informatie verschaft in het volgende forma
 Zo geeft de webbrowser onder andere de volgende info:
 
 * De host is localhost
-* Met port 9000
-* De browser aanvaardt een aantal bestandsformaten, zoals text/html
+* Met poort 9000
+* De browser aanvaardt een aantal mediatypes, zoals text/html
 * ...
 
 #### De HTTP-response
@@ -243,10 +243,10 @@ Content-Length: 189
 Last-Modified: Tue, 26 Apr 2022 21:31:30 GMT
 <html>
     <body>
-        <title>Een voorbeeld-pagina</title>
+        <title>Een voorbeeldpagina</title>
     </body>
     <head>
-        <h1>Een voorbeeld-pagina</h1>
+        <h1>Een voorbeeldpagina</h1>
         <img src="hello.png">
     </head>
 </html>
@@ -254,7 +254,7 @@ Last-Modified: Tue, 26 Apr 2022 21:31:30 GMT
 
 Daarnaast geeft deze onder andere:
 
-* Het content-type (text/html)
+* Het mediatype (text/html)
 * De lengte in bytes van de content
 * Het tijdstip van aanmaak, wat gebruikt wordt voor caching
 * De eigenlijke content
@@ -328,7 +328,7 @@ De belangrijkste:
   * 404 **Not Found** – Het opgevraagde document bestaat niet.
   * 405 **Method Not Allowed** – De gebruikte requestmethode is niet toegestaan.
   * 410 **Gone** – Het opgevraagde document heeft bestaan maar is niet meer beschikbaar.
-  * 451 **Unavailable** For Legal Reasons - een website niet kan worden weergegeven vanwege juridische redenen
+  * 451 **Unavailable For Legal Reasons** - Het opgevraagde document kan niet worden weergegeven omwille van juridische redenen.
 * 5XX
   * 500 **Internal Server Error** – De webserver heeft de gevraagde actie niet kunnen uitvoeren.
   * 503 **Service Temporarily Unavailable** – De webserver is tijdelijk in onderhoud.
@@ -346,7 +346,7 @@ Serving HTTP on 0.0.0.0 port 9000 (http://0.0.0.0:9000/) ...
 
 ### Wat is een API?
 
-We gaan nu echter geen webpagina's maken, maar API's.  
+We gaan nu echter geen webpagina's maken en gebruiken, maar API's die data teruggeven.
 
 Een API of **A**pplication **P**rogramming **I**nterface is een verzameling van operaties of functies 
 die je tussen twee stukken software kan definiëren.  
@@ -386,7 +386,7 @@ Laten we een aantal elementen bekijken van deze API's.
 #### REST (structuur van de API)
 
 Veel API's gebruiken het principe van REST of RESTful design.  
-Dit is niet zozeer een protocol, maar eerder een (architecturale) stijl van hoe dat je data (of "resources") ordent.
+Dit is niet zozeer een protocol, maar eerder een (architecturale) stijl van hoe je data (of "resources") ordent.
 
 De basisprincipes:
 
@@ -398,7 +398,7 @@ Het programma Insomnia (https://insomnia.rest) laat je toe om eenvoudig HTTP- en
 
 Voer nu in de adresbalk in het midden de url https://randomuser.me/api/ in en klik rechts ervan op **Send**. Je krijgt dan rechts als preview een hoop data in de vorm van een JSON-string. JSON (https://www.json.org/json-en.html) staat voor JavaScript Object Notation en is een tekstformaat om gestructureerde data uit te wisselen. Het wordt veel in REST-API's gebruikt.
 
-We kunnen ook extra query parameters toevoegen. Voeg in het tabblad **Query** onder de adresbalk een parameter **gender** met waarde **female** in een parameter **nat** met waarde **DE**. Insomnia past de url nu aan toet https://randomuser.me/api/?gender=female&nat=NL. Klik nog eens op **Send**. Je krijgt nu een willekeurige vrouwelijke gebruiker met Duitse naam.
+We kunnen ook extra query parameters toevoegen. Voeg in het tabblad **Query** onder de adresbalk een parameter **gender** met waarde **female** in een parameter **nat** met waarde **DE**. Insomnia past de url nu aan tot https://randomuser.me/api/?gender=female&nat=NL. Klik nog eens op **Send**. Je krijgt nu data van een willekeurige vrouwelijke gebruiker met Duitse naam.
 
 Ook in Python kunnen we een REST-API aanroepen, namelijk met de module `requests`. Probeer dit bijvoorbeeld eens uit in de REPL:
 
@@ -409,7 +409,7 @@ Ook in Python kunnen we een REST-API aanroepen, namelijk met de module `requests
 '{"results":[{"gender":"male","name":{"title":"Mr","first":"Melvin","last":"Holmes"},"location":{"street":{"number":3902,"name":"Fairview Road"},"city":"Portsmouth","state":"Tyne and Wear","country":"United Kingdom","postcode":"R2B 7LB","coordinates":{"latitude":"-5.5941","longitude":"-137.8553"},"timezone":{"offset":"-4:00","description":"Atlantic Time (Canada), Caracas, La Paz"}},"email":"melvin.holmes@example.com","login":{"uuid":"b6462ae3-84d0-4346-a6a0-8e107a9f8ff9","username":"redbear579","password":"having","salt":"HsZansyi","md5":"b003a842de456a8404aa8f1cca7a326c","sha1":"70ac4801b7f71c6fe623316ba4c81797430adfa9","sha256":"32005634c0ce6679632eaa011e32602684ff37e63448dddd3ab7a3055d287fb6"},"dob":{"date":"1997-10-21T19:35:13.544Z","age":25},"registered":{"date":"2004-01-15T02:24:01.423Z","age":19},"phone":"016973 76793","cell":"07888 154639","id":{"name":"NINO","value":"KW 85 91 00 J"},"picture":{"large":"https://randomuser.me/api/portraits/men/4.jpg","medium":"https://randomuser.me/api/portraits/med/men/4.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/4.jpg"},"nat":"GB"}],"info":{"seed":"91e2e7bba1572ef7","results":1,"page":1,"version":"1.4"}}'
 ~~~
 
-Het resultaat is een string. Maar in Python kunnen we er ook een JSON-structuur van maken:
+Het resultaat is een string. Maar in Python kunnen we er ook een JSON-structuur van maken en er onderdelen uit halen:
 
 ~~~python
 >>> response.json()["results"][0]["name"]

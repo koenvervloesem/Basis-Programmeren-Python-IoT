@@ -65,6 +65,8 @@ PY_CHAPTER_04 += 309_dictionaries.md
 PY_CHAPTER_04 += 307_http_and_rest.md
 PY_CHAPTER_04 += 305_flask.md
 
+#PY_CHAPTER_05 += 500_part_five_async.md
+
 PY_ANNEX += annex.md
 PY_ANNEX += pandoc_page_break.txt
 PY_ANNEX += tools_command_getting_started.md
@@ -79,6 +81,7 @@ PY_ANNEX += tools_command_getting_started_linux.md
 #PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_ANNEX)
 #PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_ANNEX)
 PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_CHAPTER_04) $(PY_ANNEX)
+#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_CHAPTER_04) $(PY_CHAPTER_05) $(PY_ANNEX)
 
 pagebreak = pandoc_page_break.txt
 
