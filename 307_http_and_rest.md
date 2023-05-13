@@ -436,3 +436,5 @@ Of ook op deze manier:
 ~~~
 
 We maken hier dus een dictionary met de query-parameters aan en geven die als extra argument door aan de methode `requests.get`.
+
+We hebben in dit voorbeeld gebruikgemaakt van de API van de website randomuser.me. Voor een overzicht van publiek toegankelijke API's kun je kijken op https://public-api-lists.github.io/public-api-lists/.
