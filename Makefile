@@ -74,6 +74,8 @@ PY_ANNEX += pandoc_page_break.txt
 PY_ANNEX += tools_command_getting_started_windows.md
 PY_ANNEX += pandoc_page_break.txt
 PY_ANNEX += tools_command_getting_started_linux.md
+PY_ANNEX += pandoc_page_break.txt
+PY_ANNEX += tips.md
 #PY_ANNEX += pandoc_page_break.txt
 #PY_ANNEX += test.md
 
