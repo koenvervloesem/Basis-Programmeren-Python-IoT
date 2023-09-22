@@ -74,15 +74,15 @@ PY_ANNEX += pandoc_page_break.txt
 PY_ANNEX += tools_command_getting_started_windows.md
 PY_ANNEX += pandoc_page_break.txt
 PY_ANNEX += tools_command_getting_started_linux.md
-PY_ANNEX += pandoc_page_break.txt
-PY_ANNEX += tips.md
+#PY_ANNEX += pandoc_page_break.txt
+#PY_ANNEX += tips.md
 #PY_ANNEX += pandoc_page_break.txt
 #PY_ANNEX += test.md
 
-#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_ANNEX)
+PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_ANNEX)
 #PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_ANNEX)
 #PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_ANNEX)
-PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_CHAPTER_04) $(PY_ANNEX)
+#PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_CHAPTER_04) $(PY_ANNEX)
 #PY_CHAPTERS += $(PY_CHAPTER_01) $(PY_CHAPTER_02) $(PY_CHAPTER_03) $(PY_CHAPTER_04) $(PY_CHAPTER_05) $(PY_ANNEX)
 
 pagebreak = pandoc_page_break.txt

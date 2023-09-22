@@ -53,7 +53,7 @@ Het overzicht van deze **rekenkundige operatoren** vind je hieronder:
 | %          | rest van deling      |
 | **         | macht                |
 
-De Python REPL kent een speciale variabele _ die altijd de waarde van de laatste expressie bevat:
+De Python REPL kent een speciale variabele `_` die altijd de waarde van de laatste expressie bevat:
 
 ~~~
 >>> 6*7
@@ -68,8 +68,8 @@ De operatoren in Python komen grotendeels overeen met wat je gewoon bent uit de 
 
 Voor het **delen** van getallen in Python heb je **twee operatoren**:
 
-* **//** ofwel **floor division operator** rondt af naar beneden tot een geheel getal.
-* **/** ofwel **true division operator** rondt niet af maar geeft de werkelijke decimale waarde.
+* `//` ofwel **floor division operator** rondt af naar beneden tot een geheel getal.
+* `/` ofwel **true division operator** rondt niet af maar geeft de werkelijke decimale waarde.
 
 Bij het delen van twee gehele getallen zie je het verschil duidelijk:
 
@@ -85,7 +85,7 @@ Bij het delen van twee gehele getallen zie je het verschil duidelijk:
 ~~~
 
 De eerste bewerking met **true division** levert een **niet afgeronde uitkomst** op.  
-Gezien het resultaat een kommagetal is, is het resultaat een waarde van het **type float**
+Gezien het resultaat een kommagetal is, is het resultaat een waarde van het type `float`
 (aangezien je geen kommaresultaten in een integer kan opslaan).
 
 ### Delen van floats
@@ -146,7 +146,7 @@ Als je dit niet doet, zal Python de voorrang van bewerkingen bepalen aan de hand
 15
 ~~~
 
-In bovenstaand geval zal eerst worden vermenigvuldigd (a * 2) en dan pas de som worden gemaakt met a.
+In bovenstaand geval zal eerst worden vermenigvuldigd (`a*2`) en dan pas de som worden gemaakt met a.
 
 De volgende volgorde wordt gerespecteerd:
 
@@ -155,7 +155,7 @@ De volgende volgorde wordt gerespecteerd:
 * vermenigvuldigen, delen en rest
 * optellen en aftrekken
 
-Binnen de zelfde "voorrang" (*precedence*), bijvoorbeeld *, /, // en %, wordt er van links naar rechts gewerkt.
+Binnen de zelfde "voorrang" (*precedence*), bijvoorbeeld `*`, `/`, `//` en `%`, wordt er van links naar rechts gewerkt.
 
 Bijvoorbeeld:
 

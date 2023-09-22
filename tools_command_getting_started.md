@@ -1,6 +1,6 @@
 ## Werken met een shell
 
-Eén van de eerste basisvaardigheden van een software-ontwikkelaar is het kunnen omgaan met een shell of command line (opdrachtregel).
+Eén van de eerste basisvaardigheden van een softwareontwikkelaar is het kunnen omgaan met een shell of command line (opdrachtregel).
 Het kunnen omgaan met de command line is meestal noodzakelijk voor een build en deploy van je software:
 
 * Starten en compilen van je software
@@ -20,7 +20,7 @@ Een shell is een programma waarmee je rechtstreeks toegang hebt tot **systeemope
 * Automatiseren van taken
 * Communicatie over een seriële interface
 
-### Tekstopdrachten ingeven
+### Tekstopdrachten invoeren
 
 Deze tekstopdrachten kunnen meestal ook **gebundeld** worden in een **script**, dat je dan kan uitvoeren van een CLI (command line interface) net zoals je programma's kan uitvoeren.
 
@@ -28,7 +28,7 @@ Nadat zo'n opdracht/script/programma uitgevoerd is, krijgt de gebruiker weer de 
 
 ### Waarom werken met een shell?
 
-Elke software-ontwikkelaar moet de beginselen kennen van het werken met de opdrachtregel. Dat geldt zeker als je met **embedded devices** werkt, die doorgaans alleen via een opdrachtregel aan te sturen zijn. In andere programmeervakken ga je deze vaardigheden ook nodig hebben om met toolchains met een compiler en linker om te gaan.
+Elke softwareontwikkelaar moet de beginselen kennen van het werken met de opdrachtregel. Dat geldt zeker als je met **embedded devices** werkt, die doorgaans alleen via een opdrachtregel aan te sturen zijn. In andere programmeervakken ga je deze vaardigheden ook nodig hebben om met toolchains met een compiler en linker om te gaan.
 
 ### Vervolg...
 

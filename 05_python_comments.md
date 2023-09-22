@@ -5,7 +5,7 @@ In Python-code kan je ook **tekst** toevoegen die **niet wordt geïnterpreteerd*
 
 ### Commentaar op één regel
 
-Voor een commentaar op één regel (*single-line comment*) volstaat het om tekst **vooraf** te laten gaan **door een #** of hashtag (hekje).
+Voor een commentaar op één regel (*single-line comment*) volstaat het om tekst **vooraf** te laten gaan door een `#` of *hashtag* (hekje).
 
 ~~~python
 # This is your very first application.

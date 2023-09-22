@@ -40,7 +40,7 @@ C:\users\python> cd basis_programmeren
 C:\users\python\basis_programmeren> 
 ~~~
 
-**Stap 4:** **Voer** dit programma **uit**.
+**Stap 4:** Voer dit programma uit.
 Dit doe je door de **Python-interpreter** aan te roepen met als argument **hello.py** (naam van het Python-programma):
 
 ~~~
@@ -49,7 +49,7 @@ Hello World
 C:\users\python\basis_programmeren> 
 ~~~
 
-> Weetje: "Hello world" is de klassieker om de basiswerking van een programmeertaal te demonstreren.
+> "Hello world" is de klassieker om de basiswerking van een programmeertaal te demonstreren.
 
 ### Wat hebben we zonet gedaan?
 
@@ -60,7 +60,7 @@ Dit is technisch gezien niet verplicht, maar er is geen reden om deze conventie 
 
 ### Programmeertalen zijn gevoelig voor fouten
 
-Een **programmeertaal is gevoelig voor fouten**, nog meer dan mensen (en lectoren).
+Een **programmeertaal is gevoelig voor fouten**, nog meer dan mensen.
 Bekijk de volgende ongeldige Python-code bijvoorbeeld:
 
 ~~~python
@@ -82,7 +82,7 @@ De Python-interpreter gaat ook meestal naar goed vermogen proberen aan te duiden
 * **Waar het probleem** zich in de code bevindt.
     * Regelnummer code (hier **line 1**)
     * Positie binnen de regel (aangeduid met **^**)
-* Welke **soort fout** je hebt gemaakt (hier een **SyntaxError**).
+* Welke **soort fout** je hebt gemaakt (hier een `SyntaxError`).
 * Eventueel een **hint** wat je moet doen om de fout te corrigeren (hier het haakje sluiten).
 
 Er zijn **verschillende soorten fouten** die in je in een Python-programma kan maken.  

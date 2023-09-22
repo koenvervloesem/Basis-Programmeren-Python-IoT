@@ -9,8 +9,8 @@ Alvorens te kunnen starten, heb je op je computer twee zaken nodig:
 
 Je hebt een minimale kennis nodig van het werken met een **opdrachtregel** (command line) op je besturingssysteem.  
 
-* Op **Linux/macOS/Unix** is de meest gebruikte opdrachtregelomgeving **Bash**
-* Op **Windows** heb je keuze tussen de klassieke **CMD** (Opdrachtprompt) of het iets uitgebreidere **PowerShell**
+* Op **Linux/macOS/Unix** is de meest gebruikte opdrachtregelomgeving **Bash**.
+* Op **Windows** heb je keuze tussen de klassieke **CMD** (Opdrachtprompt) of het iets uitgebreidere **PowerShell**.
 
 Als je jezelf **niet comfortabel** voelt op de opdrachtregel of er nog **nooit van gehoord** hebt, lees dan de **annex** voor een introductie voor zowel Linux als Windows.
 
@@ -18,22 +18,22 @@ Als je jezelf **niet comfortabel** voelt op de opdrachtregel of er nog **nooit v
 
 Eerst installeren we de **Python-interpreter**. Dit is de software waarmee je Python-programma's uitvoert.
 
-#### Python 3.10
+#### Python 3.11
 
-Voor deze cursus gebruiken we als referentie versie **Python 3.10**.  
-Als je een eerdere versie van Python 3 hebt, is dat ook OK.  
+Voor deze cursus gebruiken we als referentie versie **Python 3.11**.
+Als je een eerdere (of latere) versie van Python 3 hebt, is dat ook OK.
 
-> Nota:  
-> Gebruik geen Python 2. Dit is niet meer ondersteund.
+> **Nota:**
+> Gebruik geen Python 2. Die versie is niet meer ondersteund.
 
 #### Installatie testen
 
 Alvorens je Python gaat installeren, kijk je het best na of je systeem al een **Python-installatie** bevat en **welke versie** dat is.  
 Dat kan je doen via de opdrachtregel:
 
-Op Linux/macOS/Unix:
+Op Linux/macOS:
 
-~~~bash_terminal
+~~~bash
 koan@x1:~$ python --version
 Python 3.10.4
 koan@x1:~$
@@ -47,33 +47,36 @@ Python 3.10.4
 C:\users\py>
 ~~~
 
-Afhankelijk van de installatie kan het zijn dat je op Windows **py** moet typen in plaats van **python**.
-
 > Nota:  
 > Op deze manier kun je na de installatie ook testen of de installatie correct gebeurd is.
 
-Windows opent mogelijk de Microsoft Store om Python daaruit te installeren wanneer je bovenstaande opdracht intypt en je nog geen Python geïnstalleerd hebt.
+Windows opent mogelijk de Microsoft Store om Python daaruit te installeren wanneer je bovenstaande opdracht intypt en je nog geen Python geïnstalleerd hebt. Sluit de Microsoft Store en gebruik onderstaande methode.
 
 #### Installeren op Windows
 
-Er zijn twee manieren om Python te installeren onder Windows:
+Installeer Python met Winget:
 
-* Ga naar https://www.python.org/downloads/ en installeer de nieuwste Python-versie. Daarna kun je Python uitvoeren op de opdrachtprompt met de opdracht `py`.
-* Installeer Python vanuit de Microsoft Store. Daarna kun je Python uitvoeren door in het startmenu te zoeken op Python. 
+~~~
+winget install --id Python.Python.3.11
+~~~
 
 #### Installeren op macOS
 
-MacOS komt meestal met Python geïnstalleerd. Mocht dit niet het geval zijn of alleen Python 2 is geïnstalleerd, installeer dan de nieuwste Python-versie van https://www.python.org/downloads/.
+Installeer Homebrew (<https://brew.sh>) en installeer daarmee dan Python met:
+
+~~~
+brew install python3
+~~~
 
 #### Installeren op Linux
 
-*Debian/Mint/Ubuntu:*
+Onder Debian/Linux Mint/Ubuntu:
 
 ~~~bash
 $ sudo apt install python3
 ~~~
 
-Op sommige oudere versies van deze distributies heb je nog twee versies van Python, Python 2 en Python 3:
+Op sommige oudere versies van deze distributies heb je nog twee versies van Python, namelijk Python 2 en Python 3:
 
 ~~~bash
 bart@bvomini:~/Projects/ucll_python$ python --version
@@ -83,12 +86,12 @@ Python 3.6.8
 ...
 ~~~
 
-Op deze systemen moet je Python 3 aanroepen als **python3**.
+Op deze systemen moet je Python 3 aanroepen als `python3`.
 
-*Fedora/Red Hat:*
+Onder Fedora/Red Hat:
 
 ~~~bash
-# dnf install python3
+$ sudo dnf install python3
 ~~~
 
 ### Teksteditor

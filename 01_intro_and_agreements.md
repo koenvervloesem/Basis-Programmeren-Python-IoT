@@ -11,7 +11,7 @@ Wie aanvullende verdieping wil, mag altijd vragen om verwijzingen naar goede boe
 ### Stijl van lesgeven
 
 Dit is een **praktische cursus**, dus we vliegen er direct in met praktijk.
-Het motto van deze cursus is **"eerst coderen, dan leren"** (of eerst schieten, dan praten).
+Het motto van deze cursus is **"eerst coderen, dan leren"**.
 Je zal merken dat je gemakkelijker theorie oppikt als je eerst al hebt geëxperimenteerd.
 
 ### Verloop van de lessen
@@ -71,33 +71,31 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
 
 * **Q&A**
 * Belangrijkste punten worden **herhaald**
-* **Opladen** van je code op **Toledo**
+* **Indienen** van je code op **Toledo**
     * Zelfs als deze nog niet af is
     * Je hebt nog **3 weken** de **tijd** om **verbeteringen** aan te brengen
     * Maar op deze manier kan je **vroeg feedback** krijgen voor verbeteringen
 
 **(6) Thuis: Oefenen en studeren**
 
-* **Slides bestuderen** ter voorbereiding **quiz** van de volgende les
+* **Slides bestuderen** ter voorbereiding van de volgende les
 * Je kan altijd vragen stellen per **e-mail** (koen.vervloesem@ucll.be)
 * **Bemerkingen en feedback** op cursus zijn **welkom**    
-  (via e-mail, Toledo, live of https://github.com/koenvervloesem/Basis-Programmeren-Python-IoT)
+  (via e-mail, Toledo, live of op <https://github.com/koenvervloesem/Basis-Programmeren-Python-IoT>)
 * **Extra oefeningen** worden **beschikbaar** gesteld
 
 ### Opdrachten op Toledo
 
 Alle **oefeningen** uit de cursus die je **moet maken** worden aangeduid in Toledo **onder opdrachten**.   
-
 #### Termijn
 
-Deze oefeningen moeten worden ingediend op de datum zoals in Toledo vermeld.  
-Tenzij anders aangeduid is dat standaard 3 weken na de betreffende les.
+Je (deel)oplossing voor de opdracht moet je indienen vóór het einde van de les.
 
-> Nota: alleen om uitzonderlijke redenen kan deze termijn worden uitgebreid.
+Daarna krijg je nog drie weken om verbeteringen aan te brengen. Na die drie weken krijg je punten op je oplossing.
 
 #### Uploaden in Toledo
 
-Je laadt de Python-bestanden (met bestandsextensie .py) op tenzij anders beschreven in de opdracht (geen zip-bestanden of andere documenten)
+Je laadt de Python-bestanden (met bestandsextensie .py) op, tenzij anders beschreven in de opdracht.
 
 ### Evaluatie
 
@@ -127,14 +125,11 @@ Programmeren wordt ook wel eens vergeleken met een recept schrijven om te koken 
 ### Wat gaan we leren programmeren in deze cursus?
 
 * scripting en automatisatie
-* grafische interface (GUI/graphical user interface)
-* dataverwerking
-* plotting
-* scientific programming (in plaats van MATLAB of Maple)
-* interfacing
-* API's (application programming interfaces)
 * tekstmanipulatie
-* encryptie
+* dataverwerking
+* communicatie via seriële interface
+* grafische interface (GUI/graphical user interface)
+* API's (application programming interfaces)
 * web
 * netwerken
 * ...
@@ -145,8 +140,8 @@ De keuze voor deze introductiecursus is gevallen op **Python**. Waarom?
 
 * Python is **eenvoudig** aan te leren
 * Python wordt gebruikt om **kleine tot grote applicaties** te bouwen
-* Python is **uitstekend gedocumenteerd** (zie https://docs.python.org)
-* Python is enorm **populair** (zie https://www.tiobe.com/tiobe-index/)
+* Python is **uitstekend gedocumenteerd** (zie <https://docs.python.org>)
+* Python is enorm **populair** (zie <https://www.tiobe.com/tiobe-index/>)
 * Python heeft enorm veel **bibliotheken** en **hulpprogramma's** om allerlei **taken** uit te voeren
 * Python laat je toe om **eenvoudig en snel** toepassingen (op de opdrachtregel of met een grafische interface) te bouwen **zonder al te veel voorkennis**  
 * Python heeft een grote **community** en veel online **support**

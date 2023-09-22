@@ -12,7 +12,7 @@ print(say_hello)
 print(say_hello)
 ~~~
 
-Als je deze code uitvoert, zal deze **twee maal na elkaar hello tonen** op de console.
+Als je deze code uitvoert, zal deze twee maal na elkaar **hello** tonen op de console.
 
 ~~~
 hello
@@ -21,8 +21,8 @@ hello
 
 Er zijn hier twee nieuwe elementen:
 
-* Een **variabele** met de naam **say_hello**
-* Een **assignment statement** dat wordt gebruikt om de variabele say_hello de waarde "hello" toe te kennen (*assign*)
+* Een **variabele** met de naam `say_hello`
+* Een **assignment statement** dat wordt gebruikt om de variabele `say_hello` de waarde "hello" toe te kennen (*assign*)
 
 Door het gebruik van een **variabele** kan je dus een **waarde** (hier de string "hello") in het geheugen steken en deze **hergebruiken** in latere **statements**.
 
@@ -77,7 +77,7 @@ Zo'n assignment statement heeft altijd de vorm van :
 ~~~
 
 * Aan de **linkerkant** zet je de **naam** (het symbool) van de **variabele**.
-* In het midden zet je de **assignment operator**. In Python is dit het symbool **=**.
+* In het midden zet je de **assignment operator**. In Python is dit het symbool `=`.
 * Aan de **rechterkant** zet je de waarde.
 
 ### Waarde van een variabele wijzigen
@@ -142,10 +142,10 @@ Daarnaast heeft een variabele ook een bepaald **type**.
 ~~~
 
 Dit type bepaalt wat je met de waarde (een hoop bytes...) kan doen.  
-Python ondersteunt verschillende types. Tot nog toe hebben we gebruik gemaakt van het type **string** (in Python **str**).
+Python ondersteunt verschillende types. Tot nog toe hebben we gebruik gemaakt van het type **string** (in Python `str`).
 
 In onderstaand stuk code maken we drie variabelen aan van verschillende types.  
-Met de functie **type** vragen we het type van de variabele op.
+Met de functie `type` vragen we het type van de variabele op.
 
 ~~~
 >>> a = "hello"
@@ -167,15 +167,15 @@ In dit geval kan de Python-interpreter vanuit de **literal** afleiden tot **welk
 * 10 is niet omgeven door aanhalingstekens en bevat alleen cijfers
 * 0.5 is een getal met een decimaal punt (kommagetal)
 
-Het eerste type hier is **str**, dat we al een aantal keren hebben gebruikt.  
+Het eerste type hier is `str`, dat we al een aantal keren hebben gebruikt.  
 
 ### Numerieke types
 
-De twee andere - **int** en **float** - zijn **numerieke types** die je kan gebruiken om berekeningen met getallen uit te voeren.
+De twee andere - `int` en `float` - zijn **numerieke types** die je kan gebruiken om berekeningen met getallen uit te voeren.
 
 ### Integers
 
-**Integers** (type **int**) kennen we als de groep van **gehele getallen**. Bijvoorbeeld:
+**Integers** (type `int`) kennen we als de groep van **gehele getallen**. Bijvoorbeeld:
 
 ~~~
 —1
@@ -186,8 +186,8 @@ De twee andere - **int** en **float** - zijn **numerieke types** die je kan gebr
 –7777777777
 ~~~
 
-In **Python 3** is er **geen limiet** op hoe lang een **geheel getal** kan zijn.  
-Natuurlijk wordt het **beperkt** door de **hoeveelheid geheugen** die je **systeem** heeft, zoals alle dingen.  
+In Python 3 is er **geen limiet** op hoe lang een **geheel getal** kan zijn.  
+Natuurlijk wordt het in de praktijk **beperkt** door de **hoeveelheid geheugen** die je **systeem** heeft, zoals alle dingen.  
 
 Maar verder kan een geheel getal zo lang zijn als je nodig hebt, zoals hieronder:
 
@@ -227,7 +227,7 @@ Onderstaand voorbeeld illustreert dit:
 
 ### Floats
 
-Python gebruikt ook een floating-point type (**float**).
+Python gebruikt ook een floating-point type (`float`).
 
 Dit wordt gebruikt voor kommagetallen, dus getallen waar je precisie nodig hebt na de komma.
 
@@ -257,7 +257,7 @@ Hoe komt dit? 0.1 wordt door Python intern voorgesteld als 0.1000000000000000055
 
 Hou hier ook rekening mee als je floats gaat vergelijken met elkaar. Door dit soort afrondingen kunnen de waardes dan onverwacht niet overeenkomen.
 
-Als je met floats werkt, is het daarom meestal aan te raden om zelf resultaten altijd af te ronden tot op het aantal decimalen dat je nodig hebt. Dat doe je met de ingebouwde functie round:
+Als je met floats werkt, is het daarom meestal aan te raden om zelf resultaten altijd af te ronden tot op het aantal decimalen dat je nodig hebt. Dat doe je met de ingebouwde functie `round`:
 
 ```python
 >>> round(0.1*3, 2)
@@ -276,9 +276,9 @@ Als je met floats werkt, is het daarom meestal aan te raden om zelf resultaten a
 
 Het tweede argument dat je aan de functie round doorgeeft, is het aantal cijfers na de komma dat je wilt weergeven. Laat je dit weg, dan rondt de functie de waarde af tot op een geheel getal (dus zonder cijfers na de komma).
 
-Wil je meer weten over de uitdagingen van met floats te werken, lees dan https://docs.python.org/3/tutorial/floatingpoint.html.
+Wil je meer weten over de uitdagingen van met floats te werken, lees dan <https://docs.python.org/3/tutorial/floatingpoint.html>.
 
 In de zeldzame gevallen dat je toch exacte berekeningen nodig hebt, gebruik dan een van de volgende modules:
 
-* https://docs.python.org/3/library/decimal.html
-* https://docs.python.org/3/library/fractions.html
+* <https://docs.python.org/3/library/decimal.html>
+* <https://docs.python.org/3/library/fractions.html>

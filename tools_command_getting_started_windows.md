@@ -2,8 +2,8 @@
 
 Elk besturingssysteem bevat een CLI (command line interface). Windows heeft hiervoor het programma CMD (Opdrachtprompt), dat je kan vinden in het Windows-menu.
 
-> De CMD-tool heeft zijn beperkingen. Voor een geavanceerdere omgeving op Windows is het interessant om Powershell te bekijken.
-> Daarnaast bestaan er ook alternatieven zoals **Cygwin**, **MingW/MSYS** en **WSL (Windows Subsystem for Linux)**. Deze geven je een Bash-compatibele omgeving, zodat je dezelfde opdrachten als in Linux kan uitvoeren.
+> De CMD-tool heeft zijn beperkingen. Voor een geavanceerdere omgeving op Windows is het interessant om PowerShell te bekijken.
+> Daarnaast bestaan er ook alternatieven zoals **Cygwin** en **WSL (Windows Subsystem for Linux)**. Deze geven je een Bash-compatibele omgeving, zodat je dezelfde opdrachten als in Linux kan uitvoeren.
 
 ### Voorbeelden van Windows-opdrachten
 
@@ -22,7 +22,7 @@ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
 C:\Users\bart>
 ~~~
 
-Deze **prompt** *C:\Users\bart>*:
+Deze **prompt** `C:\Users\bart>`:
 
 * geeft aan in welk **pad** je je momenteel bevindt
 * geeft je de mogelijkheid om een **opdracht** in te typen
@@ -49,15 +49,15 @@ C:\Users\bart>dir
 
 Hier zien we twee opdrachten:
 
-* **mkdir** gevolg door het pad **een_eerste_programma**  
+* `mkdir` gevolg door het pad **een_eerste_programma**  
   Dit maakt een nieuwe map of directory aan met de opgegeven naam.  
-* De opdracht **dir**  
+* De opdracht `dir`
   Dit toont de **inhoud** van de huidige **directory**.
 
 
 #### Navigeren door directory's
 
-Als je deze directory hebt aangemaakt, kan je hiernaartoe navigeren met de opdracht **cd** (wat staat voor *change directory*):
+Als je deze directory hebt aangemaakt, kan je hiernaartoe navigeren met de opdracht `cd` (wat staat voor *change directory*):
 
 ~~~
 C:\Users\bart>cd een_eerste_programma
@@ -65,13 +65,13 @@ C:\Users\bart>cd een_eerste_programma
 C:\Users\bart\een_eerste_programma>
 ~~~
 
-Je navigeert dus naar de directory door **cd** in te typen gevolgd door het pad naar deze directory.
+Je navigeert dus naar de directory door `cd` in te typen gevolgd door het pad naar deze directory.
 
 Merk op: de opdrachtprompt toont nu dat je je in de directory bevindt waarnaar je zojuist genavigeerd bent.
 
 #### Relatieve versus absolute paden
 
-Achter **mkdir** en **cd** geef je een **pad** op. Zo'n pad is de verwijzing naar een (doel)directory waarop je de opdracht wil uitvoeren.  
+Achter `mkdir` en `cd` geef je een **pad** op. Zo'n pad is de verwijzing naar een (doel)directory waarop je de opdracht wil uitvoeren.  
 
 Er zijn een aantal manieren waarop je een pad kan construeren. Het belangrijkste onderscheid is dat tussen een absoluut of relatief pad:
 
@@ -95,7 +95,7 @@ C:\Users\bart>cd ..\een_andere_directory
 C:\Users\een_andere_directory>
 ~~~
 
-Met het symbool **..** (twee puntjes na elkaar) verwijs je naar de bovenliggende directory.
+Met het symbool `..` (twee puntjes na elkaar) verwijs je naar de bovenliggende directory.
 
 #### Home-directory
 
@@ -111,7 +111,7 @@ C:\Users\bart>
 
 #### Directory's verwijderen
 
-Een directory verwijderen doe je met de opdracht **rmdir**.
+Een directory verwijderen doe je met de opdracht `rmdir`.
 Als de directory nog bestanden bevat, zal de poging om ze te verwijderen een foutmelding opleveren.
 
 ~~~
@@ -144,14 +144,14 @@ C:\Users\bart\mijn_eerste_programma>dir
                2 Dir(s)  123.086.462.976 bytes free
 ~~~
 
-Vervolgens starten we een **teksteditor** (bijvoorbeeld Notepad++) en typen we daar de volgende Python-opdracht in:
+Vervolgens starten we een **teksteditor** (bijvoorbeeld Notepad++) en typen we daarin de volgende Python-opdracht:
 
 ~~~python
 print("Hello")
 ~~~
 
 Bewaar dit bestand onder de eerder aangemaakte directory met als bestandsnaam **hello.py**.
-Bekijk nadien met de opdracht **DIR** of het bestand correct aangemaakt is.
+Bekijk nadien met de opdracht `DIR` of het bestand correct aangemaakt is.
 
 ~~~
 C:\Users\bart\mijn_eerste_programma>dir
@@ -169,7 +169,7 @@ C:\Users\bart\mijn_eerste_programma>dir
 
 #### Inhoud van een bestand tonen op de opdrachtregel
 
-Als je de inhoud van dit bestand alleen wil bekijken, kan dat eenvoudig op de opdrachtregel via de opdracht **type**:
+Als je de inhoud van dit bestand alleen wil bekijken, kan dat eenvoudig op de opdrachtregel via de opdracht `type`:
 
 ~~~
 C:\Users\bart\mijn_eerste_programma>type hello.py
@@ -179,7 +179,7 @@ C:\Users\bart\mijn_eerste_programma>t
 
 #### Een bestand kopiëren
 
-Je kan ook een bestand kopiëren met de opdacht **copy**:
+Je kan ook een bestand kopiëren met de opdracht `copy`:
 
 ~~~
 C:\Users\bart\mijn_eerste_programma>copy hello.py hello.txt
@@ -202,7 +202,7 @@ C:\Users\bart\mijn_eerste_programma>dir
 #### Een bestand verwijderen
 
 Omdat we dit bestand voor het vervolg van deze cursus niet meer nodig hebben, verwijderen we het.
-We gebruiken hiervoor de opdracht **del**, opnieuw gevolgd door het paad naar dit bestand.
+We gebruiken hiervoor de opdracht `del`, opnieuw gevolgd door het pad naar dit bestand.
 
 ~~~bat
 C:\Users\bart\mijn_eerste_programma>del hello.txt
@@ -249,7 +249,7 @@ C:\Users\bart\mijn_eerste_programma>python hello.py
 Hello
 ~~~
 
-Je ziet nu op de opdrachtregel de uitvoer "Hello", omdat de Python-interpreter het Python-script hello.py met de opdracht print("Hello") heeft uitgevoerd.
+Je ziet nu op de opdrachtregel de uitvoer "Hello", omdat de Python-interpreter het Python-script hello.py met de opdracht `print("Hello")` heeft uitgevoerd.
 
 ### Omgevingsvariabelen
 
@@ -274,11 +274,11 @@ C:\> cd %MIJN_PROJECT%
 C:\Users\bart\mijn_eerste_programma>
 ~~~
 
-* Zo'n variabele geef je een waarde met de opdracht **set**, gevolgd door de **naam** van deze variabele, een isgelijkaanteken (**=**) en de waarde. Let op: er mag geen spatie tussen de naam van de variabele en het isgelijkaanteken komen!
-* Je kan de inhoud van een omgevingsvariabele tonen met de opdracht **echo**, gevolgd door de naam omringd met **%**.
-* Je kan de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals **cd**. De shell vervangt de omgevingsvariabele door zijn inhoud voor deze aan de opdracht doorgegeven wordt.
+* Zo'n variabele geef je een waarde met de opdracht `set`, gevolgd door de **naam** van deze variabele, een isgelijkaanteken (`=`) en de waarde. Let op: er mag geen spatie tussen de naam van de variabele en het isgelijkaanteken komen!
+* Je kan de inhoud van een omgevingsvariabele tonen met de opdracht `echo`, gevolgd door de naam omringd door `%`.
+* Je kan de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals `cd`. De shell vervangt de omgevingsvariabele door zijn inhoud voordat deze aan de opdracht doorgegeven wordt.
 
-> **Let op**: als een variabele al bestaat, overschrijft de set-opdracht de waarde die ze al had.
+> **Let op**: als een variabele al bestaat, overschrijft de `set`-opdracht de waarde die ze al had.
 
 #### Systeemvariabelen
 
@@ -291,11 +291,11 @@ C:\Users\bart\mijn_eerste_programma>echo %ERROR_LEVEL%
 11
 ~~~
 
-De variabele **ERROR_LEVEL** houdt de foutcode van de laatst uitgevoerde opdracht bij.
+De variabele `ERROR_LEVEL` houdt de foutcode van de laatst uitgevoerde opdracht bij.
 
 ### Alle omgevingsvariabelen zien
 
-Als je alle omgevingsvariabelen wil zien, typ dan gewoon **set** in:
+Als je alle omgevingsvariabelen wil zien, typ dan gewoon `set` in:
 
 ~~~
 C:\Users\bart\mijn_eerste_programma>set

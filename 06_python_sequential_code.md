@@ -12,7 +12,7 @@ Je krijgt als het ware onmiddellijk **feedback op je instructies**.
 
 ### Interactieve "Hello World"
 
-De REPL van Python open je gewoon door de opdracht **python** te typen op de opdrachtregel:
+De REPL van Python open je gewoon door de opdracht `python` te typen op de opdrachtregel:
 
 ~~~bash
 $ python
@@ -95,7 +95,7 @@ De REPL onthoudt de voorgaande opdrachten die je hebt ingetypt. Door met de pijl
 
 De REPL heeft een handige ingebouwde helpfunctie waarmee je informatie kunt opvragen over allerlei onderdelen van Python.
 
-Wil je bijvoorbeeld meer informatie over de functie **print** die we al enkele keren gebruikt, hebben typ dan het volgende in de REPL:
+Wil je bijvoorbeeld meer informatie over de functie `print` die we al enkele keren gebruikt hebben, typ dan het volgende in de REPL:
 
 ~~~
 >>> help(print)
@@ -125,7 +125,7 @@ Maak er een gewoonte van om als je vragen hebt over gelijk wat in Python de help
 
 ### De console verlaten
 
-Om de REPL te verlaten, roep je de functie **exit()** of **quit()** aan:
+Om de REPL te verlaten, roep je de functie `exit()` of `quit()` aan:
 
 ~~~
 $ python
@@ -158,7 +158,7 @@ world
 $
 ~~~
 
-Zoals je ziet zal de Python-interpreter eerst de opdracht **print("Hello")** uitvoeren en dan pas **print("world")**.
+Zoals je ziet zal de Python-interpreter eerst de opdracht `print("Hello")` uitvoeren en dan pas `print("world")`.
 
 ### Python-interpreter voert statement per statement uit
 

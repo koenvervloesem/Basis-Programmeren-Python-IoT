@@ -39,14 +39,14 @@ bart@bvpers4 ~ $ ls
 
 Hier zien we twee opdrachten:
 
-* **mkdir** gevolg door het pad **een_eerste_programma**  
+* `mkdir` gevolg door het pad **een_eerste_programma**  
   Dit maakt een nieuwe map of directory met deze naam aan.  
-* De opdracht **ls**  
+* De opdracht `ls`  
   Hiermee krijgen we de **inhoud** van de huidige **directory** te zien.
 
 #### Navigeren door directory's
 
-Als je deze directory hebt aangemaakt, kan je hiernaartoe navigeren met de opdracht **cd**  
+Als je deze directory hebt aangemaakt, kan je hiernaartoe navigeren met de opdracht `cd`  
 (wat staat voor *change directory*):
 
 ~~~bash
@@ -56,17 +56,17 @@ bart@bvpers4 ~/een_eerste_programma $ pwd
 bart@bvpers4 ~/een_eerste_programma $
 ~~~
 
-Je navigeert door **cd** te typen gevolgd door het pad naar de directory.  
-De opracht **pwd** (*print working directory*) toont je de huidige directory. 
+Je navigeert door `cd` te typen gevolgd door het pad naar de directory.  
+De opdracht `pwd` (*print working directory*) toont je de huidige directory. 
 
 #### Relatieve versus absolute paden
 
-**mkdir** en **cd** roep je aan met een **pad**.    
+`mkdir` en `cd` roep je aan met een **pad**.    
 Zo'n pad is de verwijzing naar een (doel)directory waarop je deze opdracht wil uitvoeren.  
 
 Er zijn een aantal manieren waarop je een pad kan construeren. Het belangrijkste onderscheid is absoluut versus relatief:
 
-* **absoluut** is een pad dat start vanaf de root-directory, wat onder Linux en macOS **/** is.
+* **absoluut** is een pad dat start vanaf de root-directory, wat onder Linux en macOS `/` is.
 
 ~~~bash
 bart@bvpers4 ~ $ cd /home/bart/een_eerste_programma
@@ -75,7 +75,7 @@ bart@bvpers4 ~/een_eerste_programma $ pwd
 bart@bvpers4 ~/een_eerste_programma $
 ~~~
 
-Een absoluut pad begint dus altijd met **/**.
+Een absoluut pad begint dus altijd met `/`.
 
 * **relatief** verwijst naar een locatie relatief ten opzichte van je huidige directory
 
@@ -88,12 +88,12 @@ bart@bvpers4 ~/een_andere_directory $
 ~~~
 
 Dit verwijst van je huidige directory naar een pad relatief ten opzichte van je huidige directory.  
-Met het symbool **..** (twee punten na elkaar) verwijs je naar de bovenliggende directory. 
+Met het symbool `..` (twee punten na elkaar) verwijs je naar de bovenliggende directory. 
 
 #### Home-directory
 
-Elke gebruiker op Unix-achtige systemen, zoals GNU/Linux, macOS en de BSD's, heeft een home-directory. In Bash kan je daarna verwijzen met het teken **~**.  
-Ook **cd** typen zonder een directorynaam erachter zorgt dat je in de home-directory terechtkomt.
+Elke gebruiker op Unix-achtige systemen, zoals GNU/Linux, macOS en de BSD's, heeft een home-directory. In Bash kan je daarnaar verwijzen met het teken `~`.  
+Ook als je `cd` typt zonder een directorynaam erachter, kom je in de home-directory terecht.
 
 ~~~bash
 bart@bvpers4 ~ $ cd ..
@@ -109,7 +109,7 @@ bart@bvpers4 ~ $
 
 #### Directory's verwijderen
 
-Een directory verwijder je met de opdracht **rmdir**.
+Een directory verwijder je met de opdracht `rmdir`.
 Als je een directory probeert te verwijderen terwijl die nog bestanden bevat, zal dit een foutmelding opleveren.
 
 ~~~bash
@@ -138,7 +138,7 @@ print("Hello")
 ~~~
 
 Bewaar het bestand onder de eerder aangemaakte directory met de bestandsnaam **hello.py**.  
-Bekijk nadien met de opdracht **ls** of het bestand correct is aangemaakt:
+Bekijk nadien met de opdracht `ls` of het bestand correct is aangemaakt:
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ ls
@@ -147,7 +147,7 @@ hello.py
 
 #### Inhoud van een bestand tonen
 
-Stel dat je alleen de inhoud van het bestand wil zien, dan kan dat vanaf de opdrachtregel met de opdracht **cat**.
+Stel dat je alleen de inhoud van het bestand wil zien, dan kan dat vanaf de opdrachtregel met de opdracht `cat`.
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ cat hello.py
@@ -156,7 +156,7 @@ print("Hello")
 
 #### Een bestand kopiëren
 
-Je kan ook een bestand via de terminal kopiëren met de opdracht **cp** (afkorting van *copy*):
+Je kan ook een bestand via de terminal kopiëren met de opdracht `cp` (afkorting van *copy*):
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ cp hello.py hello.txt
@@ -166,7 +166,7 @@ hello.py hello.txt
 
 #### Een bestand verwijderen
 
-Aangezien we het bestand niet nodig hebben voor het vervolg van onze cursus, verwijderen we het. Dat doen we met de opdracht **rm**, gevolgd door het pad naar het bestand:
+Aangezien we het bestand niet nodig hebben voor het vervolg van onze cursus, verwijderen we het. Dat doen we met de opdracht `rm`, gevolgd door het pad naar het bestand:
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ ls
@@ -209,9 +209,9 @@ bart@bvpers4 ~/mijn_eerste_programma $
 
 ~~~
 
-* Een omgevingsvariabele geef je een waarde door de **naam** van deze variabele te verbinden via een **=**-teken met een tekst. Let op: er mogen geen spaties rond het isgelijkaanteken komen!
-* Je kan de inhoud van de variabele tonen met de opdracht **echo**, gevolgd door een **$**-teken en de naam van de variabele.
-* Je kan de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals **cd**. De shell vervangt de omgevingsvariabele door zijn inhoud voor deze aan de opdracht doorgegeven wordt.
+* Een omgevingsvariabele geef je een waarde door de **naam** van deze variabele te verbinden via een `=`-teken met een tekst. Let op: er mogen geen spaties rond het isgelijkaanteken komen!
+* Je kan de inhoud van de variabele tonen met de opdracht `echo`, gevolgd door een `$`-teken en de naam van de variabele.
+* Je kan de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals `cd`. De shell vervangt de omgevingsvariabele door zijn inhoud voor deze aan de opdracht doorgegeven wordt.
 
 > **Let op**: als een variabele al bestaat wanneer je ze een waarde geeft, overschrijft dit de waarde die ze al had.
 
@@ -228,11 +228,11 @@ bart@bvpers4 ~/mijn_eerste_programma $ echo $?
 0
 ~~~
 
-Deze variabele **$?** houdt de exitcode bij die door het laatste programma aan de shell wordt teruggegeven. De exitcode is 0 als er geen problemen waren en is een foutcode in andere gevallen.  
+Deze variabele `$?` houdt de exitcode bij die door het laatste programma aan de shell wordt teruggegeven. De exitcode is 0 als er geen problemen waren en is een foutcode in andere gevallen.  
 
 ### Alle omgevingsvariabelen zien
 
-Als je alle omgevingsvariabelen wil zien, typ dan de opdracht **printenv** in:
+Als je alle omgevingsvariabelen wil zien, typ dan de opdracht `printenv` in:
 
 ~~~
 bart@bvpers4 ~/mijn_eerste_programma $ printenv

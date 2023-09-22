@@ -2,7 +2,7 @@
 
 ### Eerste programma onder de loep
 
-Ons (eerste) programma had dus als **functionaliteit** het **tonen** (*print* of afdrukken) van **een stuk tekst** naar de console.
+Ons (eerste) programma had dus als **functionaliteit** het **tonen** (`print` of afdrukken) van **een stuk tekst** naar de console.
 
 Dit is min of meer het eenvoudigste programma dat we kunnen schrijven.
 
@@ -21,7 +21,7 @@ Deze opdracht zal dan effectief **een actie uitvoeren**, zoals:
 * een boodschap op de console tonen
 * invoer van een gebruiker op de console opvragen
 
-Een statement dat uit **één regel code** bestaat noemen we ook wel een enkelvoudig statement:
+Een statement dat uit **één regel code** bestaat noemen we ook wel een **enkelvoudig statement**:
 
 * De **kleinste eenheid van uitvoering** (of *unit of execution*)
 * Staat **op zichzelf**
@@ -62,14 +62,14 @@ Daar komen we zo dadelijk nog op terug.
 ### De functie print
 
 Python voorziet **standaard** in een hele hoop **functies** die je onmiddellijk kan gebruiken.
-De functie die we hier gebruiken heeft als naam **print**.  
+De functie die we hier gebruiken heeft als naam `print`.  
 
 Bij deze functie geef je als argument een **stuk tekst**.  
 
 ### String literal
 
 Een stuk tekst dat je "letterlijk" wil gebruiken in Python-code dient altijd omsloten te worden door aanhalingstekens.  
-Dit mogen zowel **enkele** (**'**) als **dubbele** (**"**) aanhalingstekens zijn.  
+Dit mogen zowel **enkele** (`'`) als **dubbele** (`"`) aanhalingstekens zijn.  
 
 Dit is een **string literal**:
 
