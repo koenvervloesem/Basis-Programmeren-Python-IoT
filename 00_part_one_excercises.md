@@ -68,7 +68,7 @@ Maak een programma dat de gebruiker laat raden naar een getal.
 Geef bij een foute gok aan of het getal te laag of te hoog is.
 Het programma blijft vragen tot de gebruiker een correcte oplossing geeft.
 
-Om een willekeurig getal te berekenen, gebruik je de Python-module random.
+Om een willekeurig getal te berekenen, gebruik je de Python-module `random`.
 Dit kan je doen met onderstaande code:
 
 ~~~python
@@ -84,8 +84,11 @@ Beperk het aantal pogingen dat je kan raden.
 ### Cirkel
 
 Schrijf code die de oppervlakte van een cirkel berekent, gebruikmakend van de variabele straal en de constante `math.pi` die je uit de module `math` importeert. 
-Voor het geval je het vergeten bent, de formule voor de oppervlakte van een cirkel is straal maal straal maal pi. Toon de uitkomst als volgt: “De oppervlakte van een cirkel met straal ...
-is ...”
+Voor het geval je het vergeten bent, de formule voor de oppervlakte van een cirkel is straal maal straal maal π. Toon de uitkomst als volgt:
+
+~~~
+De oppervlakte van een cirkel met straal ... is ...
+~~~
 
 Zet deze code in een functie.
 
@@ -150,7 +153,7 @@ Bijvoorbeeld:
 * Voor het getal 5 is dit 120 = 1 * 2 * 3 * 4 * 5
 * ...
 
-Zie ook https://nl.wikipedia.org/wiki/Faculteit_(wiskunde) voor meer info.  
+Zie ook <https://nl.wikipedia.org/wiki/Faculteit_(wiskunde)> voor meer info.  
 
 #### Deel 1: factorial-functie
 
@@ -245,7 +248,7 @@ print(is_prime(13)) # True
 print(is_prime(4))  # False
 ~~~
 
-De eenvoudigste (maar niet de efficiëntste) manier is een lus te schrijven die loopt van 2 tot en met het getal en kijkt of het getal deelbaar is (maak hiervoor gebruik van de rest-operator%).
+De eenvoudigste (maar niet de efficiëntste) manier is een lus te schrijven die loopt van 2 tot en met het getal en kijkt of het getal deelbaar is (maak hiervoor gebruik van de rest-operator `%`).
 
 #### Deel 2: priemgetallen
 

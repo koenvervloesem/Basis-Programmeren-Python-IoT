@@ -33,12 +33,12 @@ Hergebruik van uitvoering kan op drie manieren:
     * Heeft een **naam** zoals een variabele
 * Modules
     * (Logische) **groepering** van **functies**, klassen en variabelen
-    * Bijvoorbeeld math, serial, random, ...
+    * Bijvoorbeeld `math`, `serial`, `random`, ...
     * In dit deel van de cursus **gebruiken** we modules
     * In het volgende deel van de cursus ontwikkelen we zelf modules
 * Objecten en klassen
     * Groepering van **variabelen** en **functies**
-    * Verschillende **instanties** mogelijk
+    * Verschillende **instanties** (objecten) mogelijk
     * In **deel 2 van de cursus**
 
 ### Functies en hergebruik
@@ -56,7 +56,7 @@ Nu bekijken we een **ander soort hergebruik**, namelijk **hergebruik van stateme
 ### Ingebouwde functies
 
 Python heeft een aantal **ingebouwde functies** die we reeds hebben gebruikt.
-We hebben al eerdere functies gebruikt zoals input, int, str en print:
+We hebben al eerdere functies gebruikt zoals `input`, `int`, `str` en `print`:
 
 ~~~python
 # input() gets a string from the user
@@ -79,7 +79,7 @@ Een functie roep je aan met de **naam**, **gevolgd door haakjes**.
 > Nota: de functie hieronder is een fictief voorbeeld om het gebruik te illustreren.
 > We zien zo dadelijk echte voorbeelden.
 
-Stel dat er een functie "an_example_function" zou bestaan, dan kan je deze functie uitvoeren als:
+Stel dat er een functie `an_example_function` zou bestaan, dan kan je deze functie uitvoeren als:
 
 ~~~python
 an_example_function()
@@ -87,8 +87,8 @@ an_example_function()
 
 ### Return value
 
-Sommige functies geven een **waarde terug**, deze kan je dan **opslaan** in een variabele. We noemen dit ook de **return value** van de functie.
-Bijvoorbeeld een **(fictieve) functie hour** die het uur teruggeeft als string:
+Sommige functies geven een **waarde terug**. Deze kan je dan **opslaan** in een variabele. We noemen dit ook de **return value** van de functie.
+Bijvoorbeeld een (fictieve) functie `hour` die het uur teruggeeft als string:
 
 ~~~python
 result = hour()
@@ -141,7 +141,7 @@ Als een functie een parameter definieert, moet je bij het aanroepen van die func
 
 ### Gebruik Python-modules
 
-Functies als int(), str(), print() en input() zijn rechtstreeks beschikbaar in Python.
+Functies als `int`, `str`, `print` en `input` zijn rechtstreeks beschikbaar in Python.
 Andere - meer gespecialiseerde - functies zijn gegroepeerd in modules.
 
 ~~~
@@ -164,7 +164,7 @@ Andere - meer gespecialiseerde - functies zijn gegroepeerd in modules.
                 +---------------------+
 ~~~
 
-Als je bijvoorbeeld wiskundige functies wil gebruiken in Python, maak je gebruik van de module **math** (die standaard voorzien is in Python):
+Als je bijvoorbeeld wiskundige functies wil gebruiken in Python, maak je gebruik van de module `math` (die standaard voorzien is in Python):
 
 ~~~
 >>> import math
@@ -178,9 +178,9 @@ Als je bijvoorbeeld wiskundige functies wil gebruiken in Python, maak je gebruik
 0.7071067811865476
 ~~~
 
-Merk op: de module bevat niet alleen functies, maar ook constanten, zoals **math.pi** dat de waarde van het getal π (3,14159...) bevat.
+Merk op: de module bevat niet alleen functies, maar ook constanten, zoals `math.pi` dat de waarde van het getal π (3,14159...) bevat.
 
-Om een module te kunnen gebruiken dien je een **import** toe te voegen. Deze maakt de functies en andere onderdelen van de module in je Python-applicatie beschikbaar.
+Om een module te kunnen gebruiken dien je een `import`-statement toe te voegen. Deze maakt de functies en andere onderdelen van de module in je Python-applicatie beschikbaar.
 
 Om dan de functies te gebruiken, volstaat het niet om de naam van deze functies te gebruiken.
 
@@ -210,11 +210,11 @@ Samengevat heb je twee opties:
 * Ofwel importeer je de module met `import math` en roep je de functie aan als `math.sqrt`.
 * Ofwel importeer je expliciet de functie uit de module met `from math import sqrt` en roep je de functie aan als `sqrt`.
 
-Documentatie over de module math vind je op https://docs.python.org/3/library/math.html#module-math.
+Documentatie over de module math vind je op <https://docs.python.org/3/library/math.html#module-math>.
 
 Merk op: de functie `math.sin` verwacht zijn argument in radialen (*radians*), niet in graden. De module `math` bevat overigens de functie `math.radians` om een hoek in graden naar radialen om te zetten, zodat je dat niet zelf hoeft te doen zoals in het voorbeeld hierboven.
 
-Een andere nuttige module is **random**. Deze bevat functies om met willekeurige getallen te werken.  
+Een andere nuttige module is `random`. Deze bevat functies om met willekeurige getallen te werken.  
 Onderstaande code demonstreert het gebruik van deze module:
 
 ~~~python
@@ -229,9 +229,9 @@ Onderstaande code demonstreert het gebruik van deze module:
 12
 ~~~
 
-De functie random geeft bij elke aanroep een willekeurig kommagetal tussen 0 en 1 terug, en de functie randint een willekeurig getal van de ondergrens tot en met de bovengrens die je opgeeft.
+De functie `random` geeft bij elke aanroep een willekeurig kommagetal tussen 0 en 1 terug, en de functie `randint` een willekeurig getal van de ondergrens tot en met de bovengrens die je opgeeft.
 
-Documentatie over de module random vind je op https://docs.python.org/3/library/random.html#module-random.
+Documentatie over de module random vind je op <https://docs.python.org/3/library/random.html#module-random>.
 
 ### Zelf functies schrijven
 
@@ -250,7 +250,7 @@ def greeting():  # <----------- function header ==> def + naam + () + :
 Deze functie bevat twee onderdelen:
 
 * Een **functiedefinitie** of **function header**
-    * Start met keyword **def**
+    * Start met keyword `def`
     * Een **naam** (net zoals bij een variabele)
     * **Haakjes** (waar je argumenten kan tussenplaatsen)
     * **Eindigend** op een **dubbele punt** (die een code block aankondigt)
@@ -287,7 +287,7 @@ $
 ### Volgorde is belangrijk
 
 Belangrijk is dat je functie gedeclareerd is voordat je ze aanroept.  
-Stel dat je de functie "greeting" zou aanroepen voor de declaratie...
+Stel dat je de functie `greeting` zou aanroepen voor de declaratie...
 
 ~~~python
 greeting()
@@ -311,7 +311,7 @@ Opdat code een functie kan aanroepen/gebruiken, moet deze dus eerder in de "sequ
 ### Argumenten
 
 Je kan een functie **algemener** maken door er **argumenten** of parameters aan toe te voegen.  
-In onderstaand voorbeeld voegen we een argument *name* toe. Met dit argument kan je de naam bepalen die door de functie wordt getoond.
+In onderstaand voorbeeld voegen we een argument `name` toe. Met dit argument kan je de naam bepalen die door de functie wordt getoond.
 
 ~~~python
 def greeting(name):
@@ -389,7 +389,7 @@ Naast invoer kan een functie ook uitvoer hebben.
      +-------------------+                            +--------------------+
 ~~~
 
-In de code kan dit via een **return statement**
+In de code kan dit via een `return`-statement.
 
 Stel dat je een functie schrijft om de som van twee variabelen te berekenen, dan kan dit als volgt:
 
@@ -399,7 +399,7 @@ def som(a, b):
     return result
 ~~~
 
-Via het **return statement** kan je dan het resultaat van deze som teruggeven aan de aanroepende code. Die kan dit resultaat dan opslaan in bijvoorbeeld een variabele.
+Via het `return`-statement kan je dan het resultaat van deze som teruggeven aan de aanroepende code. Die kan dit resultaat dan opslaan in bijvoorbeeld een variabele.
 
 ~~~python
 def som(a, b):
@@ -425,7 +425,7 @@ def polite_conversation():
 polite_conversation()
 ~~~
 
-De functie polite_conversation roept hier niet alleen de standaard in Python gedefinieerde functie input twee keer aan, maar ook de functie greeting die je daarvoor gedefinieerd hebt.
+De functie `polite_conversation` roept hier niet alleen de standaard in Python gedefinieerde functie `input` twee keer aan, maar ook de functie `greeting` die je daarvoor gedefinieerd hebt.
 
 ### Lokale variabelen
 
@@ -452,7 +452,7 @@ som(2, 5)
 print(c)  # NameError
 ~~~
 
-Deze code probeert c, die alleen binnen de functie som bekend is, buiten de functie som te gebruiken.  
+Deze code probeert `c`, die alleen binnen de functie `som` bekend is, buiten de functie som te gebruiken.  
 De Python-interpreter geeft dan de volgende foutmelding:
 
 ~~~
