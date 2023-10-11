@@ -431,7 +431,7 @@ if c >= a and c <= b:
     print("c is in between a and b")
 ~~~
 
-Net zoals in de vorige versie van dit programma zal de `print` **alleen uitgevoerd** worden onder de voorwaarde dat **beide vergelijkingen** `True** zijn.  
+Net zoals in de vorige versie van dit programma zal de `print` **alleen uitgevoerd** worden onder de voorwaarde dat **beide vergelijkingen** `True` zijn.  
 Nu we beide elementen in één expressie in één `if`-clausule gecombineerd hebben, kunnen we ook de tegengestelde boodschap eenvoudig in een `else`-blok tonen:
 
 ~~~python
