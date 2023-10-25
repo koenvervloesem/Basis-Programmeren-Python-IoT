@@ -1,6 +1,6 @@
 ## Werken met tekst
 
-Eerder hebben we reeds kennisgemaakt met het datatype string (str) in Python.  
+Eerder hebben we reeds kennisgemaakt met het datatype string (`str`) in Python.  
 Hieronder gaan we dit even herhalen en wat verder uitspitten...
 
 ### Literals
@@ -18,7 +18,7 @@ Hello World
 #### Enkele en dubbele aanhalingstekens
 
 Zo'n literal wordt **gedemarkeerd** door aanhalingstekens (*quotes*). Dit kunnen enkele of dubbele aanhalingstekens zijn.  
-Belangrijk is wel: als je start met de ene soort (" of '), moet je ook eindigen met dezelfde. Anders krijg je een foutmelding:
+Belangrijk is wel: als je start met de ene soort (`"` of `'`), moet je ook eindigen met dezelfde. Anders krijg je een foutmelding:
 
 ~~~python
 >>> text = "Hello world'
@@ -58,7 +58,7 @@ Een **escape character** laat je toe om tekens in een literal te zetten die er n
 \"	      Double quote (")
 ~~~
 
-Naast het escapen van deze quotes, gebruik je de backslash om er voor te zorgen dat je deze backslash zelf in een literal kan plaatsen.
+Naast het escapen van deze quotes, gebruik je de backslash om ervoor te zorgen dat je deze backslash zelf in een literal kunt plaatsen.
 
 ~~~python
 >>> print("Een backslash \\ gebruik je in Python als escape character.")
@@ -67,7 +67,7 @@ Een backslash \ gebruik je in Python als escape character.
 
 #### Speciale tekens 
 
-Een backslash kan ook worden gebruikt om specifieke karakters te tonen zoals een tab of een nieuwe regel:
+Een backslash kan ook worden gebruikt om specifieke tekens te tonen zoals een tab of een nieuwe regel:
 
 
 ~~~
@@ -86,7 +86,7 @@ Deze tekst wordt gevolgd door een tab	 en
 
 #### Triple quotes
 
-Een gewone string literal kan je maar op één regel invoeren. Zodra je op enter drukt om een volgende regel in te voeren zonder dat je de string met een aanhalingsteken hebt gesloten, krijg je een foutmelding:
+Een gewone string literal kun je maar op één regel invoeren. Zodra je op enter drukt om een volgende regel in te voeren zonder dat je de string met een aanhalingsteken hebt gesloten, krijg je een foutmelding:
 
 ~~~python
 >>> print("Dit is een string die
@@ -160,7 +160,7 @@ En ook andersom kun je de ASCII-waarde van een teken opvragen:
 104
 ~~~
 
-Overigens zijn ondertussen veel meer tekens dan in de ASCII-tabel gedefinieerd, namelijk in de standaard Unicode. De 256 mogelijke tekens van een 8-bits getal waren immers niet voldoende. Unicode kan tot 32 bits gebruiken en heeft miljoenen tekens met een bijbehorende code gedefinieerd. De Python-functies chr en ord kunnen ook met Unicode-tekens om:
+Overigens zijn ondertussen veel meer tekens dan in de ASCII-tabel gedefinieerd, namelijk in de standaard Unicode (<https://home.unicode.org>). De 256 mogelijke tekens van een 8-bits getal waren immers niet voldoende. Unicode kan tot 32 bits gebruiken en heeft miljoenen tekens met een bijbehorende code gedefinieerd. De Python-functies `chr()` en `ord()` kunnen ook met Unicode-tekens om:
 
 ```python
 >>> ord("🤯")
@@ -171,7 +171,7 @@ Overigens zijn ondertussen veel meer tekens dan in de ASCII-tabel gedefinieerd, 
 
 ### Opvragen van tekst op de console
 
-Je kan zoals we al zagen tekst opvragen op de console met de functie input:
+Je kunt zoals we al zagen tekst opvragen op de console met de functie `input()`:
 
 ~~~python
 >>> name = input("Geef uw naam: ")
@@ -182,7 +182,7 @@ Koen
 
 ### String concatenation
 
-Je kan via de +-operator verschillende strings 'aan elkaar plakken' (concateneren):
+Je kan via de operator `+` verschillende strings 'aan elkaar plakken' (concateneren):
 
 ~~~python
 >>> text = "Hello"
@@ -193,7 +193,7 @@ Hello world
 
 ### Concatenatie met andere types
 
-Let op als je een string wilt concateneren met andere data-types:
+Let op als je een string wilt concateneren met andere datatypes:
 
 ~~~python
 >>> text = "Hello"
@@ -204,7 +204,7 @@ Traceback (most recent call last):
 TypeError: can only concatenate str (not "int") to str
 ~~~
 
-Zoals de `TypeError` toont, kan je geen int concateneren aan een string met de +-operator.
+Zoals de `TypeError` toont, kan je geen int concateneren aan een string met de operator `+`.
 
 Hoe doe je dat dan wel? Door eerst de int naar een string om te zetten:
 
@@ -217,7 +217,7 @@ Hello world 2
 
 ### Concatenatie via print
 
-De concatenatie kan zoals we zagen echter ook via de functie print:
+De concatenatie kan echter ook via de functie `print()`:
 
 ~~~python
 >>> text = "Hello"
@@ -226,13 +226,13 @@ De concatenatie kan zoals we zagen echter ook via de functie print:
 Hello world 2
 ~~~
 
-Je kan hier alle types door elkaar gebruiken, aangezien de functie print zelf de omzetting zal uitvoeren via str().
+Geef gewoon meerdere argumenten door aan de functie `print()`. Je kunt hier alle types door elkaar gebruiken, aangezien de functie zelf de omzetting zal uitvoeren via `str()`.
 
-Merk op: print voegt standaard een spatie tussen elk argument toe.
+Merk op: `print()` voegt standaard een spatie tussen elk argument toe.
 
 ### String vermenigvuldigen
 
-Naast de +-operator heb je ook de \*-operator:
+Naast de operator `+` kun je ook de operator `*` op strings toepassen:
 
 ~~~python
 >>> "allo" * 3
@@ -265,7 +265,7 @@ Je kunt een string splitsen in woorden:
 ['Dit', 'is', 'een', 'test']
 ~~~
 
-Dit geeft een lijst terug van strings. En zo kun je bijvoorbeeld het aantal woorden in een string tellen:
+Dit geeft een lijst (datatype `list`) terug van strings. En zo kun je bijvoorbeeld het aantal woorden in een string tellen:
 
 ~~~python
 >>> woorden = "Dit is een test".split()
@@ -297,7 +297,7 @@ Standaard splitst de functie `split()` een string op spaties en andere witruimte
 
 ### Een lijst van strings aan elkaar plakken
 
-Ook de bewerking in de andere richting komt wel eens voor: een lijst van strings aan elkaar plakken en daar één string van maken. Hoe doe je dat? Met de methode `join` toegepast op de separator, en als argument de lijst:
+Ook de bewerking in de andere richting komt wel eens voor: een lijst van strings aan elkaar plakken en daar één string van maken. Hoe doe je dat? Met de methode `join()` toegepast op de separator, en als argument de lijst:
 
 ~~~python
 >>> woorden = ["Dit", "is", "een", "tekst"]
@@ -316,14 +316,14 @@ Traceback (most recent call last):
 TypeError: sequence item 3: expected str instance, int found
 ~~~
 
-### Stringinterpolatie of f-strings (Python 3.6+)
+### Stringinterpolatie of f-strings
 
-Sinds **Python 3.6** kun je gebruikmaken van **stringinterpolatie**. Hiermee kun je in een string rechtstreeks **expressies injecteren**.
+Met **stringinterpolatie** kun je in een string rechtstreeks **expressies injecteren**.
 
 Hiervoor moet je:
 
 * De string laten **starten** met **f** vóór het eerste aanhalingsteken.
-* De **expressies** in de string tussen accolades {} (*curly braces*) plaatsen.
+* De **expressies** in de string tussen accolades `{}` (*curly braces*) plaatsen.
 
 Bijvoorbeeld:
 
@@ -367,7 +367,7 @@ Net zoals bij lists kun je ook bij strings delen selecteren met indexen en slici
 'oe'
 ~~~
 
-Maar let op: in tegenstelling tot een lijst kun je een string niet veranderen: eenmaal aangemaakt, staat de waarde ervan vast. Probeer je een string toch te veranderen, dan krijg je een foutmelding:
+Maar let op: in tegenstelling tot een lijst kun je een string niet veranderen: eenmaal aangemaakt, staat de waarde ervan vast. Probeer je een string toch te veranderen door de letter op een index te veranderen, dan krijg je een foutmelding:
 
 ~~~python
 >>> naam = "Koen"
@@ -395,4 +395,4 @@ Hoe bewerk je dan wel een string? Door allerlei methodes die je op een string ku
 'IK BEN KOEN'
 ~~~
 
-Meer bewerkingen op strings krijg je te zien als je `help(str)` opvraagt of de documentatie op https://docs.python.org/3/library/stdtypes.html#str bekijkt.
+Meer bewerkingen op strings krijg je te zien als je `help(str)` opvraagt of de documentatie op <https://docs.python.org/3/library/stdtypes.html#str> bekijkt.

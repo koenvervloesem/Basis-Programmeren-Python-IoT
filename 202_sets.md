@@ -1,6 +1,6 @@
 ### Set 
 
-Een gelijkaardig datatype als een list is een set (verzameling). Dis is ook een collectie, maar met de volgende eigenschappen:
+Een gelijkaardig datatype als een `list` is een `set` (verzameling). Dit is ook een collectie, maar met de volgende eigenschappen:
 
 * Het is een **ongeordende verzameling** van elementen.
 * Een element kan maar één keer in een set voorkomen.
@@ -11,7 +11,7 @@ Een gelijkaardig datatype als een list is een set (verzameling). Dis is ook een 
 
 ### Een set aanmaken
 
-Een set maak je zoals een lijst aan, maar dan met accolades {} in plaats van vierkante haakjes []:
+Een set maak je zoals een lijst aan, maar dan met accolades `{}` in plaats van vierkante haakjes `[]`:
 
 ~~~python
 >>> fruit = {"banaan", "peer", "kiwi", "appel"}
@@ -125,10 +125,10 @@ Op sets zijn de gekende bewerkingen uit de verzamelingenleer toe te passen:
 
 Samengevat:
 
-* De operator - geeft de set terug van de elementen in a maar niet in b. 
-* De operator | geeft de set terug van de elementen die in a of b of beide zitten (de unie). 
-* De operator & geeft de set terug van de elementen die in zowel a als b zitten (de doorsnede). 
-* De operator ^ geeft de set terug van de elementen die in a of b maar niet in beide zitten. 
+* De operator `-` geeft de set terug van de elementen in a maar niet in b. 
+* De operator `|` geeft de set terug van de elementen die in a of b of beide zitten (de unie). 
+* De operator `&` geeft de set terug van de elementen die in zowel a als b zitten (de doorsnede). 
+* De operator `^` geeft de set terug van de elementen die in a of b maar niet in beide zitten. 
 
 ### Controleren of element in een set zit
 Met het keyword `in` controleer je of een element in een set zit:
@@ -142,7 +142,7 @@ False
 ~~~
 
 ### Een set doorlopen
-Je kan met een for-lus alle elementen in een set doorlopen:
+Je kunt met een `for`-lus alle elementen in een set doorlopen:
 
 ~~~python
 >>> fruit = {"banaan", "peer", "kiwi", "appel"}

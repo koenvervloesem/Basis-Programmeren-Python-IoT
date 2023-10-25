@@ -9,7 +9,7 @@ Het **uitvoeren** van Python-code gebeurt in **twee fases**:
 
 Als er **fouten** in de **codesyntaxis** (de taalregels) zijn, herkent de Python-interpreter dat al in de eerste fase en dus al vóór de **start** van het **programma**.
 
-In de volgende code **vergeten** we bijvoorbeeld (bewust) een **":"** te plaatsen **na de for**:
+In de volgende code **vergeten** we bijvoorbeeld (bewust) een `:` te plaatsen na de `for`:
 
 ~~~python
 print("Van 1 tot en met 7")
@@ -61,7 +61,7 @@ ZeroDivisionError: division by zero
 
 In dit geval zien we dat er ook duidelijk een **error** wordt aangegeven, in dit geval een **ZeroDivisionError**.  
 
-Merk op dat de **code** die **vóór de fout** (a = 5 / 0) komt wel **wordt uitgevoerd** (`print("Hello")`).
+Merk op dat de **code** die **vóór de fout** (`a = 5 / 0`) komt wel **wordt uitgevoerd** (`print("Hello")`).
 
 Het programma **start** wel degelijk **maar stopt** bij het **aangegeven punt waarop de fout gebeurt**.
 
@@ -69,7 +69,7 @@ In tegenstelling tot een syntax error kan de Python-interpreter niet al in de ee
 
 ### Exceptions en functies
 
-Het maakt ook niet uit als je deze **exception genereert** binnen een functie. Deze wordt dan **gepropageerd** (doorgegeven) naar de plaats waar de functie wordt aangeroepen zolang deze niet wordt opgevangen.
+Het maakt ook niet uit als deze exception voorkomt binnen een functie. Deze wordt dan **gepropageerd** (doorgegeven) naar de plaats waar de functie wordt aangeroepen zolang deze niet wordt opgevangen.
 
 Bijvoorbeeld:
 
@@ -97,15 +97,15 @@ ZeroDivisionError: division by zero
 Je ziet hier dat Python twee locaties in je bestand toont waar de exception optreedt:
 
 * enerzijds op regel 5 met `a = divide(5, 0)`
-* anderzijds op regel 2 met `return a/ b`
+* anderzijds op regel 2 met `return a / b`
 
-De onderste getoonde locatie is de uiteindelijke regel waar de exception optreedt. Maar waarom treedt die daarop? Omdat door de aanroep van `divide(5, 0)` b de waarde 0 krijgt en daardoor dus door 0 gedeeld wordt. Bij het uitzoeken wat er juist misloopt, moet je dus de hele keten van plaatsen waar de esception wordt doorgegeven nagaan. In complexere programma's kan die keten heel lang zijn...
+De onderste getoonde locatie is de uiteindelijke regel waar de exception optreedt. Maar waarom treedt die daarop? Omdat door de aanroep van `divide(5, 0)` b de waarde 0 krijgt en daardoor dus door 0 gedeeld wordt. Bij het uitzoeken wat er juist misloopt, moet je dus de hele keten van plaatsen waar de exception wordt doorgegeven nagaan. In complexere programma's kan die keten heel lang zijn...
 
 ### Exceptions opvangen
 
-Je kan in je code ervoor zorgen dat deze **exceptions** worden **opgevangen**, zodat ze het programma niet beëindigen.
+Je kunt in je code ervoor zorgen dat deze **exceptions** worden **opgevangen**, zodat ze het programma niet beëindigen.
 
-Dit kan via een **try-block** in combinatie met een **except-block**  
+Dit kan via een `try`-blok in combinatie met een `except`-blok.  
 In onderstaande code proberen we een variabele te tonen die niet bestaat.  
 
 ~~~python
@@ -118,7 +118,7 @@ except:
 print("After try-catch")
 ~~~
 
-We kunnen dit doen aan de hand van een default **except-block**. Deze vangt gelijk welke exception (behalve een SyntaxError) op.
+We kunnen dit doen aan de hand van een standaard `except`-blok. Deze vangt gelijk welke exception (behalve een `SyntaxError`) op.
 
 Dit heeft volgende uitvoering als resultaat...
 
@@ -132,17 +132,17 @@ After try-catch
 We zien hier dat:
 
 * Het **programma** wordt **uitgevoerd**.
-* Het **try-block** wordt **onderbroken** (bij `print(x)`) omdat `x` niet gedefinieerd is en de print-opdracht op de regel erna niet uitgevoerd wordt.
-* Het **except-block** wordt **uitgevoerd**.
-* De **code loopt verder** na de except.
+* Het `try`-blok wordt **onderbroken** (bij `print(x)`) omdat `x` niet gedefinieerd is en de print-opdracht op de regel erna niet uitgevoerd wordt.
+* Het `except`-blok wordt **uitgevoerd**.
+* De **code loopt verder** na het `except`-blok.
 
 ### Exceptions opvangen per type
 
-Het gebruik van except zoals hierboven is alles-of-niets: alle exceptions worden opgevangen. Doorgaans is het een betere stijl van je code om alleen specifieke exceptions op te vangen die je verwacht. Zo kun je gerichter reageren in het except-blok, en zal het programma nog altijd stoppen wanneer er onverwachte exceptions optreden waarop je je code niet voorbereid hebt.
+Het gebruik van `except` zoals hierboven is alles-of-niets: alle exceptions worden opgevangen. Doorgaans is het een betere stijl van je code om alleen specifieke exceptions op te vangen die je verwacht. Zo kun je gerichter reageren in het `except`-blok, en zal het programma nog altijd stoppen wanneer er onverwachte exceptions optreden waarop je je code niet voorbereid hebt.
 
-Je vindt hier een lijst van alle ingebouwde exceptions in Python: https://docs.python.org/3/library/exceptions.html
+Je vindt hier een lijst van alle ingebouwde exceptions in Python: <https://docs.python.org/3/library/exceptions.html>.
 
-Je kan in Python dus ook het **type exception aangeven** dat je wil opvangen.  
+Je kunt in Python dus ook het **type exception aangeven** dat je wilt opvangen.  
 In dit geval beperk je het opvangen tot een specifieke exception, de `NameError`:
 
 ~~~python
@@ -155,9 +155,9 @@ except NameError:
 print("After try-catch")
 ~~~
 
-Het volstaat hier om het type exception te definiëren na het except-keyword.
+Het volstaat hier om het type exception te definiëren na het keyword `except`.
 
-Wat dan als er een andere exception optreedt (bijvoorbeeld een ZeroDivisionError)?
+Wat dan als er een andere exception optreedt (bijvoorbeeld een `ZeroDivisionError`)?
 
 ~~~python
 print("Before try-catch")
@@ -181,12 +181,12 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ~~~
 
-... en wordt het programma beëindigd: de print-opdrachten na de regel waarin de ZeroDivisionError optreedt worden niet uitgevoerd.
+... en wordt het programma beëindigd: de print-opdrachten na de regel waarin de `ZeroDivisionError` optreedt worden niet uitgevoerd.
 
-### Meerdere except-blokken
+### Meerdere `except`-blokken
 
-Om dit probleem te verhelpen - en meerdere types exceptions op te vangen - kan je meerdere except-blokken plaatsen.  
-Door onderstaande except-blok voor ZeroDivisionError toe te voegen vermijd je dat het programma bij het optreden van die exception wordt beëindigd.
+Om dit probleem te verhelpen - en meerdere types exceptions op te vangen - kan je meerdere `except`-blokken plaatsen.  
+Door onderstaande `except`-blok voor `ZeroDivisionError` toe te voegen, vermijd je dat het programma bij het optreden van die exception beëindigd wordt:
 
 ~~~python
 print("Before try-catch")
@@ -210,7 +210,7 @@ A ZeroDivisionError exception occurred
 After try-catch
 ~~~
 
-Je kan ook nog altijd het except-blok zonder type toevoegen:
+Je kunt ook nog altijd het `except`-blok zonder type toevoegen:
 
 ~~~python
 print("Before try-catch")
@@ -238,13 +238,13 @@ Another error
 After try-catch
 ~~~
 
-De regel `print(x[2])` genereert immers geen NameError of ZeroDivisionError, maar een IndexError. Omdat die niet na een except-blok staat maar er wel een algemeen except-blok zonder type bestaat, wordt dit laatste except-blok uitgevoerd.
+De regel `print(x[2])` genereert immers geen `NameError` of `ZeroDivisionError`, maar een `IndexError`. Omdat die niet na een `except`-blok staat maar er wel een algemeen `except`-blok zonder type bestaat, wordt dit laatste `except`-blok uitgevoerd.
 
-Let op: het standaard except-blok zonder type exception moet altijd als laatste staan als je meerdere except-blokken gebruikt.
+Let op: het standaard `except`-blok zonder type exception moet altijd als laatste staan als je meerdere `except`-blokken gebruikt.
 
-### else-clausule
+### Exceptions en een else-clausule
 
-Je kan ook een else-clausule toevoegen. Dit blok zal **alleen** uitgevoerd worden als er geen exception optreedt:
+Je kunt aan een `try`-blok ook een `else`-clausule toevoegen. Dit blok zal **alleen** uitgevoerd worden als er geen exception optreedt:
 
 ~~~python
 try:
@@ -276,7 +276,7 @@ Delen door nul is flauwekul
 
 ### finally
 
-Er is ook een finally-clausule. Die wordt **altijd** uitgevoerd, ongeacht of er een exception optreedt in het try-blok. Dit wordt doorgaans gebruikt om zaken 'op te kuisen'.
+Er is ook een `finally`-clausule. Die wordt **altijd** uitgevoerd, ongeacht of er een exception optreedt in het `try`-blok. Dit wordt doorgaans gebruikt om zaken 'op te kuisen'.
 
 Een voorbeeld:
 
@@ -292,7 +292,7 @@ finally:
     print("Tot de volgende keer")
 ~~~
 
-Kijk hoe in beide gevallen het finally-blok uitgevoerd wordt:
+Kijk hoe in beide gevallen het `finally`-blok uitgevoerd wordt:
 
 ~~~bash
 $ python test.py
@@ -311,12 +311,12 @@ Tot de volgende keer
 
 ### Zelf exceptions opwerpen
 
-Naast het afvangen van exceptions kan je deze ook zelf opwerpen met het keyword **raise**.
+Naast het afvangen van exceptions kan je deze ook zelf opwerpen met het keyword `raise`.
 
 Stel dat je de volgende functie maakt:
 
 * Je berekent de oppervlakte van een cirkel op basis van de straal.
-* Je wil een exception werpen als je de functie oproept met een negatieve straal.
+* Je wilt een exception werpen als je de functie oproept met een negatieve straal.
 
 Dat kan als volgt:
 
@@ -381,7 +381,7 @@ __main__.NegativeRadiusException
 
 ### En opvangen...
 
-Je kan deze exception dan ook volgens het type opvangen zoals we eerder hebben gezien:
+Je kunt deze exception dan ook volgens het type opvangen zoals we eerder hebben gezien:
 
 ~~~python
 from math import pi

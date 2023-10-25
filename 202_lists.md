@@ -2,7 +2,7 @@
 
 Tot nog toe hebben we met enkelvoudige types gewerkt (ook wel primitieve types genoemd). Variabelen van dit type bevatten één waarde.
 
-In het tweede deel van de cursus bekijken we datatypes die meerdere waardes kunnen bevatten:
+In dit tweede deel van de cursus bekijken we datatypes die meerdere waardes kunnen bevatten:
 
 * Collecties: lists, sets, dictionaries, tuples
 * Abstracte datatypes: klassen
@@ -12,30 +12,25 @@ Collecties zijn generieke datatypes waarin je meer dan één waarde kan plaatsen
 
 ### List
 
-Het eerste en meest eenvoudige type is de List (lijst).
+Het eerste en meest eenvoudige type is de `list` (lijst).
 
 > *Nota:*  
 >In de meeste programmeertalen starten we met het concept van een *array* als we over collecties spreken.  
->Dit concept bestaat echter niet in Python. We komen hier later nog op terug in de cursus Embedded Programmeren.
+>Dit concept bestaat echter niet in Python. We komen hier later nog op terug in de cursus Embedded programmeren.
 
 Praktisch uitgedrukt heeft een list in Python de volgende eigenschappen:
 
 * Het is een **geordende verzameling** of collectie van elementen.
 * Een element kan meermaals in een lijst voorkomen.
 * Elk **element** van zo'n lijst kan **gelezen of gewijzigd** worden via een **index**.
-* Deze index **start** bij **0** (eerste element) en **eindigt** bij de index **n-1**.
+* Deze index **start** bij **0** (eerste element) en **eindigt** bij de **n-1** (laatste element).
 * Een lijst heeft een **grootte of dimensie** (die we voor de gemakkelijkheid aanduiden als n).
-* Deze grootte of dimensie kan wijzigen over de duurtijd van een programma.
+* Deze grootte of dimensie kan wijzigen over de duurtijd van een programma: je kunt elementen aan een lijst toevoegen of er elementen uit verwijderen.
 
 ### Voorbeeld van een lijst
 
-Een lijst kan je aanmaken als een gewone variabele met onderstaande syntax.
-Dit doe je door een List-literal aan te maken:
-
-* Een variabele
-* Een lijst van waardes
-    * Omsloten door vierkante haakjes []
-    * De waardes gescheiden door komma's
+Een lijst kun je aanmaken als een gewone variabele met onderstaande syntaxis.
+Dit doe je door een  *list literal* aan te maken:
 
 ~~~python
 x = [1.0, 2.0, 3.0]
@@ -43,6 +38,12 @@ y = ["a", "list", "of", "strings"]
 z = ["a", 1, "mixed", 3.0, "list", "with", 1, "float"]
 ~~~
 
+Samengevat:
+
+* Je creëert een variabele.
+* Daaraan ken je met een assignment een lijst van waardes toe:
+    * omsloten door vierkante haakjes `[]`
+    * de waardes zijn van elkaar gescheiden door een komma
 
 ### Lijst van een range
 
@@ -54,7 +55,7 @@ Als je een lijst wilt maken van de getallen 0 tot en met 9, kan dat als volgt:
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ~~~
 
-Maar dat is nogal veel typewerk. Kan het niet eenvoudiger? We hadden toch de functie range() gezien?
+Maar dat is nogal veel typewerk. Kan het niet eenvoudiger? We hadden toch de functie `range()` gezien bij de `for`-lus?
 
 ~~~
 >>> x = range(10)
@@ -73,9 +74,9 @@ Helaas maakt dit geen lijst aan. Maar we kunnen hier wel een lijst van maken:
 ### Waardes van een lijst
 
 Een lijst kan alle soorten data-elementen bevatten.  
-In de meeste gevallen ga je hetzelfde type gebruiken, maar dit is niet verplicht (zie z in het voorbeeld).
+In de meeste gevallen ga je hetzelfde type gebruiken, maar dit is niet verplicht (zie `z` in het voorbeeld hierboven).
 
-Je kan zelfs een lijst van lijsten maken...
+Je kunt zelfs een lijst van lijsten maken...
 
 ~~~python
 x = [[1.0, 2.0, 3.0], ["a", 1, "mixed", 3.0, "list"]]
@@ -91,7 +92,7 @@ x = [[1.0, 2.0, 3.0],
 ### Dimensie van een lijst
 
 Een eerste actie die we kunnen uitvoeren is de grootte of dimensie van een lijst opvragen.  
-Daarvoor bestaat een generieke functie len(), die niet alleen voor lijsten maar alle types containers werkt.
+Daarvoor bestaat een generieke functie `len()`, die niet alleen voor lijsten maar alle types containers werkt.
 
 ~~~
 >>> x = [1.0, 2.0, 3.0]
@@ -134,7 +135,7 @@ Met de **index** bedoelen we de **positie** van het **element binnen** deze **li
 'list'
 ~~~
 
-Door de **naam** van de **list-variabele** te combineren met een **index** die je tussen vierkante haken plaatst, kan je de waarde uit deze positie ophalen en gebruiken in je code.
+Door de **naam** van de **list-variabele** te combineren met een **index** die je tussen vierkante haken plaatst, kun je de waarde uit deze positie ophalen en gebruiken in je code.
 
 ### Alles begint bij 0
 
@@ -162,12 +163,12 @@ De **index** van het **eerste element** uit een lijst is **niet 1** (zou logisch
                 -----------------                      """
 ~~~
 
-De index van het **laatste element** is n-1, of in dit geval 2 (lengte 3 - 1)
+De index van het **laatste element** is n-1, of in dit geval 2 (lengte 3 - 1).
 
 
 ### Indexering vs range
 
-Stel dat je toch een index adresseert > n -1, zal Python een foutmelding genereren:
+Stel dat je toch een index adresseert > n -1, dan zal Python een foutmelding genereren:
 
 ~~~
 >>> x = [2, 3, 5]
@@ -181,8 +182,8 @@ IndexError: list index out of range
 
 ### Data in een lijst wijzigen (index) 
 
-Een element van een lijst kan je wijzigen op een vergelijkbare manier.  
-Je gebruikt opnieuw het zelfde indexeringsmechanisme, maar past deze toe in een **assignment statement**:
+Een element van een lijst wijzigen verloopt op een gelijkaardige manier.  
+Je gebruikt opnieuw hetzelfde indexeringsmechanisme, maar past deze toe in een **assignment statement**:
 
 ~~~
 >>> x = [2, 3, 5]
@@ -197,7 +198,7 @@ Je gebruikt opnieuw het zelfde indexeringsmechanisme, maar past deze toe in een 
 
 ### Negatieve indexen
 
-In Python kan je ook negatieve indexen gebruiken. Hierbij draai je de indexering gewoon om...  
+In Python kun je ook negatieve indexen gebruiken. Hierbij draai je de indexering gewoon om...  
 Het idee is dat je de absolute waarde van de negatieve index van de dimensie of lengte aftrekt:
 
 ~~~
@@ -210,12 +211,14 @@ Het idee is dat je de absolute waarde van de negatieve index van de dimensie of 
 7
 ~~~
 
+Het laatste element van `x` is dus `x[-1]`, het derde laatste element is `x[-3]`, enzovoort.
+
 ### Lijsten doorlopen (naïeve manier)
 
 Gezien we:
 
-* De lengte van een lijst kunnen opvragen
-* De individuele elementen kunnen opvragen
+* de lengte van een lijst kunnen opvragen
+* de individuele elementen kunnen opvragen
 
 kunnen we ook een lijst doorlopen met het volgende programma:
 
@@ -227,7 +230,7 @@ while i < len(x):
     i = i + 1
 ~~~
 
-Deze code werkt maar is echter niet echt "Pythonic":
+Deze code werkt, maar is niet echt "Pythonic":
 
 ~~~bash
 $ python doorlopen.py
@@ -250,7 +253,7 @@ for n in x:
 
 #### Selecteren met "slices"
 
-Je kan ook een stuk uit een lijst nemen. Dit noemt men slicing:
+Je kunt ook een stuk uit een lijst nemen. Dit noemt men *slicing*:
 
 ~~~python
 x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -308,7 +311,7 @@ TypeError: can only assign an iterable
 
 #### Slicing met negatieve indexen
 
-Je kan hier ook negatieve indexen gebruiken:
+Je kunt hier ook negatieve indexen gebruiken:
 
 ~~~python
 x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -341,7 +344,7 @@ for n in x[2:-2]:
 
 We moeten even teruggaan naar het concept van een variabele. Zoals we eerder zagen is een variabele:
 
-* Een stuk **geheugen** dat je kan hergebruiken
+* Een stuk **geheugen** dat je kunt hergebruiken
 * Dat een **waarde** kan bevatten
 * Waaraan een **naam** is gelinkt
   (of ook wel **symbool** genoemd)
@@ -421,19 +424,21 @@ Hoe zou je dan wel de ene lijst kunnen veranderen en niet de andere? Dan moet je
 [0, 1, 2, 3, 4]
 ~~~
 
+Met `x.copy()` maak je dus een kopie van de lijst `x` aan.
+
 ### Bewerken van een lijst 
 
-Een lijst kan je nog op allerlei manieren verwerken nadat je die gecreëerd hebt:
+Een lijst kun je nog op allerlei manieren verwerken nadat je die gecreëerd hebt:
 
-* append(): element toevoegen aan einde van de lijst
-* extend(): zelfde maar een ineens een andere lijst of iterable toevoegen 
-* count(): aantal elementen met een specifieke waarde opvragen
-* index():	index van het eerste element voor een specifieke waarde opvragen
-* insert(): element toevoegen op een specifieke positie
-* pop() : element op een index verwijderen
-* remove() : eerste item met een specifieke waarde verwijderen
-* reverse() : volgorde van de elementen omdraaien
-* sort() : de lijst sorteren
+* `append()`: element toevoegen aan einde van de lijst
+* `extend()`: zelfde maar dan ineens een andere lijst of iterable toevoegen 
+* `count()`: aantal elementen met een specifieke waarde opvragen
+* `index()`:	index van het eerste element voor een specifieke waarde opvragen
+* `insert()`: element toevoegen op een specifieke positie
+* `pop()`: element op een index verwijderen
+* `remove()`: eerste item met een specifieke waarde verwijderen
+* `reverse()`: volgorde van de elementen omdraaien
+* `sort()`: de lijst sorteren
 
 Zie volgende sequentie in de REPL voor voorbeelden hiervan:
 

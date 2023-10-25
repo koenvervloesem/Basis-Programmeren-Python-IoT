@@ -87,6 +87,7 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
 ### Opdrachten op Toledo
 
 Alle **oefeningen** uit de cursus die je **moet maken** worden aangeduid in Toledo **onder opdrachten**.   
+
 #### Termijn
 
 Je (deel)oplossing voor de opdracht moet je indienen vóór het einde van de les.
