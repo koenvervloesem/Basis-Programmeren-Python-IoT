@@ -14,18 +14,14 @@ Collecties zijn generieke datatypes waarin je meer dan één waarde kan plaatsen
 
 Het eerste en meest eenvoudige type is de `list` (lijst).
 
-> *Nota:*  
->In de meeste programmeertalen starten we met het concept van een *array* als we over collecties spreken.  
->Dit concept bestaat echter niet in Python. We komen hier later nog op terug in de cursus Embedded programmeren.
-
-Praktisch uitgedrukt heeft een list in Python de volgende eigenschappen:
+Praktisch uitgedrukt heeft een lijst in Python de volgende eigenschappen:
 
 * Het is een **geordende verzameling** of collectie van elementen.
 * Een element kan meermaals in een lijst voorkomen.
-* Elk **element** van zo'n lijst kan **gelezen of gewijzigd** worden via een **index**.
-* Deze index **start** bij **0** (eerste element) en **eindigt** bij de **n-1** (laatste element).
 * Een lijst heeft een **grootte of dimensie** (die we voor de gemakkelijkheid aanduiden als n).
 * Deze grootte of dimensie kan wijzigen over de duurtijd van een programma: je kunt elementen aan een lijst toevoegen of er elementen uit verwijderen.
+* Elk **element** van een lijst kan **gelezen of gewijzigd** worden via een **index**.
+* Deze index **start** bij **0** (eerste element) en **eindigt** bij **n-1** (laatste element).
 
 ### Voorbeeld van een lijst
 
@@ -168,7 +164,7 @@ De index van het **laatste element** is n-1, of in dit geval 2 (lengte 3 - 1).
 
 ### Indexering vs range
 
-Stel dat je toch een index adresseert > n -1, dan zal Python een foutmelding genereren:
+Stel dat je toch een index adresseert > n -1, dan zal Python een foutmelding tonen:
 
 ~~~
 >>> x = [2, 3, 5]
@@ -215,7 +211,7 @@ Het laatste element van `x` is dus `x[-1]`, het derde laatste element is `x[-3]`
 
 ### Lijsten doorlopen (naïeve manier)
 
-Gezien we:
+Aangezien we:
 
 * de lengte van een lijst kunnen opvragen
 * de individuele elementen kunnen opvragen
@@ -251,6 +247,8 @@ for n in x:
     print(n)
 ~~~
 
+We hoeven dus geen index meer te initialiseren, te gebruiken en op te tellen, maar kunnen `x` hier gewoon als een bereik gebruiken.
+
 #### Selecteren met "slices"
 
 Je kunt ook een stuk uit een lijst nemen. Dit noemt men *slicing*:
@@ -277,6 +275,8 @@ x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 for n in x[2:4]:
     print(n)
 ~~~
+
+Met de slice `2:4` selecteer je dus alle elementen tussen de tweede en de vierde komma.
 
 Zowel de startindex als stopindex zijn overigens optioneel:
 
@@ -309,6 +309,8 @@ Traceback (most recent call last):
 TypeError: can only assign an iterable
 ~~~
 
+Want het getal `99` is iets anders dan de lijst `[99]`.
+
 #### Slicing met negatieve indexen
 
 Je kunt hier ook negatieve indexen gebruiken:
@@ -319,7 +321,7 @@ for n in x[2:-2]:
     print(n)
 ~~~
 
-Dat levert dus een slice op met de waardes van positie 2 tot en met 7 (omdat 10-2 = 8 de stopindex is en die niet inclusief geldt):
+Dat levert dus een slice op met de waardes van positie 2 tot en met 7 (omdat 10 - 2 = 8 de stopindex is en die niet inclusief geldt):
 
 ~~~bash
 $ python test.python
@@ -344,9 +346,9 @@ for n in x[2:-2]:
 
 We moeten even teruggaan naar het concept van een variabele. Zoals we eerder zagen is een variabele:
 
-* Een stuk **geheugen** dat je kunt hergebruiken
-* Dat een **waarde** kan bevatten
-* Waaraan een **naam** is gelinkt
+* een stuk **geheugen** dat je kunt hergebruiken
+* dat een **waarde** kan bevatten
+* waaraan een **naam** is gelinkt
   (of ook wel **symbool** genoemd)
 
 Stel dat je nu een variabele x de waarde 5 geeft met een assignment, en daarna de variabele y de waarde van de variabele x geeft met een assignment, dan krijg je de volgende waardes:
@@ -406,7 +408,7 @@ Wat als we nu hetzelfde doen met een lijst? We creëren een lijst x, kennen x aa
 
 Deze keer is de waarde van y wel mee veranderd met die van x! Hoe kan dat?
 
-De verklaring: als Python een assignment doet met een lijst, steekt hij niet de waarde van die lijst in het bijbehorende geheugen, maar een verwijzing naar een geheugenplaats waar de lijst staat. Als je dan `y = x` uitvoert, kopieer je dat geheugenadres van lijst x naar y, en daarna verwijzen x en y dus naar dezelfde lijst, het zijn gewoon aliassen.
+De verklaring: als Python een assignment doet met een lijst, steekt hij niet de waarde van die lijst in het bijbehorende geheugen, maar een verwijzing naar een geheugenplaats waar de lijst staat. Als je dan `y = x` uitvoert, kopieer je dat geheugenadres van lijst x naar y, en daarna verwijzen x en y dus naar dezelfde lijst, het zijn gewoon *aliassen*.
 
 Hoe zou je dan wel de ene lijst kunnen veranderen en niet de andere? Dan moet je de lijst x naar de lijst y kopiëren, zodat er een nieuwe lijst wordt aangemaakt, op een nieuw geheugenadres, met dezelfde elementen:
 
@@ -476,3 +478,34 @@ Zie volgende sequentie in de REPL voor voorbeelden hiervan:
 ~~~
 
 Meer informatie over de mogelijkheden met een lijst vraag je in de REPL op met `help(list)`.
+
+### List comprehension
+
+Het komt regelmatig voor dat je op basis van één lijst een andere lijst moet aanmaken. Je hebt bijvoorbeeld een lijst met de getallen van 1 tot en met 10, en wilt nu een lijst maken met kwadraten van elk getal in die lijst. Dat zou je als volgt kunnen doen:
+
+~~~python
+getallen = list(range(1, 11))
+kwadraten = []
+
+for getal in getallen:
+    kwadraten.append(getal**2)
+
+print(kwadraten)
+~~~
+
+Dit toont als resultaat:
+
+~~~
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+~~~
+
+Maar er is een eenvoudiger manier: *list comprehension*. Hiermee maak je in één stap een lijst aan, gebaseerd op elementen van een andere lijst. Dat ziet er als volgt uit:
+
+~~~python
+kwadraten = [getal**2 for getal in range(1, 11)]
+print(kwadraten)
+~~~
+
+Dit is heel wat compactere code, maar doet exact hetzelfde. Het verschil is dat je geen lege lijst moet initialiseren en niet expliciet elk van de elementen aan die lijst moet toevoegen. List comprehension maakt die lijst zelf element per element aan.
+
+List comprehension is een krachtige techniek om lijsten aan te maken. Je vindt meer uitleg in <https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions>.
