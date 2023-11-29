@@ -307,7 +307,7 @@ Ook de bewerking in de andere richting komt wel eens voor: een lijst van strings
 'Dit:is:een:tekst'
 ~~~
 
-Dat werkt overigens alleen met een lijst van strings. Zodra één element in de lijst een ander type dan str heeft, krijg je een foutmelding:
+Dat werkt overigens alleen met een lijst van strings. Zodra één element in de lijst een ander type dan `str` heeft, krijg je een foutmelding:
 
 ~~~python
 >>> " ".join(["Dit", "is", "een", 4])
@@ -316,13 +316,15 @@ Traceback (most recent call last):
 TypeError: sequence item 3: expected str instance, int found
 ~~~
 
+Doordenkertje: hoe los je dit eenvoudig op met list comprehension?
+
 ### Stringinterpolatie of f-strings
 
 Met **stringinterpolatie** kun je in een string rechtstreeks **expressies injecteren**.
 
 Hiervoor moet je:
 
-* De string laten **starten** met **f** vóór het eerste aanhalingsteken.
+* De string laten **starten** met `f` vóór het eerste aanhalingsteken.
 * De **expressies** in de string tussen accolades `{}` (*curly braces*) plaatsen.
 
 Bijvoorbeeld:
@@ -353,7 +355,7 @@ Hallo Koen! Je naam is 4 letters lang.
 
 ### Indexen en slicing
 
-Net zoals bij lists kun je ook bij strings delen selecteren met indexen en slicing. De syntaxis van slicing is hetzelfde: string[startindex:stopindex]. Let op: ook hier is de stopindex niet inclusief! Een voorbeeld:
+Net zoals bij lists kun je ook bij strings delen selecteren met indexen en slicing. De syntaxis van slicing is hetzelfde: `string[startindex:stopindex]`. Let op: ook hier is de stopindex niet inclusief! Een voorbeeld:
 
 ~~~python
 >>> naam = "Koen"
@@ -375,6 +377,15 @@ Maar let op: in tegenstelling tot een lijst kun je een string niet veranderen: e
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   TypeError: 'str' object does not support item assignment
+~~~
+
+Je kunt wel een andere string aan de variabele toekennen: je verandert dan immers niet de string zelf, maar maakt een nieuwe string aan en laat de originele variabele naar die nieuwe string verwijzen:
+
+~~~python
+>>> naam = "Koen"
+>>> naam = "Bart"
+>>> naam
+'Bart'
 ~~~
 
 ### Bewerkingen op strings

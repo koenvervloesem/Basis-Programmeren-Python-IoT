@@ -14,7 +14,7 @@ Een bestand is in essentie:
 
 Er bestaan verschillende soorten bestanden:
 
-* Tekstbestanden: Bevatten tekstkarakters die je kan lezen
+* Tekstbestanden: Bevatten tekstkarakters (tekens) die je kan lezen
 * Uitvoerbare bestanden (*executables*): Bevatten programma's met code-instructies voor de processor
 * Mediabestanden: Bevatten afspeelbare media (beelden, audio, video, ...)
 * Andere binaire gegevensbestanden: Bevatten spreadsheets, tekstverwerkingsdocumenten, databases, printplaatontwerpen, ...
@@ -23,7 +23,7 @@ Er bestaan verschillende soorten bestanden:
 
 In dit deel gaan we in Python leren werken met tekstbestanden.
 
-Tekstbestanden bevatten karakters, zoals we die ook kennen van strings in Python. Dit zijn bytes waarvan de waarde overeenstemt met een specifiek teken.
+Tekstbestanden bevatten tekens, zoals we die ook kennen van strings in Python. Elk teken komt overeen met een specifieke byte (of meerdere bytes in het geval van Unicode).
 
 #### ASCII-encodering
 
@@ -101,7 +101,7 @@ Je ziet hier ook een verschil tussen Linux en Windows als je tekstbestanden aanm
 
 In de meeste gevallen moet je niets van deze encodering weten om met tekstbestanden te werken in Python. We tonen nu enkele standaardoperaties die je in Python met bestanden kunt uitvoeren.
 
-### Lezen uit een tekst-file 
+### Lezen uit een tekstbestand
 
 Om te demonstreren hoe we met een tekstbestand kunnen omgaan, starten we met het aanmaken van een bestand genaamd **demofile.txt** met de volgende (nietszeggende) inhoud:
 
@@ -123,7 +123,7 @@ Open dus Kladblok of een andere teksteditor, plak deze tekst daarin en sla het o
 #### Open en close
 
 Werken met een tekstbestand start met het aanmaken van een **file-object**.
-Dat doe je met de functie **open()**. Daarna kun je bestandsoperaties op het file-object uitvoeren, zoals een leesoperatie, en daarna sluit je het file-object:
+Dat doe je met de functie `open()`. Daarna kun je bestandsoperaties op het file-object uitvoeren, zoals een leesoperatie, en daarna sluit je het file-object:
 
 ~~~python
 >>> f = open("demofile.txt")
@@ -158,7 +158,7 @@ ValueError: I/O operation on closed file.
 #### Automatisch sluiten
 
 Het probleem met bovenstaande code is: als er zich een exception voordoet na `open()` wordt het file-object mogelijk niet gesloten.
-Om dit te vermijden bestaat er het with-statement:
+Om dit te vermijden bestaat er het `with`-statement:
 
 ~~~python
 with open("demofile.txt") as f:
@@ -167,9 +167,9 @@ with open("demofile.txt") as f:
 print(f.closed)
 ~~~
 
-Het with-statement zal er voor zorgen dat - na het uitvoeren van de code binnen dit blok - het file-object sowieso wordt gesloten, zelfs al treedt er een exception op. We controleren dit hier door met `print(f.closed)` te tonen of het bestand gesloten is.
+Het `with`-statement zal ervoor zorgen dat - na het uitvoeren van de code binnen dit blok - het file-object sowieso wordt gesloten, zelfs al treedt er een exception op. We controleren dit hier door met `print(f.closed)` te tonen of het bestand gesloten is.
 
-**Bijna altijd is het aangeraden om `with open()` te gebruiken in plaats van `open()`.** In de rest van de cursus gebruiken we dan ook dit with-statement om met bestanden te werken.
+**Bijna altijd is het aangeraden om `with open()` te gebruiken in plaats van `open()`.** In de rest van de cursus gebruiken we dan ook dit `with`-statement om met bestanden te werken.
 
 #### Volledige inhoud uitlezen
 
@@ -180,7 +180,7 @@ with open("demofile.txt") as f:
     print(f.read()) 
 ~~~
 
-Het is interessant om in de REPL eens te kijken wat voor type data de functie read() teruggeeft:
+Het is interessant om in de REPL eens te kijken wat voor type data de functie `read()` teruggeeft:
 
 ~~~python
 >>> with open("demofile.txt") as f:
@@ -212,7 +212,7 @@ Lorem
 
 #### Regel per regel lezen
 
-Je kan ook kiezen om het bestand regel per regel uit te lezen.
+Je kunt ook kiezen om het bestand regel per regel uit te lezen.
 
 ~~~python
 with open("demofile.txt") as f:
@@ -230,7 +230,7 @@ Aenean commodo ligula eget dolor. Aenean massa.
 #### Alle regels lezen met een lus
 
 Het file-object kan zich ook gedragen als een lijst van regels.  
-Op dit object kan je dan een lus uitvoeren om het hele bestand regel per regel uit te lezen:
+Op dit object kun je dan een lus uitvoeren om het hele bestand regel per regel uit te lezen:
 
 ~~~python
 with open("demofile.txt") as f:
@@ -254,7 +254,7 @@ Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla conse
 
 Doordenker: waarom toont het programma hier een lege regel tussen elke regel? En hoe zorg je dat dit niet gebeurt?
 
-#### Modi
+#### Bestandsmodi
 
 Hiervoor hebben we altijd bestanden gelezen. Dat is één van de mogelijke modi bij het openen van een bestand:
 
@@ -299,7 +299,7 @@ $ python create_new_file.py
 Dit is een nieuw bestand
 ~~~
 
-Mocht het bestand al bestaan, bijvoorbeeld door het programma een tweede keer uit te voeren, zal er een exception worden opgeworpen door de open-functie:
+Mocht het bestand al bestaan, bijvoorbeeld door het programma een tweede keer uit te voeren, zal er een exception worden opgeworpen door de functie `open`:
 
 ~~~
 $ python create_new_file.py
@@ -309,14 +309,13 @@ Traceback (most recent call last):
 FileExistsError: [Errno 17] File exists: 'hello.txt'
 ~~~
 
-Deze exception kunnen we natuurlijk opvangen met try-except om aan de gebruiker een duidelijker foutmelding te geven.
+Deze exception kunnen we natuurlijk opvangen met `try` en `except` om aan de gebruiker een duidelijker foutmelding te geven.
 
 #### Nieuw of bestaand bestand overschrijven
 
 Als we dezelfde code wijzigen en de modus **w** gebruiken:
 
-* zal er **geen exception** worden opgeworpen als het **bestand reeds bestaat**
-* maar wordt dit **overschreven**
+* zal er **geen exception** worden opgeworpen als het **bestand reeds bestaat** maar wordt dit **overschreven**
 * als het bestand **niet bestaat**, wordt het **aangemaakt**
 
 Onderstaande code:

@@ -12,7 +12,7 @@ Hier bekijken we nog een **aantal zaken** die we **nog niet hebben gezien** in h
 
 ### Optionele argumenten
 
-Je kan voor een functie **default waardes** meegeven aan een argument.  
+Je kan voor een functie **standaardwaardes** meegeven aan een argument.  
 Zie bijvoorbeeld hieronder een functie om de macht van een getal te berekenen:
 
 ~~~python
@@ -33,12 +33,12 @@ print(power_of(2, 3))  # prints 8
 
 Met andere woorden: de exponent wordt dan **optioneel**. Als je dit argument niet invult, geeft Python dit automatisch de waarde 2 omdat dit als standaardwaarde in de definitie van de functie staat.
 
-Dit kan interessant zijn in situaties waar er in de meeste gevallen een standaardwaarde is, maar je hier wel van wil kunnen afwijken.
+Dit kan interessant zijn in situaties waar er in de meeste gevallen een standaardwaarde is, maar je hier wel van wil kunnen afwijken. Dan hoef je in de meeste gevallen dat extra argument niet te vermelden.
 
-### pass-statement
+### Het `pass`-statement
 
-**Python** laat **geen lege blocks** toe.  
-Onderstaande code is in Python niet toegelaten
+**Python** laat **geen lege blokken** toe.  
+Onderstaande code is dus geen geldige Python-code:
 
 ~~~python
 def a_function_not_yet_implemented():
@@ -56,9 +56,9 @@ $ python test.py
 IndentationError: expected an indented block after function definition on line 1
 ```
 
-Ook bij andere blocks (if, while, for, ...) is dit het geval.
+Ook bij andere blokken (`if`, `while`, `for`, ...) is dit het geval.
 
-Een commentaar met hashtag toevoegen helpt overigens niet, zelfs niet als je die correct indenteert volgens het blok:
+Een commentaar met hashtag (`#`) toevoegen helpt overigens niet, zelfs niet als je die correct indenteert volgens het blok:
 
 ~~~python
 a = int(input("Geef een getal in: "))
@@ -87,7 +87,7 @@ else:
     """TODO: reageren als getal <= 10"""
 ~~~
 
-Als je nog niet weet wat te implementeren en ook nog geen commentaar weet, kan je ook in de plaats een **pass-statement** toevoegen:
+Als je nog niet weet wat te implementeren en ook nog geen commentaar weet, kun je ook in de plaats het statement `pass` toevoegen:
 
 ~~~python
 def a_function_not_yet_implemented():
@@ -106,7 +106,7 @@ else:
     pass
 ~~~
 
-`pass` is een statement dat niets doet. Het is dus handig als plaatshouder op een plaats waar een statement nodig is om van geldige code te kunnen spreken, maar waar (nog) niets hoeft te gebeuren.
+Het statement `pass` doet letterlijk niets. Het is dus handig als plaatshouder op een plaats waar een statement nodig is om van geldige code te kunnen spreken, maar waar (nog) niets hoeft te gebeuren.
 
 ### Access by name
 
@@ -123,9 +123,9 @@ print(power_of(exponent=4, base=2))  # prints 16
 print(power_of(2, exponent=4))       # prints 16
 ~~~
 
-Je kan in dat geval zelfs **kiezen** in welke **volgorde** je deze meegeeft (als je per naam meegeeft).  
+Je kunt in dat geval zelfs **kiezen** in welke **volgorde** je deze meegeeft (als je per naam meegeeft).  
 
-Je kan dit ook **combineren** met de **standaard** manier van **argumenten** passeren, maar dat kan dan enkel voor de **laatste argumenten**. Dit kan dus niet:
+Je kunt dit ook **combineren** met de **standaard** manier van **argumenten** doorgeven, maar dat kan dan alleen voor de **laatste argumenten**. Dit kan dus niet:
 
 ```python
 >>> print(power_of(base=2, 4))
@@ -157,7 +157,7 @@ bananabanana
 banana
 ~~~
 
-We dupliceren binnen de functie dus het argument "banana" tot "bananabanana", maar buiten de functie blijft de variabele tekst de originele waarde "banana" hebben. Veranderingen binnen de functie aan het argument blijven lokaal binnen de functie, omdat Python het argument als waarde (**by value**) doorgeeft en dus een kopie maakt.
+We dupliceren binnen de functie dus het argument "banana" tot "bananabanana", maar buiten de functie blijft de variabele tekst de oorspronkelijke waarde "banana" hebben. Veranderingen binnen de functie aan het argument blijven lokaal binnen de functie, omdat Python het argument als waarde (**by value**) doorgeeft en dus een kopie maakt.
 
 Als we een lijst doorgeven als argument, gedraagt Python zich anders:
 
@@ -187,7 +187,7 @@ Voor een set geldt hetzelfde: ook die wordt by reference doorgegeven aan functie
 
 In een aantal functies (zoals bijvoorbeeld **print**) heb je de mogelijkheid om een **variabel aantal argumenten** mee te geven.  
 
-Je kan dit ook zelf doen door een **sterretje** te plaatsen **voor** je **argument** waarna je dit argument kan **behandelen** zoals een **lijst** (zie de lessen met list en de for-lus)
+Je kan dit ook zelf doen door een **sterretje** te plaatsen **voor** je **argument** waarna je dit argument kan **behandelen** zoals een **lijst**:
 
 ~~~python
 def print_students(*students):
@@ -245,7 +245,7 @@ print_students(["Jan", "Piet", "Joris", "Korneel"])
 
 ### recursie
 
-De volgende functie telt af vanaf 10
+De volgende code telt af vanaf 10:
 
 ~~~python
 def countdown_function(count):
@@ -255,8 +255,8 @@ def countdown_function(count):
 countdown_function(10)
 ~~~
 
-Je kan deze ook recursief schrijven.
-Dit is een techniek waarbij je een functie zichzelf laat aanroepen waar je telkens de loop state meegeeft als argument.
+Je kunt deze ook **recursief** schrijven.
+Dat is een techniek waarbij je een functie zichzelf laat aanroepen waar je telkens de loop state meegeeft als argument.
 
 ~~~python
 def countdown_function(count):
