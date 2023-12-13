@@ -256,7 +256,7 @@ Doordenker: waarom toont het programma hier een lege regel tussen elke regel? En
 
 #### Bestandsmodi
 
-Hiervoor hebben we altijd bestanden gelezen. Dat is één van de mogelijke modi bij het openen van een bestand:
+Tot nu toe hebben we altijd bestanden gelezen. Dat is één van de mogelijke modi bij het openen van een bestand:
 
 * "r" - Read   - Opent een bestand om dit te lezen.
 * "w" - Write  - Maakt een bestand aan als dit nog niet bestaat, overschrijft een bestaand bestand. Opent het bestand om ernaar te schrijven.
@@ -397,4 +397,4 @@ with open("C:/Users/User/Documents/demofile.txt") as f:
 
 ### Verdere info
 
-Meer info over het werken met bestanden vind je op https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files.
+Meer info over het werken met bestanden vind je op <https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files>.
