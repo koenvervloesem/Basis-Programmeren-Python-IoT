@@ -5,9 +5,9 @@ Dit hoofdstuk is opgebouwd rond een herhalingsoefening voor **klassen en objecte
 Naast het herhalen van het principe van **objectgeoriënteerd programmeren** willen we hier ook aantonen dat gelijk welk wat groter programma **stap voor stap** moet worden opgebouwd.  
 
 De oefening gaat er van uit dat je reeds Git hebt geïnstalleerd.  
-Indien dit nog niet het geval is, zie https://git-scm.com/ voor installatie-instructies.
+Indien dit nog niet het geval is, zie dan <https://git-scm.com> voor installatie-instructies.
 
-Na de installatie van Git configureer je je e-mailadres en naam, zodat Git je identiteit aan je code koppelt. Dat kan met deze twee opdrachten:
+Na de installatie van Git stel je je e-mailadres en naam in, zodat Git je identiteit aan je code koppelt. Dat kan met deze twee opdrachten:
 
 ~~~
 git config --global user.name "Your Name"
@@ -18,38 +18,36 @@ Vul hier uiteraard je eigen gegevens in.
 
 ### Stap voor stap programmeren
 
-Dit doe je door de volgende stappen constant te herhalen:
+Een complexer programma ontwikkelen doe je door de volgende stappen constant te herhalen:
 
-* **Code schrijven:** Een heel **klein onderdeel** van de **applicatie** opbouwen/toevoegen
+* **Code schrijven:** Een **klein onderdeel** van het programma opbouwen/toevoegen
 * **Testen:**
     * Werkt je nieuwe functionaliteit?  
-      Testen van je functie/code die je hebt gebouwd, ook soms **unit testing**
+      Testen van je functie/code die je hebt gebouwd, ook soms **unit testing**.
     * Werkt de functionaliteit die je tevoren had nog altijd even goed na je wijziging van de code?  
       Dit noemen we ook **testen op regressies**.
 * **Revisioneren**
-    * Na een succesvolle test slaan we onze wijziging (stap) op.
-    * We voegen een duidelijke commentaar toe.
-* ...en we starten opnieuw...
+    * Na een succesvolle test slaan we onze wijziging (revisie/stap) op.
+    * We voegen een duidelijke uitleg toe.
+* ...en we herhalen dit opnieuw...
 
 De laatste actie - revisioneren - is iets wat we nu voor de eerste maal introduceren.    
 Het komt er op neer om (met behulp van een tool) de evolutie en verschillende versies van je programma bij te houden, waardoor je:
 
-* Een historiek kan bijhouden van de wijzigingen van je code
-* Kan terugkoppelen naar een vroegere specifieke revisie
-* Code delen tussen verschillende personen (en zelfs organisaties)
+* een historiek hebt van de wijzigingen van je code
+* kunt terugkeren naar een specifieke vroegere revisie
+* eenvoudig code kunt delen tussen verschillende personen (en zelfs organisaties)
 * ...
 
-De tool die we hiervoor gebruiken is **Git**.
+De tool die we hiervoor gebruiken, is **Git**.
 
 ### Git: Aanmaken van een project
 
-In dit voorbeeld gaan we Git gebruiken om de wijzigingen van onze applicatie bij te houden.  
+In dit voorbeeld gaan we Git gebruiken om de wijzigingen van onze applicatie bij te houden: 
 
-We starten met:
-
-* We **maken** een **folder** aan (we noemen deze **basket**).
-* We **navigeren** (in de command-line-prompt) naar deze folder.
-* We voeren de opdracht `git init` uit binnen deze folder.
+* We maken een **directory** aan (we noemen deze **basket**).
+* We **navigeren** (op de opdrachtregel) naar deze directory.
+* We voeren de opdracht `git init` uit binnen deze directory om ze te initialiseren.
 
 ~~~
 $ mkdir basket
@@ -58,14 +56,14 @@ $ git init
 Initialized empty Git repository in /home/koan/basket/.git/
 ~~~
 
-Deze actie maakt - in deze folder basket - een lokale **git-repository**.  
-Zo'n git-repository is:
+Deze actie maakt - in deze directory basket - een lokale **Git-repository** aan.  
+Zo'n Git-repository is:
 
-* Een soort van database waar je **code-wijzigingen** kan **bijhouden/traceren**.
-* Als een soort van **snapshot** (zoals je bijvoorbeeld een snapshot van een harde schijf zou nemen).
-* Het stelt je in staat een historiek bij te houden en zelfs terug te keren naar een vorige **revisie**.
+* een database waarin je **code-wijzigingen** kan **bijhouden/traceren**
+* in de vorm van **snapshots** (zoals je bijvoorbeeld een snapshot van een harde schijf zou nemen)
+* waarvan je een historiek kunt bijhouden en zelfs kunt terugkeren naar een vorige **revisie**
 
-De files die deze database omvatten bevinden zich in een verborgen folder `.git`.
+De bestanden die deze database omvatten, bevinden zich in een verborgen directory `.git`.
 
 ~~~
 $ ls -a
@@ -74,7 +72,7 @@ $ ls -a .git/
 .  ..  branches  config  description  HEAD  hooks  info  objects  refs
 ~~~
 
-Met de opdracht `git status` kan je dan vervolgens controleren wat de status is.
+Met de opdracht `git status` vraag je dan vervolgens op wat de status van de Git-repository is.
 
 ~~~
 $ git status
@@ -87,17 +85,17 @@ nothing to commit (create/copy files and use "git add" to track)
 
 De uitvoer van deze opdracht **suggereert** het gebruik van `git add`, we komen hier zo dadelijk nog op terug.
 
-### Code schrijven: Basket-item-class
+### Code schrijven: klasse `BasketItem`
 
-Alvorens met git verder te gaan, starten we met **code te schrijven**.  
+Alvorens met Git verder te gaan, starten we met **code te schrijven**.  
 Bedoeling is dat we een **applicatie** gaan maken die een **winkelmandje** (of **winkellijstje**) gaat beheren.
 
 Zo'n winkelmandje bestaat uit verschillende **items** die je in dat **mandje** mag droppen.  
 Laten we starten met er van uit te gaan dat zo'n **item** een **beschrijving** en een **prijs** bevat...
 
-We hebben in het studenten-voorbeeld gezien hoe je zulke gestructureerde data kan **bijhouden/groeperen** in een **klasse**.
+We hebben in het voorbeeld met studenten gezien hoe je zulke gestructureerde data kunt **bijhouden/groeperen** in een **klasse**.
 
-We starten met een file **basket.py** aan te maken en voorzien daarin een klasse **BasketItem**:
+We starten met een bestand **basket.py** aan te maken en voorzien daarin een klasse `BasketItem`:
 
 ~~~python
 from dataclasses import dataclass
@@ -117,12 +115,12 @@ $ python basket.py
 $
 ~~~
 
-Vanzelfsprekend doet deze nog **niet** erg **veel**, daar komen we zo dadelijk **op** **terug**.  
-Eerst gaan we echter onze eerste **code-wijzigen registreren/revisioneren**
+Vanzelfsprekend doet deze nog niet veel, daar komen we zo dadelijk op terug.  
+Maar eerst gaan we onze eerste **code-wijzigingen registreren/revisioneren**.
 
 ### Git: Je eerste commit met git...
 
-We hebben ons **eerste stuk code** geschreven. Als we via het git-commando `git status` de status opvragen...
+We hebben ons **eerste stuk code** geschreven. Als we via de opdracht `git status` de status opvragen...
 
 ~~~
 $ git status
@@ -137,8 +135,8 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
 
-...zien we dat git gezien heeft dat het bestand is gewijzigd en dat deze niet wordt getraceerd (tracked)   
-We gebruiken het command `git add basket.py` om dit bestand basket.py toe te voegen aan de git-repository:
+...zien we dat Git opgemerkt heeft dat het bestand gewijzigd is en dat deze niet wordt getraceerd (**"Untracked"**).   
+We gebruiken de opdracht `git add basket.py` om dit bestand basket.py toe te voegen aan de Git-repository:
 
 ~~~
 $ git add basket.py 
@@ -152,15 +150,16 @@ Changes to be committed:
 	new file:   basket.py
 ~~~
 
-Er staat **"Changes to be committed"**, dit betekent dat je nu aan de **git-repo** hebt meegedeeld dat er een **wijziging** is.  
-De wijziging is echter **nog niet** in de git-repo **opgeslagen**, om dit te volbrengen moeten we een **commit** uitvoeren.
+Er staat nu **"Changes to be committed"**. Dit betekent dat je nu aan de Git-repository hebt meegedeeld dat er een **wijziging** is.  
+De wijziging is echter **nog niet** in de Git-repository **opgeslagen**. Om dit te volbrengen, moeten we een **commit** uitvoeren.
 
-Dit kan je met het commando `git commit`.  
-Zo'n **commit** moet altijd vergezeld gaan van een boodschap, in dit geval "Create class BasketItem".  
+Dit doe je met de opdracht `git commit`.  
+Zo'n **commit** moet altijd vergezeld gaan van een boodschap die de wijzigingen omschrijft. Vul in dit geval "Create class BasketItem" in.  
 
-> Belangrijk:  
-> Probeer deze **boodschap** kort maar toch **duidelijk** te maken.  
-> Hoe **duidelijker** deze is, hoe **gemakkelijker achteraf** om na te gaan wat je wijzigingen waren.
+Belangrijk:  
+
+* Probeer deze **boodschap** kort maar toch **duidelijk** te maken.  
+* Hoe **duidelijker** deze is, hoe **gemakkelijker achteraf** om na te gaan wat je wijzigingen waren.
 
 ~~~
 $ git commit -m "Create class BasketItem"
@@ -172,8 +171,8 @@ On branch master
 nothing to commit, working tree clean
 ~~~
 
-Als we de status oproepen, zien we dat er geen nieuwe wijziging meer is.  
-Met het commando `git log` kan je dan zien dat je wijziging is geregistreerd:
+Als we de status nu opvragen, zien we dat er geen nieuwe wijziging meer is.  
+Met de opdracht `git log` kun je dan zien dat je wijziging is geregistreerd:
 
 ~~~
 $ git log
@@ -184,13 +183,13 @@ Date:   Sat Nov 5 18:03:57 2022 +0100
     Create class BasketItem
 ~~~
 
-Op de eerste regel van deze uitvoer zie je lange string van **hexadecimale tekens** (4ba8385472e5dd3c74cd1f8954620a22cf0c67d8), dit is wat we noemen de **commit id**, een unieke **identifier** voor je code-wijzigingen
+Op de eerste regel van deze uitvoer zie je een lange string van **hexadecimale tekens** (4ba8385472e5dd3c74cd1f8954620a22cf0c67d8). Dat noemen we de **commit id**, een unieke **identifier** voor je code-wijzigingen.
 
-Deze kan je dan gebruiken om achteraf je codewijzigingen te bekijken via het commando `git show`.  
-Typ `git show` gevolgd door de commit-id (normaal gezien is het voldoende om de eerste vijf tekens te typen).
+Deze kun je dan gebruiken om achteraf je codewijzigingen te bekijken via de opdracht `git show`.  
+Type `git show` gevolgd door de commit-id (normaal gezien is het voldoende om de eerste vijf tekens te typen).
 
 > **Belangrijk:**  
-> Zo'n commit is het centrale begrip in git, het is een soort van snapshot van je code op een bepaald tijdstip.
+> Zo'n commit is het centrale begrip in Git, het is een soort van snapshot van je code op een bepaald tijdstip.
 
 ~~~
 $ git show 4ba83
@@ -214,18 +213,18 @@ index 0000000..dac7bce
 +    price: int = 0
 ~~~
 
-Met een druk op de toets q verlaat je de uitvoer van `git log` of `git show`.
+Met een druk op de toets **Q** verlaat je de uitvoer van `git log` of `git show`.
 
-### Code schrijven: event-loop
+### Code schrijven: event loop
 
-We hebben nu echter **nog geen applicatie** daarvoor zijn er nog twee belangrijke elementen nodig:
+We hebben nu echter **nog geen applicatie**. Daarvoor zijn er nog twee belangrijke elementen nodig in onze code:
 
-* Een **lijst** van BasketItem-objecten die kan worden bijgewerkt.
-* Een **event loop** waar we de nodige acties implementeren.
+* een **lijst** van objecten van de klasse `BasketItem` die kan worden bijgewerkt
+* een **event loop** waarin we de nodige acties implementeren
 
-#### Lijst van BasketItem-objecten
+#### Lijst van `BasketItem`-objecten
 
-De **eerste stap** is een **lijst** aan te maken als globale variable waarin we BasketItems kunnen toevoegen en bewerken.
+De **eerste stap** is een **lijst** aan te maken als globale variabele waarin we objecten van de klasse `BasketItem` kunnen toevoegen en bewerken.
 
 ~~~python
 from dataclasses import dataclass
@@ -241,17 +240,13 @@ items = []
 #### Event loop (oneindige lus)
 
 De applicatie moet natuurlijk nog wel iets doen, dus als **eerste stap** zetten we de **interactie met de gebruiker** op.  
-Om met de gebruiker te interageren voegen we:
+Om met de gebruiker te interageren, voegen we een **oneindige lus** toe waarin we telkens **invoer** vragen aan de gebruiker.
 
-* Een **oneindige lus** toe
-* Waar we telkens **input** gaan vragen aan de gebruiker
-* Als deze gebruiker antwoordt (**event**)
-* Voeren we een **actie** uit 
-* En geven we **feedback** aan de gebruiker
+Als deze gebruiker antwoordt (**event**), voeren we een **actie** uit en geven we **feedback** aan de gebruiker.
 
 Zo'n lus is wat we noemen een **event loop**. Telkens als de gebruiker invoer geeft, zal deze event loop een reactie geven.
 
-Een eerste versie van de loop...
+Ziehier een eerste versie van de lus...
 
 ~~~python
 from dataclasses import dataclass
@@ -267,14 +262,14 @@ while True:
     pass
 ~~~
 
-Hier ontbreekt nog een stuk om van een event loop te spreken...
+Uiteraard ontbreekt hier nog een stuk om van een event loop te spreken...
 
 > Het statement `pass` gebruiken we hier slechts tijdelijk omdat we hier nog geen invulling hebben gegeven aan onze lus.
 
 #### Event loop (menu)
 
 Een **oneindige lus** is natuurlijk **niet voldoende**, de gebruiker moet een **menu** hebben.
-We printen hier het menu telkens en vragen gebruikersinvoer op via de functie `input()`.
+We tonen hier het menu telkens en vragen gebruikersinvoer op via de functie `input()`.
 
 ~~~python
 from dataclasses import dataclass
@@ -301,7 +296,7 @@ De **gebruikersinvoer** wordt opgevraagd en **in een variabele opgeslagen**, maa
 #### Event loop (if-else)
 
 We moeten er natuurlijk voor zorgen dat deze **gebruikersinvoer verwerkt** wordt.  
-Hiervoor voegen we een **if/elif-structuur** toe voor elke **menu-optie**.
+Hiervoor voegen we een **if/elif/else-structuur** toe voor de **menu-opties**.
 
 ~~~python
 from dataclasses import dataclass
@@ -356,15 +351,15 @@ Foutieve keuze
 ~~~
 
 ...en zien dat de boodschappen worden getoond overeenkomstig de keuzes die je maakt.  
-Het **basisskelet** van onze **event loop** lijkt **ok** te zijn.  
+Het **basisskelet** van onze **event loop** lijkt in orde te zijn.  
 
-Sluit het programma voorlopig af met de toetsencombinatie Ctrl+c.
+Sluit het programma voorlopig af met de toetsencombinatie Ctrl+C.
 
 ### Git: Een tweede commit...
 
-Een nieuw onderdeel van onze applicatie is **ontwikkeld** en **getest**. We gaan nu deze **codewijziging** toevoegen aan onze **git-repository**.
+We hebben dus een nieuw onderdeel van onze applicatie **ontwikkeld** en **getest**. We gaan nu deze **codewijziging** toevoegen aan onze **Git-repository**.
 
-Als we de status opvragen, geeft git aan dat er een nieuwe wijziging is:  
+Als we de status opvragen, geeft Git aan dat er een nieuwe wijziging is:  
 
 ~~~
 $ git status
@@ -377,8 +372,8 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
 
-Wij hebben deze **wijziging** echter **nog niet klaargezet** voor de commit.  
-Hier voor gebruiken we opnieuw het commando `git add` met de bestandsnaam.
+We hebben deze **wijziging** echter **nog niet klaargezet** voor de commit.  
+Hiervoor gebruiken we opnieuw de opdracht `git add` met de bestandsnaam.
 
 ~~~
 $ git add basket.py
@@ -398,7 +393,7 @@ $ git commit -m "Add basic event loop and menu"
  1 file changed, 20 insertions(+)
 ~~~
 
-Merk op dat onze **git-historiek** nu ook **twee commits** bevat:
+Merk op dat onze **Git-historiek** nu **twee commits** bevat:
 
 ~~~
 $ git log
@@ -419,9 +414,9 @@ Date:   Sat Nov 5 18:03:57 2022 +0100
 > Probeer nu even de **wijzigingen** te **bestuderen** van elke commit via `git show <commit-id>`.  
 > Normaal gezien is het voldoende van enkel de eerste vijf tekens van je commit-id te typen.
 
-### Code schrijven: programma/event-loop beëindigen
+### Code schrijven: programma/event loop beëindigen
 
-Tot nog toe moesten we ons eerste programma afsluiten met **Ctrl+c**  
+Tot nog toe moesten we ons programma afsluiten met **Ctrl+C**.  
 Het eerste event dat we al kunnen afwerken is **"3> Sluit af"**, zodat we het programma op een elegante manier kunnen afsluiten.
 
 Hiervoor gebruiken we de Python-functie `exit()` die het programma afsluit.
@@ -476,7 +471,7 @@ Programma wordt afgesloten
 
 ### git: diff en nog commits
 
-We gaan deze wijziging/vooruitgang ook **bewaren** in de git-repository.  
+We gaan deze wijziging/vooruitgang ook **bewaren** in de Git-repository.  
 Alvorens dit te doen, gebruiken we de opdracht `git diff` om te inspecteren wat we hebben gewijzigd ten opzichte van de vorige commit.
 
 ~~~
@@ -549,7 +544,7 @@ Date:   Sat Nov 5 18:03:57 2022 +0100
     Create class BasketItem
 ~~~
 
-...en we zien dat de **git-historiek** zich langzaam maar zeker begint **op te bouwen**
+...en we zien dat de **Git-historiek** zich langzaam maar zeker begint **op te bouwen**.
 
 ### Code schrijven: items tonen
 
@@ -619,7 +614,7 @@ Als we dit testen, zien we dat de **hardcoded lijst** correct wordt **getoond**.
 
 ### git: ... volgende commit
 
-We voegen onze **wijzigingen** toe aan de git-repository met een commit:
+We voegen onze **wijzigingen** toe aan de Git-repository met een commit:
 
 ~~~
 $ git add basket.py
@@ -633,9 +628,9 @@ $ git commit -m "Print available items"
 Om er een **interactieve applicatie** van te maken, moeten we het **winkelmandje** aanvullen op basis van **gebruikersinvoer**.  
 We doen dit door **event 1** te **implementeren**, dat bestaat uit de volgende drie taken:
 
-* Vraag **gebruikersinvoer** op (beschrijving en prijs)
-* **Maak BasketItem-object** aan op basis van invoer
-* Voeg BasketItem-object toe aan **lijst**
+* Vraag **gebruikersinvoer** op (beschrijving en prijs).
+* Maak **object** van de klasse `BasketItem` aan op basis van invoer.
+* Voeg het object toe aan de **lijst** met items.
 
 > Let op: vergeet niet om hierbij ook de eerder aangemaakte **hardcoded** lijst te verwijderen!
 
@@ -711,12 +706,12 @@ Programma wordt afgesloten
 
 De test is correct uitgevoerd:
 
-* We kunnen meerdere items **toevoegen**
-* En deze nog altijd **tonen**
+* We kunnen meerdere items **toevoegen**.
+* En deze nog altijd **tonen**.
 
 ### git: ... volgende commit
 
-We **voegen** onze wijzigingen **toe** aan de git-repository:
+We **voegen** onze wijzigingen **toe** aan de Git-repository:
 
 ~~~
 $ git add basket.py
@@ -769,7 +764,7 @@ We voeren opnieuw dezelfde test uit die we bij de vorige commit hadden uitgevoer
 
 ### git: ...volgende commit
 
-We kunnen dus opnieuw een commit toevoegen hiervoor, met een korte duidelijke boodschap:
+We kunnen dus opnieuw een commit toevoegen hiervoor, met een korte, duidelijke boodschap:
 
 ~~~
 $ git add basket.py
@@ -781,11 +776,11 @@ $ git commit -m "Don't create variable when adding item to basket"
 ### Code schrijven: Voeg een attribuut quantity toe
 
 In een winkelmandje dien je soms **meerdere items** van **hetzelfde product** bij te houden.  
-Om dit op te lossen, voegen we aan onze klasse BasketItem een **attribuut quantity** toe, en vragen we dit attribuut ook aan de gebruiker.
+Om dit op te lossen, voegen we aan onze klasse `BasketItem` een **attribuut** `quantity` toe, en vragen we dit attribuut ook aan de gebruiker.
 
 We willen dit attribuut optioneel maken en de standaardwaarde 1 geven. Tegelijk willen we de bestaande attributen die momenteel een standaardwaarde hebben (en dus optioneel zijn) verplicht maken.
 
-Daarnaast voegen we een methode `total_price()` aan de klasse BasketItem toe om de totale prijs op basis van de itemprijs en de hoeveelheid te berekenen.
+Daarnaast voegen we een methode `total_price()` aan de klasse `BasketItem` toe om de totale prijs op basis van de itemprijs en de hoeveelheid te berekenen.
 
 Binnen de event loop passen we dan ook de `print()` aan zodat die niet de prijs van één item toont, maar van de gegeven hoeveelheid items.
 
@@ -831,7 +826,7 @@ while True:
         print("Foutieve keuze")
 ~~~
 
-Als we dit dan **uittesten**, krijgen we volgende output
+Als we dit dan **uittesten**, krijgen we volgende uitvoer:
 
 ~~~
 $ python basket.py
@@ -871,7 +866,7 @@ $ git commit -m "Add quantity to BasketItem"
 ### Totaal van de items
 
 Interessant om te weten als gebruiker is de **totale prijs** van deze items.  
-Hiervoor voegen we een loop toe binnen **event 2**
+Hiervoor voegen we een lus toe binnen **menu-item 2**:
 
 ~~~python
 from dataclasses import dataclass
@@ -956,7 +951,7 @@ De test is geslaagd...
 
 ### git: volgend commit...
 
-...We kunnen dit **committen**
+We kunnen dit **committen**:
 
 ~~~
 $ git add basket.py 
@@ -965,17 +960,17 @@ $ git commit -m "Add total price of all items"
  1 file changed, 3 insertions(+)
 ~~~
 
-### Basket-klasse
+### Klasse `Basket`
 
-We kunnen het het beheer van verschillende items in een afzonderlijke klasse onderbrengen.  We noemen deze klasse **Basket**.
+We kunnen het beheer van verschillende items in een afzonderlijke klasse onderbrengen. We noemen deze klasse `Basket`.
 
 Dit kan ook interessant zijn als we ooit de applicatie uitbreiden om meerdere winkelmandjes bij te houden (bijvoorbeeld voor verschillende gebruikers).
 
 Deze klasse bevat:
 
-* Een **lijst** met **items**
-* Een methode om een **item toe te voegen**
-* Een methode om de **totale prijs** te berekenen
+* een **lijst** met **items**
+* een methode om een **item toe te voegen**
+* een methode om de **totale prijs** te berekenen
 
 ~~~python
 from dataclasses import dataclass
@@ -1047,15 +1042,15 @@ $ git commit -m "Add Basket class to manage group of items"
  1 file changed, 20 insertions(+), 6 deletions(-)
 ~~~
 
-### Error handling: negatieve invoer 
+### Foutenafhandeling: negatieve invoer 
 
 Tot nu toe hebben we geen controles uitgevoerd op negatieve waardes.  
-We passen de volgende regels toe:
+We gaan vanaf nu de volgende regels toepassen:
 
 * Enkel een hoeveelheid toelaten > 0
 * Enkel een prijs toelaten >= 0
 
-We gaan deze controles toevoegen in de klasse BasketItem.  
+We gaan deze controles toevoegen in de klasse `BasketItem`.  
 
 Het idee is om vanuit de constructor een exception op te werpen om te vermijden dat er een item met ongeldige data wordt aangemaakt.
 
@@ -1176,10 +1171,10 @@ $ git commit -m "Exception handling for negative values"
  1 file changed, 26 insertions(+), 11 deletions(-)
 ~~~
 
-### Error handling: niet-gehele getallen
+### Foutenafhandeling: niet-gehele getallen
 
 Als we momenteel geen getal maar een string invoeren voor de hoeveelheid of de prijs, zal de applicatie crashen.  
-We zullen dit opvangen door ook de exception `ValueError` op te vangen binnen de event loop.
+We zullen dit afhandelen door ook de exception `ValueError` op te vangen binnen de event loop.
 
 ~~~python
 class InvalidQuantityException(Exception):

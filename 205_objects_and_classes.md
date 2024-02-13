@@ -2,12 +2,12 @@
 
 Tot nog toe hebben we voornamelijk gewerkt met twee soorten datatypes:
 
-* Enkelvoudige datatypes: kunnen één enkele waarde bevatten, voorbeelden zijn int, float, bool
-* Collecties: vormen een container voor meerdere waardes: list
+* Enkelvoudige datatypes: kunnen één enkele waarde bevatten, voorbeelden zijn `int`, `float`, `bool`
+* Collecties: vormen een container voor meerdere waardes: `list`, `set`
 
-> Nota: Wat met een string (str)? Die wordt doorgaans als enkelvoudig datatype beschreven. Maar eigenlijk kun je een string beschouwen als een lijst van tekens, en dus is het ook een soort collectie...
+> Nota: Wat met een string (`str`)? Die wordt doorgaans als enkelvoudig datatype beschreven. Maar eigenlijk kun je een string beschouwen als een lijst van tekens, en dus is het ook een soort collectie...
 
-In dit deel bekijken we klassen in Python, waarmee we data op willekeurige manieren kunnen structureren in een datatype dat we 'op maat van onze toepassing' kunnen maken.
+In dit deel bekijken we klassen in Python, waarmee we data op willekeurige manieren kunnen structureren in een datatype dat we 'op maat van onze toepassing' maken.
 
 ### Voorbeeld: studentenapplicatie
 
@@ -38,7 +38,7 @@ Is er een manier om alle studentdata gestructureerd bij elkaar te houden?
 
 ### Gestructureerd programmeren met klassen
 
-In Python kan je dit met klassen.    
+In Python kun je dit met klassen.    
 Een klasse is een **gestructureerd datatype** dat je toelaat om verschillende waardes (of attributen) te **groeperen** onder één enkel **object**.  
 
 ### Dataklasse voor studenten
@@ -75,8 +75,8 @@ Kortom, we definiëren hier een klasse Student met als attributen `first_name`, 
 Als je een variabele aanmaakt van een klasse noemen we dit een **object**.  
 Onderstaande code:
 
-* Definieert zo'n type
-* Instantieert een object van dit type
+* definieert zo'n type
+* instantieert een object van dit type
 
 ~~~python
 from dataclasses import dataclass
@@ -104,7 +104,7 @@ Deze **constructor**:
 
 ### Werken met attributen
 
-Een object bestaat uit attributen (`first_name`, `surname`, `lab_points`, `theory_points`), zoals deze in de klasse werden beschreven. Elk van deze attributen is een variabele die bij dit object hoort.
+Een object bestaat uit attributen (`first_name`, `surname`, `lab_points`, `theory_points`), zoals deze in de klasse werden beschreven. Elk van deze attributen kun je beschouwen als een variabele die bij dit object hoort.
 
 Onderstaand voorbeeld illustreert hoe je deze attributen gebruikt.
 
@@ -127,11 +127,11 @@ jan.lab_points = 15
 print(f"{jan.first_name} {jan.surname} heeft {jan.lab_points} op het labo en {jan.theory_points} op theorie.")
 ~~~
 
-Je kan deze attributen via de dot-notatie - objectnaam gevolgd door punt gevolgd door naam - uitlezen en bewerken, net zoals je dit zou doen bij gewone variabelen.
+Je kan deze attributen via de dot-notatie - objectnaam gevolgd door punt gevolgd door naam van het attribuut - uitlezen en bewerken, net zoals je dit zou doen bij gewone variabelen.
 
 ### Meerdere objecten
 
-Vanzelfsprekend kan je ook meerdere objecten van ditzelfde type aanmaken. Bovendien kan je de attributen al in de constructor een waarde geven:
+Vanzelfsprekend kun je ook meerdere objecten van ditzelfde type aanmaken. Bovendien kun je de attributen al in de constructor een waarde geven:
 
 ~~~python
 from dataclasses import dataclass
@@ -157,7 +157,7 @@ print(f"{jan.first_name} {jan.surname} heeft {jan.lab_points} op het labo en {ja
 print(f"{piet.first_name} {piet.surname} heeft {piet.lab_points} op het labo en {piet.theory_points} op theorie.")
 ~~~
 
-In dit voorbeeld kan je duidelijk zien dat de attributen verbonden zijn aan het object: `jan.lab_points` is niet hetzelfde als `piet.lab_points`.
+In dit voorbeeld kun je duidelijk zien dat de attributen verbonden zijn aan het object: `jan.lab_points` is niet hetzelfde als `piet.lab_points`.
 
 ### Meerdere objecten in een lijst
 
@@ -194,10 +194,9 @@ for student in students:
     print(f"{student.first_name} {student.surname} heeft {student.lab_points} op het labo en {student.theory_points} op theorie.")
 ~~~
 
-We maken dus eerst een lege lijst aan. Daarna maken we twee keer een Student-object aan, geven de attributen van dit object een waarde en voegen het object aan de lijst toe. Daarna overlopen we in een for-lus alle objecten in de lijst en tonen we hun attributen.
+We maken dus eerst een lege lijst aan. Daarna maken we twee keer een object van de klasse `Student` aan, geven de attributen van dit object een waarde en voegen het object aan de lijst toe. Daarna overlopen we in een `for`-lus alle objecten in de lijst en tonen we hun attributen.
 
-Aangezien je een lijst bijhoudt, is het niet meer nodig om aparte variabelen `jan` en `piet` te definiëren.  
-Je kan via de constructor direct de student-objecten/instanties toevoegen aan de lijst:
+Aangezien je een lijst bijhoudt, is het niet meer nodig om aparte variabelen `jan` en `piet` te definiëren. Je kan in de plaats via de constructor direct de objecten/instanties van de klasse `Student` toevoegen aan de lijst:
 
 ~~~python
 from dataclasses import dataclass
@@ -259,9 +258,9 @@ In de volgende regel:
 self.first_name = first_name
 ~~~
 
-verwijst `self.first_name` dus naar het attribuut `first_name` van het object, terwijl `first_name` aan de rechterkant van de assignment verwijst naar het argument van de methode `__init__`.
+verwijst `self.first_name` dus naar het attribuut `first_name` van het object, terwijl `first_name` aan de rechterkant van de assignment verwijst naar het gelijknamie argument van de methode `__init__`.
 
-Bovenstaande code doet exact hetzelfde als de gelijknamige code met de dataklasse die we eerder zagen.
+Bovenstaande code doet exact hetzelfde als de gelijknamige code met de dataklasse die we eerder zagen, maar op basis hiervan kunnen we nu variëren.
 
 ### Constructor zonder types en standaardwaardes
 
@@ -300,8 +299,8 @@ Wat is hier mis? Omdat we nu geen standaardwaardes meer gedefinieerd hebben in d
 
 ### Methodes van een klasse
 
-Naast attributen kan je ook methodes toevoegen.  
-Dit zijn functies die gekoppeld worden aan een object (een instantie van een klasse). De constructor was een eerste speciaal voorbeeld.  
+Naast attributen kun je ook willekeurige methodes toevoegen.  
+Dit zijn functies die gekoppeld worden aan een object (een instantie van een klasse). De constructor was zoals we al zagen een eerste speciaal geval hiervan.  
 
 In onderstaand voorbeeld voegen we een methode toe die de uiteindelijke punten berekent van de studenten:
 
@@ -327,7 +326,7 @@ for student in students:
     print(f"{student.first_name} {student.surname} heeft {student.lab_points} op het labo en {student.theory_points} op theorie, of {student.points()} in totaal.")
 ~~~
 
-We definiëren dus een functie `points` met als enige parameter `self` dat naar het object zelf verwijst. Omdat we deze functie in het blok van de klasse Student definiëren, is dit een methode. Hierin tellen we de attributen `lab_points` en `theory_points` van het object op (let op: daarvoor moeten we `self` en de dot-notatie gebruiken) en delen we dit door 2. Het resultaat geven we met `return` terug.
+We definiëren dus een functie `points` met als enige parameter `self` dat naar het object zelf verwijst. Omdat we deze functie in het blok van de klasse `Student` definiëren, is dit een methode. Hierin tellen we de attributen `lab_points` en `theory_points` van het object op (let op: daarvoor moeten we `self` en de dot-notatie gebruiken) en delen we dit door 2. Het resultaat geven we met `return` terug.
 
 Als we dit uitvoeren, krijgen we:
 
@@ -344,11 +343,10 @@ Let op het verschil tussen attribuut en methode:
 
 ### De methode `__str__`
 
-Een andere speciale methode (eerder hadden we al reeds de constructor gezien) is de string-methode.  
-Als je de methode `__str__` toevoegt zal deze automatisch worden aangeroepen als je een object naar een string wilt converteren:
+Een andere speciale methode (eerder hadden we al reeds de constructor gezien) is de methode `__str__`. Als je die aan een klasse toevoegt, wordt die automatisch aangeroepen wanneer je een object van de klasse naar een string wilt converteren:
 
-* Door de functie `str()` te gebruiken.
-* Door het object mee te geven aan de functie `print()` (die op zijn beurt `str()` aanroept).
+* door de functie `str()` te gebruiken
+* door het object mee te geven aan de functie `print()` (die op zijn beurt `str()` aanroept)
 
 ~~~python
 class Student:
