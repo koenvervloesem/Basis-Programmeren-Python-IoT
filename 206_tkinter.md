@@ -1,13 +1,12 @@
 ## GUI's met TkInter
 
-We zijn van start gegaan met het schrijven van programma's in de console.  
-Met hulp van de functies `input()` en `print()`waren we in staat om de applicaties wat **interactief** te maken.
+We zijn van start gegaan met het schrijven van programma's in de console: CLI (Command Line Interface). Met behulp van de functies `input()` en `print()` waren we in staat om onze toepassingen wat **interactief** te maken.
 
-Met behulp van TkInter gaan we nu grafische applicaties of GUI's maken (GUI = **G**raphical **U**ser **I**nterface).
+Met behulp van TkInter gaan we nu grafische toepassingen of GUI's maken (Graphical User Interface).
 
 ### Leeg scherm
 
-We starten met een eenvoudige applicatie: 
+We starten met een eenvoudige toepassing: 
 
 ~~~python
 from tkinter import Tk
@@ -16,16 +15,16 @@ window = Tk()
 window.mainloop()
 ~~~
 
-Je dient hiervoor de module tkinter te importeren. Vervolgens maak je een `Tk`-object, dat het venster van ons programma voorstelt.
+Je dient hiervoor de module `tkinter` te importeren. Vervolgens maak je een `Tk`-object, dat het venster van ons programma voorstelt.
 
 Als laatste regel van deze code roep je de methode `mainloop()`van het `Tk`-object aan.  
 Deze zal de grafische interface starten en in de achtergrond een oneindige lus draaien, die er voor zorgt dat het programma actief blijft.
 
-Als resultaat krijg je dan een lege applicatie.
+Als resultaat krijg je dan een lege toepassing:
 
 ![](tkinter_empty.png)
 
-Deze kan je minimaliseren, maximaliseren en sluiten (via het kruisje) zoals een standaard GUI-applicatie.
+Deze kun je minimaliseren, maximaliseren en sluiten (via het kruisje) zoals een standaard grafische toepassing.
 
 > Let wel, het uitzicht van de toepassing kan licht variëren afhankelijk van het besturingssysteem.
 
@@ -50,7 +49,7 @@ De GUI die TkInter toont, bestaat uit twee onderdelen:
 * De **titelbalk** (titel en acties)
 * Het **canvas** waarop je **grafische elementen** of **widgets** kunt plaatsen
 
-Een eerste element dat je op het canvas kunt plaatsen is een **label**. Dit is een stuk tekst dat je programmatorisch kunt manipuleren:
+Een eerste element dat je op het canvas kunt plaatsen is een **label**. Dat is een stuk tekst dat je programmatorisch kunt manipuleren:
 
 ~~~python
 from tkinter import Tk
@@ -68,7 +67,7 @@ lbl.pack()
 window.mainloop()
 ~~~
 
-Merk op dat nu naast `Tk` uit de module `tkinter` nu ook de klasse `Label` uit de module `tkinter.ttk` importeren.
+Merk op dat we nu naast `Tk` uit de module `tkinter` nu ook de klasse `Label` uit de module `tkinter.ttk` importeren.
 
 We maken dus een label aan, dat we aan het venster toekennen en dat we een specifieke tekst geven die het label moet tonen. Daarna voeren we de methode `pack()` op dit label uit. Hiermee wordt het label in het venster geplaatst, standaard bovenaan.
 
@@ -78,7 +77,7 @@ Het resultaat ziet er als volgt uit:
 
 ### button
 
-Een meer **interactieve widget** die je op een canvas kunt zetten is een **button**:
+Een meer **interactieve widget** die je op een canvas kunt zetten, is een **button**:
 
 ~~~python
 import sys
@@ -111,7 +110,7 @@ Overigens kun je met het argument `side="left"` of `side="right"` bij het oproep
 
 ### Lettertype, lettergrootte en kleuren aanpassen
 
-Voor elk van de widgets kun je het lettertype, de lettergrootte en de kleur van de letters of de achtergrond instellen:
+Voor elk van de widgets kun je het lettertype, de lettergrootte (in pixels) en de kleur van de letters of de achtergrond instellen:
 
 ~~~python
 import sys
@@ -137,7 +136,7 @@ button.pack()
 window.mainloop()
 ~~~
 
-Het uiterlijk van widgets aanpassen doen we door een `Style`-object aan te maken en daarmee stijlen te configureren. Zo geven we met `style.configure("TLabel", font=("Arial Bold", 40))` aan dat alle TkInter-widgets van het type `Label` als lettertype "Arial Bold" met grootte 40 gebruiken. Het label dat we daarna aanmaken, krijgt dus automatisch deze stijl.
+Het uiterlijk van widgets aanpassen doen we door een `Style`-object aan te maken en daarmee stijlen te configureren. Zo geven we met `style.configure("TLabel", font=("Arial Bold", 40))` aan dat alle TkInter-widgets van het type `Label` als lettertype "Arial Bold" met een grootte van 40 pixels gebruiken. Het label dat we daarna aanmaken, krijgt dus automatisch deze stijl.
 
 Hetzelfde doen we daarna met de stijl voor het `Button`-object. We definiëren die stijl met `style.configure("TButton", foreground="white", background="black")`.
 
@@ -186,7 +185,7 @@ Dan krijg je dit te zien:
 
 ### Een actie aan een knop koppelen (1)
 
-We hebben hiervoor al gezien hoe je een actie aan een knop koppelt. We koppelden namelijk de functie `sys.exit` aan de knop. Hetzelfde kun je doen met je zelfgedefinieerde functies:
+We hebben hiervoor al gezien hoe je een actie aan een knop koppelt. We koppelden namelijk de functie `sys.exit` aan de knop. Hetzelfde kun je doen met functies die je zelf definieert:
 
 ~~~python
 import sys
@@ -278,11 +277,11 @@ Vul je nu "Test" in het tekstveld in en klik je dan op de onderste knop, dan ver
 
 ![](tkinter_button3_after.png)
 
-Dit gebeurt dankzij de functie `clicked`. Die wordt uitgevoerd wanneer je op de onderste knop klikt, en die haalt de waarde uit het tekstveld met `txt.get()` en kent die toe aan de tekst van het label.
+Dit gebeurt dankzij de functie `clicked`. Die wordt uitgevoerd wanneer je op de onderste knop klikt. De functie haalt de waarde uit het tekstveld met `txt.get()` en kent die toe aan de tekst van het label.
 
 ### Uitklaplijst
 
-Een laatste widget in TkInter dat we bekijken is de `Combobox`, een uitklaplijst met waardes waaruit je kunt kiezen. We kunnen onze vorige code dus aanpassen zodat je geen vrije tekst invult, maar uit een lijst van opties kiest wat er in het label komt te staan:
+Een laatste widget in TkInter dat we bekijken, is de `Combobox`: een uitklaplijst met waardes waaruit je kunt kiezen. We kunnen onze vorige code dus aanpassen zodat je geen vrije tekst invult, maar uit een lijst van opties kiest wat er in het label komt te staan:
 
 ~~~python
 import sys
@@ -332,5 +331,5 @@ Selecteer je nu in de uitklaplijst bijvoorbeeld de waarde 5 en klik je dan op de
 
 Meer informatie over TkInter vind je in de documentatie van het pakket:
 
-* https://docs.python.org/3/library/tkinter.html
-* https://docs.python.org/3/library/tkinter.ttk.html
+* <https://docs.python.org/3/library/tkinter.html>
+* <https://docs.python.org/3/library/tkinter.ttk.html>

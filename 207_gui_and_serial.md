@@ -6,7 +6,7 @@ We hebben twee soorten microcontrollerbordjes voorbereid: enkele met CircuitPyth
 
 ### CircuitPython-bordjes
 
-CircuitPython (https://circuitpython.org) is een afgeslankte versie van de programmeertaal Python, zodat je er microcontrollers mee kunt programmeren. CircuitPython ondersteunt honderden microcontrollerbordjes (https://circuitpython.org/downloads), maar voor onze code hebben we een bordje nodig dat seriële communicatie via USB CDC (https://docs.circuitpython.org/en/latest/shared-bindings/usb_cdc/index.html) ondersteunt. Dat zijn bijvoorbeeld:
+CircuitPython (<https://circuitpython.org>) is een afgeslankte versie van de programmeertaal Python, zodat je er microcontrollers mee kunt programmeren. CircuitPython ondersteunt honderden microcontrollerbordjes (<https://circuitpython.org/downloads>), maar voor onze code hebben we een bordje nodig dat seriële communicatie via USB CDC (<https://docs.circuitpython.org/en/latest/shared-bindings/usb_cdc/index.html>) ondersteunt. Dat zijn bijvoorbeeld:
 
 * Arduino Nano RP2040 Connect (microUSB)
 * Raspberry Pi Pico (microUSB)
@@ -72,7 +72,7 @@ De rest van de code bestaat uit een oneindige lus, die continu wacht op binnenko
 
 ### Arduino-code voor het Digispark-ontwikkelbordje
 
-Een ander microcontrollerbordje is de Digispark, dat goedkoop is (ca. € 2,5), klein (2 x 2 cm) en eenvoudig zonder kabel in een vrije usb-poort van je computer past. Het is gebaseerd op de ATtiny85 AVR-microcontroller. De Digispark is ondersteund in de Arduino IDE. Volg daarvoor de instructies op http://digistump.com/wiki/digispark/tutorials/connecting. Een nadeel is dat er geen ondersteunde drivers voor nieuwe Windows-versies van bestaan.
+Een ander microcontrollerbordje is de Digispark, dat goedkoop is (ca. € 2,5), klein (2 x 2 cm) en eenvoudig zonder kabel in een vrije usb-poort van je computer past. Het is gebaseerd op de ATtiny85 AVR-microcontroller. De Digispark is ondersteund in de Arduino IDE. Volg daarvoor de instructies op <http://digistump.com/wiki/digispark/tutorials/connecting>. Een nadeel is dat er geen ondersteunde drivers voor nieuwe Windows-versies van bestaan.
 
 We draaien op de Digispark de volgende code:
 
@@ -133,7 +133,7 @@ void loop() {
 }
 ~~~
 
-Dit is C++-code, en dit valt buiten het bestek van de cursus Basis programmeren, omdat C++ een andere taal is dan Python. Later in de cursus Embedded programmeren leren jullie C-code, wat een gelijkaardige taal is. Maar we leggen hier kort even uit wat de code doet.
+Dit is C++-code, en dit valt buiten het bestek van de cursus 'Basis programmeren', omdat C++ een andere taal is dan Python. Later in de cursus 'Embedded programmeren' leren jullie C-code, wat een gelijkaardige taal is. Maar we leggen hier kort even uit wat de code doet.
 
 In de functie `setup()` initialiseren we de USB-poort als een seriële interface. We stellen ook `LED_PIN` (eerder in de code gedefinieerd als pin 1) als uitvoer in. Dat betekent dat we er later een waarde 0 of 1 naar kunnen schrijven om wel of geen spanning over de pin te zetten.
 
@@ -143,7 +143,7 @@ De functie `loop()` wordt keer op keer uitgevoerd zolang de microcontroller draa
 
 Als je je microcontrollerbordje op een USB-poort van je computer aansluit, dan blijft het wachten op opdrachten van je computer.
 
-De Python-code om de microcontroller aan te sturen, maakt niet alleen gebruik van TkInter voor de grafische interface, maar ook van de externe Python-bibliotheek pySerial (https://pyserial.readthedocs.io) voor de communicatie over de seriële interface. Installeer pySerial met:
+De Python-code om de microcontroller aan te sturen, maakt niet alleen gebruik van TkInter voor de grafische interface, maar ook van de externe Python-bibliotheek pySerial (<https://pyserial.readthedocs.io>) voor de communicatie over de seriële interface. Installeer pySerial met:
 
 ~~~
 pip install pyserial
@@ -253,7 +253,7 @@ led = Led(window, port_manager)
 window.mainloop()
 ~~~
 
-Wat gebeurt er hier allemaal? In de klasse `SerialPortManager` creëren we in de constructor een combobox. De waardes hierin zijn alle poorten die pySerial vindt met de functie `comports()`. We maken hier gebruik van iets nieuws, een **list comprehension**. De functie `comports()` geeft namelijk een lijst terug met objecten, waarvan we een lijst met strings maken: `[f"{port.device} ({port.manufacturer})" for port in comports()]`.
+Wat gebeurt er hier allemaal? In de klasse `SerialPortManager` creëren we in de constructor een combobox. De waardes hierin zijn alle poorten die pySerial vindt met de functie `comports()`. We maken hier gebruik van een **list comprehension**. De functie `comports()` geeft namelijk een lijst terug met objecten, waarvan we een lijst met strings maken: `[f"{port.device} ({port.manufacturer})" for port in comports()]`.
 
 We maken in de constructor van `SerialPortManager` ook een knop aan. Als je hierop klikt, roept die de methode `connect` van de klasse aan. Hierin maken we een `Serial`-object van pySerial aan met als poort de poort die je gekozen hebt in de combobox, en enkele andere verbindingsparameters. Daarna kun je met de methode `write_command` van de klasse `SerialPortManager` een opdracht naar de seriële interface schrijven. De code leest daarna ook een byte terug, want de microcontroller stuurt een byte met de nieuwe toestand van de led terug. Die waarde zetten we met `decode` naar een string om en geven we terug.
 
