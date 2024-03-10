@@ -12,7 +12,7 @@ Als vervolg gaan we nu leren werken met relationele databases.
 Eerder maakten we melding van het verschil tussen client-server en embedded databases.  
 In dit deel van de cursus (kennismaking met SQL) maken we gebruik van een **embedded database** vanwege de **gebruiksvriendelijkheid** en de **snelheid van ontwikkeling**. We hoeven zo geen server op te zetten.
 
-We kiezen voor de embedded database **SQLite** (https://www.sqlite.org).  
+We kiezen voor de embedded database **SQLite** (<https://www.sqlite.org>).  
 Deze wordt binnen de industrie gebruikt door talloze toepassingen:
 
 * Opslag voor het besturingssysteem en apps in Android en iOS
@@ -25,7 +25,7 @@ Deze wordt binnen de industrie gebruikt door talloze toepassingen:
 
 Om met SQLite te leren werken, starten we met het gebruik van een handige tool om SQL-opdrachten uit te voeren op deze database.
 
-Download DB Browser for SQLite op https://sqlitebrowser.org of via de pakketbeheerder van je Linux-distributie (bijvoorbeeld `sudo apt install sqlitebrowser` onder Debian of Ubuntu).
+Download DB Browser for SQLite op <https://sqlitebrowser.org> of via de pakketbeheerder van je Linux-distributie (bijvoorbeeld `sudo apt install sqlitebrowser` onder Debian of Ubuntu).
 
 ### Database aanmaken
 

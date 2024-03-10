@@ -84,13 +84,13 @@ In dit geval draait de database **op dezelfde machine** en in de **meeste gevall
 ### Relationele databases (of databanken)
 
 Voorgaande opdeling was op basis van **infrastructuur**.  
-Daarnaast kun je ook een opdeling maken tussen database op basis van **technologie**, zoals er zijn **relationele**, **documentgebaseerde**, ...  
+Daarnaast kun je ook een opdeling maken van databases op basis van **technologie**, zoals er zijn **relationele**, **documentgebaseerde**, ...  
 
 De databasetechnologie die wij gaan gebruiken zijn **relationele databases**, of ook wel **RDBMS** (relational database management system) genoemd.
 
 Zo'n database is in de kern gebaseerd op een aantal **basisprincipes**:
 
-* Data wordt gestructureerd opgeslagen in **tabellen**.
+* Data worden gestructureerd opgeslagen in **tabellen**.
 * Deze tabellen bestaan uit **kolommen** of **velden**.
 * Men kan **relaties** of verbanden leggen **tussen** deze **tabellen** (vandaar de naam **relationeel**).
 * Om deze **verbanden** te kunnen leggen, maakt men gebruik van **sleutels** of **keys**.

@@ -221,7 +221,7 @@ Om die functies (en klassen als die er zouden zijn) te gebruiken, diende je ze t
 
 Dit heeft als voordeel dat je niet zomaar **conflicten** kunt hebben met gelijknamige functies uit andere modules (of je eigen code), maar het geeft wel wat extra typewerk.
 
-Soms wil je dat typewerk liever besparen. Dat kan met de volgende **from ... import ... constructie**: 
+Soms wil je dat typewerk liever besparen. Dat kan met de volgende `from` ... `import` ... constructie: 
 
 ~~~python
 from hello import world
@@ -273,7 +273,7 @@ world
 hello
 ~~~
 
-Of je gebruik \* om alle functies te importeren.
+Of je gebruikt `*` om alle functies te importeren.
 
 > Let op:  
 > Het gebruik van `import *` is meestal geen goed idee.
@@ -287,9 +287,9 @@ world()
 hello()
 ~~~
 
-### Herwerken van studenten-applicatie
+### Herwerken van studentenapplicatie
 
-Als voorbeeld van een modularisatie gaan we onze voorgaande studenten-applicatie in modules opsplitsen.  
+Als voorbeeld van een modularisatie gaan we onze voorgaande studentenapplicatie in modules opsplitsen.  
 Als je de code bekijkt, zou je deze in drie delen kunnen opsplitsen:
 
 * **student_command.py**   
@@ -306,7 +306,7 @@ Elk stuk code heeft zijn eigen verantwoordelijkheid.
 In onderstaand diagram zie je ook de relaties en afhankelijkheden tussen de modules onderling.
 
 * Bovenaan staat de command-line-module, deze heeft de service-module nodig om de studenten in de database op te slaan.
-* Zowel de command- als de service-moules zijn op hun beurt afhankelijk van de entities
+* Zowel de command- als de service-modules zijn op hun beurt afhankelijk van de entities
 * entities staat op zichzelf en heeft geen afhankelijheden
 
 ~~~
@@ -454,14 +454,12 @@ def get_groups():
 
 def save_new_student(student, group_name):
     with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute('insert into student(name, lab, theory,fk_student_group) values(?,?,?,?)', [student.name,student.lab_points,student.theory_points,group_name])
+        con.execute('insert into student(name, lab, theory,fk_student_group) values(?,?,?,?)', [student.name,student.lab_points,student.theory_points,group_name])
         con.commit()
 
 def save_new_group(group_name, lector, room):
     with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute("insert into student_group(group_name, teacher, room) values(?,?,?)", [group_name, lector, room])
+        con.execute("insert into student_group(group_name, teacher, room) values(?,?,?)", [group_name, lector, room])
         con.commit()
 
 def get_student(id):
@@ -637,13 +635,13 @@ Dit zijn tools die in staat zijn om andere modules (en eventueel modules waarvan
 * npm in Javascript
 * gem in Ruby
 
-In Python is dit **pip** (acroniem voor **p**ip **i**nstalls **p**ackages). Die tool wordt standaard **meegeleverd met Python** (vanaf versie 3.4).
+In Python is dit **pip** (acroniem voor **p**ip **i**nstalls **p**ackages). Deze tool wordt standaard **meegeleverd met Python** (vanaf versie 3.4).
 
 Pip gaat typisch modules downloaden van internet. Hiervoor werkt het standaard samen met de Python Package Index, ook wel bekend als PyPI (spreek uit als Pie Pea Eye).
 
-Deze website bevindt zich op https://pypi.org en daar kun je ook zoeken naar interessante Python-modules.
+Deze website bevindt zich op <https://pypi.org> en daar kun je ook zoeken naar interessante Python-modules.
 
-PyPI is een webservice die een een uitgebreide verzameling Python-pakketten (frameworks, tools en bibliotheken) huisvest.  
+PyPI is een webservice die een uitgebreide verzameling Python-pakketten (frameworks, tools en bibliotheken) huisvest.  
 
 Om een Python-pakket te installeren, gebruik je de opdracht `pip install` gevolgd door de naam van het pakket:
 

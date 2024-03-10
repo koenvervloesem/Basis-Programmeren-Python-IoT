@@ -9,7 +9,7 @@ We hebben nu:
 
 Dan gaan we nu met databases in Python werken.
 
-### Voorbereiding 1: Hernemen van studenten-applicatie
+### Voorbereiding 1: Hernemen van studentenapplicatie
 
 Als voorbeeld hernemen we een variant van de applicatie die we eerder in de cursus hebben gemaakt rond studenten:
 
@@ -134,7 +134,7 @@ Student Bart Voet heeft 15 voor het labo en 16 voor theorie, dus een gemiddelde 
 ~~~
 
 Dit programma heeft één groot nadeel: zodra je het afgesloten hebt, zijn de data die je ingevoerd hebt verloren.
-Als je dat niet wil, moeten we deze code omvormen om de **data in een database** bij te houden.
+Als je dat niet wilt, moeten we deze code omvormen om de **data in een database** bij te houden.
 
 ### SQLite in Python - basis
 
@@ -154,7 +154,7 @@ De SQL-opdrachten die we eerder gezien hebben, kun je vanuit een API (applicatio
 
 In plaats van een SQL-editor te gebruiken, kun je dus **vanuit je Python-code met de SQL-database praten**...
 
-> Nota: Gedetailleerde documentatie rond het gebruik hiervan vind je in https://docs.python.org/3/library/sqlite3.html. Wij beperken ons hier tot de basisprincipes.
+> Nota: Gedetailleerde documentatie rond het gebruik hiervan vind je in <https://docs.python.org/3/library/sqlite3.html>. Wij beperken ons hier tot de basisprincipes.
 
 
 #### Verbinding maken met een database
@@ -165,7 +165,6 @@ Dat doe je met de volgende code:
 ~~~python
 import sqlite3
 con = sqlite3.connect('students.db')
-cur = con.cursor()
 # Hier komt de code om de database te ondervragen
 con.close()
 ~~~
@@ -186,24 +185,20 @@ Voor een database werkt dit als volgt:
 ~~~python
 import sqlite3
 with sqlite3.connect('students.db') as con:
-    cur = con.cursor()
     # Hier komt de code om de database te ondervragen
 ~~~
 
 Na het uitvoeren van dit `with`-blok wordt de functie `close` automatisch op het verbindingsobject aangeroepen. De verbinding wordt dan na het blok automatisch gesloten en de gebruikte resources worden teruggegeven.
 
-Meer informatie over `with` vind je in https://www.python.org/dev/peps/pep-0343/ (Python Enhancement Proposal 343).
+Meer informatie over `with` vind je in <https://www.python.org/dev/peps/pep-0343/> (Python Enhancement Proposal 343).
 
 #### Een database query uitvoeren
-In de bovenstaande code maakten we door de methode `cursor` op het verbindingsobject uit te voeren een cursorobject aan.
-
-Op dit cursusobject kunnen we nu database queries uitvoeren via de methode `execute`:
+Op het verbindingsobject kunnen we nu database queries uitvoeren via de methode `execute`:
 
 ~~~python
 import sqlite3
 with sqlite3.connect('students.db') as con:
-    cur = con.cursor()
-    query_result = cur.execute('SELECT student_id, name, lab, theory FROM student')
+    query_result = con.execute('SELECT student_id, name, lab, theory FROM student')
 ~~~
 
 Het resultaat hiervan - een lijst van records - is in je Python-code beschikbaar als een iterator. Met een for-lus kun je door alle elementen gaan:
@@ -234,8 +229,7 @@ Hiervoor voorziet de SQLite API van Python de mogelijkheid van **substitutie**. 
 import sqlite3
 
 with sqlite3.connect('students.db') as con:
-    cur = con.cursor()
-    query_result = cur.execute('SELECT student_id, name, lab, theory FROM student where lab > ?', [10])
+    query_result = con.execute('SELECT student_id, name, lab, theory FROM student where lab > ?', [10])
     for row in query_result:
         print("Student", row[1], "met id", row[0])
 ~~~
@@ -257,8 +251,7 @@ Niets weerhoudt je ervan om meerdere parameters toe te voegen, bijvoorbeeld:
 import sqlite3
 
 with sqlite3.connect('students.db') as con:
-    cur = con.cursor()
-    query_result = cur.execute('SELECT student_id, name, lab, theory FROM student where lab > ? and theory > ?', [10, 12])
+    query_result = con.execute('SELECT student_id, name, lab, theory FROM student where lab > ? and theory > ?', [10, 12])
     for row in query_result:
         print("Student", row[1], "met id", row[0])
 ~~~
@@ -325,8 +318,7 @@ def get_students():
 
 def save_new_student(student):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute(
+        con.execute(
             "INSERT INTO student(name, lab, theory) VALUES(?,?,?)",
             [student.name, student.lab_points, student.theory_points],
         )
@@ -433,8 +425,7 @@ Een nieuwe student aanmaken doen we in de functie `save_new_student`. Deze heeft
 ~~~python
 def save_new_student(student):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute(
+        con.execute(
             "INSERT INTO student(name, lab, theory) VALUES(?,?,?)",
             [student.name, student.lab_points, student.theory_points],
         )
@@ -513,8 +504,7 @@ def get_students():
 
 def save_new_student(student):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute(
+        con.execute(
             "INSERT INTO student(name, lab, theory) VALUES(?,?,?)",
             [student.name, student.lab_points, student.theory_points],
         )
@@ -777,8 +767,7 @@ def get_groups():
 
 def save_new_student(student, group_name):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute(
+        con.execute(
             "INSERT INTO student(name, lab, theory,fk_student_group) VALUES(?,?,?,?)",
             [student.name, student.lab_points, student.theory_points, group_name],
         )
@@ -787,8 +776,7 @@ def save_new_student(student, group_name):
 
 def save_new_group(group_name, teacher, room):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute(
+        con.execute(
             "INSERT INTO student_group(group_name, teacher, room) values(?,?,?)",
             [group_name, teacher, room],
         )
@@ -975,8 +963,7 @@ Een nieuwe groep aanmaken doen we met een SQL-statement `INSERT INTO`:
 ~~~python
 def save_new_group(group_name, teacher, room):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute(
+        con.execute(
             "INSERT INTO student_group(group_name, teacher, room) values(?,?,?)",
             [group_name, teacher, room],
         )
@@ -1004,8 +991,7 @@ En de bijbehorende functie `save_new_student` wordt:
 ~~~python
 def save_new_student(student, group_name):
     with sqlite3.connect(STUDENT_DB_FILE_NAME) as con:
-        cur = con.cursor()
-        cur.execute(
+        con.execute(
             "INSERT INTO student(name, lab, theory,fk_student_group) VALUES(?,?,?,?)",
             [student.name, student.lab_points, student.theory_points, group_name],
         )

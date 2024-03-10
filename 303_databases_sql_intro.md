@@ -7,7 +7,7 @@ Om te kunnen werken met een (relationele) database heb je dus SQL nodig. We gaan
 #### SQL via DB Browser for SQLite
 
 Om een goed begrip te krijgen van SQL, gaan we eerst leren **werken met SQL**.  
-Hiervoor gebruiken we DB Browser for SQLite om tabellen aan te maken, data te manipuleren en op te vragen.
+Hiervoor gebruiken we DB Browser for SQLite om op een gebruiksvriendelijke manier tabellen aan te maken, data te manipuleren en op te vragen.
 
 ~~~
 +-------------------+------------+----------------+
@@ -96,21 +96,21 @@ Alvorens de database te kunnen gebruiken, dien je eerst tabellen aan te maken. D
 
 In de eerdere hoofdstukken hadden we een studenten-applicatie gemaakt. We bouwen hier op verder om SQL te demonstreren.
 
-We gaan van start met een tabel aan te maken om **studenten-data op te slaan**. 
+We gaan van start met een tabel aan te maken om **studentendata op te slaan**. 
 
-Deze tabel zal dan de data bevatten van de klasse student. Ter herhaling, die bevatte de volgende drie velden:
+Deze tabel zal dan de data bevatten van de klasse `Student`. Ter herhaling, die bevatte de volgende drie attributen:
 
 * Naam
 * Labo-punten
 * Theorie-punten
 
-Deze velden gaan we aanmaken binnen een **tabel** en noemen we ook wel **kolommen**.  
-Een tabel bestaat uit:
+Voor elk van de attributen van deze klasse maken we een veld aan binnen een **tabel**. Die velden vormen de **kolommen** van de tabel.  
+Een tabel bestaat dus uit:
 
 * Kolommen of velden die zo'n tabel bevat (projectie)
 * Rijen van data
 
-In het voorbeeld hieronder bevat de tabel al twee rijen met studenten-data:
+In het voorbeeld hieronder bevat de tabel twee rijen met studentendata:
 
 ~~~
 +---------------+---------------+---------------+
@@ -126,14 +126,14 @@ In het voorbeeld hieronder bevat de tabel al twee rijen met studenten-data:
 
 ##### Poging 1 (zonder velden)
 
-Om deze structuur aan te maken, gebruiken we een create-statement:
+Om deze structuur aan te maken, gebruiken we een `create`-statement:
 
 * Dit start met `create table`
 * Gevolgd door een **naam** voor deze structuur (`student` in dit geval)
 * Gevolgd door een paar **haakjes**
 * En gevolgd door een `;`
 
-> Merk op: SQL is voor wat betreft syntaxis (niet voor data) case-insensitive...
+> Merk op: SQL is voor wat betreft syntaxis (niet voor data) case-insensitive... `CREATE TABLE` is dus gelijk aan `create table`, maar een tabel met de naam `student` is een andere dan een tabel met de naam `Student`.
 
 Vul dit statement in het tekstveld links bovenaan van het tabblad **Execute SQL** van DB Browser for SQLite in:
 
@@ -164,7 +164,7 @@ Deze foutmelding is normaal, want dit is nog **geen geldig statement**. Een tabe
 Deze velden voeg je tussen de haakjes toe:
 
 * gescheiden door komma's
-* met een type (text of integer)
+* met een type (`text` of `integer`)
 
 Er zijn vanzelfsprekend meerdere types, maar we beperken ons voorlopig tot de bovenstaande.
 
@@ -226,18 +226,18 @@ Om de tabellen met data te vullen, hebben we DML nodig.
 #### CRUD
 
 Bij het werken met data spreken we vaak van CRUD.
-CRUD staat voor de vier **basisoperaties** die op data uitgevoerd kunnen worden:
+Dit acroniem staat voor de vier **basisoperaties** die op data uitgevoerd kunnen worden:
 
-* **Create** (of insert): Toevoegen van nieuwe data.
-* **Read** (of select): Opvragen van gegevens.
-* **Update**: Wijzigen van gegevens.
-* **Delete**: Verwijderen van gegevens.
+* **Create** (of insert): Toevoegen van nieuwe data
+* **Read** (of select): Opvragen van gegevens
+* **Update**: Wijzigen van gegevens
+* **Delete**: Verwijderen van gegevens
 
 De vertaling van deze CRUD-operaties gebeurt binnen SQL via DML-statements.
 
 #### Data toevoegen via het insert-statement
 
-We keren hiervoor terug naar het tabblad **Execute SQL**  om te zien hoe we **data toevoegen** aan een **tabel**. Maak eerst de tabel weer aan. Voeg dan een regel met data toe met behulp van het insert-statement:
+We keren hiervoor terug naar het tabblad **Execute SQL**  om te zien hoe we **data toevoegen** aan een **tabel**. Maak eerst de tabel weer aan. Voeg dan een regel met data toe met behulp van het `insert`-statement:
 
 ~~~sql
 insert into student(student_name,lab,theory) values("Bart Voet",15,16);
@@ -254,15 +254,15 @@ insert into student(student_name,lab,theory) values("Bart Voet",15,16);
 
 Dit **insert-statement** bestaat uit:
 
-* De **keyword**-combo `insert into`
-* Gevolgd door de **tabel-naam**  `student`
-* De **velden** die je wilt **updaten** (tussen de haakjes gescheiden door komma's)
-* Gevolgd door het **keyword** `values`
-* En daarna de **waarden** tussen **haakjes**, ook **gescheiden door komma's** (zoals bij de kolomnamen)
+* de **keyword**-combinatie `insert into`
+* gevolgd door de **tabel**  `student`
+* de **velden** die je wilt **updaten** (tussen de haakjes gescheiden door komma's)
+* gevolgd door het **keyword** `values`
+* en daarna de **waarden** tussen **haakjes**, ook **gescheiden door komma's** (zoals bij de kolomnamen)
 
 
 Bemerk ook dat rond **strings** aanhalingstekens komen, net zoals we in Python gewoon zijn.  
-Om de volgende stappen uit te voeren, voegen we nog een **tweede rij** toe aan de database:
+Om de volgende stappen te kunnen uitvoeren, voegen we nog een **tweede rij** toe aan de database:
 
 ~~~sql
 insert into student(student_name,lab,theory) values("Jan Janssens",17,14);
@@ -279,7 +279,7 @@ insert into student(student_name,lab,theory) values("Jan Janssens",17,14);
 
 #### Data lezen via het select-statement
 
-Om de data die we zojuist hebben ingevoerd te kunnen **lezen**, gebruiken we een tweede soort SQL-statements, namelijk **select-statements** of korter gezegd **queries**.  
+Om de data die we zojuist hebben ingevoerd te kunnen **lezen**, gebruiken we een tweede soort SQL-statements, namelijk `select`-statements of korter gezegd **queries**.  
 Typ het volgende statement in de SQL-editor:
 
 ~~~sql
@@ -296,7 +296,7 @@ Als dit succesvol is, krijg je de data te zien zoals hieronder:
 
 ![](sql_select.png)
 
-De data die je in tabelvorm te zien krijgt, stemt dan overeen met de data die je hebt toegevoegd via de voorgaande **insert-statements**.
+De data die je in tabelvorm te zien krijgt, stemt dan overeen met de data die je hebt toegevoegd via de voorgaande `insert`-statements:
 
 ~~~
 student_name  lab         theory    
@@ -307,15 +307,15 @@ Jan Janssens  17          14
 
 #### Beperken van de velden (projectie)
 
-Het \*-symbool zorgt ervoor dat **alle velden** worden **geprojecteerd** in de uitkomst.  
+Het symbool `*` zorgt ervoor dat **alle velden** worden **geprojecteerd** in de uitkomst.  
 
-Als je echter niet alle velden nodig hebt, kun je in plaats van een \* ook de **velden projecteren** die je wilt zien, gescheiden door een komma:
+Als je echter niet alle velden nodig hebt, kun je in plaats van een `*` ook de **velden projecteren** die je wilt zien, gescheiden door een komma:
 
 ~~~sql
 select student_name, lab from student;
 ~~~
 
-In dit geval zie je dat alleen de naam en de de labo-punten worden **geprojecteerd**:
+In dit geval zie je dat alleen de naam en de de labopunten worden **geprojecteerd**:
 
 ~~~
 student_name  lab       
@@ -326,11 +326,11 @@ Jan Janssens  17
 
 Dit bepalen of beperken van de kolommen noemen we een **projectie**.
 
-#### Gebruik van where-clausules (selectie)
+#### Gebruik van `where`-clausules (selectie)
 
 Naast de **projectie** die het aantal kolommen beperkt, kunnen we ook het aantal rijen in het resultaat beperken. Dat noemen we **selectie** of filteren.  
 
-Dit doen we door een **where-clausule** toe te voegen.
+Dit doen we door een `where`-clausule toe te voegen.
 We passen bijvoorbeeld de vorige query aan om de studenten te selecteren met meer dan 16 punten op hun labo:
 
 ~~~sql
@@ -359,10 +359,10 @@ Je kunt voor dit filteren verschillende operatoren gebruiken, zoals:
 
 Deze zijn (met uitzondering van `<>` dat overeenkomt met `!=` in Python) **hetzelfde** zoals je deze in **Python-code** zou gebruiken in voorwaarden.  
 
-Als je de selectie in het statement omdraait (minder dan 16 in plaats van meer dan 16)...
+Als je de selectie in het statement omdraait (kleiner dan of gelijk aan 16 in plaats van groter dan 16)...
 
 ~~~sql
-select student_name, lab from student where lab < 16;
+select student_name, lab from student where lab <= 16;
 ~~~
 
 ... krijg je als resultaat:
@@ -373,7 +373,7 @@ student_name  lab
 Bart Voet     15    
 ~~~
 
-#### Where combineren met and of or
+#### `where` combineren met `and` of `or`
 
 Om de volgende oefeningen te kunnen voortzetten, voegen we eerst nog wat rijen toe:
 
@@ -428,7 +428,7 @@ Wat als je data wilt **aanpassen** in een **bestaande rij**? Dit kun je met het 
 update student set lab = 10 where student_name = "Piet Pieters";
 ~~~
 
-Als we nadien de tabel bekijken, zien we dat de de labopunten van de betreffende student (Piet Pieters) aangepast zijn (9 -> 10):
+Als we nadien de tabel bekijken, zien we dat de de labopunten van de betreffende student (Piet Pieters) aangepast zijn (van 9 naar 10):
 
 ~~~
 student_name  lab         theory    
@@ -442,17 +442,17 @@ Joris Joriss  11          12
 De syntaxis is hier:
 
 * keyword `update`
-* gevolgd door de **tabel-naam**
+* gevolgd door de **tabelnaam**
 * dan het keyword `set`
-* gevolgd door de eigenlijke update met de vorm **kolom-naam = waarde**
+* gevolgd door de eigenlijke update met de vorm **kolomnaam = waarde**
 * en als laatste het keyword `where` gevolgd door de voorwaarde die aangeeft welke rijen een update moeten krijgen
 
 > **Waarschuwing:**  
 > Als je deze where-clausule vergeet, loop je het risico dat je alle rijen aanpast.
 
-#### Update meerdere velden
+#### Bewerk meerdere velden
 
-Je kan ook **meerdere velden tegelijk** updaten. Hiervoor voeg je een nieuw update-veld/onderdeel toe, gescheiden door een komma:
+Je kunt ook **meerdere velden tegelijk** updaten. Hiervoor voeg je een nieuw update-veld/onderdeel toe, gescheiden door een komma:
 
 ~~~sql
 update student set lab = 16, theory = 15 where student_name = "Jan Janssens";
@@ -469,9 +469,9 @@ Piet Pieters  10          12
 Joris Joriss  11          12   
 ~~~
 
-#### Update meerdere rijen
+#### Bewerk meerdere rijen
 
-Een update werkt met een **where-clausule** waarmee je de rij selecteert die je wilt aanpassen.  
+Een update werkt met een `where`-clausule waarmee je de rij selecteert die je wilt aanpassen.  
 Meerdere rijen tegelijk is op deze manier ook mogelijk.  
 
 Stel dat we alle studenten die minder dan 12 punten hebben op het labo een punt willen bijgeven wegens goede medewerking in de les. Dan doen we dat als volgt:
@@ -480,7 +480,7 @@ Stel dat we alle studenten die minder dan 12 punten hebben op het labo een punt 
 update student set lab = lab + 1 where lab < 12;
 ~~~
 
-Het resultaat? Piet Pieters en Joris Jorissen die 10 respectievelijk 11 op hun labo hadden, hebben nu 11 respectievelijk 12:
+Het resultaat? Piet Pieters en Joris Jorissen die 10 respectievelijk 11 op hun labo hadden, hebben nu 11 respectievelijk 12 punten:
 
 ~~~
 student_name  lab         theory    
@@ -491,12 +491,12 @@ Piet Pieters  11          12
 Joris Joriss  12          12  
 ~~~
 
-Je zag trouwens dat je in de update kunt verwijzen naar een waarde van deze rij zelf, door bij lab 1 bij te tellen.  
+Je zag trouwens dat je in de update kunt verwijzen naar een waarde van deze rij zelf, door bij lab 1 bij te tellen (`set lab = lab + 1`).  
 
-Een tweede voorbeeld: we willen studenten die meer labo-punten hebben dan theorie een punt bijgeven op theorie. Dat kan als volgt:
+Een tweede voorbeeld: we willen studenten die meer labopunten hebben dan theorie een punt bijgeven op theorie. Dat kan als volgt:
 
 ~~~sql
-update student set theory = theory +1 where lab > theory;
+update student set theory = theory + 1 where lab > theory;
 ~~~
 
 Jan Janssens, die op labo 16 had en op theorie 15, krijgt hierdoor op theorie een punt extra:
@@ -512,7 +512,7 @@ Joris Joriss  12          12
 
 #### Delete
 
-De laatste operatie die we nog niet in SQL hebben gezien, is `delete`. Net zoals bij `update` dien je hierbij een where-clausule te gebruiken. Dit is eigenlijk niet verplicht, maar zonder die clausule verwijder je alle gegevens, en dat wil je meestal niet.
+De laatste operatie die we nog niet in SQL hebben gezien, is `delete`. Net zoals bij `update` dien je hierbij een `where`-clausule te gebruiken. Dit is eigenlijk niet verplicht, maar zonder die clausule verwijder je alle gegevens, en dat wil je meestal niet.
 
 Stel dat de student "Bart Voet" onrechtmatig toegang heeft gekregen tot de cursus. Dan verwijder je deze als volgt:
 
@@ -520,7 +520,7 @@ Stel dat de student "Bart Voet" onrechtmatig toegang heeft gekregen tot de cursu
 delete from student where student_name = "Bart Voet";
 ~~~
 
-Nadien zie je dat deze student verdwenen is uit de database:
+Nadien zie je dat deze student verdwenen is uit de tabel:
 
 ~~~
 student_name  lab         theory    
@@ -531,8 +531,8 @@ Joris Joriss  12          12
 ~~~
 
 > **Waarschuwing:**  
-> Opnieuw dezelfde waarschuwing als bij update. Let op dat je
-> where-clausule correct gedefinieerd is. Want je kan **meerdere** 
+> Opnieuw dezelfde waarschuwing als bij `update`. Let op dat je
+> `where`-clausule correct gedefinieerd is. Want je kan **meerdere** 
 > **studenten** tot en met de **hele tabel** verwijderen.
 
 ### Identiteit en sleutels
@@ -543,14 +543,14 @@ Dit gebeurt door één of een combinatie van meerdere velden te gebruiken als **
 #### Primary key
 
 Tot nu gebruikten we in onze database met studenten de kolom `student_name` om een student uniek te identificeren.  
-Je kunt ervoor zorgen dat de database voor jou controleert dat deze naam uniek is via een **primary key constraint**:
+Je kunt ervoor zorgen dat de database voor jou controleert of deze naam uniek is via een **primary key constraint**:
 
 * **Primary key** slaat op het feit dat elke waarde in deze kolom uniek is en dat dit de primaire sleutel is om een rij op te zoeken.
 * **Constraints** zijn controles of voorwaardes die een database voor jou kan controleren en forceren.
 
 > Merk op: Dit kan ook via een **unique-key constraint**. Daar komen we later nog op terug...
 
-Verwijder de bestaande tabel met `drop table student;` en maak een nieuwe tabel aan met het create-statement. Deze keer kennen we aan de name-kolom de primary key constraint toe:
+Verwijder de bestaande tabel met `drop table student;` en maak een nieuwe tabel aan met het `create`-statement. Deze keer kennen we aan de kolom name de primary key constraint toe:
 
 ~~~sql
 CREATE TABLE student 
@@ -604,7 +604,7 @@ insert into student(name,lab,theory) values("Bart Voet",17,18);
 Eén van de problemen met de voorgaande aanpak is dat in principe wel mogelijk is dat twee studenten dezelfde naam hebben.
 Wat daarom veel wordt gedaan, is gebruikmaken van **numerieke ID's** om verschillende studenten een unieke nummer te geven. Jullie studentennummers bij UCLL zijn daar een voorbeeld van.
 
-Om dit te doen, voegen we een veld/kolom `student_id` toe en definiëren we deze als uniek ID: 
+Om dit te doen, voegen we een veld/kolom `student_id` toe en definiëren we deze als uniek ID in plaats van de naam: 
 
 ~~~sql
 drop table student;
@@ -758,7 +758,7 @@ Om deze duplicatie te vermijden, kunnen we informatie in verband met een student
 
 ~~~
 
-We maken dus in de database een **nieuwe tabel** aan genaamd `student_group` die **drie velden** bevat:
+We maken dus in de database een **nieuwe tabel** aan met de naam `student_group` die **drie velden** bevat:
 
 ~~~sql
 create table student_group
@@ -865,7 +865,7 @@ Naast deze eerder vermelde **primary key** bieden relationele databases de mogel
 Deze foreign key is een constraint die garandeert dat gelijk welke waarde die je in het veld `fk_student_group` zet een waarde is die effectief ook voorkomt in de database.
 
 Om een **kolom** aan te duiden als een **foreign key** gebruik je het keyword `references`.  
-Bekijk hieronder de **gewijzigde tabel-definitie** voor `student`:
+Bekijk hieronder de **gewijzigde tabeldefinitie** voor `student`:
 
 ~~~sql
 drop table if exists student;
@@ -1076,7 +1076,7 @@ A           Linus Torvalds  1A
 
 Er is een manier om de data in één keer binnen te trekken. SQL geeft ons namelijk de mogelijkheid om data van meerdere tabellen te combineren.  
 
-In onderstaande select-statement vragen we de data op van zowel de student- als student_group-tabel:
+In onderstaande `select`-statement vragen we de data op van zowel de tabellen student als student_group:
 
 ~~~sql
 select name, lab, theory, group_name, teacher, room from student, student_group where student_id = 2;
