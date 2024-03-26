@@ -174,7 +174,7 @@ Als dit bestand nog niet bestaat, maakt de functie `connect` in dit bestand een 
 
 Het is belangrijk dat je achteraf de database vrijgeeft voor gebruik via de functie `close`.
 
-#### Automatisch sluiten met with
+#### Automatisch sluiten met `with`
 
 Voorgaande code heeft een probleem: als het programma een exception genereert, wordt de functie `close` niet aangeroepen.
 
@@ -201,7 +201,7 @@ with sqlite3.connect('students.db') as con:
     query_result = con.execute('SELECT student_id, name, lab, theory FROM student')
 ~~~
 
-Het resultaat hiervan - een lijst van records - is in je Python-code beschikbaar als een iterator. Met een for-lus kun je door alle elementen gaan:
+Het resultaat hiervan - een lijst van records - is in je Python-code beschikbaar als een iterator. Met een `for`-lus kun je door alle elementen gaan:
 
 ~~~python
     for row in query_result:

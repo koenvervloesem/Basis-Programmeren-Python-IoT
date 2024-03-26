@@ -643,9 +643,9 @@ Deze website bevindt zich op <https://pypi.org> en daar kun je ook zoeken naar i
 
 PyPI is een webservice die een uitgebreide verzameling Python-pakketten (frameworks, tools en bibliotheken) huisvest.  
 
-Om een Python-pakket te installeren, gebruik je de opdracht `pip install` gevolgd door de naam van het pakket:
+Om een Python-pakket te installeren, gebruik je de opdracht `pip install` gevolgd door de naam van het pakket.
 
-Voor het pakket requests:
+Voor het pakket `requests`:
 
 ~~~
 [student@fedora ~]$ pip install requests
