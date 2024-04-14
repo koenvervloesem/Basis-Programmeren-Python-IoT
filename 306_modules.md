@@ -145,10 +145,10 @@ hello
 world
 ~~~
 
-Eerst en vooral zien we dat - ondanks dat we hello enkel importeren - de code effectief wordt uitgevoerd.  
+Eerst en vooral zien we dat - ondanks dat we hello enkel importeren - het `print`-statement effectief wordt uitgevoerd.  
 De naam die nu getoond wordt, is echter `hello` en niet `__main__`.  
 
-Bij het importeren van een Python-module wordt dus alle code van dit bestand uitgevoerd. Hierdoor worden de erin gedefinieerde functies beschikbaar gesteld, maar ook andere code wordt uitgevoerd.
+Bij het importeren van een Python-module wordt dus alle code van dit bestand uitgevoerd. Hierdoor worden de erin gedefinieerde functies beschikbaar gesteld, maar ook andere code wordt uitgevoerd, zoals in dit geval het `print`-statement.
 
 Doordat de globale variabele `__name__` in dit geval echter de waarde `hello` heeft, worden deze functies gekoppeld aan deze naam en niet aan de globale namespace. Daardoor dien je `hello` als prefix te gebruiken om de functies aan te roepen.
 
