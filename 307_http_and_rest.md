@@ -14,7 +14,7 @@ Laten we starten met HTTP.
 **HTTP** staat voor **H**yper**T**ext **T**ransfer **P**rotocol.  
 
 **HTTP** behoort tot **laag 7** van het **OSI**-model voor netwerken.  
-Het protocol wordt typisch toegankelijk gemaakt op poort 80 (tijdens de ontwikkeling dikwijls poort, 8000, 8080 of 5000). De versleutelde vorm HTTPS maakt gebruik van poort 443.
+Het protocol wordt typisch toegankelijk gemaakt op poort 80 (tijdens de ontwikkeling dikwijls poort, 8000, 8080 of 5000). De versleutelde vorm HTTPS (HTTP over TLS) maakt gebruik van poort 443.
 
 Het betreft een **applicatienetwerkprotocol** (client-server) dat wordt gebruikt om **resources** van een server te benaderen.
 
@@ -76,7 +76,7 @@ Een heel **eenvoudig voorbeeld** vind je hieronder:
 </html>
 ~~~
 
-Naast het eigenlijke document zal de browser (na het parsen van het document) ook
+Naast het eigenlijke document zal de webbrowser (na het parsen van het document) ook
 de bijhorende elementen (nodig voor visualisatie) waarnaar verwezen wordt binnen de html - zoals **afbeeldingen** en **video's** - downloaden en in het browserscherm tonen.
 
 ~~~
@@ -103,7 +103,7 @@ de bijhorende elementen (nodig voor visualisatie) waarnaar verwezen wordt binnen
 
 Je kunt deze gang van zaken eenvoudig testen door in Python een kleine webserver te starten die statische resources serveert.
 
-> Zie voor het volledige verhaal https://docs.python.org/3/library/http.server.html
+> Zie voor het volledige verhaal <https://docs.python.org/3/library/http.server.html>.
 
 #### Stap 1: maak een html-bestand aan
 
@@ -127,7 +127,7 @@ Maak een bestand test.html aan en kopieer de onderstaande inhoud (html-code) in 
 Met de img-tag geven we aan dat de webbrowser een afbeelding downloadt en die op het scherm toont.
 Plaats in dezelfde map als het html-bestand een png-bestand met de naam hello.png.
 
-Je kan hiervoor een willekeurig png-bestand van het internet plukken, zoals https://www.ucll.be/sites/default/files/documents/algemeen/logo/logo_ucll_rgb.png. Vergeet dan niet het gedownloade bestand te hernoemen naar hello.png, of in de img-tag van de html-code naar de juiste bestandsnaam te verwijzen.
+Je kan hiervoor een willekeurig png-bestand van het internet plukken, zoals <https://www.ucll.be/sites/default/files/documents/algemeen/logo/logo_ucll_rgb.png>. Vergeet dan niet het gedownloade bestand te hernoemen naar hello.png, of in de img-tag van de html-code naar de juiste bestandsnaam te verwijzen.
 
 #### Stap 3: start de webserver
 
@@ -144,7 +144,7 @@ Dit start een webserver op die naar aanvragen luistert op poort 9000.
 
 #### Stap 4: test via een webbrowser
 
-Als laatste stap open je de url http://localhost:9000/test.html in je webbrowser. Dan zou je het volgende resultaat moeten krijgen:
+Als laatste stap open je de url <http://localhost:9000/test.html> in je webbrowser. Dan zou je het volgende resultaat moeten krijgen:
 
 ![](html_page.png)
 
@@ -280,9 +280,9 @@ Je kan deze operaties een beetje vergelijken met de CRUD-operaties op een databa
 
 Bekijk voor een vollediger overzicht:
 
-* https://www.w3schools.com/tags/ref_httpmethods.asp
-* https://developer.mozilla.org/en-US/docs/Web/HTTP
-* https://www.w3.org/Protocols/Specs.html
+* <https://www.w3schools.com/tags/ref_httpmethods.asp>
+* <https://developer.mozilla.org/en-US/docs/Web/HTTP>
+* <https://www.w3.org/Protocols/Specs.html>
 
 ##### Praktisch voorbeeld
 
@@ -292,12 +292,12 @@ De bedoeling is uiteindelijk dat we met Flask een REST-gebaseerde studentenappli
 
 Als we de voorgaande principes zouden toepassen op dit voorbeeld, krijg je volgende mapping:
 
-| Beschrijving                              | Method | Endpoint      | Idempotent |
-|-------------------------------------------|--------|---------------|------------|
-| Maak een student aan                      | POST   | /student      | Nee        |
-| Vraag de info over een student            | GET    | /student/{id} | Ja         |
-| Pas data van een student aan (bv. punten) | PUT    | /student/{id} | Ja         |
-| Verwijder een student uit database        | DELETE | /student/{id} | Ja         |
+| Beschrijving                                       | Method | Endpoint      | Idempotent |
+|----------------------------------------------------|--------|---------------|------------|
+| Maak een student aan                               | POST   | /student      | Nee        |
+| Vraag de info over een student                     | GET    | /student/{id} | Ja         |
+| Pas data van een student aan (bijvoorbeeld punten) | PUT    | /student/{id} | Ja         |
+| Verwijder een student uit database                 | DELETE | /student/{id} | Ja         |
 
 #### STATUS (HTTP RESPONSE)
 
@@ -394,11 +394,11 @@ De basisprincipes:
 * Je entiteiten worden voorgesteld als http-resources.
 * Deze resources worden binnen de URL hiërarchisch geordend.
 
-Het programma Insomnia (https://insomnia.rest) laat je toe om eenvoudig HTTP- en REST-aanvragen te doen en de resultaten te bekijken. Download het programma van https://insomnia.rest/download om eenvoudige tests uit te voeren.
+Het programma Insomnia (<https://insomnia.rest>) laat je toe om eenvoudig HTTP- en REST-aanvragen te doen en de resultaten te bekijken. Download het programma van <https://insomnia.rest/download> om eenvoudige tests uit te voeren.
 
-Voer nu in de adresbalk in het midden de url https://randomuser.me/api/ in en klik rechts ervan op **Send**. Je krijgt dan rechts als preview een hoop data in de vorm van een JSON-string. JSON (https://www.json.org/json-en.html) staat voor JavaScript Object Notation en is een tekstformaat om gestructureerde data uit te wisselen. Het wordt veel in REST-API's gebruikt.
+Voer nu in de adresbalk in het midden de url <https://randomuser.me/api/> in en klik rechts ervan op **Send**. Je krijgt dan rechts als preview een hoop data in de vorm van een JSON-string. JSON (<https://www.json.org/json-en.html>) staat voor JavaScript Object Notation en is een tekstformaat om gestructureerde data uit te wisselen. Het wordt veel in REST-API's gebruikt.
 
-We kunnen ook extra query parameters toevoegen. Voeg in het tabblad **Query** onder de adresbalk een parameter **gender** met waarde **female** in een parameter **nat** met waarde **DE**. Insomnia past de url nu aan tot https://randomuser.me/api/?gender=female&nat=NL. Klik nog eens op **Send**. Je krijgt nu data van een willekeurige vrouwelijke gebruiker met Duitse naam.
+We kunnen ook extra query parameters toevoegen. Voeg in het tabblad **Query** onder de adresbalk een parameter **gender** met waarde **female** in een parameter **nat** met waarde **DE**. Insomnia past de url nu aan tot <https://randomuser.me/api/?gender=female&nat=NL>. Klik nog eens op **Send**. Je krijgt nu data van een willekeurige vrouwelijke gebruiker met Nederlandse naam.
 
 Ook in Python kunnen we een REST-API aanroepen, namelijk met de module `requests`. Probeer dit bijvoorbeeld eens uit in de REPL:
 
@@ -437,4 +437,4 @@ Of ook op deze manier:
 
 We maken hier dus een dictionary met de query-parameters aan en geven die als extra argument door aan de methode `requests.get`.
 
-We hebben in dit voorbeeld gebruikgemaakt van de API van de website randomuser.me. Voor een overzicht van publiek toegankelijke API's kun je kijken op https://public-api-lists.github.io/public-api-lists/.
+We hebben in dit voorbeeld gebruikgemaakt van de API van de website randomuser.me. Voor een overzicht van publiek toegankelijke API's kun je kijken op <https://public-api-lists.github.io/public-api-lists/>.

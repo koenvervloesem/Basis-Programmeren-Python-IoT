@@ -62,7 +62,7 @@ $ python demo.py
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ~~~
 
-Als je dan in je webbrowser navigeert naar http://localhost:5000/ zou je het volgende resultaat moeten krijgen:
+Als je dan in je webbrowser navigeert naar <http://localhost:5000/> zou je het volgende resultaat moeten krijgen:
 
 ![](hello_flask.png)
 
@@ -82,7 +82,7 @@ $ python demo.py
 
 ### Ophalen van data met Insomnia
 
-Probeer eerst de REST API uit met het programma Insomnia. Vul in de adresbalk in het midden http://localhost:5000 in en klik rechts ernaast op **Send**. Dan krijg je aan de rechterkant in de preview weer de webpagina met de tekst **Hello, World!** te zien. Klik je op **Headers**, dan zie je de headers die de webserver teruggeeft.
+Probeer eerst de REST API uit met het programma Insomnia. Vul in de adresbalk in het midden <http://localhost:5000> in en klik rechts ernaast op **Send**. Dan krijg je aan de rechterkant in de preview weer de webpagina met de tekst **Hello, World!** te zien. Klik je op **Headers**, dan zie je de headers die de webserver teruggeeft.
 
 Merk op: in het terminalvenster waarin je je applicatie hebt gestart, zie je deze keer geen HTTP GET-request voor favicon.ico. Insomnia vraagt dit immers niet op, maar webbrowsers wel.
 
@@ -249,7 +249,7 @@ Traceback (most recent call last):
 requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fb70b24b6a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
 ~~~
 
-Je ziet hier een aantal exceptions terugkomen. De laatste is `requests.exceptions.ConnectionError`. Als we willen dat ons programma een gebruiksvriendelijker melding geeft bij verbindingsproblemen, kunnen we de code dus in een try-except blok zetten en deze exception opvangen:
+Je ziet hier een aantal exceptions terugkomen. De laatste is `requests.exceptions.ConnectionError`. Als we willen dat ons programma een gebruiksvriendelijker melding geeft bij verbindingsproblemen, kunnen we de code dus in een `try`-`except`-blok zetten en deze exception opvangen:
 
 ~~~python
 import requests
@@ -563,7 +563,7 @@ In de url hieronder:
 * 5000 => poort waarop je app luistert
 * groups => alles wat er op volgt
 
-We starten bijvoorbeeld met alle groepen op te lijsten door de url http://localhost:5000/groups te bezoeken. Die geeft initieel een lege lijst terug:
+We starten bijvoorbeeld met alle groepen op te lijsten door de url <http://localhost:5000/groups> te bezoeken. Die geeft initieel een lege lijst terug:
 
 ~~~
 []
@@ -601,7 +601,7 @@ Vraag nu nog eens met een GET-aanroep de groepen op (vergeet niet de methode naa
 ~~~
 
 We zien hier twee groepen: 1 en hello.  
-Als we alleen in groep 1 geïnteresseerd zijn, kunnen we die opvragen op de url http://localhost:5000/groups/1.
+Als we alleen in groep 1 geïnteresseerd zijn, kunnen we die opvragen op de url <http://localhost:5000/groups/1>.
 
 Met als resultaat:
 
@@ -614,7 +614,7 @@ Met als resultaat:
 ~~~
 
 Studenten vallen in onze school onder een groep.  
-Als je alle studenten wilt zien uit groep 1, schrijf je de naam van de entiteit (students) achter het voorgaande pad: http://localhost:5000/groups/1/students.
+Als je alle studenten wilt zien uit groep 1, schrijf je de naam van de entiteit (students) achter het voorgaande pad: <http://localhost:5000/groups/1/students>.
 
 Dat geeft voorlopig een lege lijst terug:
 
@@ -631,8 +631,6 @@ We moeten de groepen dus vullen met studenten. Dat kan voor groep 1 door het end
 En doe nu hetzelfde voor nog enkele andere studenten.
 
 Als je daarna alle studenten van groep 2 opvraagt, krijg je iets als:
-
-Met als resultaat:
 
 ~~~json
 [
@@ -675,7 +673,7 @@ Met als resultaat:
 ]
 ~~~
 
-Als je alleen student met ID 2 wilt zien, kun je dat opnieuw filteren aan de hand van het ID: http://localhost:5000/groups/1/students/2.
+Als je alleen student met ID 2 wilt zien, kun je dat opnieuw filteren aan de hand van het ID: <http://localhost:5000/groups/1/students/2>.
 
 Met als resultaat:
 
@@ -744,4 +742,4 @@ True
 ]
 ~~~
 
-De module `json` bevat enkele nuttige functies om met JSON-strings te werken. Zo kun je met `json.dumps` zoals je ziet een JSON-string met duidelijke witruimte weergeven. Meer informatie over de module vind je op https://docs.python.org/3/library/json.html.
+De module `json` bevat enkele nuttige functies om met JSON-strings te werken. Zo kun je met `json.dumps` zoals je ziet een JSON-string met duidelijke witruimte weergeven. Meer informatie over de module vind je op <https://docs.python.org/3/library/json.html>.

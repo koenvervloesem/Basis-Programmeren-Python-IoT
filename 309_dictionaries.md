@@ -27,7 +27,7 @@ student 0 heeft 20 punten
 student 3 heeft 17 punten
 ~~~
 
-Deze index kan variëren tussen **0** en **n-1** (waar n de dimensie is van deze lijst).
+Deze index kan variëren tussen **0** en **n-1** (waar n de dimensie of lengte is van deze lijst).
 
 #### Een element updaten
 
@@ -47,7 +47,7 @@ student 0 heeft 18 punten
 
 #### Een element toevoegen
 
-Toevoegen kan via de append-methode:
+Toevoegen kan via de methode `append`:
 
 ~~~python
 punten = [20, 15, 16, 17]
@@ -63,9 +63,9 @@ met als resultaat
 [18, 15, 16, 17, 19]
 ~~~
 
-#### for-loop
+#### `for`-lus
 
-We konden ook gemakkelijk door een lijst "loopen" met een for-lus:
+We kunnen ook gemakkelijk door alle elementen van een lijst lopen met een `for`-lus:
 
 ~~~python
 punten = [18, 15, 16, 17]
@@ -82,9 +82,9 @@ student heeft 16 punten
 student heeft 17 punten
 ~~~
 
-#### for-loop met enumerate
+#### `for`-lus met `enumerate`
 
-Dikwijls wil je ook de index naast de waarde. Dat zou je als volgt kunnen doen:
+In veel gevallen wil je tegelijk de index als de waarde op die index. Dat zou je als volgt kunnen doen:
 
 ~~~python
 punten = [18, 15, 16, 17]
@@ -103,7 +103,7 @@ student 2 heeft 16 punten
 student 3 heeft 17 punten
 ~~~
 
-Aangezien dit veel gebruikt wordt, heeft Python de functie `enumerate` toegevoegd. Die kun je in een for-lus gebruiken om zowel door de index als het element te loopen:
+Aangezien dit veel gebruikt wordt, heeft Python de functie `enumerate` toegevoegd. Die kun je in een `for`-lus gebruiken om één voor één zowel door de index als het bijbehorende element te gaan:
 
 ~~~python
 punten = [18, 15, 16, 17]
@@ -111,15 +111,17 @@ for i, punt in enumerate(punten):
   print(f'student {i} heeft {punt} punten')
 ~~~
 
+Zo hoef je zelf de index niet meer up-to-date te houden.
+
 ### Dictionary's => sleutel en waarde
 
 Bij een lijst gebruikten we de index als **sleutel** om een element op te vragen.
 In het geval van studenten zou het misschien handiger zijn om de namen van de studenten te gebruiken om deze mapping uit te voeren. De volgnummers zijn immers betekenisloos voor ons.
 
 Hiervoor bestaan in Python **dictionary's** (het equivalent in Java is de Map).  
-Dit zijn - net zoals lijsten - **datastructuren** waar je **meerdere objecten of elementen** aan kan toevoegen.  
+Dit zijn - net zoals lijsten - **datastructuren** waar je **meerdere objecten of elementen** aan kunt toevoegen.  
 
-Het verschil echter is dat elke **waarde** die je toevoegt vergezeld moet zijn van een **sleutel**.  
+Het verschil is dat elke **waarde** die je toevoegt vergezeld moet zijn van een **sleutel**.  
 Deze gebruik je dan nadien om deze waardes op te halen. Bijvoorbeeld:
 
 ~~~python
@@ -139,7 +141,7 @@ De dictionary hierboven (`student_points`) mapt de namen van de studenten op pun
 Bij uitvoering van de code zie je:
 
 * Je kan de **waarde opvragen** van een element door de **sleutel** te plaatsen **tussen vierkante haakjes**.
-* De volgende regel print de volledige inhoud van de dictionary af.
+* De volgende regel toont de volledige inhoud van de dictionary.
 
 ~~~bash
 $ python dictionary_demo.py
@@ -148,7 +150,7 @@ $ python dictionary_demo.py
 ~~~
 
 Zowel de sleutels als de waardes kunnen gelijk welk type zijn, er is **geen beperking van type**.  
-In dit geval hebben we strings gebruikt als key maar dit kan ook een integer of zelfs een object zijn.
+In dit geval hebben we strings gebruikt als sleutel maar dit kan ook een integer of zelfs een object zijn.
 
 ### Sleutels zijn uniek
 
@@ -285,14 +287,14 @@ Traceback (most recent call last):
 KeyError: 'Hans'
 ~~~
 
-Python-dictionary's vereisen dat je bestaande sleutels doorgeeft. Als de sleutel niet bestaat, krijg je een exception.
+Python-dictionary's vereisen dat je bestaande sleutels doorgeeft. Als de sleutel niet bestaat, krijg je een exception `KeyError`.
 
-Hoe kan je dit vermijden?
+Hoe vermijd je dit?
 
 ### Nakijken of een element binnen de dictionary bestaat
 
 Om zulke situaties te vermijden heb je twee opties.  
-Ofwel vang je deze exception op via een **try-except-constructie**:
+Ofwel vang je deze exception op via een `try`-`except`-constructie:
 
 ~~~python
 student_points = {
