@@ -32,8 +32,8 @@ Hier zijn enkele tips waarmee je het best altijd bij het programmeren, en zeker 
 
  8. **Lees documentatie**
 
-    Lees de officiële documentatie op https://docs.python.org als je zoekt hoe iets moet, of gebruik de functie `help()` in de REPL van de Python-interpreter. En maak gebruik van geïntegreerde helpfuncties in je code-editor, zoals de aanvullingen en tooltips van Visual Studio Code.
+    Lees de officiële documentatie op <https://docs.python.org> als je zoekt hoe iets moet, of gebruik de functie `help()` in de REPL van de Python-interpreter. En maak gebruik van geïntegreerde helpfuncties in je code-editor, zoals de aanvullingen en tooltips van Visual Studio Code.
 
  9. **Gebruik hulpmiddelen**
 
-    Er bestaan allerlei hulpmiddelen die je nuttige opmerkingen geven over de kwaliteit van je code, zoals Pylint en Flake8. Door hier rekening mee te houden, leer je heel wat bij, en als je vastzit kunnen de opmerkingen je soms helpen om je code te verbeteren. Maar verlies je er ook niet in: code moet allereerst werken, daarna kun je naar de codekwaliteit kijken.
+    Er bestaan allerlei hulpmiddelen die je nuttige opmerkingen geven over de kwaliteit van je code, zoals Ruff. Door hier rekening mee te houden, leer je heel wat bij, en als je vastzit kunnen de opmerkingen je soms helpen om je code te verbeteren. Maar verlies je er ook niet in: code moet allereerst werken, daarna kun je naar de codekwaliteit kijken.
