@@ -8,7 +8,7 @@ Voor meer informatie verwijzen we naar de cursus **Basis Linux**.
 
 ### Bash-shell openen
 
-Linux en macOS hebben verschillende programma's waarmee je toegang tot de shell krijgt. Op de meeste systemen heet dat programma Terminal.
+Linux en macOS hebben verschillende programma's waarmee je toegang tot de shell krijgt. Op de meeste systemen heet dat programma Terminal. Een voorbeeld onder Linux:
 
 ![](bash_terminal.png)
 
@@ -22,8 +22,8 @@ Deze **opdrachtprompt** :
 
 * toont welke **gebruiker** ingelogd is (hier bart op de computer bvpers4)
 * geeft aan in welk **pad** je je momenteel bevindt 
-  (in dit geval komt ~ overeen met de home-directory van de gebruiker)
-* geeft je de mogelijkheid om een **opdracht** in te typen na het dollarteken ($)
+  (in dit geval komt `~` overeen met de home-directory van de gebruiker)
+* geeft je de mogelijkheid om een **opdracht** in te typen na het dollarteken (`$`)
 
 ### Bestanden en directory's
 
@@ -46,7 +46,7 @@ Hier zien we twee opdrachten:
 
 #### Navigeren door directory's
 
-Als je deze directory hebt aangemaakt, kan je hiernaartoe navigeren met de opdracht `cd`  
+Als je deze directory hebt aangemaakt, kun je hiernaartoe navigeren met de opdracht `cd`  
 (wat staat voor *change directory*):
 
 ~~~bash
@@ -61,10 +61,10 @@ De opdracht `pwd` (*print working directory*) toont je de huidige directory.
 
 #### Relatieve versus absolute paden
 
-`mkdir` en `cd` roep je aan met een **pad**.    
-Zo'n pad is de verwijzing naar een (doel)directory waarop je deze opdracht wil uitvoeren.  
+De opdrachten `mkdir` en `cd` roep je aan met een **pad**.    
+Zo'n pad is de verwijzing naar een (doel)directory waarop je deze opdracht wilt uitvoeren.  
 
-Er zijn een aantal manieren waarop je een pad kan construeren. Het belangrijkste onderscheid is absoluut versus relatief:
+Een pad kun je op een aantal manieren construeren. Het belangrijkste onderscheid is absoluut versus relatief:
 
 * **absoluut** is een pad dat start vanaf de root-directory, wat onder Linux en macOS `/` is.
 
@@ -77,7 +77,7 @@ bart@bvpers4 ~/een_eerste_programma $
 
 Een absoluut pad begint dus altijd met `/`.
 
-* **relatief** verwijst naar een locatie relatief ten opzichte van je huidige directory
+* **relatief** verwijst naar een locatie relatief ten opzichte van je huidige directory.
 
 ~~~bash
 bart@bvpers4 ~ $ cd een_eerste_programma
@@ -87,12 +87,12 @@ bart@bvpers4 ~/een_eerste_programma $ cd ../een_andere_directory
 bart@bvpers4 ~/een_andere_directory $
 ~~~
 
-Dit verwijst van je huidige directory naar een pad relatief ten opzichte van je huidige directory.  
+Dit verwijst in je huidige directory naar een pad relatief ten opzichte van je huidige directory.  
 Met het symbool `..` (twee punten na elkaar) verwijs je naar de bovenliggende directory. 
 
 #### Home-directory
 
-Elke gebruiker op Unix-achtige systemen, zoals GNU/Linux, macOS en de BSD's, heeft een home-directory. In Bash kan je daarnaar verwijzen met het teken `~`.  
+Elke gebruiker op Unix-achtige systemen, zoals GNU/Linux, macOS en de BSD's, heeft een home-directory. In Bash kun je daarnaar verwijzen met het teken `~`.  
 Ook als je `cd` typt zonder een directorynaam erachter, kom je in de home-directory terecht.
 
 ~~~bash
@@ -112,13 +112,13 @@ bart@bvpers4 ~ $
 Een directory verwijder je met de opdracht `rmdir`.
 Als je een directory probeert te verwijderen terwijl die nog bestanden bevat, zal dit een foutmelding opleveren.
 
+Als je na het verwijderen van een directory ernaartoe probeert te navigeren, krijg je een foutmelding dat deze directory niet bestaat:
+
 ~~~bash
 bart@bvpers4 ~ $ rmdir een_eerste_programma
 bart@bvpers4 ~ $ cd een_eerste_programma
 bash: cd: een_eerste_programma: No such file or directory
 ~~~
-
-Als je na het verwijderen van een directory ernaartoe probeert te navigeren, krijg je een foutmelding dat deze directory niet bestaat.
 
 #### Bestanden in een directory
 
@@ -131,7 +131,7 @@ bart@bvpers4 ~/mijn_eerste_programma $ ls
 bart@bvpers4 ~/mijn_eerste_programma $
 ~~~
 
-Vervolgens openen we een **teksteditor** (bijvoorbeeld gedit) en typen hierin de volgende Python-code:
+Vervolgens openen we een **teksteditor** (bijvoorbeeld gedit of nano) en typen hierin de volgende Python-code:
 
 ~~~python
 print("Hello")
@@ -156,7 +156,7 @@ print("Hello")
 
 #### Een bestand kopiëren
 
-Je kan ook een bestand via de terminal kopiëren met de opdracht `cp` (afkorting van *copy*):
+Je kunt ook een bestand via de terminal kopiëren met de opdracht `cp` (afkorting van *copy*):
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ cp hello.py hello.txt
@@ -177,11 +177,11 @@ hello.py
 ~~~
 
 > **Nota:**  
-> Net zoals bij andere opdrachten kan je naar een bestand verwijzen met zowel een relatief als een absoluut pad.
+> Net zoals bij andere opdrachten kun je naar een bestand verwijzen met zowel een relatief als een absoluut pad.
 
 ### Programma's uitvoeren
 
-Je kan ook programma's uitvoeren op de opdrachtregel. Zo voert onderstaand voorbeeld de Python-interpreter uit met als argument het Python-bestand **hello.py**:
+Je kunt ook programma's uitvoeren op de opdrachtregel. Zo voert onderstaand voorbeeld de Python-interpreter uit met als argument het Python-bestand **hello.py**:
 
 ~~~bash
 bart@bvpers4 ~/mijn_eerste_programma $ ls
@@ -210,8 +210,8 @@ bart@bvpers4 ~/mijn_eerste_programma $
 ~~~
 
 * Een omgevingsvariabele geef je een waarde door de **naam** van deze variabele te verbinden via een `=`-teken met een tekst. Let op: er mogen geen spaties rond het isgelijkaanteken komen!
-* Je kan de inhoud van de variabele tonen met de opdracht `echo`, gevolgd door een `$`-teken en de naam van de variabele.
-* Je kan de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals `cd`. De shell vervangt de omgevingsvariabele door zijn inhoud voor deze aan de opdracht doorgegeven wordt.
+* Je kunt de inhoud van de variabele tonen met de opdracht `echo`, gevolgd door een `$`-teken en de naam van de variabele.
+* Je kunt de inhoud op dezelfde manier ook gebruiken in andere opdrachten, zoals `cd`. De shell vervangt de omgevingsvariabele door zijn inhoud voor deze aan de opdracht doorgegeven wordt.
 
 > **Let op**: als een variabele al bestaat wanneer je ze een waarde geeft, overschrijft dit de waarde die ze al had.
 

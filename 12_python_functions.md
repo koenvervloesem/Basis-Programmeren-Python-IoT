@@ -29,7 +29,7 @@ Het laatste grote blok dat we bespreken in deel 1 van de cursus is het hergebrui
 Hergebruik van uitvoering kan op drie manieren:
 
 * Functies
-    * **Stuk code** dat je **meermaals** kan **aanroepen**
+    * **Stuk code** dat je **meermaals** kunt **aanroepen**
     * Heeft een **naam** zoals een variabele
 * Modules
     * (Logische) **groepering** van **functies**, klassen en variabelen
@@ -39,7 +39,7 @@ Hergebruik van uitvoering kan op drie manieren:
 * Objecten en klassen
     * Groepering van **variabelen** en **functies**
     * Verschillende **instanties** (objecten) mogelijk
-    * In **deel 2 van de cursus**
+    * Ook dit bekijken we in **deel 2 van de cursus**
 
 ### Functies en hergebruik
 
@@ -48,7 +48,7 @@ We hebben al **eerder** **hergebruik** gezien ... namelijk met **variabelen**:
 
 * voorzien **hergebruik** van **data/geheugen**
 * **tussen** verschillende **statements**
-* en je kan via de naam deze variabelen gebruiken
+* en je kunt via de naam deze variabelen gebruiken
 
 Nu bekijken we een **ander soort hergebruik**, namelijk **hergebruik van statements** of functionaliteit.
 
@@ -79,7 +79,7 @@ Een functie roep je aan met de **naam**, **gevolgd door haakjes**.
 > Nota: de functie hieronder is een fictief voorbeeld om het gebruik te illustreren.
 > We zien zo dadelijk echte voorbeelden.
 
-Stel dat er een functie `an_example_function` zou bestaan, dan kan je deze functie uitvoeren als:
+Stel dat er een functie `an_example_function` zou bestaan, dan kun je deze functie uitvoeren als:
 
 ~~~python
 an_example_function()
@@ -87,7 +87,7 @@ an_example_function()
 
 ### Return value
 
-Sommige functies geven een **waarde terug**. Deze kan je dan **opslaan** in een variabele. We noemen dit ook de **return value** van de functie.
+Sommige functies geven een **waarde terug**. Deze kun je dan **opslaan** in een variabele. We noemen dit ook de **return value** van de functie.
 Bijvoorbeeld een (fictieve) functie `hour` die het uur teruggeeft als string:
 
 ~~~python
@@ -99,7 +99,7 @@ Een return value is de eerste manier van communiceren met de code in de functie.
 
 ### Argumenten
 
-Daarnaast kan je een **argument** meegeven aan een functie, voor zover deze functie **parameters** definieert.
+Daarnaast kun je een **argument** meegeven aan een functie, voor zover deze functie **parameters** definieert.
 
 ~~~
                          """Functie kan meerdere
@@ -126,11 +126,11 @@ result = times_two(1)
 print(result)  # 2
 ~~~
 
-Je kan een waarde, variabele (of andere expressies) meegeven als argument. In dit geval geef je de waarde 1 als argument mee aan de functie `times_two`, en geeft die als waarde 2 terug.
+Je kunt een waarde, variabele (of andere expressies) meegeven als argument. In dit geval geef je de waarde 1 als argument mee aan de functie `times_two`, en geeft die als waarde 2 terug.
 
 ### Meerdere argumenten
 
-Je bent **niet beperkt tot één argument**. Een functie kan van **0 tot oneindig aantal parameters** definiëren.
+Je bent **niet beperkt tot één argument**. Een functie kan van **0 tot een oneindig aantal parameters** definiëren.
 
 ~~~python
 result = multiply(3, 2)
@@ -164,7 +164,7 @@ Andere - meer gespecialiseerde - functies zijn gegroepeerd in modules.
                 +---------------------+
 ~~~
 
-Als je bijvoorbeeld wiskundige functies wil gebruiken in Python, maak je gebruik van de module `math` (die standaard voorzien is in Python):
+Als je bijvoorbeeld wiskundige functies wilt gebruiken in Python, heb je de module `math` nodig, die standaard voorzien is in Python:
 
 ~~~
 >>> import math
@@ -182,9 +182,9 @@ Merk op: de module bevat niet alleen functies, maar ook constanten, zoals `math.
 
 Om een module te kunnen gebruiken dien je een `import`-statement toe te voegen. Deze maakt de functies en andere onderdelen van de module in je Python-applicatie beschikbaar.
 
-Om dan de functies te gebruiken, volstaat het niet om de naam van deze functies te gebruiken.
+Om dan de functies te gebruiken, volstaat het niet om de naam van deze functies te typen.
 
-* je moet de naam laten voorafgaan door de naam van de module
+* je moet de naam laten voorafgaan door de **naam van de module**
 * gevolgd door een **punt**
 
 Bijvoorbeeld: `math.sqrt`, waarbij `math` de module is en `sqrt` een functie in die module.
@@ -266,7 +266,7 @@ Dit teken duidt altijd het einde aan van een clausule die voorafgaat aan een cod
 ### Gebruik van (zelfgeschreven) functies
 
 Een functie op zich zal nooit uitgevoerd worden. Als je deze niet aanroept, zal er niet veel gebeuren.  
-Je kan deze functie aanroepen net zoals andere functies.
+Je kunt deze functie aanroepen net zoals andere functies.
 
 ~~~python
 def greeting():
@@ -278,7 +278,7 @@ greeting()
 Met als resultaat:
 
 ~~~
-$ python3 greeting.py
+$ python greeting.py
 Hello
  from Koen
 $
@@ -299,7 +299,7 @@ def greeting():
 ...dan zal de Python-interpreter een foutmelding genereren zoals hieronder...
 
 ~~~
-$ python3 test.py
+$ python test.py
 Traceback (most recent call last):
   File "test.py", line 1, in <module>
     greeting()
@@ -310,8 +310,8 @@ Opdat code een functie kan aanroepen/gebruiken, moet deze dus eerder in de "sequ
 
 ### Argumenten
 
-Je kan een functie **algemener** maken door er **argumenten** of parameters aan toe te voegen.  
-In onderstaand voorbeeld voegen we een argument `name` toe. Met dit argument kan je de naam bepalen die door de functie wordt getoond.
+Je kunt een functie **algemener** maken door er **argumenten** of parameters aan toe te voegen.  
+In onderstaand voorbeeld voegen we een argument `name` toe. Met dit argument kun je de naam bepalen die door de functie wordt getoond.
 
 ~~~python
 def greeting(name):
@@ -320,8 +320,8 @@ def greeting(name):
 greeting("Koen")
 ~~~
 
-Dit **argument** gedraagt zich als (en is in feite) een soort van variabele.   
-Je kan als gevolg dezelfde functie meerdere malen **hergebruiken** met een verschillende naam.
+Dit **argument** gedraagt zich als (en is in feite) een variabele.   
+Je kunt als gevolg dezelfde functie meerdere malen **hergebruiken** met een verschillende naam.
 
 ~~~python
 def greeting(name):
@@ -335,7 +335,7 @@ greeting("Bart")
 Als je deze code dan uitvoert, krijg je twee keer dezelfde uitvoering maar met een andere naam.
 
 ~~~
-$ python3 greeting.py
+$ python greeting.py
 Hello
  from Koen
 Hello
@@ -360,7 +360,7 @@ greeting("Bart", "Voet")
 Met als resultaat:
 
 ~~~
-$ python3 greeting.py
+$ python greeting.py
 Hello
  from Koen Vervloesem
 Hello
@@ -399,7 +399,7 @@ def som(a, b):
     return result
 ~~~
 
-Via het `return`-statement kan je dan het resultaat van deze som teruggeven aan de aanroepende code. Die kan dit resultaat dan opslaan in bijvoorbeeld een variabele.
+Via het `return`-statement kun je dan het resultaat van deze som teruggeven aan de aanroepende code. Die kan dit resultaat dan opslaan in bijvoorbeeld een variabele.
 
 ~~~python
 def som(a, b):
@@ -456,7 +456,7 @@ Deze code probeert `c`, die alleen binnen de functie `som` bekend is, buiten de 
 De Python-interpreter geeft dan de volgende foutmelding:
 
 ~~~
-$ python3 test.py
+$ python test.py
 Traceback (most recent call last):
   File "/home/bart/test.py", line 6, in <module>
     print(c)  # NameError

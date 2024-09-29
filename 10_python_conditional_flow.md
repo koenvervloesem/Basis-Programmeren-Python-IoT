@@ -27,7 +27,7 @@
 We hebben nu kennisgemaakt met een aantal basiselementen uit de sequentiële uitvoering:
 
 * **Statements**: assignment, function call, ...
-* **Variabelen**: int, string
+* **Variabelen** en hun **types**: `int`, `str`
 * Rekenkundige **expressies**
 
 We starten nu aan **complexere code**. We gaan nu namelijk naar **conditionele uitvoering** kijken.  
@@ -135,7 +135,7 @@ Dit datatype `bool` heeft slechts twee mogelijk waardes (`True` en `False`). We 
 
 Met een relationele expressie kunnen we dus twee getallen (variabelen, literals, resultaten van expressies, ...) vergelijken.
 
-Stel dat je een programma wil schrijven dat twee getallen vergelijkt (groter/kleiner). Dan kunnen we al gebruikmaken van wat we daarnet hebben geleerd:
+Stel dat je een programma wilt schrijven dat twee getallen vergelijkt (groter/kleiner). Dan kunnen we al gebruikmaken van wat we daarnet hebben geleerd:
 
 ~~~python
 a = int(input("Enter number a: "))
@@ -161,7 +161,7 @@ Maar wat als we iets anders willen tonen dan `True` of `False`?
 
 Om meer te kunnen doen met dit resultaat (of vergelijking) introduceren we het statement `if`.  
 
-Dit soort statement laat je toe om een **vergelijking** te **evalueren** en te **beslissen** of je al dan niet een **stuk code** zal **uitvoeren**.
+Dit soort statement laat je toe om een **vergelijking** te **evalueren** en te **beslissen** of je al dan niet een **stuk code** zult **uitvoeren**.
 
 In onderstaande code laten we `if` beslissen om de tekst "a is bigger than b" al dan niet te tonen.
 
@@ -241,7 +241,7 @@ Het blok dat bij `else` hoort, wordt uitgevoerd als aan de voorwaarde bij `if` n
 ### elif
 
 Een derde mogelijkheid is het toevoegen van één (of meerdere) `elif`-clausule(s).
-Stel dat je ook expliciet wil tonen wanneer de parameters aan elkaar gelijk zijn. Dan kan je een `elif`-clausule (wat staat voor *else if*) toevoegen:
+Stel dat je ook expliciet wilt tonen wanneer de parameters aan elkaar gelijk zijn. Dan kun je een `elif`-clausule (wat staat voor *else if*) toevoegen:
 
 ~~~python
 a = int(input("Enter number a: "))
@@ -257,7 +257,7 @@ else:
 
 ### Meerdere elif-clausules
 
-Je kan ook meerdere `elif`-clausules toevoegen.  
+Je kunt ook meerdere `elif`-clausules toevoegen.  
 Wil je bijvoorbeeld ook een boodschap tonen als a 1 kleiner is dan b? Voeg dan een tweede `elif`-clausule toe:
 
 ~~~python
@@ -274,7 +274,7 @@ else:
     print("a is smaller than b")
 ~~~
 
-> Nota: je kan zoveel `elif`-clausules toevoegen als je wil.
+Je kunt zoveel `elif`-clausules toevoegen als je wilt.
 
 ### Structuur
 
@@ -282,8 +282,8 @@ Een `if`-statement is samengesteld uit twee (soorten) onderdelen of componenten.
 
 * Eén of meerdere **clausules**
   * **één** `if`
-    * **optioneel één** `else`
     * **optioneel één of meerdere** `elif`
+    * **optioneel één** `else`
   * alleen `if` is **verplicht**
   * elke **clausule** **eindigt** op een `:` (dubbele punt)  
    (zoniet zal de interpreter een fout **SyntaxError: expected ':'** aangeven)
@@ -292,9 +292,7 @@ Een `if`-statement is samengesteld uit twee (soorten) onderdelen of componenten.
   * **geïndenteerd** ten opzichte van de clausule die voorafgaat
   * indentatie betekent **1 tab of 4 spaties**  
 
-> Nota: Je kan kiezen tussen het gebruik van een tab of 4 spaties,
-> maar binnen één Python-bestand moet je consequent zijn.
-> Als je beide mixt, zal de Python-interpreter een foutmelding geven.
+Voor de indentatie kun je kiezen tussen het gebruik van een tab of 4 spaties, maar binnen één Python-bestand moet je consequent zijn. Als je beide mixt, zal de Python-interpreter een foutmelding geven.
 
 
 ~~~python
@@ -311,13 +309,13 @@ else:  # <--------------------------------------- else-clausule
     print("a is smaller than or equal to b")  # |---- block (1 regel)
 ~~~
 
-Bovenstaande code toont aan dat je **één of meerdere statements** in zo'n blok kan steken.
+Bovenstaande code toont aan dat je **één of meerdere statements** in zo'n blok kunt opnemen.
 
 ### Geneste if-statements
 
 Binnen een `if`-blok kunnen niet alleen enkelvoudige statements (van één regel) voorkomen, maar ook andere **block statements**, waaronder `if` en `while` (zie later).
 
-Stel dat we een boodschap willen tonen wanneer een **getal c** zich **tussen** een getal **a en b** ligt.  
+Stel dat we een boodschap willen tonen wanneer een **getal c** zich **tussen** een getal **a en b** bevindt.  
 Voorlopig gaan we ervan uit dat **a** altijd **kleiner** is dan **b**.  
 Dit houdt in dat je aan twee vergelijkingen moet voldoen:
 
@@ -343,7 +341,7 @@ Je kunt ook meerdere niveaus nesten, maar beperk het aantal niveaus liever. Dat 
 ### Logische expressies (en operatoren)
 
 De **relationele expressies** die we net hebben bekeken zijn **boolean expressies** (expressies die een boolean als resultaat hebben en geen getal).  
-Daarnaast kan je ook nog letterlijk de waarden `True` en `False` als **literal** gebruiken in je code.
+Daarnaast kun je ook nog letterlijk de waarden `True` en `False` als **literal** gebruiken in je code.
 
 ~~~
 
@@ -519,7 +517,7 @@ else:
     print("c is smaller than or equal to both a and b")
 ~~~
 
-Je kan deze `or`-expressie trouwens uitbreiden met meerdere logische operatoren zoals hieronder:
+Je kunt deze `or`-expressie trouwens uitbreiden met meerdere logische operatoren zoals hieronder:
 
 ~~~python
 a = int(input("Enter number a: "))
@@ -576,7 +574,7 @@ Of in een **waarheidstabel**:
 | False | True  |
 | True  | False |
 
-Je kan bijvoorbeeld ook het voorgaande voorbeeld (uit de `or`-operator) omdraaien door een `not` te gebruiken:
+Zo kun je het voorgaande voorbeeld (uit de `or`-operator) omdraaien door een `not` te gebruiken:
 
 ~~~python
 a = int(input("Enter number a: "))

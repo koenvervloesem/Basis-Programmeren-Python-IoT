@@ -12,9 +12,9 @@ print("Hello world")
 
 ### Enkelvoudige of simpele statements
 
-Bovenstaande regel code is wat we noemen een **statement**. Eenvoudig gezegd: een statement is een stuk code dat min of meer op zichzelf staand iets kan uitvoeren.
+Bovenstaande regel code is wat we noemen een **statement**. Eenvoudig gezegd: een statement is een stuk code dat op zichzelf staand een taak uitvoert.
 
-Je kan het bekijken als een soort van **opdracht** die je aan je computer meegeeft, in dit geval aan de Python-interpreter.
+Je kunt het bekijken als een **opdracht** die je aan je computer meegeeft, in dit geval aan de Python-interpreter.
 
 Deze opdracht zal dan effectief **een actie uitvoeren**, zoals:
         
@@ -32,7 +32,7 @@ Een statement dat uit **één regel code** bestaat noemen we ook wel een **enkel
 
 ### Sequentiële programmatie
 
-Je kan ook meerdere statements achter elkaar schrijven. Dit noemen we een **sequentie** of opeenvolging van statements.
+Je kunt ook meerdere statements achter elkaar schrijven. Dit noemen we een **sequentie** of opeenvolging van statements.
 
 ~~~python
 print("Hello world")
@@ -48,7 +48,7 @@ Het **statement** dat we hier uitvoeren, is de **aanroep** van een **functie** (
 
 > Later zien we nog andere types van statements.
 
-**Functies** zijn **herbruikbare** stukken **code** die je kan **aanroepen** vanuit je **programma** onder de volgende vorm: 
+**Functies** zijn **herbruikbare** stukken **code** die je kunt **aanroepen** vanuit je **programma** onder de volgende vorm: 
 
 ~~~
 <functie-naam>(<argument>)
@@ -56,19 +56,19 @@ Het **statement** dat we hier uitvoeren, is de **aanroep** van een **functie** (
 
 Je schrijft eerst de naam van de functie, gevolgd - tussen haakjes - door het argument.  
 
-Je kan ook meerdere argumenten meegeven aan sommige functies. Dan moet je deze scheiden door komma's.  
+Je kunt ook meerdere argumenten meegeven aan sommige functies. Dan moet je deze scheiden door komma's.  
 Daar komen we zo dadelijk nog op terug.
 
 ### De functie print
 
-Python voorziet **standaard** in een hele hoop **functies** die je onmiddellijk kan gebruiken.
+Python voorziet **standaard** in een hele hoop **functies** die onmiddellijk te gebruiken zijn.
 De functie die we hier gebruiken heeft als naam `print`.  
 
-Bij deze functie geef je als argument een **stuk tekst**.  
+Bij deze functie geef je als argument een **tekst**.  
 
 ### String literal
 
-Een stuk tekst dat je "letterlijk" wil gebruiken in Python-code dient altijd omsloten te worden door aanhalingstekens.  
+Een stuk tekst dat je letterlijk wilt gebruiken in Python-code dient altijd omsloten te worden door aanhalingstekens.  
 Dit mogen zowel **enkele** (`'`) als **dubbele** (`"`) aanhalingstekens zijn.  
 
 Dit is een **string literal**:

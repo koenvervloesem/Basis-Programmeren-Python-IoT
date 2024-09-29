@@ -24,20 +24,20 @@ Er zijn hier twee nieuwe elementen:
 * Een **variabele** met de naam `say_hello`
 * Een **assignment statement** dat wordt gebruikt om de variabele `say_hello` de waarde "hello" toe te kennen (*assign*)
 
-Door het gebruik van een **variabele** kan je dus een **waarde** (hier de string "hello") in het geheugen steken en deze **hergebruiken** in latere **statements**.
+Door het gebruik van een **variabele** kun je dus een **waarde** (hier de tekst "hello") in het geheugen steken en deze **hergebruiken** in latere **statements**.
 
 ### Een variabele is een stuk geheugen
 
 Een **variabele** is dus:
 
-* Een stuk **geheugen** dat je kan hergebruiken
+* Een stuk **geheugen** dat je kunt hergebruiken
 * Dat een **waarde** kan bevatten
 * Waaraan een **naam** is gelinkt  
  (of ook wel **symbool** genoemd)
 
 ### Doel van een variabele
 
-De **essentie/doel** van zo'n **variabele** is 
+Het doel van zo'n variabele is:
 
 * het **hergebruiken of delen van data** 
 * tussen verschillende **statements** 
@@ -66,7 +66,7 @@ De **essentie/doel** van zo'n **variabele** is
 
 Om met variabelen te kunnen werken, gebruiken we een nieuw soort statement, namelijk het **assignment statement**.   
 Zo'n statement kent (of **"assigns"**) een **waarde** (**value**) toe aan een **naam**.  
-Deze waarde kan je dan hergebruiken in latere **statements** (de functie-aanroepen die de waarde twee maal afdrukken).
+Deze waarde kun je dan hergebruiken in latere **statements** (de functie-aanroepen die de waarde twee keer afdrukken).
 
 ### Vorm van een assignment statement
 
@@ -82,7 +82,7 @@ Zo'n assignment statement heeft altijd de vorm van :
 
 ### Waarde van een variabele wijzigen
 
-Een variabele zou niet "variabel" zijn als je deze niet kan wijzigen. We beschouwen het volgende voorbeeld in de REPL:
+Een variabele zou niet "variabel" zijn als je deze niet kunt wijzigen. We beschouwen het volgende voorbeeld in de REPL:
 
 ~~~python
 >>> say_hello = "hello"
@@ -96,7 +96,7 @@ world
 
 Wat verwachtte je dat deze instructies toonden?
 
-Je kan later in hetzelfde programma of dezelfde sequentie variabelen van **waarde wijzigen** (zo veel als je wilt) via deze **assignment statements**.
+Je kunt later in hetzelfde programma of dezelfde sequentie variabelen van **waarde wijzigen** (zo veel als je wilt) via deze **assignment statements**.
 
 ~~~
                         +------------------+
@@ -127,7 +127,7 @@ Je kan later in hetzelfde programma of dezelfde sequentie variabelen van **waard
 
 ### Een variabele heeft een type
 
-Een variabele heeft dus een naam, en aan de hand van deze naam kan je vanuit je code de waarde uitlezen en wijzigen.   
+Een variabele heeft dus een naam, en aan de hand van deze naam kun je vanuit je code de waarde uitlezen en wijzigen.   
 Daarnaast heeft een variabele ook een bepaald **type**.
 
 ~~~
@@ -141,8 +141,8 @@ Daarnaast heeft een variabele ook een bepaald **type**.
 +---------------------+           +---------------------+
 ~~~
 
-Dit type bepaalt wat je met de waarde (een hoop bytes...) kan doen.  
-Python ondersteunt verschillende types. Tot nog toe hebben we gebruik gemaakt van het type **string** (in Python `str`).
+Dit type bepaalt wat je met de waarde (een hoop bytes...) kunt doen.  
+Python ondersteunt verschillende types. Tot nu toe hebben we gebruikgemaakt van het type **string** (in Python `str`).
 
 In onderstaand stuk code maken we drie variabelen aan van verschillende types.  
 Met de functie `type` vragen we het type van de variabele op.
@@ -171,7 +171,7 @@ Het eerste type hier is `str`, dat we al een aantal keren hebben gebruikt.
 
 ### Numerieke types
 
-De twee andere - `int` en `float` - zijn **numerieke types** die je kan gebruiken om berekeningen met getallen uit te voeren.
+De twee andere - `int` en `float` - zijn **numerieke types** die je kunt gebruiken om berekeningen met getallen uit te voeren.
 
 ### Integers
 
@@ -186,7 +186,7 @@ De twee andere - `int` en `float` - zijn **numerieke types** die je kan gebruike
 –7777777777
 ~~~
 
-In Python 3 is er **geen limiet** op hoe lang een **geheel getal** kan zijn.  
+In Python 3 is er **geen limiet** op hoe groot een **geheel getal** kan zijn.  
 Natuurlijk wordt het in de praktijk **beperkt** door de **hoeveelheid geheugen** die je **systeem** heeft, zoals alle dingen.  
 
 Maar verder kan een geheel getal zo lang zijn als je nodig hebt, zoals hieronder:
@@ -197,7 +197,7 @@ Maar verder kan een geheel getal zo lang zijn als je nodig hebt, zoals hieronder
 154646546465465465465465465464
 ~~~
 
-Vanzelfsprekend kan je hier ook berekeningen mee uitvoeren:
+Vanzelfsprekend kun je hier ook berekeningen mee uitvoeren:
 
 ~~~
 >>> a = 3

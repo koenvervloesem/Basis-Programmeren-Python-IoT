@@ -1,7 +1,7 @@
 ## Commentaar
 
 Die ene regel in ons programma was een statement, een opdracht voor de Python-interpreter.
-In Python-code kan je ook **tekst** toevoegen die **niet wordt geïnterpreteerd** en uitgevoerd door de interpreter.
+In Python-code kun je ook **tekst** toevoegen die **niet wordt geïnterpreteerd** en uitgevoerd door de interpreter.
 
 ### Commentaar op één regel
 
@@ -18,7 +18,7 @@ Alles wat achter de eerste hashtag komt op een regel wordt **niet geïnterpretee
 
 ### Commentaar op meerdere regels
 
-Als je commentaar op meerdere regels wilt schrijven, kun je elke regel laten voorafgaan door een hashtag. Maar er is ook een andere manier:
+Als je commentaar op meerdere regels wilt schrijven, kun je elke regel laten voorafgaan door een hashtag. Maar er is ook een andere manier, door je commentaar te laten voorafgaan en eindigen met telkens drie aanhalingstekens:
 
 ~~~python
 """
@@ -49,6 +49,6 @@ Maar zoals bij alle goede dingen in het leven geldt ook hier: **gebruik commenta
 Gebruik zeker geen commentaar om:
 
 * In je eigen woorden te herhalen wat een statement doet. Dat is overbodig. Leg het waarom uit, niet het wat.
-* Nodeloos complexe code uit te leggen.
+* Nodeloos complexe code uit te leggen. Dan vereenvoudig je die code beter.
 
 Te veel commentaar is dikwijls een teken van **slecht geschreven/leesbare code**. Als je zoveel commentaar nodig hebt om je code te begrijpen, kun je beter je code herschrijven tot iets wat gemakkelijker te begrijpen is - en daardoor minder commentaar nodig heeft.

@@ -202,7 +202,7 @@ print(student_points)
 Met als resultaat dat er een extra studenten-punt is **toegevoegd**:
 
 ~~~bash
-$ python3 dictionary_demo.py
+$ python dictionary_demo.py
 12
 {'Jan': 12, 'Piet': 15, 'Joris': 16, 'Korneel': 18}
 12
@@ -229,7 +229,7 @@ print(student_points["Piet"])
 Hierbij gaat de **vorige waarde** vanzelfspekend **overschreven** worden:
 
 ~~~bash
-$ python3 dictionary_demo.py
+$ python dictionary_demo.py
 15
 16
 ~~~
@@ -256,7 +256,7 @@ print ("After: ", student_points)
 Na het verwijderen van het element met de sleutel "Piet" verdwijnt deze uit de dictionary:
 
 ~~~bash
-$ python3 dictionary_demo.py
+$ python dictionary_demo.py
 Before:  {'Jan': 12, 'Piet': 15, 'Joris': 16, 'Korneel': 18}
 After:  {'Jan': 12, 'Joris': 16, 'Korneel': 18}
 ~~~
@@ -280,7 +280,7 @@ print(student_points["Hans"])
 Zoals je hieronder ziet, wordt er dan een exception geworpen:  
 
 ~~~bash
-$ python3 dictionary_demo.py
+$ python dictionary_demo.py
 Traceback (most recent call last):
   File "dictionary_demo.py", line 8, in <module>
     print(student_points["Hans"])
@@ -315,7 +315,7 @@ except KeyError:
 ...met als resultaat...
 
 ~~~bash
-$ python3 dictionary_demo.py
+$ python dictionary_demo.py
 Hans bestaat niet
 ~~~
 
@@ -340,7 +340,7 @@ else:
 ...met hetzelfde resultaat.
 
 ~~~bash
-$ python3 dictionary_demo.py
+$ python dictionary_demo.py
 Hans bestaat niet
 ~~~
 

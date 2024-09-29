@@ -119,7 +119,7 @@ Schrijf een programma dat
 Zie onderstaand voorbeeld van uitvoering.
 
 ~~~
-$ python3 number.py
+$ python number.py
 Enter a number (negative stops the loop): 3
 Enter a number (negative stops the loop): 8
 Enter a number (negative stops the loop): 1
@@ -281,7 +281,7 @@ print_rectangle(6, 5)
 
 
 ~~~
-$ python3 print_rectangle.py
+$ python print_rectangle.py
 *****
 *****
 *****
@@ -295,7 +295,7 @@ $ python3 print_rectangle.py
 Maak een functie die een rechthoek op de console toont maar deze niet vult:
 
 ~~~
-$ python3 print_rectangle.py
+$ python print_rectangle.py
 *****
 *   *
 *   *
@@ -319,7 +319,7 @@ print_triangle(6)
 
 
 ~~~
-$ python3 print_triangle.py
+$ python print_triangle.py
      *
     ***
    *****
@@ -334,7 +334,7 @@ $
 Maak een variant die de driehoek niet vult:
 
 ~~~
-$ python3 print_triangle.py
+$ python print_triangle.py
      *
     * *
    *   *
@@ -355,7 +355,7 @@ print_multiple_triangles(6, 3)
 
 
 ~~~
-$ python3 print_multiple_triangles.py
+$ python print_multiple_triangles.py
      *           *            *      
     * *         * *          * *
    *   *       *   *        *   *

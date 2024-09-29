@@ -16,12 +16,12 @@ De REPL van Python open je gewoon door de opdracht `python` te typen op de opdra
 
 ~~~bash
 $ python
-Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Python 3.12.3 (main, Sep 11 2024, 14:17:37) [GCC 13.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ~~~
 
-Vanaf het moment dat er **>>>** verschijnt (voorafgegaan door wat systeeminformatie) kan je aan de slag en Python-instructies uitvoeren.
+Vanaf het moment dat er `>>>` verschijnt (voorafgegaan door wat systeeminformatie) kun je aan de slag en Python-instructies uitvoeren.
 
 De REPL is een ongelooflijk handige tool die je toelaat om snel iets uit te testen zonder dat je er een Python-script voor hoeft aan te maken. Het is aan te raden om altijd een REPL-sessie open te hebben staan wanneer je in Python aan het programmeren bent.
 
@@ -31,7 +31,7 @@ De Python-interpreter is handig om eenvoudige berekeningen uit te voeren:
 
 ~~~
 $ python
-Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Python 3.12.3 (main, Sep 11 2024, 14:17:37) [GCC 13.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 37+5
 42
@@ -53,7 +53,7 @@ SyntaxError: invalid syntax
 >>>
 ~~~
 
-Interessant is wel dat de interpreter bij een fout niet wordt afgesloten en je je code opnieuw kan proberen.   
+Interessant is wel dat de interpreter bij een fout niet wordt afgesloten en je je code opnieuw kunt proberen.   
 Bij een script dat een fout bevat zou het programma beëindigd worden...
 
 ### Tab completion
@@ -78,7 +78,7 @@ En als je nu de i intypt en één keer op Tab drukt, vervolledigt de REPL dit to
 >>> print(
 ~~~
 
-Dit kan je nu zelf verder vervolledigen tot een geldig statement:
+Dit kun je nu zelf verder vervolledigen tot een geldig statement:
 
 ~~~
 >>> print("Hello")
@@ -89,7 +89,7 @@ De REPL vervolledigt overigens niet alleen namen die door Python zelf gedefiniee
 
 ### Geschiedenis
 
-De REPL onthoudt de voorgaande opdrachten die je hebt ingetypt. Door met de pijltjestoetsen naar boven en onder te werken, kan je de eerder ingetypte opdrachten weer oproepen. Nadat je zo een eerder ingetypte opdracht op de opdrachtprompt van de REPL ziet, druk je op Enter om deze weer uit te voeren.
+De REPL onthoudt de voorgaande opdrachten die je ingetypt hebt. Door met de pijltjestoetsen naar boven en onder te werken, kun je de eerder ingetypte opdrachten weer oproepen. Nadat je zo een eerder ingetypte opdracht op de opdrachtprompt van de REPL ziet, druk je op Enter om deze weer uit te voeren.
 
 ### Help!
 
@@ -121,15 +121,15 @@ Als de helptekst langer dan een scherm is, kun je erdoor scrollen met de pijltje
 
 Typ de toets Q in om het helpscherm te verlaten en weer de opdrachtprompt van de REPL te zien.
 
-Maak er een gewoonte van om als je vragen hebt over gelijk wat in Python de helpfunctie van de REPL te gebruiken. Je vindt zo vaak sneller het antwoord op je vraag dan de online documentatie of andere websites te raadplegen.
+Maak er een gewoonte van om als je vragen hebt over gelijk wat in Python de helpfunctie van de REPL te gebruiken. Je vindt zo vaak sneller het antwoord op je vraag dan de online documentatie (<https://docs.python.org>) of andere websites te raadplegen.
 
-### De console verlaten
+### De REPL verlaten
 
 Om de REPL te verlaten, roep je de functie `exit()` of `quit()` aan:
 
 ~~~
 $ python
-Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
+Python 3.12.3 (main, Sep 11 2024, 14:17:37) [GCC 13.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> exit()
 $
@@ -141,7 +141,7 @@ De toetsencombinatie **Ctrl+D** doet hetzelfde.
 
 ### Een tweede programma ... met meerdere statements
 
-Ons eerste programma had **één statement**. Wat als je nu meerdere statements toevoegt?
+Ons eerste programma had **één statement**. We hebben daarna al een keer getoond wat er gebeurt als je meerdere statements toevoegt.
 Pas het voorbeeldprogramma aan tot de volgende code:
 
 ~~~python
@@ -149,7 +149,7 @@ print("Hello")
 print("world")
 ~~~
 
-Deze **statements** worden **uitgevoerd** in de volgorde zoals jij ze in het bestand plaatst.
+Deze **statements** worden **uitgevoerd** in de volgorde zoals je ze in het bestand plaatst.
 
 ~~~bash
 $ python hello.py
@@ -158,7 +158,7 @@ world
 $
 ~~~
 
-Zoals je ziet zal de Python-interpreter eerst de opdracht `print("Hello")` uitvoeren en dan pas `print("world")`.
+Zoals je ziet, zal de Python-interpreter eerst de opdracht `print("Hello")` uitvoeren en dan pas `print("world")`.
 
 ### Python-interpreter voert statement per statement uit
 
@@ -192,14 +192,14 @@ Wat we hiervoor zagen, noemen we **sequentiële uitvoering**  .
 **Sequentieel** betekent hier dat alle **statements** die je in een Python-script of de REPL plaatst:
 
 * **één voor één** worden **uitgevoerd**
-* in de **volgorde** dat jij ze hebt geplaatst
+* in de **volgorde** waarin je ze hebt geplaatst
 
 Dit is een **basisprincipe (fundering)** waarop (bijna) alle (imperatieve) **programmeertalen** gebaseerd zijn.  
 
 ### Maar het gaat verder...
 
 Het principe van **sequentiële uitvoering** alleen is **niet voldoende** om een **volledig functionerend programma** te schrijven.  
-Bovenop dit principe heb je een **aantal andere principes** die we de komende hoofdstukken gaan uitleggen, namelijk:
+Naast dit principe heb je enkele **andere principes** die we de komende hoofdstukken gaan uitleggen, namelijk:
 
 * **Conditionele** uitvoering  
   Statements alleen **uitvoeren onder bepaalde voorwaarden**.
@@ -208,9 +208,7 @@ Bovenop dit principe heb je een **aantal andere principes** die we de komende ho
   Statements blijven **uitvoeren zolang aan een bepaalde voorwaarde** is voldaan.  
   In het vakjargon wordt dit ook meestal **loops** (lussen) genoemd.
 * **Hergebruik** van uitvoering  
-  Statements **groeperen** om **herhaaldelijk** te kunnen **uitvoeren**  
-
-Het meest **elementaire hergebruik** vinden we bij **functies**, maar later gaan we ook zien dat we deze functies kunnen groeperen in **modules** en **objectgeoriënteerd programmeren**.
+  Statements **groeperen** om **herhaaldelijk** te kunnen **uitvoeren**. Het meest **elementaire hergebruik** vinden we bij **functies**, maar later gaan we ook zien dat we deze functies kunnen groeperen in **modules** en **objectgeoriënteerd programmeren**.
 
 ### Verschillende basisuitvoeringsprincipes
 
@@ -258,9 +256,9 @@ We moeten **eerst leren kruipen alvorens te fietsen**, dus we beginnen bij de **
 ~~~
 
 * **(Enkelvoudige) Statements**  
-  Elementaire unit van functionaliteit in Python zoals:
+  De elementaire eenheid van functionaliteit in Python zoals:
     * Aanroepen van functies (*function call*)
-    * Berekening uitvoeren en resultaat opslaan in variabele (*assignment statement*)
+    * Berekening uitvoeren en resultaat opslaan in een variabele (*assignment statement*)
     * Beëindigen van een functie (*return statement*)
     * ...
 * **Variabelen** (en **literals**)  

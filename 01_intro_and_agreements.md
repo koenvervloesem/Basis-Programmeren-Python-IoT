@@ -2,7 +2,7 @@
 
 ### Cursusmateriaal
 
-De cursus wordt deel per deel op Toledo beschikbaar gesteld in html-, pdf- en epub-formaat.
+De cursus wordt deel per deel op Toledo beschikbaar gesteld in pdf-formaat.
 
 Let op: dit is een 'levend document'. De cursus wordt elke les bijgewerkt en in zijn nieuwste versie op Toledo geüpload.
 
@@ -10,9 +10,9 @@ Wie aanvullende verdieping wil, mag altijd vragen om verwijzingen naar goede boe
 
 ### Stijl van lesgeven
 
-Dit is een **praktische cursus**, dus we vliegen er direct in met praktijk.
+Dit is een **praktische cursus**, dus we vliegen er onmiddellijk in met praktijk.
 Het motto van deze cursus is **"eerst coderen, dan leren"**.
-Je zal merken dat je gemakkelijker theorie oppikt als je eerst al hebt geëxperimenteerd.
+Je zult merken dat je gemakkelijker theorie oppikt als je eerst al hebt geëxperimenteerd.
 
 ### Verloop van de lessen
 
@@ -48,12 +48,12 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
 
 **(1) 18.00-18.30: Quiz en Herhaling**
 
-* We starten met een **Quiz** en/of **Herhaling** over de **vorige les**, met bijvoorbeeld een herhalingsoefening.
-* Vervolgens is er tijd voorzien voor vragen over de leerstof van de vorige les.
+* We voorzien tijd om **vragen** te beantwoorden over de leerstof van de vorige les.
+* Daarna geven we een **Quiz** en/of **Herhaling** over de vorige les, met bijvoorbeeld een herhalingsoefening.
 
 **(2) 18.30-19.45: Leerstof en Coderen**
 
-* Op basis van de **slides** die op voorhand op Toledo komen te staan.
+* Op basis van de **cursustekst** die op voorhand op Toledo komt te staan.
 * We maken klassikaal **oefeningen**
     * Lector doet oefeningen voor
     * Studenten doen deze oefeningen mee
@@ -74,15 +74,15 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
 * **Indienen** van je code op **Toledo**
     * Zelfs als deze nog niet af is
     * Je hebt nog **3 weken** de **tijd** om **verbeteringen** aan te brengen
-    * Maar op deze manier kan je **vroeg feedback** krijgen voor verbeteringen
+    * Maar op deze manier kun je **vroeg feedback** krijgen voor verbeteringen
 
 **(6) Thuis: Oefenen en studeren**
 
-* **Slides bestuderen** ter voorbereiding van de volgende les
-* Je kan altijd vragen stellen per **e-mail** (koen.vervloesem@ucll.be)
+* **Cursustekst bestuderen** ter voorbereiding van de volgende les
+* Je kunt altijd vragen stellen per **e-mail** (koen.vervloesem@ucll.be)
 * **Bemerkingen en feedback** op cursus zijn **welkom**    
   (via e-mail, Toledo, live of op <https://github.com/koenvervloesem/Basis-Programmeren-Python-IoT>)
-* **Extra oefeningen** worden **beschikbaar** gesteld
+* Je mag altijd om **extra oefeningen** vragen 
 
 ### Opdrachten op Toledo
 
@@ -100,18 +100,19 @@ Je laadt de Python-bestanden (met bestandsextensie .py) op, tenzij anders beschr
 
 ### Evaluatie
 
-Een groot deel van de punten van dit vak staan op permanente evaluatie:
+De punten voor dit vak behaal je met permanente evaluatie:
 
 Eerste zit:
 
 * 20 % medewerking
-* 40 % opdrachten
-* 40 % examen
+* 80 % opdrachten
 
 Tweede zit:
 
 * 20 % medewerking wordt meegenomen uit eerste zit
-* 80 % examen (herkansing)
+* 80 % praktische opdracht met verdediging tijdens de examenperiode
+
+De officiële beschrijving van de doelstellingen en activiteiten van het vak vind je in de ECTS-fiche op <https://onderwijsaanbod.leuven.ucll.be/syllabi/n/MGI27BN.htm#activetab=doelstellingen_idp7653472>.
 
 ### Wat is programmeren?
 
@@ -137,7 +138,7 @@ Programmeren wordt ook wel eens vergeleken met een recept schrijven om te koken 
 
 ### Waarom leren programmeren met Python?
 
-De keuze voor deze introductiecursus is gevallen op **Python**. Waarom?  
+De keuze voor deze introductiecursus is gevallen op de programmeertaal **Python**. Waarom?  
 
 * Python is **eenvoudig** aan te leren
 * Python wordt gebruikt om **kleine tot grote applicaties** te bouwen

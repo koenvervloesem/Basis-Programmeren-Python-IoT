@@ -18,9 +18,9 @@ Als je jezelf **niet comfortabel** voelt op de opdrachtregel of er nog **nooit v
 
 Eerst installeren we de **Python-interpreter**. Dit is de software waarmee je Python-programma's uitvoert.
 
-#### Python 3.11
+#### Python 3.12
 
-Voor deze cursus gebruiken we als referentie versie **Python 3.11**.
+Voor deze cursus gebruiken we als referentie versie **Python 3.12**.
 Als je een eerdere (of latere) versie van Python 3 hebt, is dat ook OK.
 
 > **Nota:**
@@ -29,22 +29,22 @@ Als je een eerdere (of latere) versie van Python 3 hebt, is dat ook OK.
 #### Installatie testen
 
 Alvorens je Python gaat installeren, kijk je het best na of je systeem al een **Python-installatie** bevat en **welke versie** dat is.  
-Dat kan je doen via de opdrachtregel:
+Dat kun je doen via de opdrachtregel:
 
 Op Linux/macOS:
 
 ~~~bash
 koan@x1:~$ python --version
-Python 3.10.4
+Python 3.12.3
 koan@x1:~$
 ~~~
 
 Op Windows:
 
 ~~~
-C:\users\py> python --version
-Python 3.10.4
-C:\users\py>
+C:\Users\Koen> python --version
+Python 3.12.3
+C:\Users\Koen>
 ~~~
 
 > Nota:  
@@ -57,7 +57,7 @@ Windows opent mogelijk de Microsoft Store om Python daaruit te installeren wanne
 Installeer Python met Winget:
 
 ~~~
-winget install --id Python.Python.3.11
+winget install --id Python.Python.3.12
 ~~~
 
 #### Installeren op macOS

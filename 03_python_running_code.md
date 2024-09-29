@@ -11,10 +11,10 @@ Deze instructies noemen we ook wel **statements**.
 
 ### Uitvoeren van Python-code
 
-Python-code kan je uitvoeren op twee manieren:
+Python-code kun je uitvoeren op twee manieren:
 
 * **Scripts:** Python-statements vanuit een bestand uitvoeren
-* **Interactief:** Python-statements statement per statement uitvoeren in een shell
+* **Interactief:** Python-statements in een shell uitvoeren, statement per statement
 
 Voor de eerste voorbeelden werken we met scripts. Nadien wisselen we beide manieren af.
 
@@ -36,17 +36,17 @@ Bijvoorbeeld in je home-directory in een map "basis_programmeren"
 **Stap 3:** **Navigeer** op de **opdrachtregel** naar deze directory:
 
 ~~~
-C:\users\python> cd basis_programmeren
-C:\users\python\basis_programmeren> 
+C:\Users\Koen> cd basis_programmeren
+C:\Users\Koen\basis_programmeren> 
 ~~~
 
 **Stap 4:** Voer dit programma uit.
 Dit doe je door de **Python-interpreter** aan te roepen met als argument **hello.py** (naam van het Python-programma):
 
 ~~~
-C:\users\python\basis_programmeren> python hello.py
+C:\Users\Koen\basis_programmeren> python hello.py
 Hello World
-C:\users\python\basis_programmeren> 
+C:\Users\Koen\basis_programmeren> 
 ~~~
 
 > "Hello world" is de klassieker om de basiswerking van een programmeertaal te demonstreren.
@@ -67,7 +67,7 @@ Bekijk de volgende ongeldige Python-code bijvoorbeeld:
 print("Hello world"
 ~~~
 
-Als je deze wil uitvoeren, zal de Python-interpreter het programma afbreken en aanduiden waar het in de mist gaat:
+Als je deze wilt uitvoeren, zal de Python-interpreter het programma afbreken en aanduiden waar het in de mist gaat:
 
 ~~~
 koan@x1:~$ python hello.py
@@ -85,5 +85,5 @@ De Python-interpreter gaat ook meestal naar goed vermogen proberen aan te duiden
 * Welke **soort fout** je hebt gemaakt (hier een `SyntaxError`).
 * Eventueel een **hint** wat je moet doen om de fout te corrigeren (hier het haakje sluiten).
 
-Er zijn **verschillende soorten fouten** die in je in een Python-programma kan maken.  
+Er zijn **verschillende soorten fouten** die in je in een Python-programma kunt maken.  
 Gedurende de cursus gaan we nog veel stilstaan bij die fouten en hoe je ermee moet omgaan.

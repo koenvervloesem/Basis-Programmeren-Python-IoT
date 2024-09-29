@@ -68,7 +68,7 @@ Optioneel voer je een **ander stuk code** uit als de expressie van de voorwaarde
 
 ### Repetitieve uitvoering
 
-Waar je bij conditionele uitvoering een blok code eenmaal uitvoert, blijf je bij repetitieve uitvoering een blok code uitvoeren zolang een voorwaarde waar is.
+Waar je bij conditionele uitvoering een blok code eenmaal uitvoert, blijf je bij repetitieve uitvoering een blok code uitvoeren **zolang** een voorwaarde waar is.
 
 ~~~
                                           +----------------+
@@ -120,7 +120,7 @@ Python kent twee soorten lussen: `while` en `for`.
 Om de `while`-lus te illustreren, starten we met een eenvoudig voorbeeld:
 
 * We tonen een aantal sterren op de console.
-* Je geeft het aantal in dat je wil tonen.
+* Je voert het aantal in dat je wilt tonen.
 
 ~~~python
 number_of_stars = int(input("Number of stars to print? "))
@@ -220,12 +220,12 @@ De toestand die wordt geëvalueerd, is `exponent_counter`. De lus wordt uitgevoe
 ~~~python
 base = int(input("Give base: "))
 exponent = int(input("Give exponent: "))
-result = 1
 exponent_counter = 0
+result = 1
 
 while exponent_counter < exponent:
-    result = result * base
     exponent_counter = exponent_counter + 1
+    result = result * base
 
 print(result)
 ~~~
@@ -331,7 +331,7 @@ for counter in range(number_of_stars) :
 
 De `for`-lus heeft twee componenten:
 
-* Een **teller** (de variabele `counter`) volgend op het keyword `for`. Je kan die teller gebruiken in het blok van de `for`-lus.
+* Een **teller** (de variabele `counter`) volgend op het keyword `for`. Je kunt die teller gebruiken in het blok van de `for`-lus.
 * Een aanroep van de functie `range` volgend op het keyword `in`, waarmee je bepaalt welke **waardes** de teller aanneemt.
 
 Net zoals bij een `while`-lus zal deze lus **het block statement blijven uitvoeren**, maar dan **tot** alle waardes in het **hele bereik afgelopen** zijn.
@@ -352,12 +352,12 @@ Als we dit toepassen op het voorbeeld van de `while`-lus om de macht van een get
 ~~~python
 base = int(input("Give base: "))
 exponent = int(input("Give exponent: "))
-result = 1
 exponent_counter = 0
+result = 1
 
 while exponent_counter < exponent:
-    result = result * base
     exponent_counter = exponent_counter + 1
+    result = result * base
 
 print(result)
 ~~~
@@ -411,8 +411,8 @@ Count to: 10
 
 ### Geneste lus
 
-Binnen een `for`- of `while`-lus kan je ook **andere block statements** toevoegen, en dus ook weer een lus. Dat noemen we een **geneste lus**.
-In onderstaand voorbeeld tonen we bijvoorbeeld de **maaltafels** met een geneste `for`-lus.
+Binnen een `for`- of `while`-lus kun je ook **andere block statements** toevoegen, en dus ook weer een lus. Dat noemen we een **geneste lus**.
+In onderstaand voorbeeld tonen we de **maaltafels** met een geneste `for`-lus.
 
 ~~~python
 for left_part in range(1, 10):
@@ -481,11 +481,11 @@ $ python powerof2.py
 1024
 ~~~
 
-Merk op: `break` gebruik je beter alleen bij uitzondering, als het echt niet anders kan. Want de eerste versie van dit programma is in dit geval duidelijker en korter. Maar we zullen nog complexere programma's (en opdrachten) tegenkomen waarin `break` nuttig is.
+Merk op: `break` gebruik je beter alleen bij uitzondering, als het echt niet anders kan. De eerste versie van dit programma is in dit geval duidelijker en korter. Maar we zullen nog complexere programma's (en opdrachten) tegenkomen waarin `break` nuttig is.
 
-### Een iteratie eerder verlaten met break
+### Een iteratie eerder verlaten met continue
 
-Een andere situatie die wel eens voorkomt is dat je een lus over een specifiek bereik uitvoert, maar in één speciaal geval het blok in de lus niet wilt uitvoeren. Dan zeg je met het statement `continue` dat je onmiddellijk wilt voortgaan met de volgende iteratie van de lus.
+Een andere situatie die wel eens voorkomt, is dat je een lus over een specifiek bereik uitvoert, maar in één speciaal geval het blok in de lus niet wilt uitvoeren. Dan zeg je met het statement `continue` dat je onmiddellijk wilt voortgaan met de volgende iteratie van de lus.
 
 Bijvoorbeeld:
 

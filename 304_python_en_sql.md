@@ -101,7 +101,7 @@ while True:
 Hiermee kun je de studenten dan vanuit een eenvoudige command-line-interface **bewerken**:
 
 ~~~
-python3 students.py 
+$ python students.py 
 
 1. Voeg student toe
 2. Toon studenten
@@ -211,7 +211,7 @@ Het resultaat hiervan - een lijst van records - is in je Python-code beschikbaar
 Als we dit programma nu uitvoeren op een studentendatabase, krijgen we iets te zien als het volgende:
 
 ~~~
-$ python3 students.py
+$ python students.py
 Student Bart met id 1
 Student Jan met id 2
 Student Piet met id 3
@@ -239,7 +239,7 @@ De conventie is dat je op de plaats waar je een parameter wilt toevoegen een vra
 Het resultaat?
 
 ~~~
-$ python3 students.py
+$ python students.py
 Student Bart met id 1
 Student Jan met id 2
 Student Joris met id 4
@@ -259,7 +259,7 @@ with sqlite3.connect('students.db') as con:
 Het resultaat:
 
 ~~~
-$ python3 students.py
+$ python students.py
 Student Bart met id 1
 Student Jan met id 2
 ~~~

@@ -2,16 +2,16 @@
 
 ### Invoer vragen aan de gebruiker
 
-**Tot nog toe** hebben we enkel **literals** gebruikt om **variabelen** te initialiseren.  
+Tot nu toe hebben we alleen **literals** gebruikt om **variabelen** te initialiseren.  
 Om **invoer** van de **gebruiker** te verkrijgen, voorziet Python in de functie `input`.  
 
 ~~~python
 text = input("Enter text: ")
-print("text " + text)
+print("Entered " + text)
 ~~~
 
 Bovenstaand voorbeeld gebruikt de functie `input` om een **tekst** op te vragen aan de gebruiker.  
-Als parameter geef je een (optionele) prompt-tekst mee en als waarde van de functie-aanroep ontvang je de tekst als een string.
+Als parameter geef je een (optionele) prompt-tekst mee en als waarde van de functie-aanroep ontvang je de door de gebruiker ingevoerde tekst als een string.
 
 ~~~
                                                        +-------------------------+
@@ -25,7 +25,7 @@ Als parameter geef je een (optionele) prompt-tekst mee en als waarde van de func
      |                          |                      | |                     | |
      |                  +-------v----------+           | |                     | |
      +--------+read+----> Statement 3:     |           | |                     | |
-                        | function call    +--+print+--> | > Entered text      | |
+                        | function call    +--+print+--> | > Entered hello     | |
                         +------------------+           | +---------------------+ |
                                                        +-------------------------+
 
@@ -60,10 +60,10 @@ type of number <class 'str'>
 type of number_two <class 'str'>
 ~~~
 
-### Wat als je met getallen wil werken?
+### Wat als je met getallen wilt werken?
 
-Je kan een **string** omvormen naar een **integer**, om te kunnen bewerken als een getal.  
-Je kan dit doen door het resultaat van de functie input te converteren via de functie `int`.
+Je kunt een **string** omvormen naar een **integer**, om te kunnen bewerken als een getal.  
+Je kunt dit doen door het resultaat van de functie `input` om te zetten via de functie `int`.
 
 ~~~python
 number_input = input("Enter number: ")
@@ -74,7 +74,7 @@ print ("type of number ", type(number))
 print ("type of number_two ", type(number_two ))
 ~~~
 
-Om te vermijden dat je een extra variabele moet gebruiken (`number_input`) kan je de aanroep van input nesten in de aanroep van `int`:
+Om te vermijden dat je een extra variabele moet gebruiken (`number_input`), kun je de aanroep van `input` nesten in de aanroep van `int`:
 
 ~~~python
 number = int(input ("Enter number: "))
@@ -108,4 +108,4 @@ ValueError: invalid literal for int() with base 10: 'arzez'
 
 Je ziet hier een `ValueError`, en je krijgt ook een omschrijving van wat er mis is: de functie `int` verwacht een literal die een getal is met grondtal 10, en "arzez" is dat niet.
 
-Later in de cursus zien we hoe je in je programma kan reageren op dit soort foutmeldingen zoals een `ValueError`.
+Later in de cursus zien we hoe je in je programma kunt reageren op dit soort foutmeldingen zoals een `ValueError`.

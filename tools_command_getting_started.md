@@ -20,9 +20,11 @@ Een shell is een programma waarmee je rechtstreeks toegang hebt tot **systeemope
 * Automatiseren van taken
 * Communicatie over een seriële interface
 
+Dit komt allemaal in bod in het vak **Basis Linux**, specifiek toegespitst op Linux-besturingssystemen.
+
 ### Tekstopdrachten invoeren
 
-Deze tekstopdrachten kunnen meestal ook **gebundeld** worden in een **script**, dat je dan kan uitvoeren van een CLI (command line interface) net zoals je programma's kan uitvoeren.
+Deze tekstopdrachten kunnen meestal ook **gebundeld** worden in een **script**, dat je dan kunt uitvoeren in een CLI (command line interface), net zoals je programma's kunt uitvoeren.
 
 Nadat zo'n opdracht/script/programma uitgevoerd is, krijgt de gebruiker weer de kans om de shell of het programma aan te spreken door op de opdrachtregel een nieuwe opdracht op te geven.  
 

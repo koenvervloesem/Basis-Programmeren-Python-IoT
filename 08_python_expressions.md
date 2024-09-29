@@ -2,17 +2,17 @@
 
 ### Een expressie geeft een waarde terug
 
-We hebben al **statements** in Python gezien, die je kan beschouwen als een soort van **opdracht** of **actie** die Python uitvoert. We zagen als voorbeelden het tonen van een tekst (function call) of het initialiseren van een variabele (assigment statement).
+We hebben al **statements** in Python gezien, die je kunt beschouwen als een **opdracht** of **actie** die Python uitvoert. We zagen als voorbeelden het tonen van een tekst (*function call*) of het initialiseren van een variabele (*assigment statement*).
 
 Een ander belangrijk element in Python (en andere programmeertalen) zijn **expressies**. Een expressie is alles wat een **waarde** teruggeeft.  
-Een eerste voorbeeld van expressie dat we al veel hebben gebruikt, zijn **literals** (of letterlijke waardes):
+Een eerste voorbeeld van expressie dat we al gebruikt hebben, zijn **literals** (of letterlijke waardes):
 
 ~~~python
 a = "test"
 b = 2
 ~~~
 
-**"test"** en **2** zijn hier **literals** of **letterlijke expressies** die een waarde geven die in een variabele wordt opgeslagen via de assignment operator = (en assignment statement).
+**"test"** en **2** zijn hier **literals** of **letterlijke expressies** die een waarde geven die in een variabele wordt opgeslagen via de assignment operator `=` (en assignment statement).
 
 Een andere expressie is bijvoorbeeld wanneer je de naam van een variabele als argument aan een functie doorgeeft:
 
@@ -110,7 +110,7 @@ Wel zullen de operatoren het resultaat afronden of niet naargelang het om floor 
 
 Er zijn verschillende soorten expressies of bewerkingen, naast de **rekenkundige** hebben we ook **logische**, **relationele** en **binaire** expressies die we gedurende deze cursus nader zullen bekijken.
 
-Wat deze wel gemeenschappelijk hebben, is dat deze alle uit **operatoren** en **operanden** bestaan:
+Wat deze gemeenschappelijk hebben, is dat deze alle uit **operatoren** en **operanden** bestaan:
 
 * Een **operator** is het symbool dat de bewerking voorstelt.
 * De **operanden** zijn de waardes (of andere expressies) die aan de **linker- en rechterkant** staan van de **operator**.
@@ -136,7 +136,7 @@ Een **operand** dient altijd zelf een **expressie** te zijn. In dit geval zijn d
 
 ### Volgorde van berekeningen (operator precedence) en haakjes
 
-Net zoals in klassieke wiskunde kan je ook **haakjes** gebruiken om de **volgorde van berekening** af te dwingen, zoals we in het voorbeeld hierboven deden.  
+Net zoals in de wiskunde kun je ook **haakjes** gebruiken om de **volgorde van berekeningen** af te dwingen, zoals we in het voorbeeld hierboven deden.  
 Als je dit niet doet, zal Python de voorrang van bewerkingen bepalen aan de hand van basisregels.
 
 ~~~

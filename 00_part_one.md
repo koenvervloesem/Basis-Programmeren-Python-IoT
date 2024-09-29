@@ -18,21 +18,21 @@ In dit eerste deel hebben we het over:
     * **Types** van variabelen
         * **Strings**
         * **Getallen**: **integers** en **floats**
-        * Herkennen van deze types via **type()**
-    * Input en output van een programma
-        * **print()**
+        * Herkennen van deze types via `type()`
+    * Invoer en uitvoer van een programma
+        * `print()`
 * **Conditionele uitvoering**
     * Enkelvoudige versus **complexe statements**
-    * if
-    * if-else
-    * if-elif-else
+    * `if`
+    * `if`-`else`
+    * `if`-`elif`-`else`
 * **Repetitieve** uitvoering (lussen of loops)
-    * while-lus
-    * for-lus
+    * `while`-lus
+    * `for`-lus
 * Opdelen van je code met **functies**
-* **Oefeningen** en **labo's** maken.
+* **Oefeningen** en **opdrachten** maken.
 
 ## Uitbreidingen in annex
 
 In de cursus wordt er verwacht dat je basisvaardigheden op de opdrachtregel hebt.
-Mocht je hiermee geen (of beperkte) ervaring hebben, dan kan je altijd terecht in de **annex**.
+Mocht je hiermee geen (of beperkte) ervaring hebben, dan kun je altijd terecht in de **annex** op het einde van de cursus.

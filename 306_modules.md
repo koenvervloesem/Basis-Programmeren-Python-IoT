@@ -132,14 +132,14 @@ print("Name: ", __name__)
 Als je deze dan uitvoert, toont deze `__main__`:
 
 ~~~bash
-$ python3 hello.py
+$ python hello.py
 Name: __main__
 ~~~
 
 Als we echter nu echter hello_application.py uitvoeren, zien we het volgende:
 
 ~~~bash
-python3 hello_application.py
+python hello_application.py
 Name:  hello
 hello
 world
@@ -171,7 +171,7 @@ world()
 ...dan zal deze inderdaad de functies `hello()` en `world()` uitvoeren.
 
 ~~~
-$ python3 hello.py
+$ python hello.py
 hello
 world
 ~~~
@@ -179,7 +179,7 @@ world
 Maar als we nu `hello_application.py` uitvoeren, zien we:
 
 ~~~
-$ python3 hello_application.py
+$ python hello_application.py
 hello
 world
 hello
@@ -205,10 +205,10 @@ if __name__ == "__main__":
 We kijken dus of de globale variabele `__name__` de waarde `__main__` heeft. Die heeft deze waarde alleen als je de module als Python-script uitvoert, en niet als je ze importeert. De code binnen het if-blok wordt dan ook alleen in het eerste geval uitgevoerd:
 
 ~~~
-$ python3 hello.py
+$ python hello.py
 hello
 world
-$ python3 hello_application.py
+$ python hello_application.py
 hello
 world
 ~~~
