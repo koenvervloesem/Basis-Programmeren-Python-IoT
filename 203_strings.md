@@ -17,7 +17,7 @@ Hello World
 
 #### Enkele en dubbele aanhalingstekens
 
-Zo'n literal wordt **gedemarkeerd** door aanhalingstekens (*quotes*). Dit kunnen enkele of dubbele aanhalingstekens zijn.  
+Zo'n literal wordt **begrensd** door aanhalingstekens (*quotes*). Dit kunnen enkele of dubbele aanhalingstekens zijn.  
 Belangrijk is wel: als je start met de ene soort (`"` of `'`), moet je ook eindigen met dezelfde. Anders krijg je een foutmelding:
 
 ~~~python
@@ -41,7 +41,7 @@ Dit doe je als je enkele of dubbele aanhalingstekens wilt tonen.
 
 #### Backslash als escape character
 
-Als je toch dubbele aanhalingstekens wilt gebruiken binnen een string die je met dubbele aanhalingstekens demarkeert, kan je altijd een backslash gebruiken als escape character:
+Als je toch dubbele aanhalingstekens wilt gebruiken binnen een string die je met dubbele aanhalingstekens begrenst, kun je altijd een backslash gebruiken als escape character:
 
 ~~~python
 >>> print("\"Double quotes\" with backslash.")
@@ -67,7 +67,7 @@ Een backslash \ gebruik je in Python als escape character.
 
 #### Speciale tekens 
 
-Een backslash kan ook worden gebruikt om specifieke tekens te tonen zoals een tab of een nieuwe regel:
+Een backslash kan ook worden gebruikt om speciale tekens te tonen zoals een tab of een nieuwe regel:
 
 
 ~~~
@@ -96,7 +96,7 @@ Een gewone string literal kun je maar op één regel invoeren. Zodra je op enter
 SyntaxError: unterminated string literal (detected at line 1)
 ~~~
 
-Maar als je drie aanhalingstekens gebruikt (dubbele of enkele), kan je een string literal over meerdere regels invoeren tot je de string met weer drie aanhalingstekens sluit:
+Maar als je drie aanhalingstekens gebruikt (dubbele of enkele), kun je een string literal over meerdere regels invoeren tot je de string met weer drie aanhalingstekens sluit:
 
 ~~~python
 >>> print("""Dit is een string die
@@ -137,7 +137,7 @@ Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex
  15 0F SI   31 1F US   47 2F /  63 3F ?  79 4F O  95 5F _  111 6F o  127 7F DEL
 ~~~
 
-In Python kan je met deze ASCII-codes een string construeren, bijvoorbeeld met de hexadecimale waardes:
+In Python kun je met deze ASCII-codes een string construeren, bijvoorbeeld met de hexadecimale waardes:
 
 ~~~python
 >>> print("\x68\x65llo")
@@ -182,7 +182,7 @@ Koen
 
 ### String concatenation
 
-Je kan via de operator `+` verschillende strings 'aan elkaar plakken' (concateneren):
+Je kunt via de operator `+` verschillende strings 'aan elkaar plakken' (concateneren):
 
 ~~~python
 >>> text = "Hello"
@@ -204,7 +204,7 @@ Traceback (most recent call last):
 TypeError: can only concatenate str (not "int") to str
 ~~~
 
-Zoals de `TypeError` toont, kan je geen int concateneren aan een string met de operator `+`.
+Zoals de `TypeError` toont, kun je geen int concateneren aan een string met de operator `+`.
 
 Hoe doe je dat dan wel? Door eerst de int naar een string om te zetten:
 
@@ -226,7 +226,7 @@ De concatenatie kan echter ook via de functie `print()`:
 Hello world 2
 ~~~
 
-Geef gewoon meerdere argumenten door aan de functie `print()`. Je kunt hier alle types door elkaar gebruiken, aangezien de functie zelf de omzetting zal uitvoeren via `str()`.
+Geef gewoon meerdere argumenten door aan de functie `print()`. Je kunt hier alle types door elkaar gebruiken, aangezien de functie zelf automatisch de omzetting zal uitvoeren door `str()` op de argumenten aan te roepen.
 
 Merk op: `print()` voegt standaard een spatie tussen elk argument toe.
 
@@ -316,7 +316,7 @@ Traceback (most recent call last):
 TypeError: sequence item 3: expected str instance, int found
 ~~~
 
-Doordenkertje: hoe los je dit eenvoudig op met list comprehension?
+**Doordenkertje: hoe los je dit eenvoudig op met list comprehension?**
 
 ### Stringinterpolatie of f-strings
 
@@ -404,6 +404,10 @@ Hoe bewerk je dan wel een string? Door allerlei methodes die je op een string ku
 'iK BEN kOEN'
 >>> boodschap.upper()
 'IK BEN KOEN'
+>>> boodschap
+'Ik ben Koen'
 ~~~
+
+Zoals je in de uitvoer van dit laatste statement ziet, verandert de oorspronkelijke string niet.
 
 Meer bewerkingen op strings krijg je te zien als je `help(str)` opvraagt of de documentatie op <https://docs.python.org/3/library/stdtypes.html#str> bekijkt.

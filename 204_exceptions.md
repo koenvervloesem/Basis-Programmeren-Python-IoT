@@ -99,7 +99,7 @@ Je ziet hier dat Python twee locaties in je bestand toont waar de exception optr
 * enerzijds op regel 5 met `a = divide(5, 0)`
 * anderzijds op regel 2 met `return a / b`
 
-De onderste getoonde locatie is de uiteindelijke regel waar de exception optreedt. Maar waarom treedt die daarop? Omdat door de aanroep van `divide(5, 0)` b de waarde 0 krijgt en daardoor dus door 0 gedeeld wordt. Bij het uitzoeken wat er juist misloopt, moet je dus de hele keten van plaatsen waar de exception wordt doorgegeven nagaan. In complexere programma's kan die keten heel lang zijn...
+De onderste getoonde locatie is de uiteindelijke regel waar de exception optreedt. Maar waarom treedt die daar op? Omdat door de aanroep van `divide(5, 0)` b de waarde 0 krijgt en daardoor dus door 0 gedeeld wordt. Bij het uitzoeken wat er juist misloopt, moet je dus de hele keten van plaatsen waar de exception wordt doorgegeven nagaan. In complexere programma's kan die keten heel lang zijn...
 
 ### Exceptions opvangen
 
@@ -185,7 +185,7 @@ ZeroDivisionError: division by zero
 
 ### Meerdere `except`-blokken
 
-Om dit probleem te verhelpen - en meerdere types exceptions op te vangen - kan je meerdere `except`-blokken plaatsen.  
+Om dit probleem te verhelpen - en meerdere types exceptions op te vangen - kun je meerdere `except`-blokken plaatsen.  
 Door onderstaande `except`-blok voor `ZeroDivisionError` toe te voegen, vermijd je dat het programma bij het optreden van die exception beëindigd wordt:
 
 ~~~python
@@ -311,7 +311,7 @@ Tot de volgende keer
 
 ### Zelf exceptions opwerpen
 
-Naast het afvangen van exceptions kan je deze ook zelf opwerpen met het keyword `raise`.
+Naast het afvangen van exceptions kun je deze ook zelf opwerpen met het keyword `raise`.
 
 Stel dat je de volgende functie maakt:
 

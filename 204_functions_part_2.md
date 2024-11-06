@@ -12,7 +12,7 @@ Hier bekijken we nog een **aantal zaken** die we **nog niet hebben gezien** in h
 
 ### Optionele argumenten
 
-Je kan voor een functie **standaardwaardes** meegeven aan een argument.  
+Je kunt voor een functie **standaardwaardes** meegeven aan een argument.  
 Zie bijvoorbeeld hieronder een functie om de macht van een getal te berekenen:
 
 ~~~python
@@ -187,7 +187,7 @@ Voor een set geldt hetzelfde: ook die wordt by reference doorgegeven aan functie
 
 In een aantal functies (zoals bijvoorbeeld **print**) heb je de mogelijkheid om een **variabel aantal argumenten** mee te geven.  
 
-Je kan dit ook zelf doen door een **sterretje** te plaatsen **voor** je **argument** waarna je dit argument kan **behandelen** zoals een **lijst**:
+Je kunt dit ook zelf doen door een **sterretje** te plaatsen **voor** je **argument** waarna je dit argument kan **behandelen** zoals een **lijst**:
 
 ~~~python
 def print_students(*students):
@@ -243,7 +243,7 @@ print_students(["Jan", "Piet", "Joris", "Korneel"])
 ~~~
 
 
-### recursie
+### Recursie
 
 De volgende code telt af vanaf 10:
 

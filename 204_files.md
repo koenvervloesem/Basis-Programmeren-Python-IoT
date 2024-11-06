@@ -263,7 +263,7 @@ Tot nu toe hebben we altijd bestanden gelezen. Dat is één van de mogelijke mod
 * "a" - Append - Maakt een bestand aan als dit nog niet bestaat. Alle schrijfoperaties worden aan het einde van het bestand toegevoegd.
 * "x" - Create - Maakt een bestand aan als dit nog niet bestaat en opent het om ernaar te schrijven. Geeft een exception `FileExistsError` als het bestand al bestaat.
 
-Deze modus kan je meegeven als een tweede (optioneel) argument aan de functie `open`:
+Deze modus kun je meegeven als een tweede (optioneel) argument aan de functie `open`:
 
 ~~~python
 with open("demofile.txt", "r") as f:
@@ -381,7 +381,7 @@ with open("subdirectory/demofile.txt") as f:
 
 Zowel in Linux als Windows kun je een forward slash (/) gebruiken om directory's af te scheiden, ook al gebruikt Windows intern een backslash (\\). Een backslash wordt in Python-strings immers als escape character gebruikt (zie voorheen).
 
-Daarnaast kan je ook een exact pad opgeven, dit wordt ook een **absoluut** pad genoemd. Een voorbeeld in Linux:
+Daarnaast kun je ook een exact pad opgeven, dit wordt ook een **absoluut** pad genoemd. Een voorbeeld in Linux:
 
 ~~~python
 with open("/home/koan/demofile.txt") as f:

@@ -236,4 +236,4 @@ Het resultaat:
 
 Hoe werkt deze list comprehension? Ze gaat alle getallen x van 1 tot en met 9 af en alle getallen y van 1 tot en met 9. Ze kwadrateert die elk en telt die op, en controleert dan of het resultaat kleiner dan of gelijk aan 100 is. Indien ja, dan wordt het aan de verzameling toegevoegd. Uiteindelijk wordt het resultaat gesorteerd met de funtie `sorted`.
 
-Je ziet hier dat een set comprehension (maar ook een list comprehension genest kan zijn, door meerdere keren `for` in te voeren. Bovendien kun je met `if` beperken welke elementen er door de comprehension geselecteerd worden. Het is hierdoor dat onze voorbeeldopdracht zo compact opgelost kan worden.
+Je ziet hier dat een set comprehension (maar ook een list comprehension) genest kan zijn, door meerdere keren `for` in te voeren. Bovendien kun je met `if` beperken welke elementen er door de comprehension geselecteerd worden. Het is hierdoor dat onze voorbeeldopdracht zo compact opgelost kan worden.

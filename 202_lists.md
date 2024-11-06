@@ -7,7 +7,7 @@ In dit tweede deel van de cursus bekijken we datatypes die meerdere waardes kunn
 * Collecties: lists, sets, dictionaries, tuples
 * Abstracte datatypes: klassen
 
-Collecties zijn generieke datatypes waarin je meer dan één waarde kan plaatsen, een beetje zoals een container die verschillende goederen kan bevatten.
+Collecties zijn generieke datatypes waarin je meer dan één waarde kunt plaatsen, een beetje zoals een container die verschillende goederen kan bevatten.
 
 
 ### List
@@ -88,7 +88,7 @@ x = [[1.0, 2.0, 3.0],
 ### Dimensie van een lijst
 
 Een eerste actie die we kunnen uitvoeren is de grootte of dimensie van een lijst opvragen.  
-Daarvoor bestaat een generieke functie `len()`, die niet alleen voor lijsten maar alle types containers werkt.
+Daarvoor bestaat een generieke functie `len()`, die niet alleen voor lijsten maar voor alle types containers werkt.
 
 ~~~
 >>> x = [1.0, 2.0, 3.0]
@@ -239,7 +239,7 @@ $ python doorlopen.py
 
 ### Lijsten doorlopen (Pythons manier)
 
-Je kan namelijk ook de for-lus gebruiken, die we eerder gebruikten in combinatie met range:
+Je kunt namelijk ook de for-lus gebruiken, die we eerder gebruikten in combinatie met range:
 
 ~~~python
 x = [2, 3, 5, 7, 11]
