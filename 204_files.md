@@ -14,7 +14,7 @@ Een bestand is in essentie:
 
 Er bestaan verschillende soorten bestanden:
 
-* Tekstbestanden: Bevatten tekstkarakters (tekens) die je kan lezen
+* Tekstbestanden: Bevatten tekstkarakters (tekens) die je kunt lezen
 * Uitvoerbare bestanden (*executables*): Bevatten programma's met code-instructies voor de processor
 * Mediabestanden: Bevatten afspeelbare media (beelden, audio, video, ...)
 * Andere binaire gegevensbestanden: Bevatten spreadsheets, tekstverwerkingsdocumenten, databases, printplaatontwerpen, ...
@@ -145,7 +145,7 @@ Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ulla
 Na gebruik is het belangrijk dat je dit **file-object sluit** met de operatie `close()`.  
 Het besturingssysteem kan namelijk het bestand blokkeren voor gebruik vanuit andere programma's zolang het file-object open staat.
 
-Als je na het sluiten van het file-object nog een leesopdracht uitvoert, krijg je overigens een foutmelding:
+Als je na het sluiten van het file-object nog een leesopdracht uitvoert, krijg je overigens een foutmelding (exception):
 
 ~~~python
 >>> f.close()
@@ -158,7 +158,7 @@ ValueError: I/O operation on closed file.
 #### Automatisch sluiten
 
 Het probleem met bovenstaande code is: als er zich een exception voordoet na `open()` wordt het file-object mogelijk niet gesloten.
-Om dit te vermijden bestaat er het `with`-statement:
+Om dit te vermijden, bestaat er het `with`-statement:
 
 ~~~python
 with open("demofile.txt") as f:
@@ -173,7 +173,7 @@ Het `with`-statement zal ervoor zorgen dat - na het uitvoeren van de code binnen
 
 #### Volledige inhoud uitlezen
 
-Je kan zoals we zagen de hele inhoud van een tekstbestand opvragen via de functie `read()`:
+Je kunt zoals we zagen de hele inhoud van een tekstbestand opvragen via de functie `read()`:
 
 ~~~python
 with open("demofile.txt") as f:
@@ -372,7 +372,7 @@ Vorige voorbeelden openden een bestand dat in dezelfde directory staat als van w
 
 We gaven als pad om te openen dan ook gewoon de bestandsnaam door. Dit pad is **relatief** ten opzichte van de toepassing die je uitvoert.
 
-Als je een bestand wilt inlezen dat in een subdirectory staat ten opzichte van de directory vanwaar je programma wordt uitgevoerd, beschrijf je het pad als volgt:
+Als je een bestand wilt inlezen dat in een subdirectory staat ten opzichte van de directory waarin je programma wordt uitgevoerd, beschrijf je het pad als volgt:
 
 ~~~python
 with open("subdirectory/demofile.txt") as f:

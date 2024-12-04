@@ -106,7 +106,7 @@ else:
     pass
 ~~~
 
-Het statement `pass` doet letterlijk niets. Het is dus handig als plaatshouder op een plaats waar een statement nodig is om van geldige code te kunnen spreken, maar waar (nog) niets hoeft te gebeuren.
+Het statement `pass` doet letterlijk niets. Het is dus handig als plaatshouder waar een statement nodig is om van geldige code te kunnen spreken, maar waar (nog) niets hoeft te gebeuren.
 
 ### Access by name
 
@@ -187,7 +187,7 @@ Voor een set geldt hetzelfde: ook die wordt by reference doorgegeven aan functie
 
 In een aantal functies (zoals bijvoorbeeld **print**) heb je de mogelijkheid om een **variabel aantal argumenten** mee te geven.  
 
-Je kunt dit ook zelf doen door een **sterretje** te plaatsen **voor** je **argument** waarna je dit argument kan **behandelen** zoals een **lijst**:
+Je kunt dit ook zelf doen door een **sterretje** te plaatsen **vóór** je **argument** waarna je dit argument kunt **behandelen** als een **lijst**:
 
 ~~~python
 def print_students(*students):
