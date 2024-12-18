@@ -17,7 +17,7 @@ Je kunt perfect werkende Python-code schrijven die niet kwalitatief is. Maar dan
 * is ze moeilijk aan te passen of uit te breiden;
 * bevat ze waarschijnlijk nog belangrijke fouten die je over het hoofd gezien hebt.
 
-Gelukkig bestaan er heel wat hulpmiddelen waarmee je je Python-code kunt verbeteren. We bekijken er enkele en tonen hoe je ermee tot kwalitatieve code kunt komen.
+Gelukkig bestaan er heel wat hulpmiddelen om je Python-code te verbeteren. We bekijken er enkele en tonen hoe je ermee tot kwalitatieve code kunt komen.
 
 ### Docstrings
 
@@ -516,7 +516,7 @@ Probeer deze methodes om de codekwaliteit te verbeteren eens op een van de opdra
 * Documenteer je code met docstrings.
 * Voeg voorbeelden in de docstrings toe die je met doctest test om te controleren of je code wel correct werkt. Zorg dat je op de waarde van ``__name__`` test zodat je hoofdcode niet door doctest wordt uitgevoerd.
 * Voeg types aan je code toe en test met mypy of je wel overal correct met die types omgaat.
-* Voer de suggesties van Ruff uit (vergeet niet om op alle Ruff-regels te testen met ``--select=ALL``).
+* Voer de relevante suggesties van Ruff uit (vergeet niet om op alle Ruff-regels te testen met ``--select=ALL``).
 * Formatteer je code met Ruff.
 
 Bekijk het resultaat en vergelijk dit met je initiële code. Zie je het verschil in kwaliteit? Heb je op deze manier fouten ontdekt die je over het hoofd had gezien?
