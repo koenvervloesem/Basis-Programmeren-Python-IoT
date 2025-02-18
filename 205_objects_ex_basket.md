@@ -59,7 +59,7 @@ Initialized empty Git repository in /home/koan/basket/.git/
 Deze actie maakt - in deze directory basket - een lokale **Git-repository** aan.  
 Zo'n Git-repository is:
 
-* een database waarin je **code-wijzigingen** kan **bijhouden/traceren**
+* een database waarin je **code-wijzigingen** kunt **bijhouden/traceren**
 * in de vorm van **snapshots** (zoals je bijvoorbeeld een snapshot van een harde schijf zou nemen)
 * waarvan je een historiek kunt bijhouden en zelfs kunt terugkeren naar een vorige **revisie**
 
@@ -590,7 +590,7 @@ while True:
         print("Foutieve keuze")
 ~~~
 
-Onder **optie 2** voegen we vervolgens een **loop** toe die deze **items toont**.  
+Onder **optie 2** voegen we vervolgens een **lus** toe die deze **items toont**.  
 
 ~~~
 $ python basket.py

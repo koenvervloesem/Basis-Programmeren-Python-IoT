@@ -1,6 +1,6 @@
-## Objecten en klasen
+## Objecten en klassen
 
-Tot nog toe hebben we voornamelijk gewerkt met twee soorten datatypes:
+Tot nu toe hebben we voornamelijk gewerkt met twee soorten datatypes:
 
 * Enkelvoudige datatypes: kunnen één enkele waarde bevatten, voorbeelden zijn `int`, `float`, `bool`
 * Collecties: vormen een container voor meerdere waardes: `list`, `set`
@@ -43,7 +43,7 @@ Een klasse is een **gestructureerd datatype** dat je toelaat om verschillende wa
 
 ### Dataklasse voor studenten
 
-Laten we direct van wel steken met ons voorgaande voorbeeld uit te breiden. We maken een dataklasse aan om alle data die bij een student horen voor te stellen.
+Laten we direct van wal steken met ons voorgaande voorbeeld uit te breiden. We maken een dataklasse aan om alle data die bij een student horen voor te stellen.
 
 Toegepast op een student ziet zo'n datatype er als volgt uit:
 
@@ -127,7 +127,7 @@ jan.lab_points = 15
 print(f"{jan.first_name} {jan.surname} heeft {jan.lab_points} op het labo en {jan.theory_points} op theorie.")
 ~~~
 
-Je kan deze attributen via de dot-notatie - objectnaam gevolgd door punt gevolgd door naam van het attribuut - uitlezen en bewerken, net zoals je dit zou doen bij gewone variabelen.
+Je kunt deze attributen via de dot-notatie - objectnaam gevolgd door punt (in het Engels 'dot') gevolgd door naam van het attribuut - uitlezen en bewerken, net zoals je dit zou doen bij gewone variabelen.
 
 ### Meerdere objecten
 
@@ -163,7 +163,7 @@ In dit voorbeeld kun je duidelijk zien dat de attributen verbonden zijn aan het 
 
 Laten we het principe van objecten combineren met een lijst. Net zoals we een lijst van ints of strings kunnen maken, kunnen we ook een lijst van objecten van onze zelf gedefinieerde klasse maken.
 
-Dat stelt je in staat om een dynamische collectie van studenten bij te houden.
+Dit stelt je in staat om een dynamische collectie van studenten bij te houden:
 
 ~~~python
 from dataclasses import dataclass
@@ -196,7 +196,7 @@ for student in students:
 
 We maken dus eerst een lege lijst aan. Daarna maken we twee keer een object van de klasse `Student` aan, geven de attributen van dit object een waarde en voegen het object aan de lijst toe. Daarna overlopen we in een `for`-lus alle objecten in de lijst en tonen we hun attributen.
 
-Aangezien je een lijst bijhoudt, is het niet meer nodig om aparte variabelen `jan` en `piet` te definiëren. Je kan in de plaats via de constructor direct de objecten/instanties van de klasse `Student` toevoegen aan de lijst:
+Aangezien je een lijst bijhoudt, is het niet meer nodig om afzonderlijke variabelen `jan` en `piet` te definiëren. Je kunt in de plaats via de constructor direct de objecten/instanties van de klasse `Student` toevoegen aan de lijst:
 
 ~~~python
 from dataclasses import dataclass
@@ -258,7 +258,7 @@ In de volgende regel:
 self.first_name = first_name
 ~~~
 
-verwijst `self.first_name` dus naar het attribuut `first_name` van het object, terwijl `first_name` aan de rechterkant van de assignment verwijst naar het gelijknamie argument van de methode `__init__`.
+verwijst `self.first_name` dus naar het attribuut `first_name` van het object, terwijl `first_name` aan de rechterkant van de assignment verwijst naar het gelijknamige argument van de methode `__init__`.
 
 Bovenstaande code doet exact hetzelfde als de gelijknamige code met de dataklasse die we eerder zagen, maar op basis hiervan kunnen we nu variëren.
 
