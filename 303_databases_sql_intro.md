@@ -514,7 +514,7 @@ Joris Joriss  12          12
 
 De laatste operatie die we nog niet in SQL hebben gezien, is `delete`. Net zoals bij `update` dien je hierbij een `where`-clausule te gebruiken. Dit is eigenlijk niet verplicht, maar zonder die clausule verwijder je alle gegevens, en dat wil je meestal niet.
 
-Stel dat de student "Bart Voet" onrechtmatig toegang heeft gekregen tot de cursus. Dan verwijder je deze als volgt:
+Stel dat de student "Bart Voet" zich uitgeschreven heeft uit de cursus. Dan verwijder je deze als volgt:
 
 ~~~sql
 delete from student where student_name = "Bart Voet";

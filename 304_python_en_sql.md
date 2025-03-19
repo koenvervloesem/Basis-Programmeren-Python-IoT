@@ -266,7 +266,7 @@ Student Jan met id 2
 
 ### Persistentie in de studentenapplicatie
 
-In onderstaande code passen we bovenstaande uitleg toe rond het gebruik van een verbinding en cursor binnen Python:
+In onderstaande code passen we bovenstaande uitleg toe rond het gebruik van een verbinding binnen Python:
 
 ~~~python
 import sqlite3
