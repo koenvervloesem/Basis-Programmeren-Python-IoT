@@ -226,7 +226,7 @@ student_points["Piet"] = 16
 print(student_points["Piet"])
 ~~~
 
-Hierbij gaat de **vorige waarde** vanzelfspekend **overschreven** worden:
+Hierbij gaat de **vorige waarde** vanzelfsprekend **overschreven** worden:
 
 ~~~bash
 $ python dictionary_demo.py

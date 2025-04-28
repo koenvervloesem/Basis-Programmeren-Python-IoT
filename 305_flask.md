@@ -80,6 +80,8 @@ $ python demo.py
 127.0.0.1 - - [19/May/2022 18:56:44] "GET /favicon.ico HTTP/1.1" 404
 ~~~
 
+Merk op dat je webbrowser blijkbaar het bestand favicon.ico opvraagt. De conventie is dat websites in dit bestand een icoontje plaatsen dat de webbrowser naast de naam van de webpagina toont.
+
 ### Ophalen van data met Insomnia
 
 Probeer eerst de REST API uit met het programma Insomnia. Vul in de adresbalk in het midden <http://localhost:5000> in en klik rechts ernaast op **Send**. Dan krijg je aan de rechterkant in de preview weer de webpagina met de tekst **Hello, World!** te zien. Klik je op **Headers**, dan zie je de headers die de webserver teruggeeft.

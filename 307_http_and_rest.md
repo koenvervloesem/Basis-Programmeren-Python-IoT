@@ -14,7 +14,7 @@ Laten we starten met HTTP.
 **HTTP** staat voor **H**yper**T**ext **T**ransfer **P**rotocol.  
 
 **HTTP** behoort tot **laag 7** van het **OSI**-model voor netwerken.  
-Het protocol wordt typisch toegankelijk gemaakt op poort 80 (tijdens de ontwikkeling dikwijls poort, 8000, 8080 of 5000). De versleutelde vorm HTTPS (HTTP over TLS) maakt gebruik van poort 443.
+Het protocol wordt typisch toegankelijk gemaakt op poort 80 (tijdens de ontwikkeling dikwijls poort 8000, 8080 of 5000). De versleutelde vorm HTTPS (HTTP over TLS) maakt gebruik van poort 443.
 
 Het betreft een **applicatienetwerkprotocol** (client-server) dat wordt gebruikt om **resources** van een server te benaderen.
 
@@ -49,7 +49,7 @@ Vandaag wordt HTTP via REST ook veel gebruikt om data van een server af te halen
 
 ### Browsers, HTTP en HTML
 
-Een eerste vorm van applicaties die HTTP gebruiken, zijn webbrowsers zoals Firefox en Chrome. De gebruiker kan daarmee webpagina's en bijbehorende resources (zoals afbeeldingen en video's) afhalen.  
+Een eerste vorm van applicaties die HTTP gebruiken, zijn webbrowsers zoals Firefox, Chrome, Edge en Safari. De gebruiker kan daarmee webpagina's en bijbehorende resources (zoals afbeeldingen en video's) afhalen.  
 
 
 ~~~
@@ -268,7 +268,7 @@ Je kan deze operaties een beetje vergelijken met de CRUD-operaties op een databa
 
 * **GET**  
   Met deze operatie vraag je een resource/document op van de server.  
-  Binnen CRUD kan je dit als een **read** beschouwen.
+  Binnen CRUD kun je dit als een **read** beschouwen.
 * **POST**  
   Dit overschrijft of maakt een **nieuwe resource** aan.   
   Dit wordt beschouwd als een **create**.
@@ -349,7 +349,7 @@ Serving HTTP on 0.0.0.0 port 9000 (http://0.0.0.0:9000/) ...
 We gaan nu echter geen webpagina's maken en gebruiken, maar API's die data teruggeven.
 
 Een API of **A**pplication **P**rogramming **I**nterface is een verzameling van operaties of functies 
-die je tussen twee stukken software kan definiëren.  
+die je tussen twee stukken software kunt definiëren.  
 
 De API's waarover wij hier spreken zijn netwerk-API's en specifieker REST-API's (REpresentational State Transfer).
 
@@ -394,9 +394,9 @@ De basisprincipes:
 * Je entiteiten worden voorgesteld als http-resources.
 * Deze resources worden binnen de URL hiërarchisch geordend.
 
-Het programma Insomnia (<https://insomnia.rest>) laat je toe om eenvoudig HTTP- en REST-aanvragen te doen en de resultaten te bekijken. Download het programma van <https://insomnia.rest/download> om eenvoudige tests uit te voeren.
+Het programma Insomnia (<https://insomnia.rest>) laat je toe om eenvoudig HTTP- en REST-aanvragen te doen en de resultaten te bekijken. Download het programma van <https://github.com/Kong/insomnia/releases> om eenvoudige tests uit te voeren.
 
-Voer nu in de adresbalk in het midden de url <https://randomuser.me/api/> in en klik rechts ervan op **Send**. Je krijgt dan rechts als preview een hoop data in de vorm van een JSON-string. JSON (<https://www.json.org/json-en.html>) staat voor JavaScript Object Notation en is een tekstformaat om gestructureerde data uit te wisselen. Het wordt veel in REST-API's gebruikt.
+Klik op **New HTTP Request** en voer dan in de adresbalk in het midden de url <https://randomuser.me/api/> in en klik rechts ervan op **Send**. Je krijgt dan rechts als preview een hoop data in de vorm van een JSON-string. JSON (<https://www.json.org/json-en.html>) staat voor JavaScript Object Notation en is een tekstformaat om gestructureerde data uit te wisselen. Het wordt veel in REST-API's gebruikt.
 
 We kunnen ook extra query parameters toevoegen. Voeg in het tabblad **Query** onder de adresbalk een parameter **gender** met waarde **female** in een parameter **nat** met waarde **DE**. Insomnia past de url nu aan tot <https://randomuser.me/api/?gender=female&nat=NL>. Klik nog eens op **Send**. Je krijgt nu data van een willekeurige vrouwelijke gebruiker met Nederlandse naam.
 
