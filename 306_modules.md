@@ -470,8 +470,8 @@ def get_student(id):
 
 def update_points(id,lab,theory):
     with sl.connect(STUDENT_DB_FILE_NAME) as con:
-        update_tatement = 'update student SET lab = ? , theory = ? WHERE student_id = ?'
-        con.execute(update_tatement, [lab,theory,id])
+        update_statement = 'update student SET lab = ? , theory = ? WHERE student_id = ?'
+        con.execute(update_statement, [lab,theory,id])
         con.commit()
 
 def delete_student(id):

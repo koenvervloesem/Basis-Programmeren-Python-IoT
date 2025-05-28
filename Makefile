@@ -64,6 +64,7 @@ PY_CHAPTER_04 += 306_part_four_apis.md
 PY_CHAPTER_04 += 309_dictionaries.md
 PY_CHAPTER_04 += 307_http_and_rest.md
 PY_CHAPTER_04 += 305_flask.md
+PY_CHAPTER_04 += 310_data.md
 
 #PY_CHAPTER_05 += 500_part_five_async.md
 
