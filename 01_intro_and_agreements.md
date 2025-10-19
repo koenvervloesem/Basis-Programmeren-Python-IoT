@@ -11,7 +11,7 @@ Wie aanvullende verdieping wil, mag altijd vragen om verwijzingen naar goede boe
 ### Stijl van lesgeven
 
 Dit is een **praktische cursus**, dus we vliegen er onmiddellijk in met praktijk.
-Het motto van deze cursus is **"eerst coderen, dan leren"**.
+Het motto van deze cursus is **"eerst coderen, dan leren"**. Het is de bedoeling dat je in de les meedoet.
 Je zult merken dat je gemakkelijker theorie oppikt als je eerst al hebt geëxperimenteerd.
 
 ### Verloop van de lessen
@@ -29,7 +29,7 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
         +-----+-----+                  +------^-----+
               |                               |
               |                               |
-        18.30 |    (2)                 21.00  |   (5)
+        18.30 |    (2)                 21.30  |   (5)
         +-----v------+                 +------+-----+
         |  Leerstof  |                 |    Q&A     |
         |    en      |                 |     en     |
@@ -37,7 +37,7 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
         +------------+                 +------^-----+
               |                               |
               |                               |
-        19.45 |    (3)                 20.15  |   (4)
+        20.00 |    (3)                 20.30  |   (4)
         +-----v------+                 +------+-----+
         |            |                 |Opdracht(en)|
         |   Pauze    +----------------->     en     |
@@ -49,9 +49,9 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
 **(1) 18.00-18.30: Quiz en Herhaling**
 
 * We voorzien tijd om **vragen** te beantwoorden over de leerstof van de vorige les.
-* Daarna geven we een **Quiz** en/of **Herhaling** over de vorige les, met bijvoorbeeld een herhalingsoefening.
+* Daarna geven we een **Quiz** en/of **Herhaling** over de vorige les, met bijvoorbeeld een herhalingsoefening, en/of bespreken we mogelijke **oplossingen van de opdracht** van de vorige les.
 
-**(2) 18.30-19.45: Leerstof en Coderen**
+**(2) 18.30-20.00: Leerstof en Coderen**
 
 * Op basis van de **cursustekst** die op voorhand op Toledo komt te staan.
 * We maken klassikaal **oefeningen**
@@ -60,9 +60,9 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
     * Lector legt theorie achter de oefeningen uit
 * **Q&A** tijdens deze oefeningen
 
-**(3) 19.45-20.15 => PAUZE**
+**(3) 20.00-20.30 => PAUZE**
 
-**(4) 20.15-21.00: Opdrachten (met support)**
+**(4) 20.30-21.30: Opdrachten (met support)**
 
 * **Opdracht** maken die op **Toledo** verschijnt
 * Lector loopt rond, coacht en helpt
@@ -73,8 +73,6 @@ Elke les wordt gegeven van 18.00 tot en met 22.00 met de volgende activiteiten:
 * Belangrijkste punten worden **herhaald**
 * **Indienen** van je code op **Toledo**
     * Zelfs als deze nog niet af is
-    * Je hebt nog **3 weken** de **tijd** om **verbeteringen** aan te brengen
-    * Maar op deze manier kun je **vroeg feedback** krijgen voor verbeteringen
 
 **(6) Thuis: Oefenen en studeren**
 
@@ -92,7 +90,7 @@ Alle **oefeningen** uit de cursus die je **moet maken** worden aangeduid in Tole
 
 Je (deel)oplossing voor de opdracht moet je indienen vóór het einde van de les.
 
-Daarna krijg je nog drie weken om verbeteringen aan te brengen. Na die drie weken krijg je punten op je oplossing.
+Tegen de volgende les krijg je punten op je oplossing.
 
 #### Uploaden in Toledo
 

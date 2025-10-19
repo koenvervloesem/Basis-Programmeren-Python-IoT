@@ -63,7 +63,7 @@ Traceback (most recent call last):
 TypeError: unhashable type: 'list'
 ~~~
 
-De elementen in een set moeten immers onveranderlijk zijn. Een lijst kun je veranderen (je kunt bijvoorbeeld elementen toevoegen en verwijderen), dus je kunt geen lijst in een set opslaan.
+De elementen in een set moeten immers onveranderlijk zijn. Een lijst kun je veranderen (je kunt bijvoorbeeld elementen toevoegen en verwijderen), dus je kunt geen lijst in een set opslaan. Om dezelfde reden kun je ook geen set in een set steken.
 
 ### Dimensie van een set
 
@@ -211,15 +211,6 @@ Hoe zou je dan wel de ene set kunnen veranderen en niet de andere? Dan maak je e
 {'appel', 'banaan', 'kiwi', 'peer'}
 ~~~
 
-### Wanneer een set gebruiken en wanneer een lijst?
-
-* Als de volgorde van elementen niet uitmaakt, gebruik dan een set.
-* Als het niet uitmaakt hoeveel keer een element in de collectie zit, gebruik dan een set.
-
-In de andere gevallen gebruik je een lijst.
-
-Meer informatie over de mogelijkheden met een set vraag je in de REPL op met `help(set)`.
-
 ### Set comprehension
 
 Net zoals je lijsten kunt aanmaken met list comprehension, kun je sets aanmaken met **set comprehension**. En ook dit is een krachtige techniek waarmee je in compacte code heel wat kunt doen. Bijvoorbeeld, hoe zou je een programma schrijven dat alle gehele getallen tussen 1 en 100 toont die geschreven kunnen worden als de som van twee kwadraten? Met set comprehension kan dat in één regel code:
@@ -237,3 +228,13 @@ Het resultaat:
 Hoe werkt deze list comprehension? Ze gaat alle getallen x van 1 tot en met 9 af en alle getallen y van 1 tot en met 9. Ze kwadrateert die elk en telt die op, en controleert dan of het resultaat kleiner dan of gelijk aan 100 is. Indien ja, dan wordt het aan de verzameling toegevoegd. Uiteindelijk wordt het resultaat gesorteerd met de funtie `sorted`.
 
 Je ziet hier dat een set comprehension (maar ook een list comprehension) genest kan zijn, door meerdere keren `for` in te voeren. Bovendien kun je met `if` beperken welke elementen er door de comprehension geselecteerd worden. Het is hierdoor dat onze voorbeeldopdracht zo compact opgelost kan worden.
+
+### Wanneer een set gebruiken en wanneer een lijst?
+
+* Als de volgorde van elementen niet uitmaakt, gebruik dan een set.
+* Als het niet uitmaakt hoeveel keer een element in de collectie zit, gebruik dan een set.
+
+In de andere gevallen gebruik je een lijst.
+
+Meer informatie over de mogelijkheden met een set vraag je in de REPL op met `help(set)`.
+

@@ -294,7 +294,7 @@ Maar heel wat apparaten en programma's gebruiken een andere volgorde:
 
 Die eerste voorstelling noemen we _big endian_, omdat de software de _big end_ van het getal eerst leest. De tweede voorstelling heet _little endian_, omdat de software de _little end_ van het getal eerst leest.
 
-Standaard leest `from_bytes()`_ een reeks bytes in the big endian volgorde in, maar je kunt dit aanpassen met het argument `byteorder`:
+Standaard leest `from_bytes()` een reeks bytes in de big endian volgorde in, maar je kunt dit aanpassen met het argument `byteorder`:
 
 ```python
 >>> int.from_bytes(b"\x02\x01")
