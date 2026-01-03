@@ -195,7 +195,7 @@ Het is interessant om in de REPL eens te kijken wat voor type data de functie `r
 Je ziet hier dat read() de volledige inhoud van het bestand als een string teruggeeft. En als je de inhoud van de string bekijkt, zie je dat elke nieuwe regel vervangen is door een teken `\n` (voor newline).
 
 #### Aantal tekens uitlezen
-Je kunt je ook beperken tot het uitlezen van een aantal bytes (in het geval van een tekstbestand het aantal tekens):
+Je kunt je ook beperken tot het uitlezen van een aantal bytes (in het geval van een tekstbestand zonder speciale Unicode-tekens komt dat overeen met het aantal tekens):
 
 ~~~python
 with open("demofile.txt") as f:
