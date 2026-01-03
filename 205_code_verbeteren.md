@@ -63,7 +63,7 @@ Het sluiten van de docstring doe je met een `"""` op de laatste regel.
 
 Als je de docstring van deze functie nu leest, weet je alles wat je nodig hebt om de functie te gebruiken. Je weet wat voor argument je aan de functie moet doorgeven (een concentratie in ppm) en wat je van de functie als returnwaarde kunt verwachten. De drempelwaardes zelf die de functie gebruikt om die beschrijvingen "Good", "Acceptable" en "Bad" te berekenen, hoef je als gebruiker van de functie niet te kennen. Die staan dus niet in de docstring.
 
-Tip: installeer in Visual Studio Code de extensie autoDocstring. Als je dan drie dubbele aanhalingstekens opent als eerste statement in een functie, toont de extensie je een knopje **Generate Docstring**. Als je hierop klikt, wordt al een sjabloon van een docstring toegevoegd, die je dan zelf verder invult.
+Tip: installeer in Visual Studio Code de extensie autoDocstring. Als je dan drie dubbele aanhalingstekens opent als eerste statement in een functie, toont de extensie je een knopje **Generate Docstring**. Als je hierop klikt, wordt al een sjabloon van een docstring toegevoegd, dat je dan zelf verder invult.
 
 Er bestaan ook tools zoals Sphinx (<https://www.sphinx-doc.org>) en Read the Docs (<https://readthedocs.org>) die automatisch html-pagina's kunnen genereren met documentatie over je Python-project. Die documentatie halen ze dan uit de docstrings van je Python-bestanden. Als je dan al de hele tijd consistent docstrings hebt gebruikt, is dit een eenvoudige manier om documentatie voor je Python-project te genereren voor anderen die zo niet in je code hoeven te duiken.
 
@@ -301,7 +301,7 @@ times.py:5: error: Argument 1 to "times" has incompatible type "str"; expected "
 Found 1 error in 1 file (checked 1 source file)
 ```
 
-Wat zegt dit? Op regel 5 roepen we de funtie `times` aan met als eerste argument een string, terwijl de functie een int verwacht. Dat klopt: het eerste argument is de string "2", terwijl in de functiedefinitie staat `a: int`. Mypy meldt je dat dit niet klopt.
+Wat zegt dit? Op regel 5 roepen we de funtie `times` aan met als eerste argument een string, terwijl de functie een int verwacht. Dat klopt: het eerste argument is de string "2", terwijl in de functiedefinitie staat `a: int`. Mypy meldt je dat deze types niet overeenkomen.
 
 Maar het type van een variabele is niet altijd even duidelijk, zoals we al gezien hebben. Stel dat je deze code schrijft:
 
