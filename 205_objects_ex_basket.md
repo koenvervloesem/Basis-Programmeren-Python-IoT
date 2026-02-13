@@ -72,6 +72,8 @@ $ ls -a .git/
 .  ..  branches  config  description  HEAD  hooks  info  objects  refs
 ~~~
 
+Onder Windows gebruik je `dir /a` in plaats van `ls -a`.
+
 Met de opdracht `git status` vraag je dan vervolgens op wat de status van de Git-repository is.
 
 ~~~
