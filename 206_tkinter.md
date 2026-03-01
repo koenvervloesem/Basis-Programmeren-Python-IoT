@@ -144,7 +144,7 @@ Dat ziet er dan als volgt uit:
 
 ![](tkinter_font.png)
 
-Let op: op Windows dien je een alternatieve stijl in te stellen, omdat de standaardstijl niet de achtergrondkleur van knoppen instelt maar alleen het kader errond. Voeg dan de volgende regel toe na `style = Style()`:
+Let op: in Windows dien je een alternatieve stijl in te stellen, omdat de standaardstijl niet de achtergrondkleur van knoppen instelt maar alleen het kader errond. Voeg dan de volgende regel toe na `style = Style()`:
 
 ```
 style.theme_use("alt")
