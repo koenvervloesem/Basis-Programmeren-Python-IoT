@@ -548,9 +548,7 @@ Je kunt ervoor zorgen dat de database voor jou controleert of deze naam uniek is
 * **Primary key** slaat op het feit dat elke waarde in deze kolom uniek is en dat dit de primaire sleutel is om een rij op te zoeken.
 * **Constraints** zijn controles of voorwaardes die een database voor jou kan controleren en forceren.
 
-> Merk op: Dit kan ook via een **unique-key constraint**. Daar komen we later nog op terug...
-
-Verwijder de bestaande tabel met `drop table student;` en maak een nieuwe tabel aan met het `create`-statement. Deze keer kennen we aan de kolom name de primary key constraint toe:
+Verwijder de bestaande tabel met `drop table student;` en maak een nieuwe tabel aan met het `create`-statement. Deze keer kennen we aan de kolom `name` de primary key constraint toe:
 
 ~~~sql
 CREATE TABLE student 
@@ -562,7 +560,7 @@ CREATE TABLE student
 ~~~
 
 We hebben hier een keyword `PRIMARY KEY` toegevoegd aan de eerste kolom.  
-Hierdoor zal de database er voor zorgen dat de tabel altijd consistent is volgens deze constraint:
+Hierdoor zal de database ervoor zorgen dat de tabel altijd consistent is volgens deze constraint:
 
 * Er kan maar één student met dezelfde naam zijn.
 * Elke student heeft verplicht een naam.
