@@ -630,7 +630,7 @@ def update_points(id, lab, theory):
         con.commit()
 ~~~
 
-Aan deze functie geven we het ID van de student door en de punten die we de student willen geven voor het labo en voor theorie. Let op het SQL-statement waarbij we student met het gegeven ID selecteren.
+Aan deze functie geven we het ID van de student door en de punten die we de student willen geven voor het labo en voor theorie. Let op het SQL-statement waarbij we de student met het gegeven ID selecteren.
 
 Deze functie roepen we nu aan als de gebruiker in het menu optie 4 kiest:
 
