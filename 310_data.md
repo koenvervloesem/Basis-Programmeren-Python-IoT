@@ -144,7 +144,7 @@ b'ABC'
 
 Het resultaat is een object van het type `bytes`.
 
-Voor ons lijkt het verschil misschien triviaal, maar sommige functies in Python verwachten een string en andere bytes of een bytearray, dus al deze omzettingen zijn regelmatig nodig om het juiste resultaat te verkrijgen.
+Voor ons lijkt het verschil misschien triviaal, maar sommige functies in Python verwachten een string en andere verwachten bytes of een bytearray, dus al deze omzettingen zijn regelmatig nodig om het juiste resultaat te verkrijgen.
 
 ### Getallen als bytes voorgesteld
 

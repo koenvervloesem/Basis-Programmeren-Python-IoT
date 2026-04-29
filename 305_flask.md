@@ -360,7 +360,7 @@ if __name__ == "__main__":
     app.run(port=5000, debug=True)
 ~~~
 
-Door de route `"/user/<username>"` in de decorator op te nemen, geven we aan dat op de plaats van `<username>` een willekeurig deel van de url kunnen opgeven. Dit deel is dan als argument `username` beschikbaar in de functie erna.
+Door de route `"/user/<username>"` in de decorator op te nemen, geven we aan dat we op de plaats van `<username>` een willekeurig deel van de url kunnen opgeven. Dit deel is dan als argument `username` beschikbaar in de functie erna.
 
 Start de server:
 
@@ -615,8 +615,7 @@ Met als resultaat:
 }
 ~~~
 
-Studenten vallen in onze school onder een groep.  
-Als je alle studenten wilt zien uit groep 1, schrijf je de naam van de entiteit (students) achter het voorgaande pad: <http://localhost:5000/groups/1/students>.
+Studenten vallen in onze school onder een groep. Als je alle studenten wilt zien uit groep 1, schrijf je de naam van de entiteit (students) achter het voorgaande pad: <http://localhost:5000/groups/1/students>.
 
 Dat geeft voorlopig een lege lijst terug:
 
@@ -632,7 +631,7 @@ We moeten de groepen dus vullen met studenten. Dat kan voor groep 1 door het end
 
 En doe nu hetzelfde voor nog enkele andere studenten.
 
-Als je daarna alle studenten van groep 2 opvraagt, krijg je iets als:
+Als je daarna alle studenten van groep 1 opvraagt, krijg je iets als:
 
 ~~~json
 [

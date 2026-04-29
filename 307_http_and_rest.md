@@ -256,7 +256,7 @@ Daarnaast geeft deze onder andere:
 
 * Het mediatype (text/html)
 * De lengte in bytes van de content
-* Het tijdstip van aanmaak, wat gebruikt wordt voor caching
+* Het tijdstip van de laatste wijziging, wat gebruikt wordt voor caching
 * De eigenlijke content
 
 #### Method (HTTP REQUEST)
@@ -329,6 +329,7 @@ De belangrijkste:
   * 405 **Method Not Allowed** – De gebruikte requestmethode is niet toegestaan.
   * 410 **Gone** – Het opgevraagde document heeft bestaan maar is niet meer beschikbaar.
   * 451 **Unavailable For Legal Reasons** - Het opgevraagde document kan niet worden weergegeven omwille van juridische redenen.
+
 * 5XX
   * 500 **Internal Server Error** – De webserver heeft de gevraagde actie niet kunnen uitvoeren.
   * 503 **Service Temporarily Unavailable** – De webserver is tijdelijk in onderhoud.
@@ -343,6 +344,10 @@ Serving HTTP on 0.0.0.0 port 9000 (http://0.0.0.0:9000/) ...
 127.0.0.1 - - [26/Apr/2022 23:48:01] "GET /test.html HTTP/1.1" 304 -
 127.0.0.1 - - [26/Apr/2022 23:48:01] "GET /hello.png HTTP/1.1" 304 -
 ~~~
+
+Een (minder courant) voorbeeld van hoe je webbrowser een fout van de webserver toont:
+
+![](http_451.png)
 
 ### Wat is een API?
 
